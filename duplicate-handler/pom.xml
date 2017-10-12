@@ -5,11 +5,11 @@
   <parent>
     <groupId>it.unibz.inf.ontop</groupId>
     <artifactId>ontop</artifactId>
-    <version>1.18.1-SNAPSHOT</version>
+    <version>1.18.1</version>
   </parent>
   <groupId>it.unibz.inf.ontop</groupId>
   <artifactId>duplicate-handler</artifactId>
-  <version>1.18.1-SNAPSHOT</version>
+  <version>1.18.1</version>
   <name>duplicate-handler</name>
   <url>http://maven.apache.org</url>
   <properties>
@@ -36,8 +36,7 @@
 		<dependency>
 				<groupId>com.ibm</groupId>
 				<artifactId>db2jcc4.jar</artifactId>
-				<version>10.1.4</version>
-			</dependency>
+				</dependency>
         
         <dependency>
                 <groupId>com.google.code.gson</groupId>
