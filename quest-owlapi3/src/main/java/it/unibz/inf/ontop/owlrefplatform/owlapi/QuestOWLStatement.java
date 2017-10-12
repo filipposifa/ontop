@@ -132,6 +132,14 @@ public class QuestOWLStatement implements AutoCloseable {
 			throw new OntopOWLException(e);
 		}
 	}
+	
+	public boolean executeSQL(String sql) throws OWLException {
+		try {
+			return st.executeSQL(sql);
+		} catch (OBDAException e) {
+			throw new OntopOWLException(e);
+		}
+	}
 
 	public int insertData(File owlFile, int commitSize, int batchsize, String baseURI) throws Exception {
 
@@ -351,7 +359,7 @@ public class QuestOWLStatement implements AutoCloseable {
 		}
 	}
 
-	public String getUnfolding(String query) throws OWLException {
+	public List<String> getUnfolding(String query) throws OWLException {
 		try {
 			ParsedQuery pq = st.questInstance.getEngine().getParsedQuery(query); 			
 			return st.questInstance.getEngine().getSQL(pq);

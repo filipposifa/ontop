@@ -263,7 +263,7 @@ public class QueryInterfaceView extends AbstractOWLViewComponent implements Save
 		queryEditorPanel.setRetrieveUCQUnfoldingAction(new OBDADataQueryAction<String>("Unfolding queries...", QueryInterfaceView.this) {
 			@Override
 			public String executeQuery(QuestOWLStatement st, String query) throws OWLException{
-				return st.getUnfolding(query);
+				return st.getUnfolding(query).get(0);
 			}
 
 			@Override

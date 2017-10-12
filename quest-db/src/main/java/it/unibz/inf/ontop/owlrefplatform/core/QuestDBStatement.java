@@ -27,6 +27,7 @@ import it.unibz.inf.ontop.ontology.Assertion;
 import it.unibz.inf.ontop.owlapi.OWLAPIABoxIterator;
 import it.unibz.inf.ontop.owlrefplatform.core.abox.NTripleAssertionIterator;
 import it.unibz.inf.ontop.owlrefplatform.core.abox.QuestMaterializer;
+
 import org.openrdf.query.parser.ParsedQuery;
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.IRI;
@@ -38,12 +39,13 @@ import org.slf4j.LoggerFactory;
 import java.net.URI;
 import java.sql.SQLException;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Set;
 
 public class QuestDBStatement implements OBDAStatement {
 
 	private final QuestStatement st;
-
+	
 	private final Logger log = LoggerFactory.getLogger(QuestDBStatement.class);
 
 	private transient OWLOntologyManager man = OWLManager.createOWLOntologyManager();
@@ -196,7 +198,7 @@ public class QuestDBStatement implements OBDAStatement {
 	 * QuestSpecific
 	 */
 	
-	public String getSQL(String query) throws Exception {
+	public List<String> getSQL(String query) throws Exception {
 		ParsedQuery pq = st.questInstance.getEngine().getParsedQuery(query); 
 		return st.questInstance.getEngine().getSQL(pq);
 	}
@@ -209,5 +211,10 @@ public class QuestDBStatement implements OBDAStatement {
 	public String getRewriting(String query) throws Exception {
 		ParsedQuery pq = st.questInstance.getEngine().getParsedQuery(query); 
 		return st.questInstance.getEngine().getRewriting(pq);
+	}
+
+	@Override
+	public boolean executeSQL(String sql) throws OBDAException {
+		return st.executeSQL(sql);
 	}
 }

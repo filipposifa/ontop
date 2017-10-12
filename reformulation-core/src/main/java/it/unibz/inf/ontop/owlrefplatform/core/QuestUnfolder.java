@@ -9,8 +9,12 @@ import it.unibz.inf.ontop.model.impl.TermUtils;
 import it.unibz.inf.ontop.ontology.*;
 import it.unibz.inf.ontop.owlrefplatform.core.basicoperations.*;
 import it.unibz.inf.ontop.owlrefplatform.core.dagjgrapht.TBoxReasoner;
-import it.unibz.inf.ontop.owlrefplatform.core.mappingprocessing.*;
+import it.unibz.inf.ontop.owlrefplatform.core.mappingprocessing.MappingDataTypeRepair;
+import it.unibz.inf.ontop.owlrefplatform.core.mappingprocessing.MappingSameAs;
+import it.unibz.inf.ontop.owlrefplatform.core.mappingprocessing.TMappingExclusionConfig;
+import it.unibz.inf.ontop.owlrefplatform.core.mappingprocessing.TMappingProcessor;
 import it.unibz.inf.ontop.owlrefplatform.core.unfolding.DatalogUnfolder;
+import it.unibz.inf.ontop.owlrefplatform.duplicateelimination.DuplicateEstimator;
 import it.unibz.inf.ontop.parser.PreprocessProjection;
 import it.unibz.inf.ontop.utils.Mapping2DatalogConverter;
 import it.unibz.inf.ontop.utils.MappingSplitter;
@@ -124,13 +128,6 @@ public class QuestUnfolder {
 			addSameAsMapping(unfoldingProgram);
 		}
 
-        if(log.isDebugEnabled()) {
-            String finalMappings = Joiner.on("\n").join(unfoldingProgram);
-            log.debug("Set of mappings before canonical IRI rewriting: \n {}", finalMappings);
-        }
-
-		unfoldingProgram = new CanonicalIRIRewriter().buildCanonicalIRIMappings(unfoldingProgram);
-
 		// Collecting URI templates
 		uriTemplateMatcher = UriTemplateMatcher.create(unfoldingProgram);
 
@@ -139,13 +136,13 @@ public class QuestUnfolder {
 		// sparql translator)
 		unfoldingProgram.addAll(generateTripleMappings(unfoldingProgram));
 
-
 		if(log.isDebugEnabled()) {
 			String finalMappings = Joiner.on("\n").join(unfoldingProgram);
 			log.debug("Final set of mappings: \n {}", finalMappings);
 		}
 		
 		unfolder = new DatalogUnfolder(unfoldingProgram, pkeys);
+		
 		
 		this.ufp = unfoldingProgram;
 	}
@@ -407,7 +404,10 @@ public class QuestUnfolder {
 	}
 	
 	public DatalogProgram unfold(DatalogProgram query) throws OBDAException {
-		return unfolder.unfold(query);
+		DatalogProgram result=unfolder.unfold(query);
+		DuplicateEstimator de=new DuplicateEstimator(result, pkeys, metadata, fac);
+		de.estimate();
+		return result;
 	}
 
 
@@ -463,6 +463,10 @@ public class QuestUnfolder {
 
         return objectPropertiesMapped;
     }
+
+	public List<CQIE> getUnfolding() {
+		return this.ufp;
+	}
 
 
 

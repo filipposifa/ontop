@@ -22,6 +22,7 @@ package it.unibz.inf.ontop.model;
 
 import it.unibz.inf.ontop.model.Predicate.COL_TYPE;
 import it.unibz.inf.ontop.utils.JdbcTypeMapper;
+import madgik.analyzer.estimator.NodeSelectivityEstimator;
 
 import java.io.Serializable;
 import java.net.URI;
@@ -82,9 +83,7 @@ public interface OBDADataFactory extends Serializable {
 	
 	public Predicate getClassPredicate(String name);
 
-	public Predicate getOWLSameAsPredicate();
-
-	public Predicate getOBDACanonicalIRI();
+	Predicate getOWLSameASPredicate();
 	
 
 	public JdbcTypeMapper getJdbcTypeMapper();
@@ -275,6 +274,12 @@ public interface OBDADataFactory extends Serializable {
 	public Function getSPARQLJoin(Function t1, Function t2);
 
 	public Function getSPARQLLeftJoin(Function t1, Function t2);
+
+	public AnonQuerySet getAnonQuerySet();
+
+	public void setSelectivityEstimator(NodeSelectivityEstimator nse);
+
+	public NodeSelectivityEstimator getNodeSelectivityEstimator();
 
 
 }

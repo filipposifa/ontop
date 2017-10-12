@@ -16,6 +16,7 @@ import it.unibz.inf.ontop.owlrefplatform.core.translator.*;
 import it.unibz.inf.ontop.owlrefplatform.core.unfolding.ExpressionEvaluator;
 import it.unibz.inf.ontop.renderer.DatalogProgramRenderer;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -33,7 +34,7 @@ public class QuestQueryProcessor {
 	
 	private final Map<String, ParsedQuery> parsedQueryCache = new ConcurrentHashMap<>();
 	private final Map<ParsedQuery, List<String>> querySignatureCache = new ConcurrentHashMap<>();
-	private final Map<ParsedQuery, String> translatedSQLCache = new ConcurrentHashMap<>();
+	private final Map<ParsedQuery, List<String>> translatedSQLCache = new ConcurrentHashMap<>();
 	
 	private final QueryRewriter rewriter;
 	private final LinearInclusionDependencies sigma;
@@ -118,9 +119,9 @@ public class QuestQueryProcessor {
 	}
 	
 	
-	public String getSQL(ParsedQuery pq) throws OBDAException {
+	public List<String> getSQL(ParsedQuery pq) throws OBDAException {
 			
-		String cachedSQL = translatedSQLCache.get(pq);
+		List<String> cachedSQL = translatedSQLCache.get(pq);
 		if (cachedSQL != null){
 		    // Davide> Benchmarking
 		    OntopBenchmark.Builder builder = new OntopBenchmark.Builder(0, 0);
@@ -189,7 +190,8 @@ public class QuestQueryProcessor {
 			List<CQIE> toRemove = new LinkedList<>();
 			for (CQIE rule : programAfterUnfolding.getRules()) {
 				Predicate headPredicate = rule.getHead().getFunctionSymbol();
-				if (!headPredicate.getName().equals(OBDAVocabulary.QUEST_QUERY)) {
+				if (!headPredicate.getName().equals(OBDAVocabulary.QUEST_QUERY) &&
+						!headPredicate.getName().equals(OBDAVocabulary.QUEST_TEMP_VIEW)) {
 					toRemove.add(rule);
 				}
 			}
@@ -219,15 +221,17 @@ public class QuestQueryProcessor {
 
 			querySignatureCache.put(pq, translation.getSignature());
 
-			String sql;
+			List<String> sql;
 			
 			if (programAfterUnfolding.getRules().size() > 0) {
 				log.debug("Producing the SQL string...");
 				sql = datasourceQueryGenerator.generateSourceQuery(programAfterUnfolding, translation.getSignature());
 				log.debug("Resulting SQL: \n{}", sql);
 			}
-			else
-				sql = "";
+			else{
+				sql=new ArrayList<String>();
+				sql.add("");
+			}
 			
 			long unfoldingTime = System.currentTimeMillis() - startTime;
 			translatedSQLCache.put(pq, sql);

@@ -27,6 +27,7 @@ import it.unibz.inf.ontop.model.impl.OBDADataFactoryImpl;
 import it.unibz.inf.ontop.model.impl.OBDAVocabulary;
 import it.unibz.inf.ontop.model.impl.TermUtils;
 import it.unibz.inf.ontop.owlrefplatform.core.basicoperations.*;
+import it.unibz.inf.ontop.owlrefplatform.duplicateelimination.DuplicateEstimator;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -190,10 +191,14 @@ public class DatalogUnfolder {
 		for (CQIE query : workingSet) {
 			EQNormalizer.enforceEqualities(query);
 			UniqueConstraintOptimizer.selfJoinElimination(query, primaryKeys);
+			long start=System.currentTimeMillis();
+			UniqueConstraintOptimizer.coveredJoinElimination(query);
+			System.out.println("covered join elimination in "+(System.currentTimeMillis()-start)+ " ms.");
 		}
 			
 		DatalogProgram result = termFactory.getDatalogProgram(inputquery.getQueryModifiers());
 		result.appendRule(workingSet);
+		
 
 		return result;
 	}
@@ -1499,7 +1504,10 @@ public class DatalogUnfolder {
 
                 log.debug("The Unique Constraint {}{} is used for eliminating the redundant self join of {} and {}",
                         newatom.getFunctionSymbol(), pKey, newatom, tempatom);
-
+                
+                System.out.println("The Unique Constraint "+newatom.getFunctionSymbol()+" "+pKey+" is used for eliminating the redundant self join of "+newatom+ " and "+ tempatom);
+                        
+                
                 innerAtoms.remove(newatomidx);
                 newatomidx -= 1;
                 newatomcount -= 1;

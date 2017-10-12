@@ -389,7 +389,7 @@ public class Mapping2DatalogConverter {
 
             Term t1 = visitEx(left);
             if (t1 == null)
-                throw new RuntimeException("Unable to find column name for variable: " + left + " in context " + expression);
+                throw new RuntimeException("Unable to find column name for variable: " +left);
 
             Term t2 = visitEx(right);
 
@@ -455,7 +455,7 @@ public class Mapping2DatalogConverter {
                     Term t1 = visitEx(first);
                     if (t1 == null)
                         throw new RuntimeException("Unable to find column name for variable: "
-                                + first + " in context " + func);
+                                + first);
 
                     // second parameter is a pattern, so generally a regex string
                     Expression second = expressions.get(1);
@@ -488,7 +488,7 @@ public class Mapping2DatalogConverter {
 
                     if (t1 == null)
                         throw new RuntimeException("Unable to find source expression: "
-                                + first + " in context " + func);
+                                + first);
 
                     // second parameter is a string
                     Expression second = expressions.get(1);
@@ -705,7 +705,7 @@ public class Mapping2DatalogConverter {
             Term var = getVariable(column);
             if (var == null) {
                 throw new RuntimeException(
-                        "Unable to find column name for variable: " + column + " in context " + expression);
+                        "Unable to find column name for variable: " + column);
             }
 
             if (!expression.isNot()) {

@@ -25,6 +25,8 @@ import it.unibz.inf.ontop.model.*;
 import it.unibz.inf.ontop.model.Predicate.COL_TYPE;
 import it.unibz.inf.ontop.utils.IDGenerator;
 import it.unibz.inf.ontop.utils.JdbcTypeMapper;
+import madgik.analyzer.estimator.NodeSelectivityEstimator;
+
 import org.openrdf.model.ValueFactory;
 import org.openrdf.model.impl.ValueFactoryImpl;
 
@@ -42,6 +44,8 @@ public class OBDADataFactoryImpl implements OBDADataFactory {
 	private static ValueFactory irifactory = null;
 	private DatatypeFactoryImpl datatypes = null;
 	private final JdbcTypeMapper jdbcTypeMapper =  new JdbcTypeMapper(); 
+	private static NodeSelectivityEstimator nse;
+
 	
 
 	private static int counter = 0;
@@ -125,13 +129,8 @@ public class OBDADataFactoryImpl implements OBDADataFactory {
 	}
 
 	@Override
-	public Predicate getOWLSameAsPredicate() {
+	public Predicate getOWLSameASPredicate() {
 		return new PredicateImpl(OBDAVocabulary.SAME_AS, 2, new COL_TYPE[] { COL_TYPE.OBJECT, COL_TYPE.OBJECT });
-	}
-
-	@Override
-	public Predicate getOBDACanonicalIRI() {
-		return new PredicateImpl(OBDAVocabulary.CANONICAL_IRI, 2, new COL_TYPE[] { COL_TYPE.OBJECT, COL_TYPE.OBJECT });
 	}
 
 	@Override
@@ -214,6 +213,11 @@ public class OBDADataFactoryImpl implements OBDADataFactory {
 	}
 	
 	@Override
+	public AnonQuerySet getAnonQuerySet() {
+		return new AnonQuerySetImpl();
+	}
+	
+	@Override
 	public DatalogProgram getDatalogProgram() {
 		return new DatalogProgramImpl();
 	}
@@ -265,7 +269,7 @@ public class OBDADataFactoryImpl implements OBDADataFactory {
 
 	@Override
 	public Function getUriTemplateForDatatype(String type) {
-		return getFunction(new URITemplatePredicateImpl(1), getConstantLiteral(type));
+		return getFunction(new URITemplatePredicateImpl(1), getConstantLiteral(type, COL_TYPE.OBJECT));
 	}
 	
 	@Override
@@ -507,6 +511,19 @@ public class OBDADataFactoryImpl implements OBDADataFactory {
 		return newTerm;
 	}
 
+	@Override
+	public void setSelectivityEstimator(NodeSelectivityEstimator nse) {
+		this.nse=nse;
+		
+	}
 
+	@Override
+	public NodeSelectivityEstimator getNodeSelectivityEstimator() {
+		return nse;
+	}
+
+
+
+	
 
 }

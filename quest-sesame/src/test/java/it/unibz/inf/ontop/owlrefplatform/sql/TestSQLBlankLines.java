@@ -128,7 +128,7 @@ public class TestSQLBlankLines {
 		QuestOWLStatement st = conn.createStatement();
 
 
-		String sql = st.getUnfolding(query);
+		String sql = st.getUnfolding(query).get(0);
 		boolean m = sql.matches("(?ms)(.*)\\n\\n(.*)");
 		assertFalse(m);
 	}

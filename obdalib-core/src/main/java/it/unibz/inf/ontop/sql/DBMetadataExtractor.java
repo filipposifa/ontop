@@ -125,29 +125,18 @@ public class DBMetadataExtractor {
 		
 		final DatabaseMetaData md = conn.getMetaData();
 		String productName = md.getDatabaseProductName();
-		if (printouts) {
-			System.out.println("=================================\nDBMetadataExtractor REPORT: " + productName);
-			System.out.println("storesLowerCaseIdentifiers: " + md.storesLowerCaseIdentifiers());
-			System.out.println("storesUpperCaseIdentifiers: " + md.storesUpperCaseIdentifiers());
-			System.out.println("storesMixedCaseIdentifiers: " + md.storesMixedCaseIdentifiers());
-			System.out.println("supportsMixedCaseIdentifiers: " + md.supportsMixedCaseIdentifiers());
-			System.out.println("storesLowerCaseQuotedIdentifiers: " + md.storesLowerCaseQuotedIdentifiers());
-			System.out.println("storesUpperCaseQuotedIdentifiers: " + md.storesUpperCaseQuotedIdentifiers());
-			System.out.println("storesMixedCaseQuotedIdentifiers: " + md.storesMixedCaseQuotedIdentifiers());
-			System.out.println("supportsMixedCaseQuotedIdentifiers: " + md.supportsMixedCaseQuotedIdentifiers());
-			System.out.println("getIdentifierQuoteString: " + md.getIdentifierQuoteString());
-		}
-
+		
 		QuotedIDFactory idfac;
-		//  MySQL
-		if (productName.contains("MySQL"))  {
-			//System.out.println("getIdentifierQuoteString: " + md.getIdentifierQuoteString());
-			idfac = new QuotedIDFactoryMySQL(md.storesMixedCaseIdentifiers(), "`");
-		}
-		else if (md.storesMixedCaseIdentifiers()) {
-			// treat Exareme as a case-sensitive DB engine (like MS SQL Server)
-			// "SQL Server" = MS SQL Server
-			idfac = new QuotedIDFactoryIdentity("\"");
+		// treat Exareme as a case-sensitive DB engine (like MS SQL Server)
+		if (md.storesMixedCaseIdentifiers()) {
+			 //  MySQL
+			if (productName.contains("MySQL"))  {
+				//System.out.println("getIdentifierQuoteString: " + md.getIdentifierQuoteString());		
+				idfac = new QuotedIDFactoryMySQL("`"); 
+			}
+			else
+				// "SQL Server" = MS SQL Server
+				idfac = new QuotedIDFactoryIdentity("\"");
 		}
 		else {
 			if (md.storesLowerCaseIdentifiers())
@@ -241,12 +230,7 @@ public class DBMetadataExtractor {
 			// catalog is ignored for now (rs.getString("TABLE_CAT"))
 			try (ResultSet rs = md.getColumns(null, seedId.getSchemaName(), seedId.getTableName(), null)) {
 				while (rs.next()) {
-					String schema = rs.getString("TABLE_SCHEM");
-					// MySQL workaround
-					if (schema == null)
-						schema = rs.getString("TABLE_CAT");
-
-					RelationID relationId = RelationID.createRelationIdFromDatabaseRecord(idfac, schema,
+					RelationID relationId = RelationID.createRelationIdFromDatabaseRecord(idfac, rs.getString("TABLE_SCHEM"), 
 										rs.getString("TABLE_NAME"));
 					QuotedID attributeId = QuotedID.createIdFromDatabaseRecord(idfac, rs.getString("COLUMN_NAME"));
 					if (printouts)
@@ -280,12 +264,7 @@ public class DBMetadataExtractor {
 					System.out.println(fk +  ";");
 				System.out.println("");
 			}
-		}
-
-		if (printouts) {
-			System.out.println("RESULTING METADATA:\n" + metadata);
-			System.out.println("DBMetadataExtractor END OF REPORT\n=================================");
-		}
+		}	
 	}
 	
 	

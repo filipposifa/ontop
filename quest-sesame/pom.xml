@@ -3,7 +3,7 @@
 	<parent>
 		<artifactId>ontop</artifactId>
 		<groupId>it.unibz.inf.ontop</groupId>
-		<version>1.18.1</version>
+		<version>1.18.1-SNAPSHOT</version>
 	</parent>
 	<artifactId>ontop-quest-sesame</artifactId>
 	<name>ontop-quest-sesame</name>
@@ -124,7 +124,11 @@
 			<artifactId>mysql-connector-java</artifactId>
 			<scope>test</scope>
 		</dependency>
-
+	 <dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>9.4-1200-jdbc41</version>
+		</dependency>
 		<!-- Optique R2RML API -->
 		<dependency>
 			<groupId>eu.optique-project</groupId>

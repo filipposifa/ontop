@@ -96,7 +96,7 @@ public class QuestOWLExample {
              * Print the query summary
 			 */
             QuestOWLStatement qst = st;
-            String sqlQuery = qst.getUnfolding(sparqlQuery);
+            String sqlQuery = qst.getUnfolding(sparqlQuery).get(0);
 
             System.out.println();
             System.out.println("The input SPARQL query:");

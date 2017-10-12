@@ -145,7 +145,7 @@ public class TestQuestImplicitDBConstraints {
 		QuestOWLStatement st = conn.createStatement();
 		
 		
-		String sql = st.getUnfolding(query);
+		String sql = st.getUnfolding(query).get(0);
 		boolean m = sql.matches("(?ms)(.*)\"TABLE1\"(.*),(.*)\"TABLE1\"(.*)");
 		assertTrue(m);
 		
@@ -170,7 +170,7 @@ public class TestQuestImplicitDBConstraints {
 		QuestOWLStatement st = conn.createStatement();
 		
 		
-		String sql = st.getUnfolding(query);
+		String sql = st.getUnfolding(query).get(0);
 		boolean m = sql.matches("(?ms)(.*)\"TABLE2\"(.*),(.*)\"TABLE2\"(.*)");
 		assertTrue(m);
 		
@@ -196,7 +196,7 @@ public class TestQuestImplicitDBConstraints {
 		QuestOWLStatement st = conn.createStatement();
 		
 		
-		String sql = st.getUnfolding(query);
+		String sql = st.getUnfolding(query).get(0);
 		boolean m = sql.matches("(?ms)(.*)\"TABLE1\"(.*),(.*)\"TABLE1\"(.*)");
 		assertFalse(m);
 		
@@ -221,7 +221,7 @@ public class TestQuestImplicitDBConstraints {
 		QuestOWLStatement st = conn.createStatement();
 		
 		
-		String sql = st.getUnfolding(query);
+		String sql = st.getUnfolding(query).get(0);
 		boolean m = sql.matches("(?ms)(.*)\"TABLE2\"(.*),(.*)\"TABLE2\"(.*)");
 		assertTrue(m);
 		
@@ -250,7 +250,7 @@ public class TestQuestImplicitDBConstraints {
 		QuestOWLStatement st = conn.createStatement();
 		
 		
-		String sql = st.getUnfolding(query);
+		String sql = st.getUnfolding(query).get(0);
 		boolean m = sql.matches("(?ms)(.*)\"TABLE2\"(.*),(.*)\"TABLE2\"(.*)");
 		assertTrue(m);
 		
@@ -280,7 +280,7 @@ public class TestQuestImplicitDBConstraints {
 		QuestOWLStatement st = conn.createStatement();
 		
 		
-		String sql = st.getUnfolding(query);
+		String sql = st.getUnfolding(query).get(0);
 		boolean m = sql.matches("(?ms)(.*)\"TABLE2\"(.*),(.*)\"TABLE2\"(.*)");
 		assertFalse(m);
 		

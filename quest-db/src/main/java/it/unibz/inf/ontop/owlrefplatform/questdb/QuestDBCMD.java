@@ -244,7 +244,7 @@ public class QuestDBCMD {
 			}
 
 			QuestDBStatement st = dbInstance.getStatement(currentstore);
-			String sql = st.getSQL(query.substring("GET SQL ".length()));
+			String sql = st.getSQL(query.substring("GET SQL ".length())).get(0);
 			st.close();
 			System.out.println("SQL:");
 			System.out.println(sql);

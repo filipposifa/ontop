@@ -117,10 +117,8 @@ public interface Predicate {
 	boolean isAnnotationProperty();
 
 	boolean isDataProperty();
-
-	boolean isSameAsProperty();
-
-	boolean isCanonicalIRIProperty();
-
+	
+	
+	
 	boolean isTriplePredicate();
 }

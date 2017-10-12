@@ -76,7 +76,7 @@ public class QuestStatement implements OBDAStatement {
 	private class QueryExecutionThread extends Thread {
 
 		private final CountDownLatch monitor;
-		private final String sql;
+		private final List<String> sql;
 		private final List<String> signature;
 		private final QueryType type;
 		private final SesameConstructTemplate templ; // only for CONSTRUCT and DESCRIBE queries
@@ -86,9 +86,9 @@ public class QuestStatement implements OBDAStatement {
 		private Exception exception = null;
 		private boolean executingSQL = false;
 
-		public QueryExecutionThread(String sql, List<String> signature, QueryType type, SesameConstructTemplate templ, CountDownLatch monitor) {
+		public QueryExecutionThread(List<String> sql2, List<String> signature, QueryType type, SesameConstructTemplate templ, CountDownLatch monitor) {
 			this.monitor = monitor;
-			this.sql = sql;
+			this.sql = sql2;
 			this.signature = signature;
 			this.templ = templ;
 			this.type = type;
@@ -141,7 +141,38 @@ public class QuestStatement implements OBDAStatement {
 //                        }
 						// Execute the SQL query string
 						executingSQL = true;
-						java.sql.ResultSet set = sqlStatement.executeQuery(sql);
+						boolean fecthMinValue=false;
+						if(sqlStatement.getFetchSize()==Integer.MIN_VALUE){
+							//mysql streaming results
+							//disable temporarily in order to create temp tables
+							//otherwise strange error about ope resultset occures
+							fecthMinValue=true;
+							sqlStatement.setFetchSize(1000);
+						}
+						for(int i=0;i<sql.size()-1;i++){
+							String view=sql.get(i).split(" ")[3];
+							
+							sqlStatement.execute(sql.get(i));	
+							if(questInstance.getMetaData().getDriverName().toLowerCase().contains("mysql")){
+								sqlStatement.execute("analyze table "+view+";");
+							}else if(questInstance.getMetaData().getDriverName().toLowerCase().contains("postgre")){
+								sqlStatement.execute("analyze "+view+";");
+							}
+							else if(questInstance.getMetaData().getDbmsProductName().toLowerCase().contains("db2")){
+								sqlStatement.execute("Call Sysproc.admin_cmd ('runstats on table "+view+"')");
+							}
+							else{
+								log.error("Not Supported DB from Temp Table creation");
+							}
+							//System.out.println("OK");
+							
+							//sqlStatement.execute("Call Sysproc.admin_cmd ('runstats on table "+view+"')");
+						}
+						if(fecthMinValue){
+							//restore mysql streaming results to execute query
+							sqlStatement.setFetchSize(Integer.MIN_VALUE);
+						}
+						java.sql.ResultSet set = sqlStatement.executeQuery(sql.get(sql.size()-1));
 
 						// Store the SQL result to application result set.
 						switch (type) {
@@ -171,6 +202,11 @@ public class QuestStatement implements OBDAStatement {
 						log.warn("SQL execution is time out");
 //						if( set == null ){ // Exception SQLTimeout
 							tupleResult = new EmptyTupleResultSet(signature, QuestStatement.this);
+							log.warn("SQL execution is time out");
+							if(!conn.getAutoCommit()){
+								conn.commit();
+							}
+							throw new OBDAException("SQL execution is time out");
 //						}
 					}
 					catch (SQLException e) {
@@ -185,6 +221,11 @@ public class QuestStatement implements OBDAStatement {
 						if(exceptionClassName.equals(MySQLTimeoutExceptionClassName)
 								|| exceptionClassName.equals(PSQLExceptionClassName)){
 							log.warn("SQL execution is time out");
+							if(!conn.getAutoCommit()){
+								conn.commit();
+							}
+							throw new OBDAException("SQL execution is time out");
+							
 						} else {
 						exception = e;
 						log.error(e.getMessage(), e);
@@ -351,7 +392,7 @@ public class QuestStatement implements OBDAStatement {
 	 */
 	private QueryExecutionThread startExecute(ParsedQuery pq, QueryType type, SesameConstructTemplate templ) throws OBDAException {
 		CountDownLatch monitor = new CountDownLatch(1);
-		String sql = engine.getSQL(pq);
+		List<String> sql = engine.getSQL(pq);
 		List<String> signature = engine.getQuerySignature(pq);
 		QueryExecutionThread executionthread = new QueryExecutionThread(sql, signature, type, templ, monitor);
 		this.executionThread = executionthread;
@@ -383,8 +424,13 @@ public class QuestStatement implements OBDAStatement {
 	public long getTupleCount(String query) throws Exception {
 
 		ParsedQuery pq = engine.getParsedQuery(query); 
-		String unf = engine.getSQL(pq);
-		String newsql = "SELECT count(*) FROM (" + unf + ") t1";
+		List<String> unf = engine.getSQL(pq);
+		for(int i=0;i<unf.size()-1;i++){
+			if(!sqlStatement.execute(unf.get(i))){
+				throw new OBDAException("Error executing temp table SQL query: \n" +  unf.get(i));
+			}
+		}
+		String newsql = "SELECT count(*) FROM (" + unf.get(unf.size()-1) + ") t1";
 		if (!canceled) {
 			java.sql.ResultSet set = sqlStatement.executeQuery(newsql);
 			if (set.next()) {
@@ -539,6 +585,18 @@ public class QuestStatement implements OBDAStatement {
 
 	public OntopBenchmark getBenchmarkObject() {
 	    return engine.getBenchmarkObject();
+	}
+
+
+
+
+	@Override
+	public boolean executeSQL(String sql) throws OBDAException {
+		try {
+			return sqlStatement.execute(sql);
+		} catch (SQLException e) {
+			throw new OBDAException(e.getMessage());
+		}
 	}
 	
 }

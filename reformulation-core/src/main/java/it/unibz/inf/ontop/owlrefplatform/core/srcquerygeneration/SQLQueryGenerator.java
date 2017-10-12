@@ -1,5 +1,7 @@
 package it.unibz.inf.ontop.owlrefplatform.core.srcquerygeneration;
 
+import it.unibz.inf.ontop.model.CQIE;
+
 /*
  * #%L
  * ontop-reformulation-core
@@ -25,6 +27,7 @@ import it.unibz.inf.ontop.model.OBDAException;
 
 import java.io.Serializable;
 import java.util.List;
+import java.util.Set;
 
 /**
  * A general interface which should be use to implement new source query
@@ -45,7 +48,12 @@ public interface SQLQueryGenerator extends Serializable {
 	 * @return the source query
 	 * @throws Exception
 	 */
-	public String generateSourceQuery(DatalogProgram query, List<String> signature) throws OBDAException;
+	public List<String> generateSourceQuery(DatalogProgram query, List<String> signature) throws OBDAException;
 
 	public boolean hasDistinctResultSet() ;
+	
+	public String getMappingSQL(CQIE cq);
+
+	public Set<String> getOutputColumns(CQIE cq);
+	
 }

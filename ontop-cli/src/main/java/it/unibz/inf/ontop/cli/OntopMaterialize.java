@@ -170,21 +170,7 @@ public class OntopMaterialize extends OntopReasoningCommandBase {
         int fileCount = 0;
 
         String outputDir = outputFile;
-
-        String typePred;
-        if (predicate.isClass()){
-            typePred = "C";
-        }
-        else if (predicate.isDataProperty()) {
-            typePred = "DP";
-        }
-        else{
-            typePred = "P";
-        }
-
-        String filePrefix = Paths.get(outputDir, predicate.getName().replaceAll("[^a-zA-Z0-9]", "_") +typePred +"_" ).toString();
-
-
+        String filePrefix = Paths.get(outputDir, predicate.getName().replaceAll("[^a-zA-Z0-9]", "_") + "_").toString();
 
         while(iterator.hasNext()) {
             tripleCount += serializeTripleBatch(ontology, iterator, filePrefix, predicate.getName(), fileCount, format);

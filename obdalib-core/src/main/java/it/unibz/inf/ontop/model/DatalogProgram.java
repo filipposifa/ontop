@@ -23,6 +23,8 @@ package it.unibz.inf.ontop.model;
 import java.io.Serializable;
 import java.util.Collection;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 public interface DatalogProgram extends Serializable {
 
@@ -33,6 +35,11 @@ public interface DatalogProgram extends Serializable {
 	public void appendRule(Collection<CQIE> rule);
 
 	public void removeRules(Collection<CQIE> rule);
+	
+	public Map<Term, AnonQuerySet> getAnonToQueries();
+	
+	public void setAnonToQueries(Map<Term, AnonQuerySet> anonToQueries);
+	
 
 	/***
 	 * Returns all the rules that have the given predicate in their heads

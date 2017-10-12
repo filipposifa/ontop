@@ -11,6 +11,11 @@
     <packaging>jar</packaging>
     <name>ontop-obdalib-core</name>
     <dependencies>
+     <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>duplicate-handler</artifactId>
+            <version>${project.version}</version>
+        </dependency>
         <dependency>
             <groupId>org.openrdf.sesame</groupId>
             <artifactId>sesame-model</artifactId>

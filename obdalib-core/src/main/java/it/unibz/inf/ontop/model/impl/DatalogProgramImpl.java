@@ -1,5 +1,7 @@
 package it.unibz.inf.ontop.model.impl;
 
+import it.unibz.inf.ontop.model.AnonQuerySet;
+
 /*
  * #%L
  * ontop-obdalib-core
@@ -25,6 +27,7 @@ import it.unibz.inf.ontop.model.DatalogProgram;
 import it.unibz.inf.ontop.model.Function;
 import it.unibz.inf.ontop.model.OBDAQueryModifiers;
 import it.unibz.inf.ontop.model.Predicate;
+import it.unibz.inf.ontop.model.Term;
 
 import java.util.Collection;
 import java.util.Collections;
@@ -32,6 +35,7 @@ import java.util.HashMap;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
+import java.util.Set;
 
 public class DatalogProgramImpl implements DatalogProgram {
 
@@ -42,6 +46,8 @@ public class DatalogProgramImpl implements DatalogProgram {
 	private Map<Predicate, List<CQIE>> predicateIndex = null;
 
 	private OBDAQueryModifiers modifiers;
+	
+	private Map<Term, AnonQuerySet> anonToQueries;
 
 	@Override
 	public DatalogProgram clone() {
@@ -57,6 +63,7 @@ public class DatalogProgramImpl implements DatalogProgram {
 		modifiers = new OBDAQueryModifiers();
 		rules = new LinkedList<>();
 		predicateIndex = new HashMap<>();
+		anonToQueries = null;
 	}
 
 	@Override
@@ -133,5 +140,17 @@ public class DatalogProgramImpl implements DatalogProgram {
 	@Override
 	public boolean hasModifiers() {
 		return modifiers.hasModifiers();
+	}
+
+	@Override
+	public Map<Term, AnonQuerySet> getAnonToQueries() {
+		return anonToQueries;
+	}
+
+
+	@Override
+	public void setAnonToQueries(Map<Term, AnonQuerySet> anonToQueries) {
+		this.anonToQueries=anonToQueries;
+		
 	}
 }

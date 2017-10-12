@@ -46,6 +46,8 @@ public interface OBDAStatement extends AutoCloseable {
 	void setMaxRows(int max) throws OBDAException;
 
 	boolean isClosed() throws OBDAException;
+	
+	boolean executeSQL(String sql) throws OBDAException;
 
 	/**
 	 * Sets the number of seconds the driver will wait for a Statement object to

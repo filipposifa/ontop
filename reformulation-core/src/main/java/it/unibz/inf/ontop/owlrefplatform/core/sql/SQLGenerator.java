@@ -28,6 +28,7 @@ import it.unibz.inf.ontop.model.Predicate.COL_TYPE;
 import it.unibz.inf.ontop.model.impl.OBDADataFactoryImpl;
 import it.unibz.inf.ontop.model.impl.OBDAVocabulary;
 import it.unibz.inf.ontop.model.impl.TermUtils;
+import it.unibz.inf.ontop.model.impl.VariableImpl;
 import it.unibz.inf.ontop.owlrefplatform.core.abox.SemanticIndexURIMap;
 import it.unibz.inf.ontop.owlrefplatform.core.abox.XsdDatatypeConverter;
 import it.unibz.inf.ontop.owlrefplatform.core.basicoperations.DatalogNormalizer;
@@ -43,7 +44,6 @@ import java.util.*;
 import java.util.Map.Entry;
 import java.util.regex.Pattern;
 
-
 public class SQLGenerator implements SQLQueryGenerator {
 
 	private static final long serialVersionUID = 7477161929752147045L;
@@ -57,7 +57,7 @@ public class SQLGenerator implements SQLQueryGenerator {
 	private static final String typeSuffix = "QuestType";
 	private static final String langStrForSELECT = "%s AS %s";
 	private static final String langSuffix = "Lang";
-	
+
 	private static final String VIEW_NAME = "QVIEW%s";
 	private static final String VIEW_NAME_PREFIX = "QVIEW";
 
@@ -69,11 +69,12 @@ public class SQLGenerator implements SQLQueryGenerator {
 
 	private boolean isDistinct = false;
 	private boolean isOrderBy = false;
-	
-	private final SemanticIndexURIMap uriRefIds; // non-null in the Semantic Index mode
-	
+
+	private final SemanticIndexURIMap uriRefIds; // non-null in the Semantic
+													// Index mode
+
 	private final DatatypeFactory dtfac = OBDADataFactoryImpl.getInstance().getDatatypeFactory();
-	
+
 	private final ImmutableMap<ExpressionOperation, String> operations;
 
 	public SQLGenerator(DBMetadata metadata, SQLDialectAdapter sqladapter) {
@@ -85,73 +86,63 @@ public class SQLGenerator implements SQLQueryGenerator {
 	 * @param metadata
 	 * @param sqladapter
 	 * @param sqlGenerateReplace
-	 * @param uriid is null in case we are not in the SI mode
+	 * @param uriid
+	 *            is null in case we are not in the SI mode
 	 */
 
-	public SQLGenerator(DBMetadata metadata, SQLDialectAdapter sqladapter, boolean sqlGenerateReplace, boolean distinctResultSet, SemanticIndexURIMap uriid) {
+	public SQLGenerator(DBMetadata metadata, SQLDialectAdapter sqladapter, boolean sqlGenerateReplace,
+			boolean distinctResultSet, SemanticIndexURIMap uriid) {
 		this.metadata = metadata;
 		this.sqladapter = sqladapter;
 		this.distinctResultSet = distinctResultSet;
 		this.uriRefIds = uriid;
-		
+
 		ImmutableMap.Builder<ExpressionOperation, String> builder = new ImmutableMap.Builder<ExpressionOperation, String>()
-				.put(ExpressionOperation.ADD, "%s + %s")
-				.put(ExpressionOperation.SUBTRACT, "%s - %s")
-				.put(ExpressionOperation.MULTIPLY, "%s * %s")
-				.put(ExpressionOperation.DIVIDE, "%s / %s")
-				.put(ExpressionOperation.ABS, "ABS(%s)")
-				.put(ExpressionOperation.CEIL, sqladapter.ceil())
-				.put(ExpressionOperation.FLOOR, "FLOOR(%s)")
-				.put(ExpressionOperation.ROUND, sqladapter.round())
+				.put(ExpressionOperation.ADD, "%s + %s").put(ExpressionOperation.SUBTRACT, "%s - %s")
+				.put(ExpressionOperation.MULTIPLY, "%s * %s").put(ExpressionOperation.DIVIDE, "%s / %s")
+				.put(ExpressionOperation.ABS, "ABS(%s)").put(ExpressionOperation.CEIL, sqladapter.ceil())
+				.put(ExpressionOperation.FLOOR, "FLOOR(%s)").put(ExpressionOperation.ROUND, sqladapter.round())
 				.put(ExpressionOperation.RAND, sqladapter.rand())
-				
-				.put(ExpressionOperation.EQ, "%s = %s")
-				.put(ExpressionOperation.NEQ, "%s <> %s")
-				.put(ExpressionOperation.GT, "%s > %s")
-				.put(ExpressionOperation.GTE, "%s >= %s")
-				.put(ExpressionOperation.LT, "%s < %s")
-				.put(ExpressionOperation.LTE, "%s <= %s")
-				.put(ExpressionOperation.AND, "%s AND %s")
-				.put(ExpressionOperation.OR, "%s OR %s")
-				.put(ExpressionOperation.NOT, "NOT %s")
-				.put(ExpressionOperation.IS_NULL, "%s IS NULL")
-				.put(ExpressionOperation.IS_NOT_NULL, "%s IS NOT NULL")
-				.put(ExpressionOperation.IS_TRUE, "%s IS TRUE")
+
+				.put(ExpressionOperation.EQ, "%s = %s").put(ExpressionOperation.NEQ, "%s <> %s")
+				.put(ExpressionOperation.GT, "%s > %s").put(ExpressionOperation.GTE, "%s >= %s")
+				.put(ExpressionOperation.LT, "%s < %s").put(ExpressionOperation.LTE, "%s <= %s")
+				.put(ExpressionOperation.AND, "%s AND %s").put(ExpressionOperation.OR, "%s OR %s")
+				.put(ExpressionOperation.NOT, "NOT %s").put(ExpressionOperation.IS_NULL, "%s IS NULL")
+				.put(ExpressionOperation.IS_NOT_NULL, "%s IS NOT NULL").put(ExpressionOperation.IS_TRUE, "%s IS TRUE")
 				.put(ExpressionOperation.SQL_LIKE, "%s LIKE %s")
 				.put(ExpressionOperation.STR_STARTS, sqladapter.strStartsOperator())
 				.put(ExpressionOperation.STR_ENDS, sqladapter.strEndsOperator())
 				.put(ExpressionOperation.CONTAINS, sqladapter.strContainsOperator())
-				
+
 				.put(ExpressionOperation.NOW, sqladapter.dateNow());
-				
+
 		try {
 			builder.put(ExpressionOperation.STRUUID, sqladapter.strUuid());
 		} catch (UnsupportedOperationException e) {
-			// ignore 
+			// ignore
 		}
 		try {
 			builder.put(ExpressionOperation.UUID, sqladapter.uuid());
 		} catch (UnsupportedOperationException e) {
 			// ignore
 		}
-	
-		operations = builder.build();
-		
-        if (sqlGenerateReplace) {
-        	StringBuilder sb1 = new StringBuilder();
-        	StringBuilder sb2 = new StringBuilder();
-        	for (Entry<String, String> e : EncodeForURI.TABLE.entrySet()) {
-        		sb1.append("REPLACE(");
-        		sb2.append(", '").append(e.getValue()).append("', '").append(e.getKey()).append("')");
-        	}
-        	replace1 = sb1.toString();
-        	replace2 = sb2.toString();
-        } 
-        else {
-            replace1 = replace2 = "";
-        }
-	}
 
+		operations = builder.build();
+
+		if (sqlGenerateReplace) {
+			StringBuilder sb1 = new StringBuilder();
+			StringBuilder sb2 = new StringBuilder();
+			for (Entry<String, String> e : EncodeForURI.TABLE.entrySet()) {
+				sb1.append("REPLACE(");
+				sb2.append(", '").append(e.getValue()).append("', '").append(e.getKey()).append("')");
+			}
+			replace1 = sb1.toString();
+			replace2 = sb2.toString();
+		} else {
+			replace1 = replace2 = "";
+		}
+	}
 
 	/**
 	 * Generates and SQL query ready to be executed by Quest. Each query is a
@@ -159,29 +150,50 @@ public class SQLGenerator implements SQLQueryGenerator {
 	 * method descriptions.
 	 */
 	@Override
-	public String generateSourceQuery(DatalogProgram query, List<String> signature) throws OBDAException {
+	public List<String> generateSourceQuery(DatalogProgram query, List<String> signature) throws OBDAException {
+		List<String> result = new ArrayList<String>();
+		for (CQIE cq : query.getRules()) {
+			if (cq.getHead().getFunctionSymbol().toString().equals(OBDAVocabulary.QUEST_TEMP_VIEW)) {
+				ValueConstant cl = (ValueConstant) cq.getBody().get(0).getTerm(0);
+				result.add(cl.getValue());
+			}
+
+		}
 		isDistinct = hasSelectDistinctStatement(query);
 		isOrderBy = hasOrderByClause(query);
-		if (query.getQueryModifiers().hasModifiers()) {
+		OBDAQueryModifiers mods=query.getQueryModifiers();
+		if(mods.hasLimit() || mods.hasOffset() || mods.hasOrder()){
+		//if (query.getQueryModifiers().hasModifiers()) {
 			final String indent = "   ";
 			final String outerViewName = "SUB_QVIEW";
-			String subquery = generateQuery(query, signature, indent);
+			String subquery = "";
+			if (query.getAnonToQueries() == null) {
+				subquery = generateQuery(query, signature, indent);
+			} else {
+				subquery = generateAnonQuery(query, signature, indent);
+			}
 
 			String modifier = "";
 			List<OrderCondition> conditions = query.getQueryModifiers().getSortConditions();
 			long limit = query.getQueryModifiers().getLimit();
 			long offset = query.getQueryModifiers().getOffset();
-			modifier = sqladapter.sqlOrderByAndSlice(conditions,outerViewName,limit, offset) + "\n";
+			modifier = sqladapter.sqlOrderByAndSlice(conditions, outerViewName, limit, offset) + "\n";
 
 			String sql = "SELECT *\n";
 			sql += "FROM (\n";
 			sql += subquery + "\n";
 			sql += ") " + outerViewName + "\n";
 			sql += modifier;
-			return sql;
+			result.add(sql);
 		} else {
-			return generateQuery(query, signature, "");
+			if (query.getAnonToQueries() == null) {
+				result.add(generateQuery(query, signature, ""));
+			} else {
+				result.add(generateAnonQuery(query, signature, ""));
+			}
+
 		}
+		return result;
 	}
 
 	@Override
@@ -196,7 +208,7 @@ public class SQLGenerator implements SQLQueryGenerator {
 		}
 		return toReturn;
 	}
-	
+
 	private boolean hasOrderByClause(DatalogProgram query) {
 		boolean toReturn = false;
 		if (query.getQueryModifiers().hasModifiers()) {
@@ -210,8 +222,7 @@ public class SQLGenerator implements SQLQueryGenerator {
 	 * Main method. Generates the full query, taking into account
 	 * limit/offset/order by.
 	 */
-	private String generateQuery(DatalogProgram query, List<String> signature,
-			String indent) throws OBDAException {
+	private String generateQuery(DatalogProgram query, List<String> signature, String indent) throws OBDAException {
 
 		int numberOfQueries = query.getRules().size();
 
@@ -226,31 +237,31 @@ public class SQLGenerator implements SQLQueryGenerator {
 			 * nested expressions (JOINS) are kept at their respective levels to
 			 * generate correct ON and wHERE clauses.
 			 */
-//			log.debug("Before pushing equalities: \n{}", cq);
+			// log.debug("Before pushing equalities: \n{}", cq);
 
 			EQNormalizer.enforceEqualities(cq);
 
-//			log.debug("Before folding Joins: \n{}", cq);
+			// log.debug("Before folding Joins: \n{}", cq);
 
 			DatalogNormalizer.foldJoinTrees(cq);
 
-//			log.debug("Before pulling out equalities: \n{}", cq);
-			
+			// log.debug("Before pulling out equalities: \n{}", cq);
+
 			DatalogNormalizer.pullOutEqualities(cq);
-			
-//			log.debug("Before pulling out Left Join Conditions: \n{}", cq);
-			
+
+			// log.debug("Before pulling out Left Join Conditions: \n{}", cq);
+
 			DatalogNormalizer.pullOutLeftJoinConditions(cq);
-			
-//			log.debug("Before pulling up nested references: \n{}", cq);
+
+			// log.debug("Before pulling up nested references: \n{}", cq);
 
 			DatalogNormalizer.pullUpNestedReferences(cq);
 
-//			log.debug("Before adding trivial equalities: \n{}, cq);", cq);
+			// log.debug("Before adding trivial equalities: \n{}, cq);", cq);
 
 			DatalogNormalizer.addMinimalEqualityToLeftJoin(cq);
 
-//			log.debug("Normalized CQ: \n{}", cq);
+			// log.debug("Normalized CQ: \n{}", cq);
 
 			Predicate headPredicate = cq.getHead().getFunctionSymbol();
 			if (!headPredicate.getName().toString().equals(OBDAVocabulary.QUEST_QUERY)) {
@@ -293,6 +304,129 @@ public class SQLGenerator implements SQLQueryGenerator {
 		return result.toString();
 	}
 
+	/**
+	 * Modified Main method to take into consideration anon projections.
+	 */
+	private String generateAnonQuery(DatalogProgram query, List<String> signature, String indent) throws OBDAException {
+
+		// int numberOfQueries = query.getRules().size();
+
+		StringBuffer sb = new StringBuffer();
+
+		String outerDel = "SELECT\n";
+		String UNION;
+		if (isDistinct && !distinctResultSet) {
+			UNION = "\nUNION\n";
+		} else {
+			UNION = "\nUNION ALL\n";
+		}
+		/* Main loop, constructing the SPJ query for each CQ */
+		for (Term t : query.getAnonToQueries().keySet()) {
+			QueryAliasIndex index = new QueryAliasIndex(query.getAnonToQueries().get(t).getQueries().iterator().next());
+			// int numberOfQueries =
+			// query.getAnonToQueries().get(t).getQueries().size();
+			Function f = (Function) t;
+			String delimiter = "";
+			sb.append(outerDel);
+			for (int i = 0; i < f.getArity(); i++) {
+				Set<String> sqlVariableNames = new HashSet<>();
+				Term ht = f.getTerm(i);
+				String typeColumn = getTypeColumnForSELECT(ht, signature, i, sqlVariableNames);
+				String langColumn = getLangColumnForSELECT(ht, signature, i, index, sqlVariableNames);
+				String mainColumn = getMainColumnForSELECT(ht, signature, i, index, sqlVariableNames);
+				sb.append(delimiter);
+				sb.append("\n   ");
+				sb.append(typeColumn);
+				sb.append(", ");
+				sb.append(langColumn);
+				sb.append(", ");
+				sb.append(mainColumn);
+				delimiter = ", ";
+
+				// sb.append(getSelectClause(signature, cq, i, false));
+			}
+			sb.append("\nFROM (\n (\n");
+			delimiter = "";
+			Set<String> queries = new HashSet<String>();
+			for (CQIE cq : query.getAnonToQueries().get(t).getQueries()) {
+
+				// for (CQIE cq : query.getRules()) {
+
+				/*
+				 * Here we normalize so that the form of the CQ is as close to
+				 * the form of a normal SQL algebra as possible, particularly,
+				 * no shared variables, only joins by means of equality. Also,
+				 * equalities in nested expressions (JOINS) are kept at their
+				 * respective levels to generate correct ON and wHERE clauses.
+				 */
+				// log.debug("Before pushing equalities: \n{}", cq);
+
+				EQNormalizer.enforceEqualities(cq);
+
+				// log.debug("Before folding Joins: \n{}", cq);
+
+				DatalogNormalizer.foldJoinTrees(cq);
+
+				// log.debug("Before pulling out equalities: \n{}", cq);
+
+				DatalogNormalizer.pullOutEqualities(cq);
+
+				// log.debug("Before pulling out Left Join Conditions: \n{}",
+				// cq);
+
+				DatalogNormalizer.pullOutLeftJoinConditions(cq);
+
+				// log.debug("Before pulling up nested references: \n{}", cq);
+
+				DatalogNormalizer.pullUpNestedReferences(cq);
+
+				// log.debug("Before adding trivial equalities: \n{}, cq);",
+				// cq);
+
+				DatalogNormalizer.addMinimalEqualityToLeftJoin(cq);
+
+				// log.debug("Normalized CQ: \n{}", cq);
+
+				Predicate headPredicate = cq.getHead().getFunctionSymbol();
+				if (!headPredicate.getName().toString().equals(OBDAVocabulary.QUEST_QUERY)) {
+					// not a target query, skip it.
+
+					continue;
+				}
+
+				index = new QueryAliasIndex(cq);
+
+				StringBuffer sb2 = new StringBuffer();
+				sb2.append(getSelectClauseAnon(signature, cq, index, false));
+				sb2.append(getFROM(cq, index));
+				sb2.append(getWHERE(cq, index));
+				queries.add(sb2.toString());
+
+			}
+			if (isDistinct && !distinctResultSet && queries.size() == 1
+					&& !query.getAnonToQueries().get(t).isDistinctFromKeys()) {
+				String q0=queries.iterator().next();
+				q0=q0.replaceFirst("SELECT", "SELECT DISTINCT");
+				sb.append(q0);
+			}
+			else{
+				for (String q : queries) {
+					sb.append(delimiter);
+					sb.append(q);
+					delimiter = ")\n " + UNION + "(\n";
+				}
+			}
+
+			
+
+			sb.append("\n ) \n");
+			outerDel = ") SUBQALIAS \n UNION ALL\nSELECT\n";
+		}
+		sb.append(" \n ) SUBQALIAS");
+
+		return sb.toString();
+	}
+
 	/***
 	 * Returns a string with boolean conditions formed with the boolean atoms
 	 * found in the atoms list.
@@ -305,7 +439,7 @@ public class SQLGenerator implements SQLQueryGenerator {
 			if (innerAtomAsFunction.isOperation()) {
 				String condition = getSQLCondition(innerAtomAsFunction, index);
 				conditions.add(condition);
-			}else if (innerAtomAsFunction.isDataTypeFunction()) {
+			} else if (innerAtomAsFunction.isDataTypeFunction()) {
 				String condition = getSQLString(innerAtom, index, false);
 				conditions.add(condition);
 			}
@@ -323,39 +457,40 @@ public class SQLGenerator implements SQLQueryGenerator {
 			// added also for IS TRUE
 			String expressionFormat = operations.get(functionSymbol);
 			if (expressionFormat == null)
-				throw new RuntimeException("The unary function "  + functionSymbol + " is not supported yet!");
+				throw new RuntimeException("The unary function " + functionSymbol + " is not supported yet!");
 
 			Term term = atom.getTerm(0);
 			String column = getSQLString(term, index, false);
 			if (functionSymbol == ExpressionOperation.NOT) {
 				if (term instanceof Function) {
 					Function f = (Function) term;
-					if (!f.isDataTypeFunction()) 
+					if (!f.isDataTypeFunction())
 						return String.format(expressionFormat, column);
 				}
-				int type = getVariableDataType(term); // ROMAN (23 Dec 2015): the lists of types are incomplete
-				if (type == Types.INTEGER || type == Types.BIGINT || type == Types.FLOAT || type == Types.DOUBLE) 
+				int type = getVariableDataType(term); // ROMAN (23 Dec 2015):
+														// the lists of types
+														// are incomplete
+				if (type == Types.INTEGER || type == Types.BIGINT || type == Types.FLOAT || type == Types.DOUBLE)
 					return String.format("NOT %s > 0", column);
-				else if (type == Types.BOOLEAN) 
+				else if (type == Types.BOOLEAN)
 					return String.format("NOT %s", column);
-				else if (type == Types.VARCHAR) 
+				else if (type == Types.VARCHAR)
 					return String.format("NOT LENGTH(%s) > 0", column);
 				return "0;";
-			}
-			else if (functionSymbol == ExpressionOperation.IS_TRUE) {
-				int type = getVariableDataType(term); // ROMAN (23 Dec 2015): the lists of types are incomplete
-				if (type == Types.INTEGER || type == Types.BIGINT || type == Types.FLOAT || type == Types.DOUBLE) 
+			} else if (functionSymbol == ExpressionOperation.IS_TRUE) {
+				int type = getVariableDataType(term); // ROMAN (23 Dec 2015):
+														// the lists of types
+														// are incomplete
+				if (type == Types.INTEGER || type == Types.BIGINT || type == Types.FLOAT || type == Types.DOUBLE)
 					return String.format("%s > 0", column);
-				else if (type == Types.BOOLEAN) 
+				else if (type == Types.BOOLEAN)
 					return String.format("%s", column);
-				else if (type == Types.VARCHAR) 
+				else if (type == Types.VARCHAR)
 					return String.format("LENGTH(%s) > 0", column);
 				return "1;";
-			}
-			else
+			} else
 				return String.format(expressionFormat, column);
-		} 
-		else if (atom.getArity() == 2) {
+		} else if (atom.getArity() == 2) {
 			if (operations.containsKey(functionSymbol)) {
 				// For binary operators, e.g., AND, OR, EQ, GT, LT, etc. _
 				String expressionFormat = operations.get(functionSymbol);
@@ -364,29 +499,26 @@ public class SQLGenerator implements SQLQueryGenerator {
 				String leftOp = getSQLString(left, index, true);
 				String rightOp = getSQLString(right, index, true);
 				return String.format("(" + expressionFormat + ")", leftOp, rightOp);
-			} 
-			else 
-				throw new RuntimeException("The binary function "  + functionSymbol + " is not supported yet!");
-		} 
-		else {
+			} else
+				throw new RuntimeException("The binary function " + functionSymbol + " is not supported yet!");
+		} else {
 			if (functionSymbol == ExpressionOperation.REGEX) {
 				boolean caseinSensitive = false;
 				boolean multiLine = false;
 				boolean dotAllMode = false;
 				if (atom.getArity() == 3) {
 					String flags = atom.getTerm(2).toString();
-					if (flags.contains("i")) 
+					if (flags.contains("i"))
 						caseinSensitive = true;
-					if (flags.contains("m")) 
+					if (flags.contains("m"))
 						multiLine = true;
-					if (flags.contains("s")) 
+					if (flags.contains("s"))
 						dotAllMode = true;
 				}
 				String column = getSQLString(atom.getTerm(0), index, false);
 				String pattern = getSQLString(atom.getTerm(1), index, false);
 				return sqladapter.sqlRegex(column, pattern, caseinSensitive, multiLine, dotAllMode);
-			} 
-			else {
+			} else {
 				throw new RuntimeException("The builtin function " + functionSymbol + " is not supported yet!");
 			}
 		}
@@ -415,9 +547,8 @@ public class SQLGenerator implements SQLQueryGenerator {
 	 * 
 	 * @return
 	 */
-	private String getTableDefinitions(List<Function> atoms,
-			QueryAliasIndex index, boolean isTopLevel, boolean isLeftJoin,
-			String indent) {
+	private String getTableDefinitions(List<Function> atoms, QueryAliasIndex index, boolean isTopLevel,
+			boolean isLeftJoin, String indent) {
 		/*
 		 * We now collect the view definitions for each data atom each
 		 * condition, and each each nested Join/LeftJoin
@@ -442,16 +573,16 @@ public class SQLGenerator implements SQLQueryGenerator {
 		if (isTopLevel) {
 			if (size == 0) {
 				tableDefinitionsString.append("(" + sqladapter.getDummyTable() + ") tdummy ");
-				
+
 			} else {
-			Iterator<String> tableDefinitionsIterator = tableDefinitions.iterator();
-			tableDefinitionsString.append(indent);
-			tableDefinitionsString.append(tableDefinitionsIterator.next());
-			while (tableDefinitionsIterator.hasNext()) {
-				tableDefinitionsString.append(",\n");
+				Iterator<String> tableDefinitionsIterator = tableDefinitions.iterator();
 				tableDefinitionsString.append(indent);
 				tableDefinitionsString.append(tableDefinitionsIterator.next());
-			}
+				while (tableDefinitionsIterator.hasNext()) {
+					tableDefinitionsString.append(",\n");
+					tableDefinitionsString.append(indent);
+					tableDefinitionsString.append(tableDefinitionsIterator.next());
+				}
 			}
 		} else {
 			/*
@@ -464,8 +595,8 @@ public class SQLGenerator implements SQLQueryGenerator {
 			} else {
 				JOIN_KEYWORD = "JOIN";
 			}
-			String JOIN = "\n" + indent + "(\n" + indent + "%s\n" + indent
-					+ JOIN_KEYWORD + "\n" + indent + "%s\n" + indent + ")";
+			String JOIN = "\n" + indent + "(\n" + indent + "%s\n" + indent + JOIN_KEYWORD + "\n" + indent + "%s\n"
+					+ indent + ")";
 
 			if (size == 0) {
 				throw new RuntimeException("Cannot generate definition for empty data");
@@ -479,9 +610,7 @@ public class SQLGenerator implements SQLQueryGenerator {
 			 * nesting the JOINs as we go. The conditions in the ON clause will
 			 * go on the TOP level only.
 			 */
-			String currentJoin = String.format(JOIN,
-					tableDefinitions.get(size - 2),
-					tableDefinitions.get(size - 1));
+			String currentJoin = String.format(JOIN, tableDefinitions.get(size - 2), tableDefinitions.get(size - 1));
 			tableDefinitions.remove(size - 1);
 			tableDefinitions.remove(size - 2);
 
@@ -521,8 +650,7 @@ public class SQLGenerator implements SQLQueryGenerator {
 		if (atom.isOperation() || atom.isDataTypeFunction()) {
 			// These don't participate in the FROM clause
 			return "";
-		} 
-		else if (atom.isAlgebraFunction()) {
+		} else if (atom.isAlgebraFunction()) {
 			List<Function> innerTerms = new ArrayList<>(atom.getTerms().size());
 			for (Term innerTerm : atom.getTerms()) {
 				innerTerms.add((Function) innerTerm);
@@ -556,8 +684,8 @@ public class SQLGenerator implements SQLQueryGenerator {
 	 * The method assumes that no variable in this list (or nested ones) referes
 	 * to an upper level one.
 	 */
-	private String getConditionsString(List<Function> atoms,
-			QueryAliasIndex index, boolean processShared, String indent) {
+	private String getConditionsString(List<Function> atoms, QueryAliasIndex index, boolean processShared,
+			String indent) {
 
 		Set<String> equalityConditions = new LinkedHashSet<>();
 
@@ -597,16 +725,14 @@ public class SQLGenerator implements SQLQueryGenerator {
 	 * @return
 	 */
 	private Set<Variable> getVariableReferencesWithLeftJoin(Function atom) {
-		
+
 		if (atom.isDataFunction()) {
 			Set<Variable> variables = new LinkedHashSet<>();
 			TermUtils.addReferencedVariablesTo(variables, atom);
 			return variables;
-		}
-		else if (atom.isOperation()) {
+		} else if (atom.isOperation()) {
 			return Collections.emptySet();
-		}
-		else if (atom.isDataTypeFunction()) {
+		} else if (atom.isDataTypeFunction()) {
 			return Collections.emptySet();
 		}
 		/*
@@ -650,8 +776,8 @@ public class SQLGenerator implements SQLQueryGenerator {
 	 * x),B(x))
 	 * 
 	 */
-	private Set<String> getConditionsSharedVariablesAndConstants(
-			List<Function> atoms, QueryAliasIndex index, boolean processShared) {
+	private Set<String> getConditionsSharedVariablesAndConstants(List<Function> atoms, QueryAliasIndex index,
+			boolean processShared) {
 		Set<String> equalities = new LinkedHashSet<>();
 
 		Set<Variable> currentLevelVariables = new LinkedHashSet<>();
@@ -660,7 +786,7 @@ public class SQLGenerator implements SQLQueryGenerator {
 				currentLevelVariables.addAll(getVariableReferencesWithLeftJoin(atom));
 			}
 		}
-		
+
 		/*
 		 * For each variable we collect all the columns that should be equated
 		 * (due to repeated positions of the variable). then we form atoms of
@@ -701,9 +827,8 @@ public class SQLGenerator implements SQLQueryGenerator {
 		return equalities;
 	}
 
-	
 	// return variable SQL data type
-	private int getVariableDataType (Term term) {
+	private int getVariableDataType(Term term) {
 		Function f = (Function) term;
 		if (f.isDataTypeFunction()) {
 			Predicate p = f.getFunctionSymbol();
@@ -722,6 +847,14 @@ public class SQLGenerator implements SQLQueryGenerator {
 		return "\nWHERE \n" + conditions;
 	}
 
+	private String getWHEREWithConditions(CQIE query, QueryAliasIndex index) {
+		String conditions = getConditionsString(query.getBody(), index, true, "");
+		if (conditions.length() == 0) {
+			return "";
+		}
+		return "\nWHERE \n" + conditions;
+	}
+
 	/**
 	 * produces the select clause of the sql query for the given CQIE
 	 * 
@@ -729,8 +862,8 @@ public class SQLGenerator implements SQLQueryGenerator {
 	 *            the query
 	 * @return the sql select clause
 	 */
-	private String getSelectClause(List<String> signature, CQIE query,
-			QueryAliasIndex index, boolean distinct) throws OBDAException {
+	private String getSelectClause(List<String> signature, CQIE query, QueryAliasIndex index, boolean distinct)
+			throws OBDAException {
 		/*
 		 * If the head has size 0 this is a boolean query.
 		 */
@@ -741,26 +874,27 @@ public class SQLGenerator implements SQLQueryGenerator {
 		if (distinct && !distinctResultSet) {
 			sb.append("DISTINCT ");
 		}
-		//Only for ASK
+		// Only for ASK
 		if (headterms.size() == 0) {
 			sb.append("'true' as x");
 			return sb.toString();
 		}
 
 		/**
-		 * Set that contains all the variable names created on the top query.
-		 * It helps the dialect adapter to generate variable names according to its possible restrictions.
-		 * Currently, this is needed for the Oracle adapter (max. length of 30 characters).
+		 * Set that contains all the variable names created on the top query. It
+		 * helps the dialect adapter to generate variable names according to its
+		 * possible restrictions. Currently, this is needed for the Oracle
+		 * adapter (max. length of 30 characters).
 		 */
 		Set<String> sqlVariableNames = new HashSet<>();
-
-		Iterator<Term> hit = headterms.iterator();
 		int hpos = 0;
+		Iterator<Term> hit = headterms.iterator();
+
 		while (hit.hasNext()) {
 
 			Term ht = hit.next();
 			String typeColumn = getTypeColumnForSELECT(ht, signature, hpos, sqlVariableNames);
-			String langColumn = getLangColumnForSELECT(ht, signature, hpos,	index, sqlVariableNames);
+			String langColumn = getLangColumnForSELECT(ht, signature, hpos, index, sqlVariableNames);
 			String mainColumn = getMainColumnForSELECT(ht, signature, hpos, index, sqlVariableNames);
 
 			sb.append("\n   ");
@@ -774,14 +908,72 @@ public class SQLGenerator implements SQLQueryGenerator {
 			}
 			hpos++;
 		}
+
 		return sb.toString();
 	}
 
-	private String getMainColumnForSELECT(Term ht,
-			List<String> signature, int hpos, QueryAliasIndex index, Set<String> sqlVariableNames) {
+	/**
+	 * produces the select clause of the sql query for the given CQIE with anon
+	 * projection
+	 * 
+	 * @param query
+	 *            the query
+	 * @return the sql select clause
+	 */
+	private String getSelectClauseAnon(List<String> signature, CQIE query, QueryAliasIndex index, boolean distinct)
+			throws OBDAException {
+		/*
+		 * If the head has size 0 this is a boolean query.
+		 */
+		List<Term> headterms = query.getHead().getTerms();
+		StringBuilder sb = new StringBuilder();
+
+		sb.append("SELECT ");
+		if (distinct && !distinctResultSet) {
+			sb.append("DISTINCT ");
+		}
+		// Only for ASK
+		if (headterms.size() == 0) {
+			sb.append("'true' as x");
+			return sb.toString();
+		}
 
 		/**
-		 * Creates a variable name that fits to the restrictions of the SQL dialect.
+		 * Set that contains all the variable names created on the top query. It
+		 * helps the dialect adapter to generate variable names according to its
+		 * possible restrictions. Currently, this is needed for the Oracle
+		 * adapter (max. length of 30 characters).
+		 */
+		//Set<String> sqlVariableNames = new HashSet<>();
+		int hpos = 0;
+		Iterator<Term> hit = headterms.iterator();
+
+		while (hit.hasNext()) {
+			Term ht = hit.next();
+			sb.append("\n   ");
+			Variable var = (Variable) ht;
+			Set<QualifiedAttributeID> posList = index.getColumnReferences(var);
+			if (posList == null || posList.size() == 0) {
+				throw new RuntimeException("Unbound variable found in WHERE clause: " + ht);
+			}
+			sb.append(posList.iterator().next().getSQLRendering());
+			sb.append(" as var");
+			sb.append(hpos);
+			if (hit.hasNext()) {
+				sb.append(", ");
+			}
+			hpos++;
+		}
+
+		return sb.toString();
+	}
+
+	private String getMainColumnForSELECT(Term ht, List<String> signature, int hpos, QueryAliasIndex index,
+			Set<String> sqlVariableNames) {
+
+		/**
+		 * Creates a variable name that fits to the restrictions of the SQL
+		 * dialect.
 		 */
 		String variableName = sqladapter.nameTopVariable(signature.get(hpos), "", sqlVariableNames);
 		sqlVariableNames.add(variableName);
@@ -793,11 +985,9 @@ public class SQLGenerator implements SQLQueryGenerator {
 		if (ht instanceof URIConstant) {
 			URIConstant uc = (URIConstant) ht;
 			mainColumn = sqladapter.getSQLLexicalFormString(uc.getURI());
-		} 
-		else if (ht == OBDAVocabulary.NULL) {
+		} else if (ht == OBDAVocabulary.NULL) {
 			mainColumn = "NULL";
-		} 
-		else if (ht instanceof Function) {
+		} else if (ht instanceof Function) {
 			/*
 			 * if it's a function we need to get the nested value if its a
 			 * datatype function or we need to do the CONCAT if its URI(....).
@@ -814,10 +1004,9 @@ public class SQLGenerator implements SQLQueryGenerator {
 				 * case for all literal columns
 				 */
 				int size = ov.getTerms().size();
-				if ((function instanceof Literal) || size > 2 ) {
+				if ((function instanceof Literal) || size > 2) {
 					mainColumn = getSQLStringForTemplateFunction(ov, index);
-				}
-				else {
+				} else {
 					Term term = ov.getTerms().get(0);
 					if (term instanceof ValueConstant) {
 						mainColumn = getSQLLexicalForm((ValueConstant) term);
@@ -825,22 +1014,18 @@ public class SQLGenerator implements SQLQueryGenerator {
 						mainColumn = getSQLString(term, index, false);
 					}
 				}
-			}
-			else if (function instanceof URITemplatePredicate) {
+			} else if (function instanceof URITemplatePredicate) {
 				// New template based URI building functions
 				mainColumn = getSQLStringForTemplateFunction(ov, index);
-			}
-			else if (function instanceof BNodePredicate) {
+			} else if (function instanceof BNodePredicate) {
 				// New template based BNODE building functions
 				mainColumn = getSQLStringForTemplateFunction(ov, index);
-			}
-			else if (ov.isOperation()) {
-				mainColumn = getSQLString(ov, index, false); 
-			}
-            else 
-				throw new IllegalArgumentException("Error generating SQL query. Found an invalid function during translation: " + ov);
-		} 
-		else 
+			} else if (ov.isOperation()) {
+				mainColumn = getSQLString(ov, index, false);
+			} else
+				throw new IllegalArgumentException(
+						"Error generating SQL query. Found an invalid function during translation: " + ov);
+		} else
 			throw new RuntimeException("Cannot generate SELECT for term: " + ht);
 
 		/*
@@ -853,107 +1038,104 @@ public class SQLGenerator implements SQLQueryGenerator {
 		}
 		return String.format(mainTemplate, mainColumn, variableName);
 	}
-	
+
 	private String getLangColumnForSELECT(Term ht, List<String> signature, int hpos, QueryAliasIndex index,
-										  Set<String> sqlVariableNames) {
+			Set<String> sqlVariableNames) {
 
 		/**
-		 * Creates a variable name that fits to the restrictions of the SQL dialect.
+		 * Creates a variable name that fits to the restrictions of the SQL
+		 * dialect.
 		 */
 		String langVariableName = sqladapter.nameTopVariable(signature.get(hpos), langSuffix, sqlVariableNames);
 		sqlVariableNames.add(langVariableName);
 
 		if (ht instanceof Function) {
-            Function ov = (Function) ht;
-            String lang = getLangType(ov, index);
-            return (String.format(langStrForSELECT, lang, langVariableName));
-        }
+			Function ov = (Function) ht;
+			String lang = getLangType(ov, index);
+			return (String.format(langStrForSELECT, lang, langVariableName));
+		}
 
-        return  (String.format(langStrForSELECT, "NULL", langVariableName));
+		return (String.format(langStrForSELECT, "NULL", langVariableName));
 
 	}
-	
-	/** 
+
+	/**
 	 * http://www.w3.org/TR/sparql11-query/#idp1915512
 	 * 
-	 * Functions that return a string literal do so with the string literal of the same kind as the first argument 
-	 * (simple literal, plain literal with same language tag, xsd:string). This includes SUBSTR, STRBEFORE and STRAFTER.
+	 * Functions that return a string literal do so with the string literal of
+	 * the same kind as the first argument (simple literal, plain literal with
+	 * same language tag, xsd:string). This includes SUBSTR, STRBEFORE and
+	 * STRAFTER.
 	 * 
-	 * The function CONCAT returns a string literal based on the details of all its arguments.
+	 * The function CONCAT returns a string literal based on the details of all
+	 * its arguments.
 	 * 
 	 * @param func1
 	 * @param index
 	 * @return
 	 */
 
-    private String getLangType(Function func1, QueryAliasIndex index) {
+	private String getLangType(Function func1, QueryAliasIndex index) {
 
-        Predicate pred1 = func1.getFunctionSymbol();
+		Predicate pred1 = func1.getFunctionSymbol();
 
-        if (dtfac.isLiteral(pred1) && func1.getArity() == 2) {
-            Term langTerm = func1.getTerm(1);
-            if (langTerm == OBDAVocabulary.NULL) {
-                return  "NULL";
-            } 
-            else if (langTerm instanceof ValueConstant) {
-                return getSQLLexicalForm((ValueConstant) langTerm);
-            } 
-            else {
-                return getSQLString(langTerm, index, false);
-            }
-        }
-        else if (func1.isOperation()) {
-            if (pred1 == ExpressionOperation.CONCAT) {
-                Term term1 = func1.getTerm(0);
-                Term term2 = func1.getTerm(1);
+		if (dtfac.isLiteral(pred1) && func1.getArity() == 2) {
+			Term langTerm = func1.getTerm(1);
+			if (langTerm == OBDAVocabulary.NULL) {
+				return "NULL";
+			} else if (langTerm instanceof ValueConstant) {
+				return getSQLLexicalForm((ValueConstant) langTerm);
+			} else {
+				return getSQLString(langTerm, index, false);
+			}
+		} else if (func1.isOperation()) {
+			if (pred1 == ExpressionOperation.CONCAT) {
+				Term term1 = func1.getTerm(0);
+				Term term2 = func1.getTerm(1);
 
-                if (term1 instanceof Function && term2 instanceof Function) {
-                    String lang1 = getLangType((Function) term1, index);
-                    String lang2 = getLangType((Function) term2, index);
-                    if (lang1.equals(lang2)) 
-                        return lang1;
-                    else 
-                    	return "NULL";
-                }
-            }
-            else if (pred1 == ExpressionOperation.REPLACE || pred1 == ExpressionOperation.SUBSTR2 ||
-					pred1 == ExpressionOperation.SUBSTR3 ||
-            		pred1 == ExpressionOperation.UCASE || pred1 == ExpressionOperation.LCASE ||
-            		pred1 == ExpressionOperation.STRBEFORE || pred1 == ExpressionOperation.STRAFTER) {
-                Term rep1 = func1.getTerm(0);
-                if (rep1 instanceof Function) {
-                    String lang1 = getLangType((Function) rep1, index);
-                    return lang1;
-                }
-            }
-            return "NULL";
-        }
-        return "NULL";
-    }
-
-	
+				if (term1 instanceof Function && term2 instanceof Function) {
+					String lang1 = getLangType((Function) term1, index);
+					String lang2 = getLangType((Function) term2, index);
+					if (lang1.equals(lang2))
+						return lang1;
+					else
+						return "NULL";
+				}
+			} else if (pred1 == ExpressionOperation.REPLACE || pred1 == ExpressionOperation.SUBSTR2
+					|| pred1 == ExpressionOperation.SUBSTR3 || pred1 == ExpressionOperation.UCASE
+					|| pred1 == ExpressionOperation.LCASE || pred1 == ExpressionOperation.STRBEFORE
+					|| pred1 == ExpressionOperation.STRAFTER) {
+				Term rep1 = func1.getTerm(0);
+				if (rep1 instanceof Function) {
+					String lang1 = getLangType((Function) rep1, index);
+					return lang1;
+				}
+			}
+			return "NULL";
+		}
+		return "NULL";
+	}
 
 	/**
 	 * Beware: a new entry will be added to sqlVariableNames (is thus mutable).
 	 */
-	private String getTypeColumnForSELECT(Term ht, List<String> signature, int hpos,
-										  Set<String> sqlVariableNames) {
-		
+	private String getTypeColumnForSELECT(Term ht, List<String> signature, int hpos, Set<String> sqlVariableNames) {
 
 		COL_TYPE type = getTypeColumn(ht);
 		int code = type.getQuestCode();
-		
-        // Creates a variable name that fits to the restrictions of the SQL dialect.
-        String typeVariableName = sqladapter.nameTopVariable(signature.get(hpos), typeSuffix, sqlVariableNames);
-        sqlVariableNames.add(typeVariableName);    
 
-        return String.format(typeStrForSELECT, code, typeVariableName);
+		// Creates a variable name that fits to the restrictions of the SQL
+		// dialect.
+		String typeVariableName = sqladapter.nameTopVariable(signature.get(hpos), typeSuffix, sqlVariableNames);
+		sqlVariableNames.add(typeVariableName);
+
+		return String.format(typeStrForSELECT, code, typeVariableName);
 	}
 
-    private COL_TYPE getTypeColumn(Term ht) {
-        COL_TYPE type;
+	private COL_TYPE getTypeColumn(Term ht) {
+		COL_TYPE type;
 
-        if (ht instanceof Function) {
+		if (ht instanceof Function) {
 			Function ov = (Function) ht;
 			Predicate function = ov.getFunctionSymbol();
 
@@ -967,95 +1149,84 @@ public class SQLGenerator implements SQLQueryGenerator {
 
 			if (function instanceof URITemplatePredicate) {
 				type = COL_TYPE.OBJECT;
-			} 
-			else if (function instanceof BNodePredicate) {
+			} else if (function instanceof BNodePredicate) {
 				type = COL_TYPE.BNODE;
-			} 
-			else if (ov.isOperation()) {
+			} else if (ov.isOperation()) {
 				if (function == ExpressionOperation.CONCAT) {
 					COL_TYPE type1 = getTypeColumn(ov.getTerm(0));
 					COL_TYPE type2 = getTypeColumn(ov.getTerm(1));
-					if (type1 == COL_TYPE.STRING && type2 == COL_TYPE.STRING) 
-						type = COL_TYPE.STRING; 
-					else 
-						type = COL_TYPE.LITERAL;
-				} 
-				else if (function == ExpressionOperation.REPLACE || function == ExpressionOperation.SUBSTR2 ||
-						function == ExpressionOperation.SUBSTR3 ||
-						function == ExpressionOperation.LCASE || function == ExpressionOperation.UCASE || 
-						function == ExpressionOperation.STRBEFORE || function == ExpressionOperation.STRAFTER) {
-					// ROMAN (23 Dec 2015): STRBEFORE AND STRAFTER RETURN THE TYPE OF THE FIRST ARGUMENT
-					COL_TYPE type1 = getTypeColumn(ov.getTerm(0));
-					if (type1 == COL_TYPE.STRING) 
+					if (type1 == COL_TYPE.STRING && type2 == COL_TYPE.STRING)
 						type = COL_TYPE.STRING;
-					else 
+					else
 						type = COL_TYPE.LITERAL;
-				} 
-				else if (function == ExpressionOperation.ABS || function == ExpressionOperation.ROUND ||
-							function == ExpressionOperation.CEIL || function == ExpressionOperation.FLOOR) {
+				} else if (function == ExpressionOperation.REPLACE || function == ExpressionOperation.SUBSTR2
+						|| function == ExpressionOperation.SUBSTR3 || function == ExpressionOperation.LCASE
+						|| function == ExpressionOperation.UCASE || function == ExpressionOperation.STRBEFORE
+						|| function == ExpressionOperation.STRAFTER) {
+					// ROMAN (23 Dec 2015): STRBEFORE AND STRAFTER RETURN THE
+					// TYPE OF THE FIRST ARGUMENT
+					COL_TYPE type1 = getTypeColumn(ov.getTerm(0));
+					if (type1 == COL_TYPE.STRING)
+						type = COL_TYPE.STRING;
+					else
+						type = COL_TYPE.LITERAL;
+				} else if (function == ExpressionOperation.ABS || function == ExpressionOperation.ROUND
+						|| function == ExpressionOperation.CEIL || function == ExpressionOperation.FLOOR) {
 					type = getTypeColumn(ov.getTerm(0));
-				}
-				else if (function == ExpressionOperation.ADD || function == ExpressionOperation.SUBTRACT || 
-						function == ExpressionOperation.MULTIPLY || function == ExpressionOperation.DIVIDE) {
-					// ROMAN (23 Dec 2015): TODO implement proper type promotion 
+				} else if (function == ExpressionOperation.ADD || function == ExpressionOperation.SUBTRACT
+						|| function == ExpressionOperation.MULTIPLY || function == ExpressionOperation.DIVIDE) {
+					// ROMAN (23 Dec 2015): TODO implement proper type promotion
 					type = COL_TYPE.LITERAL;
+				} else {
+					type = ((ExpressionOperation) function).getExpressionType();
 				}
-				else {
-					type = ((ExpressionOperation)function).getExpressionType();
-				}
-			} 
-			else {
+			} else {
 				type = function.getType(0);
 			}
-		}
-        else if (ht instanceof URIConstant) {
-            type = COL_TYPE.OBJECT;
-		}
-		else if (ht == OBDAVocabulary.NULL) {  // NULL is an instance of ValueConstant
-            type = COL_TYPE.NULL;
-        }
-        else
-            throw new RuntimeException("Cannot generate SELECT for term: " + ht);
+		} else if (ht instanceof URIConstant) {
+			type = COL_TYPE.OBJECT;
+		} else if (ht == OBDAVocabulary.NULL) { // NULL is an instance of
+												// ValueConstant
+			type = COL_TYPE.NULL;
+		} else
+			throw new RuntimeException("Cannot generate SELECT for term: " + ht);
 
+		return type;
+	}
 
-        return type;
-    }
-
-
-    public String getSQLStringForTemplateFunction(Function ov, QueryAliasIndex index) {
+	public String getSQLStringForTemplateFunction(Function ov, QueryAliasIndex index) {
 		/*
 		 * The first inner term determines the form of the result
 		 */
 		Term t = ov.getTerms().get(0);
-	
+
 		if (t instanceof ValueConstant || t instanceof BNode) {
 			/*
 			 * The function is actually a template. The first parameter is a
-			 * string of the form http://.../.../ or empty "{}" with place holders of the form
-			 * {}. The rest are variables or constants that should be put in
-			 * place of the place holders. We need to tokenize and form the
-			 * CONCAT
+			 * string of the form http://.../.../ or empty "{}" with place
+			 * holders of the form {}. The rest are variables or constants that
+			 * should be put in place of the place holders. We need to tokenize
+			 * and form the CONCAT
 			 */
-			String literalValue;			
+			String literalValue;
 			if (t instanceof BNode) {
 				literalValue = ((BNode) t).getName();
 			} else {
 				literalValue = ((ValueConstant) t).getValue();
-			}		
+			}
 
+			String template = trimLiteral(literalValue);
 
-            String template = trimLiteral(literalValue);
-            
 			String[] split = template.split("[{][}]");
-			
+
 			List<String> vex = new LinkedList<>();
 			if (split.length > 0 && !split[0].isEmpty()) {
 				vex.add(sqladapter.getSQLLexicalFormString(split[0]));
 			}
-			
+
 			/*
-			 * New we concat the rest of the function, note that if there is only 1 element
-			 * there is nothing to concatenate
+			 * New we concat the rest of the function, note that if there is
+			 * only 1 element there is nothing to concatenate
 			 */
 			if (ov.getTerms().size() > 1) {
 				int size = ov.getTerms().size();
@@ -1068,23 +1239,20 @@ public class SQLGenerator implements SQLQueryGenerator {
 					String repl;
 
 					if (isStringColType(currentTerm, index)) {
-						//empty place holders: the correct uri is in the column of DB no need to replace
-						if(split.length == 0)
-						{
-							repl = getSQLString(currentTerm, index, false) ;
-						}
-						else
-						{
+						// empty place holders: the correct uri is in the column
+						// of DB no need to replace
+						if (split.length == 0) {
+							repl = getSQLString(currentTerm, index, false);
+						} else {
 							repl = replace1 + (getSQLString(currentTerm, index, false)) + replace2;
 						}
 
 					} else {
-						if(split.length == 0)
-						{
-							repl = sqladapter.sqlCast(getSQLString(currentTerm, index, false), Types.VARCHAR) ;
-						}
-						else {
-							repl = replace1 + sqladapter.sqlCast(getSQLString(currentTerm, index, false), Types.VARCHAR) + replace2;
+						if (split.length == 0) {
+							repl = sqladapter.sqlCast(getSQLString(currentTerm, index, false), Types.VARCHAR);
+						} else {
+							repl = replace1 + sqladapter.sqlCast(getSQLString(currentTerm, index, false), Types.VARCHAR)
+									+ replace2;
 						}
 					}
 					vex.add(repl);
@@ -1093,35 +1261,32 @@ public class SQLGenerator implements SQLQueryGenerator {
 					}
 				}
 			}
-		
-			if (vex.size() == 1) {	
+
+			if (vex.size() == 1) {
 				return vex.get(0);
 			}
-			return getStringConcatenation(vex.toArray(new String[]{}));
-			
-		} 
-		else if (t instanceof Variable) {
+			return getStringConcatenation(vex.toArray(new String[] {}));
+
+		} else if (t instanceof Variable) {
 			/*
 			 * The function is of the form uri(x), we need to simply return the
 			 * value of X
 			 */
 			return sqladapter.sqlCast(getSQLString(t, index, false), Types.VARCHAR);
-			
-		} 
-		else if (t instanceof URIConstant) {
+
+		} else if (t instanceof URIConstant) {
 			/*
 			 * The function is of the form uri("http://some.uri/"), i.e., a
 			 * concrete URI, we return the string representing that URI.
 			 */
 			URIConstant uc = (URIConstant) t;
 			return sqladapter.getSQLLexicalFormString(uc.getURI());
-		}
-		else if (t instanceof Function) {
+		} else if (t instanceof Function) {
 			/*
-			 * The function is of the form uri(CONCAT("string",x)),we simply return the value from the database.
+			 * The function is of the form uri(CONCAT("string",x)),we simply
+			 * return the value from the database.
 			 */
 			return sqladapter.sqlCast(getSQLString(t, index, false), Types.VARCHAR);
-
 
 		}
 
@@ -1137,8 +1302,10 @@ public class SQLGenerator implements SQLQueryGenerator {
 		String toReturn = sqladapter.strConcat(params);
 		if (sqladapter instanceof DB2SQLDialectAdapter) {
 			/*
-			 * A work around to handle DB2 (>9.1) issue SQL0134N: Improper use of a string column, host variable, constant, or function name.
-			 * http://publib.boulder.ibm.com/infocenter/db2luw/v9r5/index.jsp?topic=%2Fcom.ibm.db2.luw.messages.sql.doc%2Fdoc%2Fmsql00134n.html
+			 * A work around to handle DB2 (>9.1) issue SQL0134N: Improper use
+			 * of a string column, host variable, constant, or function name.
+			 * http://publib.boulder.ibm.com/infocenter/db2luw/v9r5/index.jsp?
+			 * topic=%2Fcom.ibm.db2.luw.messages.sql.doc%2Fdoc%2Fmsql00134n.html
 			 */
 			if (isDistinct || isOrderBy) {
 				return sqladapter.sqlCast(toReturn, Types.VARCHAR);
@@ -1152,11 +1319,12 @@ public class SQLGenerator implements SQLQueryGenerator {
 			Function function = (Function) term;
 			if (function.getFunctionSymbol() instanceof URITemplatePredicate) {
 				/*
-				 * A URI function always returns a string, thus it is a string column type.
+				 * A URI function always returns a string, thus it is a string
+				 * column type.
 				 */
-				return (uriRefIds == null); // uriRefIds is non-null in the Semantic Index mode
-			} 
-			else {
+				return (uriRefIds == null); // uriRefIds is non-null in the
+											// Semantic Index mode
+			} else {
 				if (function.getArity() == 1) {
 
 					/*
@@ -1167,9 +1335,12 @@ public class SQLGenerator implements SQLQueryGenerator {
 					return isStringColType(term, index);
 				}
 			}
-		} 
-		else if (term instanceof Variable) {
+		} else if (term instanceof Variable) {
 			Set<QualifiedAttributeID> viewdef = index.getColumnReferences((Variable) term);
+			if (viewdef == null) {
+				// dbilid nested var
+				return false;
+			}
 			QualifiedAttributeID def = viewdef.iterator().next();
 			QuotedID attributeId = def.getAttribute();
 			RelationID tableId = null;
@@ -1179,26 +1350,28 @@ public class SQLGenerator implements SQLQueryGenerator {
 				for (Map.Entry<Function, RelationID> entry : index.viewNames.entrySet()) {
 					RelationID value = entry.getValue();
 					if (value.equals(def.getRelation())) {
-						tableId = Relation2DatalogPredicate
-									.createRelationFromPredicateName(metadata.getQuotedIDFactory(), entry.getKey().getFunctionSymbol());
+						tableId = Relation2DatalogPredicate.createRelationFromPredicateName(
+								metadata.getQuotedIDFactory(), entry.getKey().getFunctionSymbol());
 						break;
 					}
 				}
 			}
 			DatabaseRelationDefinition table = metadata.getDatabaseRelation(tableId);
 			if (table != null) {
-				// ROMAN (15 Oct 2015): i'm not sure what to do if it is a view (i.e., a complex subquery)
-	 			Attribute a = table.getAttribute(attributeId);
+				// ROMAN (15 Oct 2015): i'm not sure what to do if it is a view
+				// (i.e., a complex subquery)
+				Attribute a = table.getAttribute(attributeId);
 				switch (a.getType()) {
-					case Types.VARCHAR:
-					// case Types.CHAR: // ROMAN (10 Oct 2015) -- otherwise PgsqlDatatypeTest.all fails 
-					case Types.LONGNVARCHAR:
-					case Types.LONGVARCHAR:
-					case Types.NVARCHAR:
-					case Types.NCHAR:
-						return true;
-					default:
-						return false;
+				case Types.VARCHAR:
+					// case Types.CHAR: // ROMAN (10 Oct 2015) -- otherwise
+					// PgsqlDatatypeTest.all fails
+				case Types.LONGNVARCHAR:
+				case Types.LONGVARCHAR:
+				case Types.NVARCHAR:
+				case Types.NCHAR:
+					return true;
+				default:
+					return false;
 				}
 			}
 		}
@@ -1206,7 +1379,7 @@ public class SQLGenerator implements SQLQueryGenerator {
 	}
 
 	private static final Pattern pQuotes = Pattern.compile("[\"`\\['][^\\.]*[\"`\\]']");
-	
+
 	private static String trimLiteral(String string) {
 		while (pQuotes.matcher(string).matches()) {
 			string = string.substring(1, string.length() - 1);
@@ -1244,8 +1417,7 @@ public class SQLGenerator implements SQLQueryGenerator {
 				}
 			}
 			return getSQLLexicalForm(ct);
-		} 
-		else if (term instanceof URIConstant) {
+		} else if (term instanceof URIConstant) {
 			if (uriRefIds != null) { // in the Semantic Index mode
 				String uri = term.toString();
 				int id = uriRefIds.getId(uri);
@@ -1253,12 +1425,13 @@ public class SQLGenerator implements SQLQueryGenerator {
 			}
 			URIConstant uc = (URIConstant) term;
 			return sqladapter.getSQLLexicalFormString(uc.toString());
-		} 
-		else if (term instanceof Variable) {
+		} else if (term instanceof Variable) {
 			Variable var = (Variable) term;
 			Set<QualifiedAttributeID> posList = index.getColumnReferences(var);
 			if (posList == null || posList.size() == 0) {
-				throw new RuntimeException("Unbound variable found in WHERE clause: " + term);
+				return var.getName();
+				// throw new RuntimeException("Unbound variable found in WHERE
+				// clause: " + term);
 			}
 			return posList.iterator().next().getSQLRendering();
 		}
@@ -1275,11 +1448,10 @@ public class SQLGenerator implements SQLQueryGenerator {
 			if (function.getArity() == 1) {
 				// atoms of the form integer(x)
 				return getSQLString(function.getTerm(0), index, false);
-			} else 	{
+			} else {
 				return getSQLStringForTemplateFunction(function, index);
 			}
-		} 
-		else if (operations.containsKey(functionSymbol)) {
+		} else if (operations.containsKey(functionSymbol)) {
 			// atoms of the form EQ(x,y)
 			String expressionFormat = operations.get(functionSymbol);
 			if (function.getArity() == 1) {
@@ -1290,53 +1462,48 @@ public class SQLGenerator implements SQLQueryGenerator {
 					// find data type of term and evaluate accordingly
 					String column = getSQLString(term1, index, false);
 					int type = getVariableDataType(term1);
-					if (type == Types.INTEGER || type == Types.BIGINT || type == Types.DOUBLE || type == Types.FLOAT) 
+					if (type == Types.INTEGER || type == Types.BIGINT || type == Types.DOUBLE || type == Types.FLOAT)
 						return String.format("%s > 0", column);
-					else if (type == Types.BOOLEAN) 
+					else if (type == Types.BOOLEAN)
 						return String.format("%s", column);
-					else if (type == Types.VARCHAR) 
+					else if (type == Types.VARCHAR)
 						return String.format("LENGTH(%s) > 0", column);
 					return "1";
 				}
 				String op = getSQLString(term1, index, true);
-				return String.format(expressionFormat, op);		
-			} 
-			else if (function.getArity() == 2) {
+				return String.format(expressionFormat, op);
+			} else if (function.getArity() == 2) {
 				// for binary functions, e.g., AND, OR, EQ, NEQ, GT etc.
 				String leftOp = getSQLString(function.getTerm(0), index, true);
 				String rightOp = getSQLString(function.getTerm(1), index, true);
 				String result = String.format(expressionFormat, leftOp, rightOp);
 				if (useBrackets)
 					return String.format("(%s)", result);
-				else 
+				else
 					return result;
-			} 
-			else if (function.getArity() == 0) { 
+			} else if (function.getArity() == 0) {
 				return expressionFormat;
-			}
-			else
-				throw new RuntimeException("Cannot translate boolean function: " + functionSymbol);			
-		} 
-		else {
+			} else
+				throw new RuntimeException("Cannot translate boolean function: " + functionSymbol);
+		} else {
 			if (functionSymbol == ExpressionOperation.REGEX) {
 				boolean caseinSensitive = false;
 				boolean multiLine = false;
 				boolean dotAllMode = false;
 				if (function.getArity() == 3) {
 					String flags = function.getTerm(2).toString();
-					if (flags.contains("i")) 
+					if (flags.contains("i"))
 						caseinSensitive = true;
-					if (flags.contains("m")) 
+					if (flags.contains("m"))
 						multiLine = true;
-					if (flags.contains("s")) 
+					if (flags.contains("s"))
 						dotAllMode = true;
 				}
-				
+
 				String column = getSQLString(function.getTerm(0), index, false);
 				String pattern = getSQLString(function.getTerm(1), index, false);
 				return sqladapter.sqlRegex(column, pattern, caseinSensitive, multiLine, dotAllMode);
-			}
-			else if (functionSymbol == ExpressionOperation.QUEST_CAST) {
+			} else if (functionSymbol == ExpressionOperation.QUEST_CAST) {
 				String columnName = getSQLString(function.getTerm(0), index, false);
 				String datatype = ((Constant) function.getTerm(1)).getValue();
 				int sqlDatatype = -1;
@@ -1348,104 +1515,82 @@ public class SQLGenerator implements SQLQueryGenerator {
 				} else {
 					return sqladapter.sqlCast(columnName, sqlDatatype);
 				}
-			} 
-			else if (functionSymbol == ExpressionOperation.SPARQL_STR) {
+			} else if (functionSymbol == ExpressionOperation.SPARQL_STR) {
 				String columnName = getSQLString(function.getTerm(0), index, false);
 				if (isStringColType(function, index)) {
 					return columnName;
 				} else {
 					return sqladapter.sqlCast(columnName, Types.VARCHAR);
 				}
-			} 
-			else if (functionSymbol == ExpressionOperation.REPLACE) {
+			} else if (functionSymbol == ExpressionOperation.REPLACE) {
 				String orig = getSQLString(function.getTerm(0), index, false);
 				String out_str = getSQLString(function.getTerm(1), index, false);
 				String in_str = getSQLString(function.getTerm(2), index, false);
 				// TODO: handle flags
 				return sqladapter.strReplace(orig, out_str, in_str);
-			}
-			else if (functionSymbol ==  ExpressionOperation.CONCAT) {
+			} else if (functionSymbol == ExpressionOperation.CONCAT) {
 				String left = getSQLString(function.getTerm(0), index, false);
 				String right = getSQLString(function.getTerm(1), index, false);
-				return sqladapter.strConcat(new String[]{left, right});
-			}
-			else if (functionSymbol == ExpressionOperation.STRLEN) {
+				return sqladapter.strConcat(new String[] { left, right });
+			} else if (functionSymbol == ExpressionOperation.STRLEN) {
 				String literal = getSQLString(function.getTerm(0), index, false);
 				return sqladapter.strLength(literal);
-			}
-			else if (functionSymbol == ExpressionOperation.YEAR) {
+			} else if (functionSymbol == ExpressionOperation.YEAR) {
 				String literal = getSQLString(function.getTerm(0), index, false);
 				return sqladapter.dateYear(literal);
-			}
-			else if (functionSymbol == ExpressionOperation.MINUTES) {
+			} else if (functionSymbol == ExpressionOperation.MINUTES) {
 				String literal = getSQLString(function.getTerm(0), index, false);
 				return sqladapter.dateMinutes(literal);
-			}
-			else if (functionSymbol == ExpressionOperation.DAY) {
+			} else if (functionSymbol == ExpressionOperation.DAY) {
 				String literal = getSQLString(function.getTerm(0), index, false);
 				return sqladapter.dateDay(literal);
-			}
-			else if (functionSymbol == ExpressionOperation.MONTH) {
+			} else if (functionSymbol == ExpressionOperation.MONTH) {
 				String literal = getSQLString(function.getTerm(0), index, false);
 				return sqladapter.dateMonth(literal);
-			}
-			else if (functionSymbol == ExpressionOperation.SECONDS) {
+			} else if (functionSymbol == ExpressionOperation.SECONDS) {
 				String literal = getSQLString(function.getTerm(0), index, false);
 				return sqladapter.dateSeconds(literal);
-			}
-			else if (functionSymbol == ExpressionOperation.HOURS) {
+			} else if (functionSymbol == ExpressionOperation.HOURS) {
 				String literal = getSQLString(function.getTerm(0), index, false);
 				return sqladapter.dateHours(literal);
-			}
-			else if (functionSymbol == ExpressionOperation.TZ) {
+			} else if (functionSymbol == ExpressionOperation.TZ) {
 				String literal = getSQLString(function.getTerm(0), index, false);
 				return sqladapter.dateTZ(literal);
-			}
-			else if (functionSymbol == ExpressionOperation.ENCODE_FOR_URI) {
+			} else if (functionSymbol == ExpressionOperation.ENCODE_FOR_URI) {
 				String literal = getSQLString(function.getTerm(0), index, false);
 				return sqladapter.strEncodeForUri(literal);
-			}
-			else if (functionSymbol == ExpressionOperation.UCASE) {
+			} else if (functionSymbol == ExpressionOperation.UCASE) {
 				String literal = getSQLString(function.getTerm(0), index, false);
 				return sqladapter.strUcase(literal);
-			}
-			else if (functionSymbol == ExpressionOperation.MD5) {
+			} else if (functionSymbol == ExpressionOperation.MD5) {
 				String literal = getSQLString(function.getTerm(0), index, false);
 				return sqladapter.MD5(literal);
-			}
-			else if (functionSymbol == ExpressionOperation.SHA1) {
+			} else if (functionSymbol == ExpressionOperation.SHA1) {
 				String literal = getSQLString(function.getTerm(0), index, false);
 				return sqladapter.SHA1(literal);
-			}
-			else if (functionSymbol == ExpressionOperation.SHA256) {
+			} else if (functionSymbol == ExpressionOperation.SHA256) {
 				String literal = getSQLString(function.getTerm(0), index, false);
 				return sqladapter.SHA256(literal);
-			}
-			else if (functionSymbol == ExpressionOperation.SHA512) {
+			} else if (functionSymbol == ExpressionOperation.SHA512) {
 				String literal = getSQLString(function.getTerm(0), index, false);
-				return sqladapter.SHA512(literal); //TODO FIX
-			}
-			else if (functionSymbol == ExpressionOperation.LCASE) {
+				return sqladapter.SHA512(literal); // TODO FIX
+			} else if (functionSymbol == ExpressionOperation.LCASE) {
 				String literal = getSQLString(function.getTerm(0), index, false);
 				return sqladapter.strLcase(literal);
-			}
-			else if (functionSymbol == ExpressionOperation.SUBSTR2) {
+			} else if (functionSymbol == ExpressionOperation.SUBSTR2) {
 				String string = getSQLString(function.getTerm(0), index, false);
 				String start = getSQLString(function.getTerm(1), index, false);
 				return sqladapter.strSubstr(string, start);
-			}
-			else if (functionSymbol == ExpressionOperation.SUBSTR3) {
+			} else if (functionSymbol == ExpressionOperation.SUBSTR3) {
 				String string = getSQLString(function.getTerm(0), index, false);
 				String start = getSQLString(function.getTerm(1), index, false);
 				String end = getSQLString(function.getTerm(2), index, false);
 				return sqladapter.strSubstr(string, start, end);
-			}
-			else if (functionSymbol == ExpressionOperation.STRBEFORE) {
+			} else if (functionSymbol == ExpressionOperation.STRBEFORE) {
 				String string = getSQLString(function.getTerm(0), index, false);
 				String before = getSQLString(function.getTerm(1), index, false);
 				return sqladapter.strBefore(string, before);
-			}
-			else if (functionSymbol == ExpressionOperation.STRAFTER) {
+			} else if (functionSymbol == ExpressionOperation.STRAFTER) {
 				String string = getSQLString(function.getTerm(0), index, false);
 				String after = getSQLString(function.getTerm(1), index, false);
 				return sqladapter.strAfter(string, after);
@@ -1458,8 +1603,7 @@ public class SQLGenerator implements SQLQueryGenerator {
 		// String functionName = function.getFunctionSymbol().toString();
 		if ((functionSymbol instanceof URITemplatePredicate) || (functionSymbol instanceof BNodePredicate)) {
 			return getSQLStringForTemplateFunction(function, index);
-		} 
-		else {
+		} else {
 			throw new RuntimeException("Unexpected function in the query: " + function);
 		}
 	}
@@ -1485,7 +1629,7 @@ public class SQLGenerator implements SQLQueryGenerator {
 			return sqladapter.getSQLLexicalFormString(constant.getValue());
 		case BOOLEAN:
 			boolean v = XsdDatatypeConverter.parseXsdBoolean(constant.getValue());
-			return sqladapter.getSQLLexicalFormBoolean(v);		
+			return sqladapter.getSQLLexicalFormBoolean(v);
 		case DATETIME:
 			return sqladapter.getSQLLexicalFormDatetime(constant.getValue());
 		case DATETIME_STAMP:
@@ -1507,9 +1651,7 @@ public class SQLGenerator implements SQLQueryGenerator {
 		}
 	}
 
-
-
-    /**
+	/**
 	 * Utility class to resolve "database" atoms to view definitions ready to be
 	 * used in a FROM clause, and variables, to column references defined over
 	 * the existing view definitions of a query.
@@ -1519,7 +1661,7 @@ public class SQLGenerator implements SQLQueryGenerator {
 		final Map<Function, RelationID> viewNames = new HashMap<>();
 		final Map<Function, RelationDefinition> dataDefinitions = new HashMap<>();
 		final Map<Variable, Set<QualifiedAttributeID>> columnReferences = new HashMap<>();
-		
+
 		int dataTableCount = 0;
 		boolean isEmpty = false;
 
@@ -1553,8 +1695,7 @@ public class SQLGenerator implements SQLQueryGenerator {
 		private void generateViewsIndexVariables(Function atom) {
 			if (atom.isOperation()) {
 				return;
-			} 
-			else if (atom.isAlgebraFunction()) {
+			} else if (atom.isAlgebraFunction()) {
 				for (Term subatom : atom.getTerms()) {
 					if (subatom instanceof Function) {
 						generateViewsIndexVariables((Function) subatom);
@@ -1562,7 +1703,8 @@ public class SQLGenerator implements SQLQueryGenerator {
 				}
 			}
 
-			RelationID id = Relation2DatalogPredicate.createRelationFromPredicateName(metadata.getQuotedIDFactory(), atom.getFunctionSymbol());
+			RelationID id = Relation2DatalogPredicate.createRelationFromPredicateName(metadata.getQuotedIDFactory(),
+					atom.getFunctionSymbol());
 			RelationDefinition def = metadata.getRelation(id);
 			if (def == null) {
 				// There is no definition for this atom, its not a database
@@ -1571,9 +1713,10 @@ public class SQLGenerator implements SQLQueryGenerator {
 				return;
 			}
 			dataTableCount++;
-			viewNames.put(atom, metadata.getQuotedIDFactory().createRelationID(null, String.format(VIEW_NAME, dataTableCount)));
+			viewNames.put(atom,
+					metadata.getQuotedIDFactory().createRelationID(null, String.format(VIEW_NAME, dataTableCount)));
 			dataDefinitions.put(atom, def);
-			
+
 			indexVariables(atom);
 		}
 
@@ -1590,7 +1733,9 @@ public class SQLGenerator implements SQLQueryGenerator {
 					references = new LinkedHashSet<>();
 					columnReferences.put((Variable) term, references);
 				}
-				QuotedID columnId = def.getAttribute(index + 1).getID();   // indexes from 1
+				QuotedID columnId = def.getAttribute(index + 1).getID(); // indexes
+																			// from
+																			// 1
 				QualifiedAttributeID qualifiedId = new QualifiedAttributeID(viewName, columnId);
 				references.add(qualifiedId);
 			}
@@ -1614,12 +1759,11 @@ public class SQLGenerator implements SQLQueryGenerator {
 		public String getViewDefinition(Function atom) {
 			RelationDefinition def = dataDefinitions.get(atom);
 			if (def instanceof DatabaseRelationDefinition) {
-				return sqladapter.sqlTableName(dataDefinitions.get(atom).getID().getSQLRendering(), 
-									viewNames.get(atom).getSQLRendering());
-			} 
-			else if (def instanceof ParserViewDefinition) {
-				return String.format("(%s) %s", ((ParserViewDefinition) def).getStatement(), 
-								viewNames.get(atom).getSQLRendering());
+				return sqladapter.sqlTableName(dataDefinitions.get(atom).getID().getSQLRendering(),
+						viewNames.get(atom).getSQLRendering());
+			} else if (def instanceof ParserViewDefinition) {
+				return String.format("(%s) %s", ((ParserViewDefinition) def).getStatement(),
+						viewNames.get(atom).getSQLRendering());
 			}
 			throw new RuntimeException("Impossible to get data definition for: " + atom + ", type: " + def);
 		}
@@ -1627,8 +1771,71 @@ public class SQLGenerator implements SQLQueryGenerator {
 		public String getColumnReference(Function atom, int column) {
 			RelationID viewName = viewNames.get(atom);
 			RelationDefinition def = dataDefinitions.get(atom);
-			QuotedID columnname = def.getAttribute(column + 1).getID(); // indexes from 1
+			QuotedID columnname = def.getAttribute(column + 1).getID(); // indexes
+																		// from
+																		// 1
 			return new QualifiedAttributeID(viewName, columnname).getSQLRendering();
 		}
+	}
+
+	@Override
+	public String getMappingSQL(CQIE cq) {
+		QueryAliasIndex index = new QueryAliasIndex(cq);
+
+		String FROM = getFROM(cq, index);
+		String WHERE = getWHEREWithConditions(cq, index);
+		String SELECT = "SELECT * ";
+
+		String sql = SELECT + FROM + WHERE;
+
+		for (Function f : index.viewNames.keySet()) {
+			String name = f.getFunctionSymbol().getName();
+			if (name.contains(".")) {
+				String[] splitted = name.split("\\.");
+				name = splitted[splitted.length - 1];
+			}
+
+			sql = sql.replaceAll(index.viewNames.get(f).getTableName(), name);
+		}
+
+		return sql;
+	}
+
+	public Set<String> getOutputColumns(CQIE query) throws OBDAException {
+		/*
+		 * If the head has size 0 this is a boolean query.
+		 */
+		List<Term> headterms = query.getHead().getTerms();
+		Set<String> result = new HashSet<String>();
+
+		// Only for ASK
+		if (headterms.size() == 0) {
+			return result;
+		}
+
+		Iterator<Term> hit = headterms.iterator();
+		QueryAliasIndex index = new QueryAliasIndex(query);
+		while (hit.hasNext()) {
+
+			Term ht = hit.next();
+			if (ht instanceof Function) {
+				Function ov = (Function) ht;
+				for (Term t : ov.getTerms()) {
+					if (t instanceof VariableImpl) {
+						Set<QualifiedAttributeID> names = index.columnReferences.get((VariableImpl) t);
+						for (Function f : index.viewNames.keySet()) {
+							if (names.iterator().next().getRelation().equals(index.viewNames.get(f))) {
+								result.add(new String(f.getFunctionSymbol().getName() + "."
+										+ names.iterator().next().getAttribute().getName()));
+							}
+						}
+
+					}
+				}
+
+			}
+		}
+		return result;
+
 	}
 }
