@@ -167,7 +167,7 @@ public class TestSesameImplicitDBConstraints {
 	public void testWithSelfJoinElimManualMetadata() throws Exception {
 		init(true, true);
 		String query = "PREFIX : <http://www.semanticweb.org/ontologies/2013/7/untitled-ontology-150#> SELECT * WHERE {?x :hasVal1 ?v1; :hasVal2 ?v2.}";
-		String sql = qst.getSQL(query);
+		String sql = qst.getSQL(query).get(0);
 		boolean m = sql.matches("(?ms)(.*)TABLE1(.*),(.*)TABLE1(.*)");
 		assertFalse(m);
 	}
@@ -176,7 +176,7 @@ public class TestSesameImplicitDBConstraints {
 	public void testWithoutSelfJoinElimManualMetadata() throws Exception {
 		init(false, true);
 		String query = "PREFIX : <http://www.semanticweb.org/ontologies/2013/7/untitled-ontology-150#> SELECT * WHERE {?x :hasVal1 ?v1; :hasVal2 ?v2.}";
-		String sql = qst.getSQL(query);
+		String sql = qst.getSQL(query).get(0);
 		boolean m = sql.matches("(?ms)(.*)TABLE1(.*),(.*)TABLE1(.*)");
 		assertTrue(m);
 	}
@@ -185,7 +185,7 @@ public class TestSesameImplicitDBConstraints {
 	public void testWithSelfJoinElimNoMetadata() throws Exception {
 		init(true, false);
 		String query = "PREFIX : <http://www.semanticweb.org/ontologies/2013/7/untitled-ontology-150#> SELECT * WHERE {?x :hasVal1 ?v1; :hasVal2 ?v2.}";
-		String sql = qst.getSQL(query);
+		String sql = qst.getSQL(query).get(0);
 		boolean m = sql.matches("(?ms)(.*)TABLE1(.*),(.*)TABLE1(.*)");
 		assertFalse(m);
 	}
@@ -194,7 +194,7 @@ public class TestSesameImplicitDBConstraints {
 	public void testWithoutSelfJoinElimNoMetadata() throws Exception {
 		init(false, false);
 		String query = "PREFIX : <http://www.semanticweb.org/ontologies/2013/7/untitled-ontology-150#> SELECT * WHERE {?x :hasVal1 ?v1; :hasVal2 ?v2.}";
-		String sql = qst.getSQL(query);
+		String sql = qst.getSQL(query).get(0);
 		boolean m = sql.matches("(?ms)(.*)TABLE1(.*),(.*)TABLE1(.*)");
 		assertTrue(m);
 	}

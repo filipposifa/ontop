@@ -143,7 +143,7 @@ public class NPDTest {
 			QuestOWLConnection qconn =  reasoner.getConnection();
 			QuestOWLStatement st = qconn.createStatement();
 			
-			String unfolding = st.getUnfolding(q12);
+			String unfolding = st.getUnfolding(q12).get(0);
 			st.close();
 		
 			//System.out.println(unfolding);

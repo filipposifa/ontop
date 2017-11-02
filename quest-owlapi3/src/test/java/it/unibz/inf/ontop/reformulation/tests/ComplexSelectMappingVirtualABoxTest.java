@@ -152,7 +152,7 @@ public class ComplexSelectMappingVirtualABoxTest  {
 
         OWLLiteral val;
 		try {
-			String sql = st.getUnfolding(this.query);
+			String sql = st.getUnfolding(this.query).get(0);
 			Pattern pat = Pattern.compile("TABLE1");
 		    Matcher m = pat.matcher(sql);
 		    int num_joins = -1;

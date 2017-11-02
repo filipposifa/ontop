@@ -122,7 +122,7 @@ public class CanonicalIRIUniversityTest {
 			            * Print the query summary
 			         */
 
-                    String sqlQuery = st.getUnfolding(sparqlQuery);
+                    String sqlQuery = st.getUnfolding(sparqlQuery).get(0);
 
                     System.out.println();
                     System.out.println("The input SPARQL query:");

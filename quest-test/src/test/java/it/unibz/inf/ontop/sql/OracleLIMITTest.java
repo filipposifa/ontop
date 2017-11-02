@@ -94,7 +94,7 @@ public class OracleLIMITTest  {
 		String query = "PREFIX : <http://www.semanticweb.org/ontologies/2013/7/untitled-ontology-150#> SELECT * WHERE {?x a :Country} LIMIT 10";
 		
 		QuestOWLStatement st = conn.createStatement();
-		String sql = st.getUnfolding(query);
+		String sql = st.getUnfolding(query).get(0);
 		boolean m = sql.matches("(?ms)(.*)WHERE ROWNUM <= 10(.*)");
 		assertTrue(m);
 	}

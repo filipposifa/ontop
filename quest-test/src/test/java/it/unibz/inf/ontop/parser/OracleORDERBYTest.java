@@ -102,7 +102,7 @@ public class OracleORDERBYTest {
         conn = reasoner.getConnection();
 
         QuestOWLStatement st = conn.createStatement();
-        String sql = st.getUnfolding(query);
+        String sql = st.getUnfolding(query).get(0);
         //boolean m = sql.matches("(?ms)(.*)ORDER BY country_name (.*)");
         boolean m = sql.matches("(?ms)(.*)ORDER BY (.*)");
         log.debug(sql);

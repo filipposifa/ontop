@@ -10,7 +10,6 @@ import it.unibz.inf.ontop.ontology.*;
 import it.unibz.inf.ontop.owlrefplatform.core.basicoperations.*;
 import it.unibz.inf.ontop.owlrefplatform.core.dagjgrapht.TBoxReasoner;
 import it.unibz.inf.ontop.owlrefplatform.core.mappingprocessing.MappingDataTypeRepair;
-import it.unibz.inf.ontop.owlrefplatform.core.mappingprocessing.MappingSameAs;
 import it.unibz.inf.ontop.owlrefplatform.core.mappingprocessing.TMappingExclusionConfig;
 import it.unibz.inf.ontop.owlrefplatform.core.mappingprocessing.TMappingProcessor;
 import it.unibz.inf.ontop.owlrefplatform.core.unfolding.DatalogUnfolder;
@@ -90,12 +89,7 @@ public class QuestUnfolder {
 		MetaMappingExpander metaMappingExpander = new MetaMappingExpander(localConnection, metadata.getQuotedIDFactory());
 		Collection<OBDAMappingAxiom> expandedMappings = metaMappingExpander.expand(splittedMappings);
 
-        /*
-         * add sameAsInverse
-         */
-        if (sameAs) {
-            expandedMappings = MappingSameAs.addSameAsInverse(expandedMappings);
-        }
+        
 
         List<CQIE> unfoldingProgram = Mapping2DatalogConverter.constructDatalogProgram(expandedMappings, metadata);
 		
@@ -124,9 +118,7 @@ public class QuestUnfolder {
 		addAssertionsAsFacts(unfoldingProgram, inputOntology.getClassAssertions(),
 				inputOntology.getObjectPropertyAssertions(), inputOntology.getDataPropertyAssertions(), annotationAssertions);
 
-		if (sameAs) {
-			addSameAsMapping(unfoldingProgram);
-		}
+		
 
 		// Collecting URI templates
 		uriTemplateMatcher = UriTemplateMatcher.create(unfoldingProgram);
@@ -440,19 +432,7 @@ public class QuestUnfolder {
 	}
 
 
-    /**
-     * Store information about owl:sameAs
-     */
-    public void addSameAsMapping(List<CQIE> unfoldingProgram) throws OBDAException{
-
-
-        MappingSameAs msa = new MappingSameAs(unfoldingProgram);
-
-        dataPropertiesAndClassesMapped = msa.getDataPropertiesAndClassesWithSameAs();
-        objectPropertiesMapped =  msa.getObjectPropertiesWithSameAs();
-
-
-    }
+   
 
     public Set<Predicate> getSameAsDataPredicatesAndClasses(){
 
