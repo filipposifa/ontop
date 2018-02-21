@@ -1,0 +1,346 @@
+
+dtr for mapping 1:1.0
+7
+dtr for mapping 2:1.0
+3
+dtr for mapping 3:4.467229209786128
+view to materialize:http://swat.cse.lehigh.edu/onto/univ-bench.owl#Faculty(URI("http://www.Department{}.University{}.edu/AssistantProfessor{}",t0,t1,t9)) <- create temporary table 
+table2 
+as 
+select distinct students.depid as "depid", 
+students.uniid as "uniid", 
+students.advisorid as "advisorid" from 
+students students 
+where 
+students.stype = 1 and 
+students.advisortype = 1 and 
+students.advisorid IS NOT NULL and 
+students.depid IS NOT NULL and 
+students.uniid IS NOT NULL
+
+1
+dtr for mapping 4:1.0
+2
+dtr for mapping 5:1.0
+3
+dtr for mapping 6:1.0
+4
+dtr for mapping 7:1.0
+2
+dtr for mapping 8:1.0
+3
+dtr for mapping 9:1.0
+5
+dtr for mapping 10:72.302
+view to materialize:http://swat.cse.lehigh.edu/onto/univ-bench.owl#Organization(URI("http://www.University{}.edu",t7)) <- create temporary table 
+table9 
+as 
+select distinct teachers.docD as "docD" from 
+teachers teachers 
+where 
+((teachers.ttype = 0) or ((teachers.ttype = 1) or ((teachers.ttype = 2) or (teachers.ttype = 3)))) and 
+teachers.docD IS NOT NULL
+
+1
+dtr for mapping 11:1.0
+1
+dtr for mapping 12:1.0
+3
+dtr for mapping 13:1.0
+2
+dtr for mapping 14:1.0
+1
+dtr for mapping 15:4.705617350025597
+view to materialize:http://swat.cse.lehigh.edu/onto/univ-bench.owl#Course(URI("http://www.Department{}.University{}.edu/GraduateCourse{}",t0,t1,t5)) <- create temporary table 
+table14 
+as 
+select distinct takescourses.depid as "depid", 
+takescourses.uniid as "uniid", 
+takescourses.courseid as "courseid" from 
+takescourses takescourses 
+where 
+takescourses.coursetype = 1 and 
+takescourses.courseid IS NOT NULL and 
+takescourses.depid IS NOT NULL and 
+takescourses.uniid IS NOT NULL
+
+3
+dtr for mapping 16:1.0
+3
+dtr for mapping 17:1.0
+2
+dtr for mapping 18:1.0
+1
+dtr for mapping 19:72.302
+view to materialize:http://swat.cse.lehigh.edu/onto/univ-bench.owl#Organization(URI("http://www.University{}.edu",t5)) <- create temporary table 
+table18 
+as 
+select distinct teachers.underD as "underD" from 
+teachers teachers 
+where 
+((teachers.ttype = 0) or ((teachers.ttype = 1) or ((teachers.ttype = 2) or (teachers.ttype = 3)))) and 
+teachers.underD IS NOT NULL
+
+2
+dtr for mapping 20:1.0
+1
+dtr for mapping 21:1.0
+1
+dtr for mapping 22:1.0
+1
+dtr for mapping 23:1.0
+1
+dtr for mapping 24:1.0
+1
+dtr for mapping 25:1.0
+1
+dtr for mapping 26:1.0
+3
+dtr for mapping 27:1.0
+1
+dtr for mapping 28:1.0
+1
+dtr for mapping 29:1.0
+1
+dtr for mapping 30:1.0
+1
+dtr for mapping 31:1.0
+1
+dtr for mapping 32:1.0
+1
+dtr for mapping 33:1.0
+2
+dtr for mapping 34:1.0
+1
+dtr for mapping 35:8.025503355704698
+view to materialize:http://swat.cse.lehigh.edu/onto/univ-bench.owl#Faculty(URI("http://www.Department{}.University{}.edu/FullProfessor{}",t0,t1,t9)) <- create temporary table 
+table34 
+as 
+select distinct students.depid as "depid", 
+students.uniid as "uniid", 
+students.advisorid as "advisorid" from 
+students students 
+where 
+(((students.advisortype = 3) and (students.stype = 0)) or ((students.advisortype = 3) and (students.stype = 1))) and 
+students.advisorid IS NOT NULL and 
+students.depid IS NOT NULL and 
+students.uniid IS NOT NULL
+
+1
+dtr for mapping 36:1.0
+1
+dtr for mapping 37:1.0
+0
+dtr for mapping 38:1.0
+1
+dtr for mapping 39:2.0016787957016495
+view to materialize:http://swat.cse.lehigh.edu/onto/univ-bench.owl#Student(URI("http://www.Department{}.University{}.edu/GraduateStudent{}",t0,t1,t3)) <- create temporary table 
+table38 
+as 
+select distinct takescourses.depid as "depid", 
+takescourses.uniid as "uniid", 
+takescourses.studid as "studid" from 
+takescourses takescourses 
+where 
+takescourses.coursetype = 1 and 
+takescourses.depid IS NOT NULL and 
+takescourses.uniid IS NOT NULL and 
+takescourses.studid IS NOT NULL
+
+2
+dtr for mapping 40:1.0
+1
+dtr for mapping 41:2.9862541011426633
+view to materialize:http://swat.cse.lehigh.edu/onto/univ-bench.owl#Faculty(URI("http://www.Department{}.University{}.edu/AssistantProfessor{}",t0,t1,t9)) <- create temporary table 
+table40 
+as 
+select distinct students.depid as "depid", 
+students.uniid as "uniid", 
+students.advisorid as "advisorid" from 
+students students 
+where 
+students.stype = 0 and 
+students.advisortype = 1 and 
+students.advisorid IS NOT NULL and 
+students.depid IS NOT NULL and 
+students.uniid IS NOT NULL
+
+2
+dtr for mapping 42:1.0
+2
+dtr for mapping 43:1.0
+1
+dtr for mapping 44:1.0
+1
+dtr for mapping 45:1.0
+1
+dtr for mapping 46:1.0
+0
+dtr for mapping 47:1.0
+1
+dtr for mapping 48:3.003033131124592
+view to materialize:http://swat.cse.lehigh.edu/onto/univ-bench.owl#Faculty(URI("http://www.Department{}.University{}.edu/FullProfessor{}",t0,t1,t4)) <- create temporary table 
+table47 
+as 
+select distinct courses.depid as "depid", 
+courses.uniid as "uniid", 
+courses.teacherid as "teacherid" from 
+courses courses 
+where 
+(((courses.teachertype = 3) and (courses.ctype = 0)) or ((courses.teachertype = 3) and (courses.ctype = 1))) and 
+courses.teacherid IS NOT NULL and 
+courses.depid IS NOT NULL and 
+courses.uniid IS NOT NULL
+
+1
+dtr for mapping 49:1.0
+1
+dtr for mapping 50:1.0
+0
+dtr for mapping 51:1.0
+0
+dtr for mapping 52:20.07
+view to materialize:http://swat.cse.lehigh.edu/onto/univ-bench.owl#Organization(URI("http://www.University{}.edu",t1)) <- create temporary table 
+table51 
+as 
+select distinct departments.universityid as "universityid" from 
+departments departments 
+where 
+departments.universityid IS NOT NULL
+
+2
+dtr for mapping 53:1.0
+1
+dtr for mapping 54:1.0
+1
+dtr for mapping 55:1.0
+1
+dtr for mapping 56:1.0
+1
+dtr for mapping 57:1.0
+1
+dtr for mapping 58:1.0
+1
+dtr for mapping 59:72.302
+view to materialize:http://swat.cse.lehigh.edu/onto/univ-bench.owl#Organization(URI("http://www.University{}.edu",t6)) <- create temporary table 
+table58 
+as 
+select distinct teachers.masterD as "masterD" from 
+teachers teachers 
+where 
+((teachers.ttype = 0) or ((teachers.ttype = 1) or ((teachers.ttype = 2) or (teachers.ttype = 3)))) and 
+teachers.masterD IS NOT NULL
+
+0
+dtr for mapping 60:252.562
+view to materialize:http://swat.cse.lehigh.edu/onto/univ-bench.owl#Organization(URI("http://www.University{}.edu",t5)) <- create temporary table 
+table59 
+as 
+select distinct students.degreeuniid as "degreeuniid" from 
+students students 
+where 
+students.stype = 1 and 
+students.degreeuniid IS NOT NULL
+
+1
+dtr for mapping 61:1.0
+1
+dtr for mapping 62:1.0
+1
+dtr for mapping 63:1.0
+1
+dtr for mapping 64:3.0016219204241366
+view to materialize:http://swat.cse.lehigh.edu/onto/univ-bench.owl#Student(URI("http://www.Department{}.University{}.edu/UndergraduateStudent{}",t0,t1,t3)) <- create temporary table 
+table63 
+as 
+select distinct takescourses.depid as "depid", 
+takescourses.uniid as "uniid", 
+takescourses.studid as "studid" from 
+takescourses takescourses 
+where 
+takescourses.coursetype = 0 and 
+takescourses.depid IS NOT NULL and 
+takescourses.uniid IS NOT NULL and 
+takescourses.studid IS NOT NULL
+
+0
+dtr for mapping 65:1.0
+1
+dtr for mapping 66:1.0
+1
+dtr for mapping 67:1.0
+1
+dtr for mapping 68:1.0
+1
+dtr for mapping 69:1.0
+0
+dtr for mapping 70:21.993123699762506
+view to materialize:http://swat.cse.lehigh.edu/onto/univ-bench.owl#Course(URI("http://www.Department{}.University{}.edu/Course{}",t0,t1,t5)) <- create temporary table 
+table69 
+as 
+select distinct takescourses.depid as "depid", 
+takescourses.uniid as "uniid", 
+takescourses.courseid as "courseid" from 
+takescourses takescourses 
+where 
+takescourses.coursetype = 0 and 
+takescourses.courseid IS NOT NULL and 
+takescourses.depid IS NOT NULL and 
+takescourses.uniid IS NOT NULL
+
+2
+dtr for mapping 71:1.0
+1
+dtr for mapping 72:1.0
+1
+dtr for mapping 73:1.0
+1
+dtr for mapping 74:1.0
+2
+dtr for mapping 75:3.0018721917124314
+view to materialize:http://swat.cse.lehigh.edu/onto/univ-bench.owl#Faculty(URI("http://www.Department{}.University{}.edu/AssociateProfessor{}",t0,t1,t4)) <- create temporary table 
+table74 
+as 
+select distinct courses.depid as "depid", 
+courses.uniid as "uniid", 
+courses.teacherid as "teacherid" from 
+courses courses 
+where 
+(((courses.teachertype = 2) and (courses.ctype = 0)) or ((courses.teachertype = 2) and (courses.ctype = 1))) and 
+courses.teacherid IS NOT NULL and 
+courses.depid IS NOT NULL and 
+courses.uniid IS NOT NULL
+
+0
+dtr for mapping 76:1.0
+1
+dtr for mapping 77:1.0
+2
+dtr for mapping 78:5.719288725633427
+view to materialize:http://swat.cse.lehigh.edu/onto/univ-bench.owl#Faculty(URI("http://www.Department{}.University{}.edu/AssociateProfessor{}",t0,t1,t9)) <- create temporary table 
+table77 
+as 
+select distinct students.depid as "depid", 
+students.uniid as "uniid", 
+students.advisorid as "advisorid" from 
+students students 
+where 
+(((students.advisortype = 2) and (students.stype = 1)) or ((students.advisortype = 2) and (students.stype = 0))) and 
+students.advisorid IS NOT NULL and 
+students.depid IS NOT NULL and 
+students.uniid IS NOT NULL
+
+1
+dtr for mapping 79:1.0
+0
+dtr for mapping 80:1.0
+1
+dtr for mapping 81:1.0
+1
+dtr for mapping 82:1.0
+1
+dtr for mapping 83:1.0
+0
+dtr for mapping 84:1.0
+Number of Mappings with Duplicates: 15
+

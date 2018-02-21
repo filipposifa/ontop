@@ -1,0 +1,3381 @@
+
+dtr for mapping 1:1.0
+4
+2
+dtr for mapping 3:1.0
+3
+dtr for mapping 4:6077.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/UpperTriassic")) <- create temporary table 
+table3 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'LATE TRIASSIC') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'LATE TRIASSIC') or (wellbore_exploration_all."wlbAgeWithHc3" = 'LATE TRIASSIC')))
+
+1
+dtr for mapping 5:1.0
+1
+dtr for mapping 6:1.0
+1
+dtr for mapping 7:1.0
+2
+dtr for mapping 8:1.0
+1
+dtr for mapping 9:1.0
+1
+dtr for mapping 10:1.0
+1
+1
+dtr for mapping 12:1.0
+1
+dtr for mapping 13:1.0
+1
+dtr for mapping 14:1.0
+1
+dtr for mapping 15:1.0
+1
+dtr for mapping 16:1.0
+0
+dtr for mapping 17:1.0
+1
+dtr for mapping 18:240.63348780979246
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Devonian")) <- create temporary table 
+table17 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'DEVONIAN') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'DEVONIAN') or ((wellbore_exploration_all."wlbAgeAtTd" = 'DEVONIAN') or (wellbore_exploration_all."wlbAgeWithHc3" = 'DEVONIAN')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+2
+dtr for mapping 19:1.0
+2
+dtr for mapping 20:1.0
+3
+dtr for mapping 21:1.0
+1
+dtr for mapping 22:12.666666666666666
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#dateUpdated(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t7),http://www.w3.org/2001/XMLSchema#dateTime(t9)) <- create temporary table 
+table21 
+as 
+select distinct wellbore_formation_top."lsuWellboreUpdatedDate" as "lsuWellboreUpdatedDate", 
+wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_formation_top."lsuWellboreUpdatedDate" <> '9999-12-31T00:00:00' and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL and 
+wellbore_formation_top."lsuWellboreUpdatedDate" IS NOT NULL
+
+2
+dtr for mapping 23:1.0
+1
+dtr for mapping 24:1.0
+1
+dtr for mapping 25:1.0
+1
+dtr for mapping 26:254.00802181934864
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/LowerTriassic")) <- create temporary table 
+table25 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'EARLY TRIASSIC') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'EARLY TRIASSIC') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'EARLY TRIASSIC') or (wellbore_exploration_all."wlbAgeAtTd" = 'EARLY TRIASSIC')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+2
+dtr for mapping 27:1.0
+1
+dtr for mapping 28:4184.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Cretaceous")) <- create temporary table 
+table27 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'CRETACEOUS') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'CRETACEOUS') or (wellbore_exploration_all."wlbAgeWithHc3" = 'CRETACEOUS')))
+
+0
+dtr for mapping 29:1.0
+1
+dtr for mapping 30:1.0
+1
+dtr for mapping 31:1.0
+1
+dtr for mapping 32:1.0
+1
+dtr for mapping 33:1.0
+1
+1
+dtr for mapping 35:1.0
+1
+dtr for mapping 36:1.0
+1
+dtr for mapping 37:1013992.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Campanian")) <- create temporary table 
+table36 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'CAMPANIAN') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'CAMPANIAN') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'CAMPANIAN') or (wellbore_exploration_all."wlbAgeAtTd" = 'CAMPANIAN'))))
+
+0
+0
+dtr for mapping 39:1.8888888888888888
+view to materialize:http://www.ifomis.org/bfo/1.1/snap#Continuant(URI("http://sws.ifi.uio.no/data/npd-v2/survey/{}/area",t0)) <- create temporary table 
+table38 
+as 
+select distinct seaArea."seaSurveyName" as "seaSurveyName" from 
+"seaArea" seaArea 
+where 
+seaArea."seaSurveyName" IS NOT NULL
+
+1
+dtr for mapping 40:6156.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/LowerCretaceous")) <- create temporary table 
+table39 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'EARLY CRETACEOUS') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'EARLY CRETACEOUS') or (wellbore_exploration_all."wlbAgeWithHc3" = 'EARLY CRETACEOUS')))
+
+1
+dtr for mapping 41:1.0
+1
+dtr for mapping 42:245.4672012830794
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/UpperCretaceous")) <- create temporary table 
+table41 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'LATE CRETACEOUS') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'LATE CRETACEOUS') or ((wellbore_exploration_all."wlbAgeAtTd" = 'LATE CRETACEOUS') or (wellbore_exploration_all."wlbAgeWithHc3" = 'LATE CRETACEOUS')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+1
+dtr for mapping 43:152.0
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#dateSyncNPD(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t7),http://www.w3.org/2001/XMLSchema#dateTime(t10)) <- create temporary table 
+table42 
+as 
+select distinct wellbore_formation_top."dateSyncNPD" as "dateSyncNPD", 
+wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_formation_top."dateSyncNPD" <> '9999-12-31T00:00:00' and 
+wellbore_formation_top."dateSyncNPD" IS NOT NULL and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+1
+dtr for mapping 44:1.0
+3
+dtr for mapping 45:1.0
+1
+dtr for mapping 46:1.0
+1
+dtr for mapping 47:1.0
+0
+dtr for mapping 48:1.0
+0
+dtr for mapping 49:1.0
+1
+dtr for mapping 50:3792.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Danian")) <- create temporary table 
+table49 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'DANIAN') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'DANIAN') or (wellbore_exploration_all."wlbAgeWithHc3" = 'DANIAN')))
+
+1
+dtr for mapping 51:1.0
+1
+dtr for mapping 52:2.3529411764705883
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#name(URI("http://sws.ifi.uio.no/data/npd-v2/facility/{}",t4),http://www.w3.org/2001/XMLSchema#string(t0)) <- create temporary table 
+table51 
+as 
+select distinct tuf_operator_hst."tufNpdidTuf" as "tufNpdidTuf", 
+tuf_operator_hst."tufName" as "tufName" from 
+"tuf_operator_hst" tuf_operator_hst 
+where 
+tuf_operator_hst."tufNpdidTuf" IS NOT NULL and 
+tuf_operator_hst."tufName" IS NOT NULL
+
+1
+dtr for mapping 53:1.0
+1
+dtr for mapping 54:1.0
+1
+dtr for mapping 55:1.0
+1
+dtr for mapping 56:1.0
+1
+dtr for mapping 57:6045.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Eocene")) <- create temporary table 
+table56 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'EOCENE') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'EOCENE') or (wellbore_exploration_all."wlbAgeWithHc3" = 'EOCENE')))
+
+0
+dtr for mapping 58:1.0
+1
+dtr for mapping 59:1.0
+1
+dtr for mapping 60:1.0
+0
+dtr for mapping 61:1.0
+1
+dtr for mapping 62:1.0
+1
+dtr for mapping 63:131.88
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#dateSyncNPD(URI("http://sws.ifi.uio.no/data/npd-v2/facility/{}",t5),http://www.w3.org/2001/XMLSchema#dateTime(t7)) <- create temporary table 
+table62 
+as 
+select distinct tuf_owner_hst."dateSyncNPD" as "dateSyncNPD", 
+tuf_owner_hst."tufNpdidTuf" as "tufNpdidTuf" from 
+"tuf_owner_hst" tuf_owner_hst 
+where 
+tuf_owner_hst."dateSyncNPD" <> '9999-12-31T00:00:00' and 
+tuf_owner_hst."tufNpdidTuf" IS NOT NULL and 
+tuf_owner_hst."dateSyncNPD" IS NOT NULL
+
+1
+dtr for mapping 64:1.0
+1
+dtr for mapping 65:1.0
+1
+dtr for mapping 66:1.0
+0
+dtr for mapping 67:1.0
+0
+dtr for mapping 68:1.0
+1
+dtr for mapping 69:157.19864099660248
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Cisuralian")) <- create temporary table 
+table68 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'EARLY PERMIAN') or ((wellbore_exploration_all."wlbAgeAtTd" = 'EARLY PERMIAN') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'EARLY PERMIAN') or (wellbore_exploration_all."wlbAgeWithHc3" = 'EARLY PERMIAN')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+1
+dtr for mapping 70:1.0
+0
+dtr for mapping 71:1.0
+0
+dtr for mapping 72:1.0
+1
+0
+dtr for mapping 74:1.0
+1
+dtr for mapping 75:1.0
+0
+dtr for mapping 76:1.0
+0
+1
+dtr for mapping 78:6155.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/LowerJurassic")) <- create temporary table 
+table77 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'EARLY JURASSIC') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'EARLY JURASSIC') or (wellbore_exploration_all."wlbAgeWithHc3" = 'EARLY JURASSIC')))
+
+1
+dtr for mapping 79:1.0
+0
+dtr for mapping 80:1.0
+1
+dtr for mapping 81:1.0
+1
+dtr for mapping 82:1530488.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/UpperTriassic")) <- create temporary table 
+table81 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeAtTd" = 'LATE TRIASSIC') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'LATE TRIASSIC') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'LATE TRIASSIC') or (wellbore_exploration_all."wlbAgeWithHc2" = 'LATE TRIASSIC'))))
+
+1
+dtr for mapping 83:1.0
+1
+dtr for mapping 84:1.0
+0
+dtr for mapping 85:1.0
+0
+dtr for mapping 86:1.0
+1
+dtr for mapping 87:1.0
+2
+dtr for mapping 88:252.12758221781525
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Eocene")) <- create temporary table 
+table87 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'EOCENE') or ((wellbore_exploration_all."wlbAgeAtTd" = 'EOCENE') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'EOCENE') or (wellbore_exploration_all."wlbAgeWithHc3" = 'EOCENE')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+1
+dtr for mapping 89:1.0
+0
+dtr for mapping 90:1.0
+1
+dtr for mapping 91:1.0
+1
+dtr for mapping 92:1.0
+1
+dtr for mapping 93:1.0
+1
+dtr for mapping 94:1.0
+1
+dtr for mapping 95:1.0
+0
+dtr for mapping 96:1.0
+0
+dtr for mapping 97:1.0
+1
+dtr for mapping 98:1.0
+0
+dtr for mapping 99:1.0
+0
+dtr for mapping 100:1.6231884057971016
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#sensorType(URI("http://sws.ifi.uio.no/data/npd-v2/survey/{}/area",t0),http://www.w3.org/2001/XMLSchema#string(t14)) <- create temporary table 
+table99 
+as 
+select distinct seaArea."seaSensorType" as "seaSensorType", 
+seaArea."seaSurveyName" as "seaSurveyName" from 
+"seaArea" seaArea 
+where 
+seaArea."seaSensorType" IS NOT NULL and 
+seaArea."seaSurveyName" IS NOT NULL
+
+0
+dtr for mapping 101:1.0
+1
+dtr for mapping 102:1.0
+0
+dtr for mapping 103:1.0
+1
+dtr for mapping 104:1.0
+0
+1
+dtr for mapping 106:1.0
+1
+dtr for mapping 107:1.0
+0
+0
+dtr for mapping 109:1.0
+1
+dtr for mapping 110:1.0
+0
+dtr for mapping 111:1.0
+0
+dtr for mapping 112:1.0
+0
+0
+dtr for mapping 114:1.0
+0
+dtr for mapping 115:1.0
+0
+dtr for mapping 116:1.0
+1
+dtr for mapping 117:1.0
+0
+dtr for mapping 118:1.0
+0
+dtr for mapping 119:1.0
+0
+dtr for mapping 120:1.0
+0
+1
+dtr for mapping 122:1.0
+0
+dtr for mapping 123:1.0
+1
+dtr for mapping 124:1.0
+0
+dtr for mapping 125:1.0
+0
+dtr for mapping 126:5.0
+view to materialize:http://www.opengis.net/ont/geosparql#Feature(URI("http://sws.ifi.uio.no/data/npd-v2/baa/{}",t20)) <- create temporary table 
+table125 
+as 
+select distinct baaArea."baaNpdidBsnsArrArea" as "baaNpdidBsnsArrArea" from 
+"baaArea" baaArea 
+where 
+baaArea."baaNpdidBsnsArrArea" IS NOT NULL
+
+0
+dtr for mapping 127:1.0
+0
+dtr for mapping 128:1.0
+0
+dtr for mapping 129:1.0
+1
+dtr for mapping 130:247.45434119723961
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/LowerJurassic")) <- create temporary table 
+table129 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'EARLY JURASSIC') or ((wellbore_exploration_all."wlbAgeAtTd" = 'EARLY JURASSIC') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'EARLY JURASSIC') or (wellbore_exploration_all."wlbAgeWithHc3" = 'EARLY JURASSIC')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+1
+dtr for mapping 131:1.0
+1
+dtr for mapping 132:1.0
+1
+dtr for mapping 133:1.0
+1
+0
+dtr for mapping 135:1.0
+0
+1
+dtr for mapping 137:1.0
+1
+dtr for mapping 138:240.52377115229655
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Oligocene")) <- create temporary table 
+table137 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeAtTd" = 'OLIGOCENE') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'OLIGOCENE') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'OLIGOCENE') or (wellbore_exploration_all."wlbAgeWithHc2" = 'OLIGOCENE')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+0
+dtr for mapping 139:1.0
+1
+0
+dtr for mapping 141:1.0
+0
+dtr for mapping 142:1.0
+1
+dtr for mapping 143:1.0
+1
+dtr for mapping 144:1.0
+1
+0
+0
+dtr for mapping 147:6077.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/UpperJurassic")) <- create temporary table 
+table146 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'LATE JURASSIC') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'LATE JURASSIC') or (wellbore_exploration_all."wlbAgeWithHc3" = 'LATE JURASSIC')))
+
+0
+dtr for mapping 148:1.0
+0
+dtr for mapping 149:1.0
+1
+dtr for mapping 150:1.0
+1
+dtr for mapping 151:1.0
+1
+dtr for mapping 152:1.0
+0
+dtr for mapping 153:1.0
+1
+dtr for mapping 154:1.0
+1
+0
+dtr for mapping 156:1.0
+0
+dtr for mapping 157:6.5
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#dateSyncNPD(URI("http://sws.ifi.uio.no/data/npd-v2/block/{}/{}",t57,t58),http://www.w3.org/2001/XMLSchema#dateTime(t78)) <- create temporary table 
+table156 
+as 
+select distinct wellbore_exploration_all."dateSyncNPD" as "dateSyncNPD", 
+wellbore_exploration_all."wlbNamePart1" as "wlbNamePart1", 
+wellbore_exploration_all."wlbNamePart2" as "wlbNamePart2" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+wellbore_exploration_all."dateSyncNPD" <> '9999-12-31T00:00:00' and 
+wellbore_exploration_all."dateSyncNPD" IS NOT NULL and 
+wellbore_exploration_all."wlbNamePart2" IS NOT NULL and 
+wellbore_exploration_all."wlbNamePart1" IS NOT NULL
+
+0
+dtr for mapping 158:1.0
+0
+dtr for mapping 159:1.0
+1
+dtr for mapping 160:1.0
+1
+dtr for mapping 161:1.0
+0
+dtr for mapping 162:1.0
+0
+dtr for mapping 163:1.0
+1
+dtr for mapping 164:1.0
+1
+dtr for mapping 165:1.0
+1
+dtr for mapping 166:1.0
+0
+dtr for mapping 167:1.0
+0
+dtr for mapping 168:1.0
+0
+dtr for mapping 169:1.0
+1
+dtr for mapping 170:3792.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Miocene")) <- create temporary table 
+table169 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'MIOCENE') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'MIOCENE') or (wellbore_exploration_all."wlbAgeWithHc3" = 'MIOCENE')))
+
+1
+dtr for mapping 171:1.0
+1
+dtr for mapping 172:1.0
+1
+dtr for mapping 173:1.0
+1
+dtr for mapping 174:152.0
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Mississippian")) <- create temporary table 
+table173 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'EARLY CARBONIFEROUS') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'EARLY CARBONIFEROUS') or ((wellbore_exploration_all."wlbAgeAtTd" = 'EARLY CARBONIFEROUS') or (wellbore_exploration_all."wlbAgeWithHc3" = 'EARLY CARBONIFEROUS')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+0
+dtr for mapping 175:1.0
+0
+dtr for mapping 176:1.0
+1
+0
+dtr for mapping 178:1.0
+0
+dtr for mapping 179:1.0
+0
+dtr for mapping 180:1.0
+0
+dtr for mapping 181:1.0
+1
+dtr for mapping 182:694032.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Cisuralian")) <- create temporary table 
+table181 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'EARLY PERMIAN') or ((wellbore_exploration_all."wlbAgeAtTd" = 'EARLY PERMIAN') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'EARLY PERMIAN') or (wellbore_exploration_all."wlbAgeWithHc3" = 'EARLY PERMIAN'))))
+
+0
+dtr for mapping 183:25.57377049180328
+view to materialize:http://www.ifomis.org/bfo/1.1/snap#Continuant(URI("http://sws.ifi.uio.no/data/npd-v2/wellbore/{}",t73)) <- create temporary table 
+table182 
+as 
+select distinct wellbore_exploration_all."wlbNpdidWellboreReclass" as "wlbNpdidWellboreReclass" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+wellbore_exploration_all."wlbNpdidWellboreReclass" IS NOT NULL
+
+1
+dtr for mapping 184:1.0
+0
+dtr for mapping 185:1.0
+1
+0
+dtr for mapping 187:1.0
+0
+dtr for mapping 188:1.0
+0
+dtr for mapping 189:1.0
+1
+dtr for mapping 190:1.0
+0
+dtr for mapping 191:1.0
+0
+dtr for mapping 192:1.0
+0
+0
+dtr for mapping 194:1.0
+0
+dtr for mapping 195:1.0
+1
+dtr for mapping 196:240.5850120870266
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Lopingian")) <- create temporary table 
+table195 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc3" = 'LATE PERMIAN') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'LATE PERMIAN') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'LATE PERMIAN') or (wellbore_exploration_all."wlbAgeAtTd" = 'LATE PERMIAN')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+1
+dtr for mapping 197:1.0
+1
+dtr for mapping 198:3792.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Pleistocene")) <- create temporary table 
+table197 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'PLEISTOCENE') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'PLEISTOCENE') or (wellbore_exploration_all."wlbAgeWithHc3" = 'PLEISTOCENE')))
+
+0
+1
+dtr for mapping 200:1.0
+1
+dtr for mapping 201:240.63348780979246
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Pliocene")) <- create temporary table 
+table200 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc3" = 'PLIOCENE') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'PLIOCENE') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'PLIOCENE') or (wellbore_exploration_all."wlbAgeAtTd" = 'PLIOCENE')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+1
+dtr for mapping 202:1.0
+0
+dtr for mapping 203:1.0
+0
+dtr for mapping 204:1.0
+0
+dtr for mapping 205:576384.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Pleistocene")) <- create temporary table 
+table204 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'PLEISTOCENE') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'PLEISTOCENE') or ((wellbore_exploration_all."wlbAgeAtTd" = 'PLEISTOCENE') or (wellbore_exploration_all."wlbAgeWithHc1" = 'PLEISTOCENE'))))
+
+0
+dtr for mapping 206:1.0
+0
+dtr for mapping 207:1.0
+1
+dtr for mapping 208:1.0
+1
+dtr for mapping 209:1.0
+0
+dtr for mapping 210:1.0
+0
+dtr for mapping 211:1.0
+1
+dtr for mapping 212:2567.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Campanian")) <- create temporary table 
+table211 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'CAMPANIAN') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'CAMPANIAN') or (wellbore_exploration_all."wlbAgeWithHc3" = 'CAMPANIAN')))
+
+1
+dtr for mapping 213:1.0
+0
+dtr for mapping 214:1.0
+0
+dtr for mapping 215:1.0
+1
+dtr for mapping 216:1.0
+1
+dtr for mapping 217:636424.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Silurian")) <- create temporary table 
+table216 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'SILURIAN') or ((wellbore_exploration_all."wlbAgeAtTd" = 'SILURIAN') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'SILURIAN') or (wellbore_exploration_all."wlbAgeWithHc3" = 'SILURIAN'))))
+
+0
+dtr for mapping 218:1.0
+0
+dtr for mapping 219:1.0
+1
+dtr for mapping 220:1.0
+0
+dtr for mapping 221:1.0
+1
+dtr for mapping 222:1.0
+0
+dtr for mapping 223:1.0
+0
+dtr for mapping 224:1.0
+0
+dtr for mapping 225:1.0
+1
+dtr for mapping 226:576384.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Danian")) <- create temporary table 
+table225 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'DANIAN') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'DANIAN') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'DANIAN') or (wellbore_exploration_all."wlbAgeAtTd" = 'DANIAN'))))
+
+0
+dtr for mapping 227:1.0
+1
+dtr for mapping 228:1.0
+0
+dtr for mapping 229:1.0
+0
+dtr for mapping 230:1.0
+0
+dtr for mapping 231:1.0
+0
+dtr for mapping 232:1.0
+0
+dtr for mapping 233:245.25446133509584
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Jurassic")) <- create temporary table 
+table232 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'JURASSIC') or ((wellbore_exploration_all."wlbAgeAtTd" = 'JURASSIC') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'JURASSIC') or (wellbore_exploration_all."wlbAgeWithHc3" = 'JURASSIC')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+1
+dtr for mapping 234:1.0
+0
+dtr for mapping 235:1.0
+1
+dtr for mapping 236:1.0
+0
+dtr for mapping 237:1.0
+0
+dtr for mapping 238:1.0
+0
+dtr for mapping 239:1.0
+0
+dtr for mapping 240:1.0
+0
+1
+dtr for mapping 242:1.0
+0
+1
+dtr for mapping 244:1.0
+1
+dtr for mapping 245:1.0
+0
+dtr for mapping 246:1.0
+0
+dtr for mapping 247:1.0
+1
+dtr for mapping 248:5763.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Paleocene")) <- create temporary table 
+table247 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'PALEOCENE') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'PALEOCENE') or (wellbore_exploration_all."wlbAgeWithHc3" = 'PALEOCENE')))
+
+0
+dtr for mapping 249:1.0
+0
+dtr for mapping 250:1.0
+0
+dtr for mapping 251:1.0
+1
+dtr for mapping 252:1.0
+0
+1
+dtr for mapping 254:1.0
+0
+dtr for mapping 255:1.0
+0
+dtr for mapping 256:1.0
+0
+dtr for mapping 257:1.0
+0
+dtr for mapping 258:1.0
+1
+dtr for mapping 259:155.76
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#dateSyncNPD(URI("http://sws.ifi.uio.no/data/npd-v2/quadrant/{}",t43),http://www.w3.org/2001/XMLSchema#dateTime(t64)) <- create temporary table 
+table258 
+as 
+select distinct wellbore_development_all."dateSyncNPD" as "dateSyncNPD", 
+wellbore_development_all."wlbNamePart1" as "wlbNamePart1" from 
+"wellbore_development_all" wellbore_development_all 
+where 
+wellbore_development_all."dateSyncNPD" <> '9999-12-31T00:00:00' and 
+wellbore_development_all."wlbNamePart1" IS NOT NULL and 
+wellbore_development_all."dateSyncNPD" IS NOT NULL
+
+1
+dtr for mapping 260:1.0
+0
+dtr for mapping 261:1.0095923261390887
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#DiscoveryWellbore(URI("http://sws.ifi.uio.no/data/npd-v2/wellbore/{}",t21)) <- create temporary table 
+table260 
+as 
+select distinct discovery."wlbNpdidWellbore" as "wlbNpdidWellbore" from 
+"discovery" discovery 
+where 
+discovery."wlbNpdidWellbore" IS NOT NULL
+
+0
+dtr for mapping 262:1.0
+0
+dtr for mapping 263:1.0
+0
+dtr for mapping 264:1.0
+0
+dtr for mapping 265:1.0
+1
+dtr for mapping 266:1583232.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/LowerTriassic")) <- create temporary table 
+table265 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'EARLY TRIASSIC') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'EARLY TRIASSIC') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'EARLY TRIASSIC') or (wellbore_exploration_all."wlbAgeAtTd" = 'EARLY TRIASSIC'))))
+
+0
+dtr for mapping 267:1.0
+0
+dtr for mapping 268:1.0
+1
+dtr for mapping 269:1.0
+0
+dtr for mapping 270:1.0
+1
+dtr for mapping 271:1.0
+0
+dtr for mapping 272:1.0
+0
+dtr for mapping 273:1.0
+1
+dtr for mapping 274:636424.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Mississippian")) <- create temporary table 
+table273 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'EARLY CARBONIFEROUS') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'EARLY CARBONIFEROUS') or ((wellbore_exploration_all."wlbAgeAtTd" = 'EARLY CARBONIFEROUS') or (wellbore_exploration_all."wlbAgeWithHc3" = 'EARLY CARBONIFEROUS'))))
+
+1
+dtr for mapping 275:1.0
+0
+dtr for mapping 276:1.0
+0
+dtr for mapping 277:1.0
+1
+dtr for mapping 278:1.0
+0
+dtr for mapping 279:1.0
+1
+dtr for mapping 280:6435.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/MiddleJurassic")) <- create temporary table 
+table279 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'MIDDLE JURASSIC') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'MIDDLE JURASSIC') or (wellbore_exploration_all."wlbAgeWithHc3" = 'MIDDLE JURASSIC')))
+
+1
+dtr for mapping 281:1.0
+0
+dtr for mapping 282:1.0
+1
+dtr for mapping 283:1.0
+0
+dtr for mapping 284:1.0
+1
+dtr for mapping 285:6076.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/UpperCretaceous")) <- create temporary table 
+table284 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'LATE CRETACEOUS') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'LATE CRETACEOUS') or (wellbore_exploration_all."wlbAgeWithHc3" = 'LATE CRETACEOUS')))
+
+1
+dtr for mapping 286:1.0
+1
+dtr for mapping 287:1193960.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Oligocene")) <- create temporary table 
+table286 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeAtTd" = 'OLIGOCENE') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'OLIGOCENE') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'OLIGOCENE') or (wellbore_exploration_all."wlbAgeWithHc2" = 'OLIGOCENE'))))
+
+0
+dtr for mapping 288:1.0
+0
+dtr for mapping 289:1.0
+0
+dtr for mapping 290:1.0
+0
+dtr for mapping 291:1.0
+1
+dtr for mapping 292:1.0
+0
+dtr for mapping 293:1.0
+0
+1
+dtr for mapping 295:1.0
+0
+dtr for mapping 296:1.0
+0
+dtr for mapping 297:1.0
+1
+dtr for mapping 298:1.0
+0
+dtr for mapping 299:1.0
+1
+dtr for mapping 300:1.0
+0
+dtr for mapping 301:1.0
+1
+dtr for mapping 302:1.0
+0
+dtr for mapping 303:1.0
+0
+0
+1
+dtr for mapping 306:1.0
+1
+dtr for mapping 307:1.0
+0
+dtr for mapping 308:1.0
+1
+dtr for mapping 309:1.0
+0
+dtr for mapping 310:1.0
+0
+dtr for mapping 311:240.55439161966157
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Miocene")) <- create temporary table 
+table310 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'MIOCENE') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'MIOCENE') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'MIOCENE') or (wellbore_exploration_all."wlbAgeAtTd" = 'MIOCENE')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+1
+1
+dtr for mapping 313:1.0
+1
+dtr for mapping 314:1.0
+0
+dtr for mapping 315:1.0
+1
+dtr for mapping 316:1.0
+1
+dtr for mapping 317:1.0
+1
+dtr for mapping 318:180.68282252316465
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Campanian")) <- create temporary table 
+table317 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'CAMPANIAN') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'CAMPANIAN') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'CAMPANIAN') or (wellbore_exploration_all."wlbAgeAtTd" = 'CAMPANIAN')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+0
+dtr for mapping 319:1.0
+0
+dtr for mapping 320:1.0
+1
+dtr for mapping 321:1.0
+0
+dtr for mapping 322:1.0
+1
+dtr for mapping 323:1.0
+0
+dtr for mapping 324:1.0
+1
+dtr for mapping 325:247.35964068014115
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/MiddleTriassic")) <- create temporary table 
+table324 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'MIDDLE TRIASSIC') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'MIDDLE TRIASSIC') or ((wellbore_exploration_all."wlbAgeAtTd" = 'MIDDLE TRIASSIC') or (wellbore_exploration_all."wlbAgeWithHc3" = 'MIDDLE TRIASSIC')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+1
+dtr for mapping 326:1.0
+1
+dtr for mapping 327:1.0
+1
+dtr for mapping 328:443.3723076923077
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Danian")) <- create temporary table 
+table327 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'DANIAN') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'DANIAN') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'DANIAN') or (wellbore_exploration_all."wlbAgeAtTd" = 'DANIAN')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+0
+dtr for mapping 329:1.0
+0
+0
+dtr for mapping 331:1.0
+1
+dtr for mapping 332:1.0
+1
+dtr for mapping 333:1.0
+0
+dtr for mapping 334:1.0
+0
+dtr for mapping 335:1.0
+0
+1
+dtr for mapping 337:1.0
+0
+dtr for mapping 338:1.0
+1
+dtr for mapping 339:1.0
+0
+dtr for mapping 340:1.0
+0
+dtr for mapping 341:1.6637069922308545
+view to materialize:http://www.opengis.net/ont/geosparql#Feature(URI("http://sws.ifi.uio.no/data/npd-v2/licence/{}",t9)) <- create temporary table 
+table340 
+as 
+select distinct prlArea."prlNpdidLicence" as "prlNpdidLicence" from 
+"prlArea" prlArea 
+where 
+prlArea."prlNpdidLicence" IS NOT NULL
+
+0
+dtr for mapping 342:1.0
+0
+dtr for mapping 343:1.0
+0
+dtr for mapping 344:1.0
+0
+dtr for mapping 345:1.0
+1
+dtr for mapping 346:1.0
+0
+dtr for mapping 347:1.0
+0
+dtr for mapping 348:1.0
+1
+1
+dtr for mapping 350:1.0
+1
+dtr for mapping 351:1.0
+0
+dtr for mapping 352:1.0
+1
+dtr for mapping 353:1.8888888888888888
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#isTurnAreaIncluded(URI("http://sws.ifi.uio.no/data/npd-v2/survey/{}/area",t0),http://www.w3.org/2000/01/rdf-schema#Literal("false")) <- create temporary table 
+table352 
+as 
+select distinct seaArea."seaSurveyName" as "seaSurveyName" from 
+"seaArea" seaArea 
+where 
+seaArea."seaPolygonKind" = 'Område unntatt snuområde' and 
+seaArea."seaSurveyName" IS NOT NULL
+
+1
+dtr for mapping 354:1.0
+0
+dtr for mapping 355:1.0
+0
+dtr for mapping 356:1.0
+0
+1
+dtr for mapping 358:1.0
+0
+dtr for mapping 359:1542040.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/LowerCretaceous")) <- create temporary table 
+table358 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc3" = 'EARLY CRETACEOUS') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'EARLY CRETACEOUS') or ((wellbore_exploration_all."wlbAgeAtTd" = 'EARLY CRETACEOUS') or (wellbore_exploration_all."wlbAgeWithHc2" = 'EARLY CRETACEOUS'))))
+
+1
+dtr for mapping 360:1.0
+0
+dtr for mapping 361:1.0
+0
+dtr for mapping 362:1.0
+0
+dtr for mapping 363:1.0
+1
+dtr for mapping 364:1.0
+0
+dtr for mapping 365:1.0
+0
+dtr for mapping 366:1.0
+0
+dtr for mapping 367:1.0
+0
+dtr for mapping 368:152.0
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#wellboreFormationHc(URI("http://sws.ifi.uio.no/data/npd-v2/wellbore/{}",t69),URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86)) <- create temporary table 
+table367 
+as 
+select distinct wellbore_exploration_all."wlbNpdidWellbore" as "wlbNpdidWellbore", 
+wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationWithHc3" = wellbore_formation_top."lsuName" and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL and 
+wellbore_exploration_all."wlbNpdidWellbore" IS NOT NULL
+
+1
+dtr for mapping 369:1.0
+0
+dtr for mapping 370:19.5
+view to materialize:http://www.ifomis.org/bfo/1.1/snap#Continuant(URI("http://sws.ifi.uio.no/data/npd-v2/quadrant/{}",t57)) <- create temporary table 
+table369 
+as 
+select distinct wellbore_exploration_all."wlbNamePart1" as "wlbNamePart1" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+wellbore_exploration_all."wlbNamePart1" IS NOT NULL
+
+0
+dtr for mapping 371:19.5
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#dateSyncNPD(URI("http://sws.ifi.uio.no/data/npd-v2/quadrant/{}",t57),http://www.w3.org/2001/XMLSchema#dateTime(t78)) <- create temporary table 
+table370 
+as 
+select distinct wellbore_exploration_all."dateSyncNPD" as "dateSyncNPD", 
+wellbore_exploration_all."wlbNamePart1" as "wlbNamePart1" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+wellbore_exploration_all."dateSyncNPD" <> '9999-12-31T00:00:00' and 
+wellbore_exploration_all."dateSyncNPD" IS NOT NULL and 
+wellbore_exploration_all."wlbNamePart1" IS NOT NULL
+
+0
+dtr for mapping 372:1.0
+0
+dtr for mapping 373:1.0
+0
+dtr for mapping 374:1.0
+1
+dtr for mapping 375:1251872.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Cretaceous")) <- create temporary table 
+table374 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'CRETACEOUS') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'CRETACEOUS') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'CRETACEOUS') or (wellbore_exploration_all."wlbAgeAtTd" = 'CRETACEOUS'))))
+
+0
+dtr for mapping 376:1.0
+0
+dtr for mapping 377:1.0
+0
+dtr for mapping 378:1.0
+0
+dtr for mapping 379:1.0
+0
+dtr for mapping 380:1.0
+0
+dtr for mapping 381:1.0
+1
+dtr for mapping 382:1.0
+0
+dtr for mapping 383:1.0
+1
+dtr for mapping 384:1.0
+1
+dtr for mapping 385:1.0
+1
+dtr for mapping 386:1.0
+0
+dtr for mapping 387:1.0
+0
+dtr for mapping 388:1.0
+1
+dtr for mapping 389:1.0
+0
+dtr for mapping 390:1.0
+0
+dtr for mapping 391:1.0
+0
+dtr for mapping 392:1.0
+0
+dtr for mapping 393:1.0
+1
+1
+dtr for mapping 395:1.0
+0
+dtr for mapping 396:1.0
+0
+dtr for mapping 397:1.0
+0
+0
+dtr for mapping 399:152.0
+view to materialize:http://www.ifomis.org/bfo/1.1/snap#Site(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t7)) <- create temporary table 
+table398 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+1
+0
+dtr for mapping 401:1.0
+0
+dtr for mapping 402:1.0
+0
+dtr for mapping 403:1.0
+0
+dtr for mapping 404:1.0
+0
+dtr for mapping 405:1.0
+1
+dtr for mapping 406:1.0
+1
+dtr for mapping 407:1194112.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Miocene")) <- create temporary table 
+table406 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'MIOCENE') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'MIOCENE') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'MIOCENE') or (wellbore_exploration_all."wlbAgeAtTd" = 'MIOCENE'))))
+
+1
+dtr for mapping 408:1.0
+0
+1
+dtr for mapping 410:1.0
+0
+dtr for mapping 411:1.0
+0
+dtr for mapping 412:1.0
+0
+dtr for mapping 413:1.0
+0
+dtr for mapping 414:1.0
+0
+dtr for mapping 415:1525624.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Eocene")) <- create temporary table 
+table416 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'EOCENE') or ((wellbore_exploration_all."wlbAgeAtTd" = 'EOCENE') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'EOCENE') or (wellbore_exploration_all."wlbAgeWithHc3" = 'EOCENE'))))
+
+0
+dtr for mapping 416:1.0
+1
+dtr for mapping 417:1.0
+1
+dtr for mapping 418:1.0
+0
+dtr for mapping 419:131.88
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#name(URI("http://sws.ifi.uio.no/data/npd-v2/facility/{}",t5),http://www.w3.org/2001/XMLSchema#string(t0)) <- create temporary table 
+table420 
+as 
+select distinct tuf_owner_hst."tufNpdidTuf" as "tufNpdidTuf", 
+tuf_owner_hst."tufName" as "tufName" from 
+"tuf_owner_hst" tuf_owner_hst 
+where 
+tuf_owner_hst."tufNpdidTuf" IS NOT NULL and 
+tuf_owner_hst."tufName" IS NOT NULL
+
+1
+dtr for mapping 420:1.0
+0
+dtr for mapping 421:1.0
+0
+dtr for mapping 422:1.0
+0
+dtr for mapping 423:1.0
+0
+dtr for mapping 424:1.0
+1
+0
+dtr for mapping 426:1.0
+1
+dtr for mapping 427:1.0
+1
+dtr for mapping 428:1.0
+0
+dtr for mapping 429:1.0
+0
+dtr for mapping 430:1.0
+0
+dtr for mapping 431:1.0
+0
+dtr for mapping 432:391.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Cisuralian")) <- create temporary table 
+table433 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'EARLY PERMIAN') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'EARLY PERMIAN') or (wellbore_exploration_all."wlbAgeWithHc3" = 'EARLY PERMIAN')))
+
+0
+dtr for mapping 433:1.0
+1
+dtr for mapping 434:1.0
+1
+dtr for mapping 435:1.0
+1
+dtr for mapping 436:1.0
+0
+dtr for mapping 437:1.0
+1
+dtr for mapping 438:1.0
+0
+dtr for mapping 439:1.0
+1
+dtr for mapping 440:1.0
+1
+dtr for mapping 441:1.0
+0
+dtr for mapping 442:1.0
+0
+dtr for mapping 443:1.0
+1
+dtr for mapping 444:1.0
+0
+dtr for mapping 445:1.0
+1
+dtr for mapping 446:1.0
+0
+dtr for mapping 447:1.0
+0
+dtr for mapping 448:1.0
+1
+dtr for mapping 449:1.0
+0
+dtr for mapping 450:50.666666666666664
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#stratigraphicLevel(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t7),http://www.w3.org/2000/01/rdf-schema#Literal(t4)) <- create temporary table 
+table451 
+as 
+select distinct wellbore_formation_top."lsuLevel" as "lsuLevel", 
+wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_formation_top."lsuLevel" IS NOT NULL and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+1
+dtr for mapping 451:1.0
+0
+dtr for mapping 452:1.0
+0
+dtr for mapping 453:1.0
+1
+dtr for mapping 454:1.0
+0
+dtr for mapping 455:1.0
+1
+1
+dtr for mapping 457:1.0
+0
+dtr for mapping 458:1.0
+0
+dtr for mapping 459:1.0
+0
+dtr for mapping 460:1.0
+0
+dtr for mapping 461:1.0
+1
+dtr for mapping 462:1.0
+0
+dtr for mapping 463:1.0
+0
+dtr for mapping 464:1.0
+0
+dtr for mapping 465:1.0
+0
+dtr for mapping 466:1.0
+0
+dtr for mapping 467:1.0
+0
+dtr for mapping 468:1.0
+0
+dtr for mapping 469:1.0
+0
+dtr for mapping 470:3792.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Pliocene")) <- create temporary table 
+table471 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'PLIOCENE') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'PLIOCENE') or (wellbore_exploration_all."wlbAgeWithHc3" = 'PLIOCENE')))
+
+0
+dtr for mapping 471:1.0
+0
+dtr for mapping 472:1.0
+0
+dtr for mapping 473:1.0
+0
+dtr for mapping 474:1.0
+0
+dtr for mapping 475:1.0
+0
+dtr for mapping 476:1.0
+0
+dtr for mapping 477:636424.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Piacenzian")) <- create temporary table 
+table478 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'LATE PLIOCENE') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'LATE PLIOCENE') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'LATE PLIOCENE') or (wellbore_exploration_all."wlbAgeAtTd" = 'LATE PLIOCENE'))))
+
+0
+dtr for mapping 478:1.0
+1
+dtr for mapping 479:1.0
+1
+dtr for mapping 480:1194264.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Pliocene")) <- create temporary table 
+table481 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc3" = 'PLIOCENE') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'PLIOCENE') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'PLIOCENE') or (wellbore_exploration_all."wlbAgeAtTd" = 'PLIOCENE'))))
+
+0
+dtr for mapping 481:1.0
+0
+dtr for mapping 482:1.0
+1
+dtr for mapping 483:1.0
+0
+dtr for mapping 484:1.0
+0
+dtr for mapping 485:1.0
+0
+dtr for mapping 486:1.0
+1
+dtr for mapping 487:1.0
+1
+dtr for mapping 488:1194264.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Devonian")) <- create temporary table 
+table489 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'DEVONIAN') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'DEVONIAN') or ((wellbore_exploration_all."wlbAgeAtTd" = 'DEVONIAN') or (wellbore_exploration_all."wlbAgeWithHc3" = 'DEVONIAN'))))
+
+1
+dtr for mapping 489:1.0
+1
+dtr for mapping 490:1.0
+0
+dtr for mapping 491:1.0
+0
+dtr for mapping 492:1.0
+1
+dtr for mapping 493:1.0
+1
+dtr for mapping 494:1.0
+1
+dtr for mapping 495:1.0
+0
+0
+dtr for mapping 497:1.0
+0
+dtr for mapping 498:1.0
+0
+dtr for mapping 499:3.2175360710321863
+view to materialize:http://www.opengis.net/ont/geosparql#Feature(URI("http://sws.ifi.uio.no/data/npd-v2/licence/{}",t9)) <- create temporary table 
+table500 
+as 
+select distinct prlAreaSplitByBlock."prlNpdidLicence" as "prlNpdidLicence" from 
+"prlAreaSplitByBlock" prlAreaSplitByBlock 
+where 
+prlAreaSplitByBlock."prlNpdidLicence" IS NOT NULL
+
+0
+dtr for mapping 500:1.0
+1
+dtr for mapping 501:1.0
+0
+dtr for mapping 502:1.0
+0
+dtr for mapping 503:1.0
+1
+dtr for mapping 504:1.0
+0
+dtr for mapping 505:1.0
+0
+dtr for mapping 506:1.0
+0
+dtr for mapping 507:1.0
+1
+dtr for mapping 508:245.26987274830606
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Paleocene")) <- create temporary table 
+table509 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeAtTd" = 'PALEOCENE') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'PALEOCENE') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'PALEOCENE') or (wellbore_exploration_all."wlbAgeWithHc1" = 'PALEOCENE')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+1
+dtr for mapping 509:1.0
+1
+dtr for mapping 510:1.0
+2
+dtr for mapping 511:1.0
+0
+dtr for mapping 512:1.0
+0
+dtr for mapping 513:1.0
+0
+dtr for mapping 514:1.0
+0
+dtr for mapping 515:1.0
+1
+dtr for mapping 516:152.0
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Pennsylvanian")) <- create temporary table 
+table517 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeAtTd" = 'LATE CARBONIFEROUS') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'LATE CARBONIFEROUS') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'LATE CARBONIFEROUS') or (wellbore_exploration_all."wlbAgeWithHc3" = 'LATE CARBONIFEROUS')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+0
+dtr for mapping 517:1.0
+0
+dtr for mapping 518:1.8888888888888888
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#isMarketAvailable(URI("http://sws.ifi.uio.no/data/npd-v2/survey/{}/area",t0),http://www.w3.org/2000/01/rdf-schema#Literal("false")) <- create temporary table 
+table519 
+as 
+select distinct seaArea."seaSurveyName" as "seaSurveyName" from 
+"seaArea" seaArea 
+where 
+seaArea."seaMarketAvailable" = 'Nei' and 
+seaArea."seaSurveyName" IS NOT NULL
+
+0
+dtr for mapping 519:1.0
+0
+dtr for mapping 520:1.0
+0
+dtr for mapping 521:1.0
+1
+0
+dtr for mapping 523:1.0
+0
+dtr for mapping 524:1.0
+0
+dtr for mapping 525:1.0
+0
+1
+dtr for mapping 527:1.4637714816535068
+view to materialize:http://www.ifomis.org/bfo/1.1/snap#Continuant(URI("http://sws.ifi.uio.no/data/npd-v2/well/{}",t2)) <- create temporary table 
+table528 
+as 
+select distinct wellbore_npdid_overview."wlbWell" as "wlbWell" from 
+"wellbore_npdid_overview" wellbore_npdid_overview 
+where 
+wellbore_npdid_overview."wlbWell" IS NOT NULL
+
+1
+dtr for mapping 528:1.0
+0
+dtr for mapping 529:1.0
+1
+dtr for mapping 530:1.0
+0
+dtr for mapping 531:1.0
+0
+dtr for mapping 532:1.0
+0
+dtr for mapping 533:1.0
+0
+dtr for mapping 534:1.0
+0
+dtr for mapping 535:1.0
+1
+dtr for mapping 536:1.0
+0
+0
+1
+dtr for mapping 539:1.0
+1
+dtr for mapping 540:178.22909760589317
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Permian")) <- create temporary table 
+table541 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'PERMIAN') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'PERMIAN') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'PERMIAN') or (wellbore_exploration_all."wlbAgeAtTd" = 'PERMIAN')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+0
+dtr for mapping 541:1.0
+1
+dtr for mapping 542:1.0
+0
+dtr for mapping 543:152.0
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#name(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t7),http://www.w3.org/2001/XMLSchema#string(t3)) <- create temporary table 
+table544 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat", 
+wellbore_formation_top."lsuName" as "lsuName" from 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL and 
+wellbore_formation_top."lsuName" IS NOT NULL
+
+0
+dtr for mapping 544:1.0
+0
+dtr for mapping 545:1.4637714816535068
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#dateSyncNPD(URI("http://sws.ifi.uio.no/data/npd-v2/well/{}",t2),http://www.w3.org/2001/XMLSchema#dateTime(t4)) <- create temporary table 
+table546 
+as 
+select distinct wellbore_npdid_overview."wlbWell" as "wlbWell", 
+wellbore_npdid_overview."dateSyncNPD" as "dateSyncNPD" from 
+"wellbore_npdid_overview" wellbore_npdid_overview 
+where 
+wellbore_npdid_overview."dateSyncNPD" <> '9999-12-31T00:00:00' and 
+wellbore_npdid_overview."dateSyncNPD" IS NOT NULL and 
+wellbore_npdid_overview."wlbWell" IS NOT NULL
+
+0
+dtr for mapping 546:1.0
+0
+dtr for mapping 547:1.0
+1
+dtr for mapping 548:1.0
+1
+0
+dtr for mapping 550:1.0
+0
+dtr for mapping 551:1.0
+0
+dtr for mapping 552:1.0
+0
+dtr for mapping 553:1.0
+0
+dtr for mapping 554:1.0
+0
+dtr for mapping 555:1.0
+0
+dtr for mapping 556:1.0
+0
+dtr for mapping 557:1.0
+1
+dtr for mapping 558:1.0
+0
+dtr for mapping 559:1.0
+1
+dtr for mapping 560:1.0
+0
+dtr for mapping 561:1.0
+0
+dtr for mapping 562:1.0
+0
+dtr for mapping 563:1.0
+0
+dtr for mapping 564:1.0
+0
+dtr for mapping 565:1.0
+0
+dtr for mapping 566:1.0
+0
+dtr for mapping 567:1.0
+0
+1
+dtr for mapping 569:1.0
+0
+dtr for mapping 570:1.0
+1
+1
+dtr for mapping 572:1.0
+0
+dtr for mapping 573:1.0
+1
+dtr for mapping 574:1.0
+1
+dtr for mapping 575:1.0
+0
+dtr for mapping 576:1.0
+0
+dtr for mapping 577:1.0
+0
+dtr for mapping 578:1.0
+0
+dtr for mapping 579:1.0
+1
+dtr for mapping 580:1484280.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Jurassic")) <- create temporary table 
+table581 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'JURASSIC') or ((wellbore_exploration_all."wlbAgeAtTd" = 'JURASSIC') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'JURASSIC') or (wellbore_exploration_all."wlbAgeWithHc3" = 'JURASSIC'))))
+
+0
+dtr for mapping 581:1.0
+1
+dtr for mapping 582:1.8888888888888888
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#isGeometryOfFeature(URI("http://sws.ifi.uio.no/data/npd-v2/survey/{}/area",t18),URI("http://sws.ifi.uio.no/data/npd-v2/survey/{}",t0)) <- create temporary table 
+table583 
+as 
+select distinct seaArea."seaSurveyName" as "seaSurveyName", 
+seis_acquisition."seaName" as "seaName" from 
+"seis_acquisition" seis_acquisition, 
+"seaArea" seaArea 
+where 
+seis_acquisition."seaNpdidSurvey" = seaArea."seaNpdidSurvey" and 
+seaArea."seaSurveyName" IS NOT NULL and 
+seis_acquisition."seaName" IS NOT NULL
+
+0
+dtr for mapping 583:1.0
+0
+dtr for mapping 584:1.0
+1
+dtr for mapping 585:1.0
+0
+0
+dtr for mapping 587:1.0
+1
+dtr for mapping 588:1.0
+1
+dtr for mapping 589:3791.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Lopingian")) <- create temporary table 
+table590 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'LATE PERMIAN') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'LATE PERMIAN') or (wellbore_exploration_all."wlbAgeWithHc3" = 'LATE PERMIAN')))
+
+0
+dtr for mapping 590:1.0
+0
+dtr for mapping 591:1.0
+0
+dtr for mapping 592:1.0
+0
+dtr for mapping 593:1.0
+0
+dtr for mapping 594:2.3529411764705883
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#Facility(URI("http://sws.ifi.uio.no/data/npd-v2/facility/{}",t4)) <- create temporary table 
+table595 
+as 
+select distinct tuf_operator_hst."tufNpdidTuf" as "tufNpdidTuf" from 
+"tuf_operator_hst" tuf_operator_hst 
+where 
+tuf_operator_hst."tufNpdidTuf" IS NOT NULL
+
+0
+dtr for mapping 595:1.0
+1
+dtr for mapping 596:1.0
+0
+dtr for mapping 597:1.0
+1
+dtr for mapping 598:1.0
+0
+dtr for mapping 599:1.0
+0
+dtr for mapping 600:1.0
+0
+dtr for mapping 601:1.0
+0
+0
+dtr for mapping 603:1.0
+1
+dtr for mapping 604:1.0
+0
+dtr for mapping 605:1.0
+1
+dtr for mapping 606:1.0
+0
+dtr for mapping 607:1.0
+1
+dtr for mapping 608:6046.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Triassic")) <- create temporary table 
+table609 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'TRIASSIC') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'TRIASSIC') or (wellbore_exploration_all."wlbAgeWithHc3" = 'TRIASSIC')))
+
+1
+dtr for mapping 609:1.0
+0
+dtr for mapping 610:1194264.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Lopingian")) <- create temporary table 
+table611 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc3" = 'LATE PERMIAN') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'LATE PERMIAN') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'LATE PERMIAN') or (wellbore_exploration_all."wlbAgeAtTd" = 'LATE PERMIAN'))))
+
+0
+dtr for mapping 611:1.0
+0
+dtr for mapping 612:1.0
+0
+dtr for mapping 613:1.0
+1
+dtr for mapping 614:1.0
+1
+dtr for mapping 615:152.0
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Silurian")) <- create temporary table 
+table616 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'SILURIAN') or ((wellbore_exploration_all."wlbAgeAtTd" = 'SILURIAN') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'SILURIAN') or (wellbore_exploration_all."wlbAgeWithHc3" = 'SILURIAN')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+1
+dtr for mapping 616:1.0
+0
+dtr for mapping 617:1.0
+0
+dtr for mapping 618:1.0
+0
+dtr for mapping 619:1.0
+1
+dtr for mapping 620:1.0
+1
+dtr for mapping 621:152.0
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Carboniferous")) <- create temporary table 
+table622 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc3" = 'CARBONIFEROUS') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'CARBONIFEROUS') or ((wellbore_exploration_all."wlbAgeAtTd" = 'CARBONIFEROUS') or (wellbore_exploration_all."wlbAgeWithHc2" = 'CARBONIFEROUS')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+0
+dtr for mapping 622:1.0
+0
+dtr for mapping 623:1.0
+1
+dtr for mapping 624:1.0
+0
+dtr for mapping 625:1.0
+0
+dtr for mapping 626:1.0
+0
+dtr for mapping 627:1.0
+0
+dtr for mapping 628:1.0
+0
+0
+dtr for mapping 630:1.0
+0
+dtr for mapping 631:1582928.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/MiddleJurassic")) <- create temporary table 
+table632 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'MIDDLE JURASSIC') or ((wellbore_exploration_all."wlbAgeAtTd" = 'MIDDLE JURASSIC') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'MIDDLE JURASSIC') or (wellbore_exploration_all."wlbAgeWithHc1" = 'MIDDLE JURASSIC'))))
+
+0
+dtr for mapping 632:1.0
+0
+dtr for mapping 633:8.16504854368932
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#dateSyncNPD(URI("http://sws.ifi.uio.no/data/npd-v2/quadrant/{}",t29),http://www.w3.org/2001/XMLSchema#dateTime(t37)) <- create temporary table 
+table634 
+as 
+select distinct wellbore_shallow_all."dateSyncNPD" as "dateSyncNPD", 
+wellbore_shallow_all."wlbNamePart1" as "wlbNamePart1" from 
+"wellbore_shallow_all" wellbore_shallow_all 
+where 
+wellbore_shallow_all."dateSyncNPD" <> '9999-12-31T00:00:00' and 
+wellbore_shallow_all."dateSyncNPD" IS NOT NULL and 
+wellbore_shallow_all."wlbNamePart1" IS NOT NULL
+
+0
+dtr for mapping 634:1.0
+0
+dtr for mapping 635:1.0
+1
+dtr for mapping 636:1.0
+0
+dtr for mapping 637:1.0
+0
+dtr for mapping 638:1.0
+1
+dtr for mapping 639:1.0
+0
+dtr for mapping 640:1.0
+0
+dtr for mapping 641:1.0
+0
+dtr for mapping 642:1.0
+0
+dtr for mapping 643:1.0
+0
+dtr for mapping 644:1.0
+0
+dtr for mapping 645:1.0
+0
+dtr for mapping 646:2.0309278350515463
+view to materialize:http://www.opengis.net/ont/geosparql#Feature(URI("http://sws.ifi.uio.no/data/npd-v2/field/{}",t8)) <- create temporary table 
+table647 
+as 
+select distinct fldArea."fldNpdidField" as "fldNpdidField" from 
+"fldArea" fldArea 
+where 
+fldArea."fldNpdidField" IS NOT NULL
+
+0
+dtr for mapping 647:1.0
+0
+dtr for mapping 648:1.0
+0
+dtr for mapping 649:1.0
+0
+dtr for mapping 650:1.0
+1
+dtr for mapping 651:1.0
+0
+dtr for mapping 652:1.0
+0
+dtr for mapping 653:1.0
+0
+dtr for mapping 654:1.0
+0
+dtr for mapping 655:1.0
+1
+0
+0
+dtr for mapping 658:131.88
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#Facility(URI("http://sws.ifi.uio.no/data/npd-v2/facility/{}",t5)) <- create temporary table 
+table659 
+as 
+select distinct tuf_owner_hst."tufNpdidTuf" as "tufNpdidTuf" from 
+"tuf_owner_hst" tuf_owner_hst 
+where 
+tuf_owner_hst."tufNpdidTuf" IS NOT NULL
+
+0
+dtr for mapping 659:3792.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Devonian")) <- create temporary table 
+table660 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'DEVONIAN') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'DEVONIAN') or (wellbore_exploration_all."wlbAgeWithHc3" = 'DEVONIAN')))
+
+1
+dtr for mapping 660:1.0
+0
+dtr for mapping 661:1.0
+1
+dtr for mapping 662:1.0
+0
+dtr for mapping 663:1.0
+0
+dtr for mapping 664:557.3448275862069
+view to materialize:http://www.ifomis.org/bfo/1.1/snap#Site(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t8)) <- create temporary table 
+table665 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStratParent" as "lsuNpdidLithoStratParent" from 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_formation_top."lsuNpdidLithoStratParent" IS NOT NULL
+
+0
+dtr for mapping 665:3.22164640223241
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#stratigraphicParent(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t7),URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t8)) <- create temporary table 
+table666 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat", 
+wellbore_formation_top."lsuNpdidLithoStratParent" as "lsuNpdidLithoStratParent" from 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL and 
+wellbore_formation_top."lsuNpdidLithoStratParent" IS NOT NULL
+
+1
+dtr for mapping 666:1.0
+1
+dtr for mapping 667:1.0
+0
+dtr for mapping 668:1.0
+0
+0
+dtr for mapping 670:1.0
+0
+dtr for mapping 671:1.0
+1
+dtr for mapping 672:1.0
+1
+dtr for mapping 673:1.0
+0
+dtr for mapping 674:1.0
+0
+dtr for mapping 675:1.0
+0
+dtr for mapping 676:1.0
+0
+dtr for mapping 677:1.0
+0
+dtr for mapping 678:1.0
+1
+dtr for mapping 679:5.17910447761194
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#coresForWellbore(URI("http://sws.ifi.uio.no/data/npd-v2/wellbore/{}/cores",t8),URI("http://sws.ifi.uio.no/data/npd-v2/wellbore/{}",t8)) <- create temporary table 
+table680 
+as 
+select distinct wellbore_core."wlbNpdidWellbore" as "wlbNpdidWellbore" from 
+"wellbore_core" wellbore_core 
+where 
+wellbore_core."wlbNpdidWellbore" IS NOT NULL
+
+1
+dtr for mapping 680:1.8888888888888888
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#isMarketAvailable(URI("http://sws.ifi.uio.no/data/npd-v2/survey/{}/area",t0),http://www.w3.org/2000/01/rdf-schema#Literal("true")) <- create temporary table 
+table681 
+as 
+select distinct seaArea."seaSurveyName" as "seaSurveyName" from 
+"seaArea" seaArea 
+where 
+seaArea."seaMarketAvailable" = 'Ja' and 
+seaArea."seaSurveyName" IS NOT NULL
+
+1
+dtr for mapping 681:1.0
+1
+dtr for mapping 682:1.0
+0
+dtr for mapping 683:1.0
+0
+dtr for mapping 684:1.0
+0
+0
+dtr for mapping 686:1.0
+1
+dtr for mapping 687:1.0
+0
+dtr for mapping 688:1.0
+0
+dtr for mapping 689:1.0
+0
+dtr for mapping 690:1.0
+0
+dtr for mapping 691:152.0
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#wellboreFormationTD(URI("http://sws.ifi.uio.no/data/npd-v2/wellbore/{}",t69),URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86)) <- create temporary table 
+table692 
+as 
+select distinct wellbore_exploration_all."wlbNpdidWellbore" as "wlbNpdidWellbore", 
+wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL and 
+wellbore_exploration_all."wlbNpdidWellbore" IS NOT NULL
+
+1
+dtr for mapping 692:1.0
+1
+dtr for mapping 693:1.0
+0
+dtr for mapping 694:1.0
+0
+dtr for mapping 695:1.0
+1
+dtr for mapping 696:1.0
+0
+dtr for mapping 697:2253.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Permian")) <- create temporary table 
+table698 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'PERMIAN') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'PERMIAN') or (wellbore_exploration_all."wlbAgeWithHc3" = 'PERMIAN')))
+
+0
+dtr for mapping 698:1.0
+0
+dtr for mapping 699:1.0
+0
+dtr for mapping 700:1.0
+1
+dtr for mapping 701:1.0
+0
+dtr for mapping 702:1.0
+1
+dtr for mapping 703:1.0
+1
+dtr for mapping 704:1.0
+0
+dtr for mapping 705:1.0
+0
+dtr for mapping 706:1.0
+1
+dtr for mapping 707:1.0
+0
+dtr for mapping 708:1.0
+1
+dtr for mapping 709:1.0
+1
+dtr for mapping 710:1.0
+0
+0
+dtr for mapping 712:1.0
+0
+dtr for mapping 713:1.0
+1
+dtr for mapping 714:1.0
+0
+dtr for mapping 715:1.0
+0
+dtr for mapping 716:1.0
+0
+dtr for mapping 717:254.04076392232386
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/MiddleJurassic")) <- create temporary table 
+table718 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'MIDDLE JURASSIC') or ((wellbore_exploration_all."wlbAgeAtTd" = 'MIDDLE JURASSIC') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'MIDDLE JURASSIC') or (wellbore_exploration_all."wlbAgeWithHc1" = 'MIDDLE JURASSIC')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+1
+dtr for mapping 718:1.0
+1
+dtr for mapping 719:1.0
+0
+dtr for mapping 720:1.0
+0
+dtr for mapping 721:1.0
+0
+dtr for mapping 722:1.0
+1
+dtr for mapping 723:1.0
+1
+dtr for mapping 724:1.0
+0
+0
+dtr for mapping 726:1.0
+0
+dtr for mapping 727:1.0
+0
+dtr for mapping 728:152.0
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#wellboreFormationHc(URI("http://sws.ifi.uio.no/data/npd-v2/wellbore/{}",t69),URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86)) <- create temporary table 
+table729 
+as 
+select distinct wellbore_exploration_all."wlbNpdidWellbore" as "wlbNpdidWellbore", 
+wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationWithHc1" = wellbore_formation_top."lsuName" and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL and 
+wellbore_exploration_all."wlbNpdidWellbore" IS NOT NULL
+
+0
+dtr for mapping 729:1.0
+0
+dtr for mapping 730:1.0
+1
+dtr for mapping 731:1.0
+1
+dtr for mapping 732:1.0
+0
+dtr for mapping 733:1.0
+0
+dtr for mapping 734:1.0
+0
+dtr for mapping 735:1.0
+0
+dtr for mapping 736:1.0
+1
+dtr for mapping 737:1.0
+0
+dtr for mapping 738:1.0
+0
+dtr for mapping 739:1.0
+0
+dtr for mapping 740:1.0
+0
+dtr for mapping 741:1.0207253886010363
+view to materialize:http://www.opengis.net/ont/geosparql#Feature(URI("http://sws.ifi.uio.no/data/npd-v2/discovery/{}",t12)) <- create temporary table 
+table742 
+as 
+select distinct fldArea."dscNpdidDiscovery" as "dscNpdidDiscovery" from 
+"fldArea" fldArea 
+where 
+fldArea."dscNpdidDiscovery" IS NOT NULL
+
+0
+dtr for mapping 742:1.0
+1
+0
+dtr for mapping 744:1.0
+0
+dtr for mapping 745:1.0
+0
+dtr for mapping 746:1.0
+0
+dtr for mapping 747:1.0
+0
+dtr for mapping 748:1.0
+0
+dtr for mapping 749:1.0
+0
+dtr for mapping 750:1.0
+0
+0
+dtr for mapping 752:1.0
+0
+0
+dtr for mapping 754:1.0
+1
+1
+dtr for mapping 756:1.0
+0
+dtr for mapping 757:1.0
+0
+dtr for mapping 758:1.0
+1
+dtr for mapping 759:1.0
+1
+dtr for mapping 760:3791.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Oligocene")) <- create temporary table 
+table761 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'OLIGOCENE') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'OLIGOCENE') or (wellbore_exploration_all."wlbAgeWithHc3" = 'OLIGOCENE')))
+
+0
+dtr for mapping 761:1.0
+1
+0
+dtr for mapping 763:1.0
+0
+dtr for mapping 764:1.0
+0
+dtr for mapping 765:1.0
+1
+dtr for mapping 766:1.0
+0
+dtr for mapping 767:1.0
+0
+dtr for mapping 768:1.0
+1
+dtr for mapping 769:1.0
+0
+dtr for mapping 770:240.53655589123866
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Thanetian")) <- create temporary table 
+table771 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'LATE PALEOCENE') or ((wellbore_exploration_all."wlbAgeAtTd" = 'LATE PALEOCENE') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'LATE PALEOCENE') or (wellbore_exploration_all."wlbAgeWithHc1" = 'LATE PALEOCENE')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+0
+dtr for mapping 771:1.0
+1
+dtr for mapping 772:1.0
+1
+dtr for mapping 773:1.0
+1
+dtr for mapping 774:1.0
+1
+dtr for mapping 775:241.0691315232043
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Cretaceous")) <- create temporary table 
+table776 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'CRETACEOUS') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'CRETACEOUS') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'CRETACEOUS') or (wellbore_exploration_all."wlbAgeAtTd" = 'CRETACEOUS')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+0
+dtr for mapping 776:1.0
+0
+dtr for mapping 777:1.0
+0
+dtr for mapping 778:1.0
+0
+dtr for mapping 779:1.0
+1
+0
+dtr for mapping 781:1.0
+0
+dtr for mapping 782:1.0
+0
+dtr for mapping 783:1.0
+0
+dtr for mapping 784:1.0
+0
+dtr for mapping 785:1.0
+0
+dtr for mapping 786:1.0
+0
+dtr for mapping 787:1.0
+1
+dtr for mapping 788:1.0
+0
+dtr for mapping 789:155.76
+view to materialize:http://www.ifomis.org/bfo/1.1/snap#Continuant(URI("http://sws.ifi.uio.no/data/npd-v2/quadrant/{}",t43)) <- create temporary table 
+table790 
+as 
+select distinct wellbore_development_all."wlbNamePart1" as "wlbNamePart1" from 
+"wellbore_development_all" wellbore_development_all 
+where 
+wellbore_development_all."wlbNamePart1" IS NOT NULL
+
+0
+dtr for mapping 790:1.0
+1
+dtr for mapping 791:1.0
+0
+dtr for mapping 792:1.0
+1
+dtr for mapping 793:1.0
+0
+dtr for mapping 794:1.0
+0
+dtr for mapping 795:1.0
+0
+dtr for mapping 796:1.0
+0
+dtr for mapping 797:1.0
+0
+dtr for mapping 798:1.8888888888888888
+view to materialize:http://www.opengis.net/ont/geosparql#Feature(URI("http://sws.ifi.uio.no/data/npd-v2/survey/{}",t0)) <- create temporary table 
+table799 
+as 
+select distinct seis_acquisition."seaName" as "seaName" from 
+"seis_acquisition" seis_acquisition, 
+"seaArea" seaArea 
+where 
+seis_acquisition."seaNpdidSurvey" = seaArea."seaNpdidSurvey" and 
+seis_acquisition."seaName" IS NOT NULL
+
+0
+dtr for mapping 799:1.0
+0
+dtr for mapping 800:1.0
+1
+dtr for mapping 801:1.0
+0
+dtr for mapping 802:1.0
+0
+dtr for mapping 803:1.0
+0
+dtr for mapping 804:1.0
+0
+0
+dtr for mapping 806:1.0
+1
+dtr for mapping 807:1.0
+0
+dtr for mapping 808:1.0
+0
+dtr for mapping 809:1.0
+1
+dtr for mapping 810:1.0
+1
+dtr for mapping 811:1.0
+0
+dtr for mapping 812:1.0
+1
+dtr for mapping 813:1.0
+0
+dtr for mapping 814:1.0
+0
+dtr for mapping 815:1.0
+0
+dtr for mapping 816:1.0
+0
+dtr for mapping 817:1.0
+0
+0
+dtr for mapping 819:1.0
+0
+dtr for mapping 820:12.98
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#dateSyncNPD(URI("http://sws.ifi.uio.no/data/npd-v2/block/{}/{}",t43,t44),http://www.w3.org/2001/XMLSchema#dateTime(t64)) <- create temporary table 
+table821 
+as 
+select distinct wellbore_development_all."dateSyncNPD" as "dateSyncNPD", 
+wellbore_development_all."wlbNamePart1" as "wlbNamePart1", 
+wellbore_development_all."wlbNamePart2" as "wlbNamePart2" from 
+"wellbore_development_all" wellbore_development_all 
+where 
+wellbore_development_all."dateSyncNPD" <> '9999-12-31T00:00:00' and 
+wellbore_development_all."wlbNamePart1" IS NOT NULL and 
+wellbore_development_all."dateSyncNPD" IS NOT NULL and 
+wellbore_development_all."wlbNamePart2" IS NOT NULL
+
+0
+dtr for mapping 821:1.0
+0
+dtr for mapping 822:1.0
+0
+dtr for mapping 823:1.0
+1
+dtr for mapping 824:1.0
+0
+dtr for mapping 825:1.0
+1
+dtr for mapping 826:1.0
+0
+0
+dtr for mapping 828:1.0
+0
+dtr for mapping 829:1.0
+0
+dtr for mapping 830:1.0
+0
+dtr for mapping 831:1.0
+0
+dtr for mapping 832:1.0
+0
+dtr for mapping 833:3792.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Thanetian")) <- create temporary table 
+table834 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'LATE PALEOCENE') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'LATE PALEOCENE') or (wellbore_exploration_all."wlbAgeWithHc3" = 'LATE PALEOCENE')))
+
+1
+dtr for mapping 834:1.0
+0
+dtr for mapping 835:1.0
+0
+dtr for mapping 836:152.0
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Piacenzian")) <- create temporary table 
+table837 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'LATE PLIOCENE') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'LATE PLIOCENE') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'LATE PLIOCENE') or (wellbore_exploration_all."wlbAgeAtTd" = 'LATE PLIOCENE')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+0
+dtr for mapping 837:1.0
+1
+dtr for mapping 838:1.0
+1
+dtr for mapping 839:967784.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Permian")) <- create temporary table 
+table840 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'PERMIAN') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'PERMIAN') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'PERMIAN') or (wellbore_exploration_all."wlbAgeAtTd" = 'PERMIAN'))))
+
+0
+dtr for mapping 840:1.0
+1
+dtr for mapping 841:1.0
+1
+dtr for mapping 842:1.0
+0
+dtr for mapping 843:1.0
+0
+0
+dtr for mapping 845:1.0
+0
+dtr for mapping 846:1.0
+1
+dtr for mapping 847:1.0
+0
+dtr for mapping 848:1.0
+0
+dtr for mapping 849:1.0
+1
+dtr for mapping 850:636424.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Carboniferous")) <- create temporary table 
+table851 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc3" = 'CARBONIFEROUS') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'CARBONIFEROUS') or ((wellbore_exploration_all."wlbAgeAtTd" = 'CARBONIFEROUS') or (wellbore_exploration_all."wlbAgeWithHc2" = 'CARBONIFEROUS'))))
+
+0
+dtr for mapping 851:1.0
+1
+dtr for mapping 852:1.0
+0
+dtr for mapping 853:1.0
+0
+dtr for mapping 854:1.0
+0
+dtr for mapping 855:1.0
+0
+dtr for mapping 856:1.0
+0
+dtr for mapping 857:1.0
+1
+dtr for mapping 858:1.0
+0
+dtr for mapping 859:1.0
+0
+dtr for mapping 860:1.0
+0
+dtr for mapping 861:1.0
+0
+0
+dtr for mapping 863:1.0
+1
+dtr for mapping 864:1.0
+0
+dtr for mapping 865:8.16504854368932
+view to materialize:http://www.ifomis.org/bfo/1.1/snap#Continuant(URI("http://sws.ifi.uio.no/data/npd-v2/quadrant/{}",t29)) <- create temporary table 
+table866 
+as 
+select distinct wellbore_shallow_all."wlbNamePart1" as "wlbNamePart1" from 
+"wellbore_shallow_all" wellbore_shallow_all 
+where 
+wellbore_shallow_all."wlbNamePart1" IS NOT NULL
+
+1
+dtr for mapping 866:1.0
+0
+dtr for mapping 867:1530336.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/UpperJurassic")) <- create temporary table 
+table868 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'LATE JURASSIC') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'LATE JURASSIC') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'LATE JURASSIC') or (wellbore_exploration_all."wlbAgeAtTd" = 'LATE JURASSIC'))))
+
+1
+dtr for mapping 868:1.0
+0
+dtr for mapping 869:1.0
+1
+dtr for mapping 870:1.0
+0
+dtr for mapping 871:1.0
+0
+dtr for mapping 872:1.0
+0
+dtr for mapping 873:1.0
+0
+dtr for mapping 874:1.0
+0
+dtr for mapping 875:1.0
+0
+dtr for mapping 876:1.0
+0
+dtr for mapping 877:1.0
+0
+dtr for mapping 878:1.0
+0
+dtr for mapping 879:1.0
+1
+dtr for mapping 880:1.0
+1
+dtr for mapping 881:252.1361533377396
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Triassic")) <- create temporary table 
+table882 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'TRIASSIC') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'TRIASSIC') or ((wellbore_exploration_all."wlbAgeAtTd" = 'TRIASSIC') or (wellbore_exploration_all."wlbAgeWithHc3" = 'TRIASSIC')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+0
+dtr for mapping 882:1.020997375328084
+view to materialize:http://www.opengis.net/ont/geosparql#Feature(URI("http://sws.ifi.uio.no/data/npd-v2/discovery/{}",t12)) <- create temporary table 
+table883 
+as 
+select distinct dscArea."dscNpdidDiscovery" as "dscNpdidDiscovery" from 
+"dscArea" dscArea 
+where 
+dscArea."dscNpdidDiscovery" IS NOT NULL
+
+0
+dtr for mapping 883:1.0
+0
+dtr for mapping 884:152.0
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#wellboreFormationHc(URI("http://sws.ifi.uio.no/data/npd-v2/wellbore/{}",t69),URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86)) <- create temporary table 
+table885 
+as 
+select distinct wellbore_exploration_all."wlbNpdidWellbore" as "wlbNpdidWellbore", 
+wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationWithHc2" = wellbore_formation_top."lsuName" and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL and 
+wellbore_exploration_all."wlbNpdidWellbore" IS NOT NULL
+
+1
+dtr for mapping 885:1.0
+0
+dtr for mapping 886:1.0
+0
+dtr for mapping 887:1.0
+0
+dtr for mapping 888:6436.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/LowerTriassic")) <- create temporary table 
+table889 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'EARLY TRIASSIC') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'EARLY TRIASSIC') or (wellbore_exploration_all."wlbAgeWithHc3" = 'EARLY TRIASSIC')))
+
+1
+dtr for mapping 889:1.0
+0
+dtr for mapping 890:1.0
+1
+dtr for mapping 891:1.0
+0
+dtr for mapping 892:1530488.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/UpperCretaceous")) <- create temporary table 
+table893 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'LATE CRETACEOUS') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'LATE CRETACEOUS') or ((wellbore_exploration_all."wlbAgeAtTd" = 'LATE CRETACEOUS') or (wellbore_exploration_all."wlbAgeWithHc3" = 'LATE CRETACEOUS'))))
+
+0
+dtr for mapping 893:1.0
+0
+dtr for mapping 894:5763.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Jurassic")) <- create temporary table 
+table895 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'JURASSIC') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'JURASSIC') or (wellbore_exploration_all."wlbAgeWithHc3" = 'JURASSIC')))
+
+0
+0
+dtr for mapping 896:1.0
+1
+dtr for mapping 897:1.0
+0
+dtr for mapping 898:1.0
+0
+dtr for mapping 899:1.0
+1
+dtr for mapping 900:1.0
+1
+dtr for mapping 901:1.0
+0
+dtr for mapping 902:1.0
+0
+dtr for mapping 903:1.0
+0
+dtr for mapping 904:1194264.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Thanetian")) <- create temporary table 
+table905 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'LATE PALEOCENE') or ((wellbore_exploration_all."wlbAgeAtTd" = 'LATE PALEOCENE') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'LATE PALEOCENE') or (wellbore_exploration_all."wlbAgeWithHc1" = 'LATE PALEOCENE'))))
+
+0
+dtr for mapping 905:1.0
+0
+dtr for mapping 906:1.0
+0
+dtr for mapping 907:1.0
+0
+dtr for mapping 908:1.0
+0
+dtr for mapping 909:1.0
+0
+dtr for mapping 910:1.0
+0
+dtr for mapping 911:1.0
+0
+dtr for mapping 912:1.0
+1
+dtr for mapping 913:636424.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Pennsylvanian")) <- create temporary table 
+table914 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeAtTd" = 'LATE CARBONIFEROUS') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'LATE CARBONIFEROUS') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'LATE CARBONIFEROUS') or (wellbore_exploration_all."wlbAgeWithHc3" = 'LATE CARBONIFEROUS'))))
+
+1
+dtr for mapping 914:1.0
+0
+dtr for mapping 915:1.0
+0
+dtr for mapping 916:1.0
+1
+dtr for mapping 917:1.0
+0
+dtr for mapping 918:1.0
+0
+dtr for mapping 919:1.8888888888888888
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#isTurnAreaIncluded(URI("http://sws.ifi.uio.no/data/npd-v2/survey/{}/area",t0),http://www.w3.org/2000/01/rdf-schema#Literal("true")) <- create temporary table 
+table920 
+as 
+select distinct seaArea."seaSurveyName" as "seaSurveyName" from 
+"seaArea" seaArea 
+where 
+seaArea."seaPolygonKind" = 'Område inkludert snuområde' and 
+seaArea."seaSurveyName" IS NOT NULL
+
+0
+dtr for mapping 920:1.0
+1
+dtr for mapping 921:1.0
+0
+dtr for mapping 922:1.0
+0
+dtr for mapping 923:1.0
+0
+dtr for mapping 924:1.0
+0
+dtr for mapping 925:1.0
+1
+dtr for mapping 926:1.0
+0
+dtr for mapping 927:1.0
+0
+dtr for mapping 928:1.0
+0
+dtr for mapping 929:1.0
+0
+dtr for mapping 930:1.0
+0
+dtr for mapping 931:1.0
+0
+dtr for mapping 932:1.0
+1
+0
+dtr for mapping 934:1.0
+0
+dtr for mapping 935:1.0
+0
+dtr for mapping 936:1.0
+0
+dtr for mapping 937:1.0
+1
+dtr for mapping 938:6156.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/MiddleTriassic")) <- create temporary table 
+table939 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'MIDDLE TRIASSIC') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'MIDDLE TRIASSIC') or (wellbore_exploration_all."wlbAgeWithHc3" = 'MIDDLE TRIASSIC')))
+
+0
+dtr for mapping 939:1.0
+0
+dtr for mapping 940:1.0
+0
+dtr for mapping 941:1.0
+0
+0
+0
+dtr for mapping 944:1.0
+0
+dtr for mapping 945:1.0
+0
+dtr for mapping 946:1.0
+0
+dtr for mapping 947:1.0
+0
+dtr for mapping 948:1.0
+0
+dtr for mapping 949:1.0
+0
+dtr for mapping 950:1.0
+0
+dtr for mapping 951:1.0
+0
+dtr for mapping 952:1.0
+1
+dtr for mapping 953:1.0
+0
+dtr for mapping 954:247.51845906902088
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/LowerCretaceous")) <- create temporary table 
+table955 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc3" = 'EARLY CRETACEOUS') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'EARLY CRETACEOUS') or ((wellbore_exploration_all."wlbAgeAtTd" = 'EARLY CRETACEOUS') or (wellbore_exploration_all."wlbAgeWithHc2" = 'EARLY CRETACEOUS')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+1
+dtr for mapping 955:1.0
+0
+dtr for mapping 956:1542040.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/MiddleTriassic")) <- create temporary table 
+table957 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'MIDDLE TRIASSIC') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'MIDDLE TRIASSIC') or ((wellbore_exploration_all."wlbAgeAtTd" = 'MIDDLE TRIASSIC') or (wellbore_exploration_all."wlbAgeWithHc3" = 'MIDDLE TRIASSIC'))))
+
+1
+dtr for mapping 957:1.0
+0
+dtr for mapping 958:1.0
+0
+dtr for mapping 959:1.0
+0
+dtr for mapping 960:1.0
+1
+dtr for mapping 961:1.0
+1
+dtr for mapping 962:1.0
+1
+dtr for mapping 963:1525928.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Triassic")) <- create temporary table 
+table964 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'TRIASSIC') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'TRIASSIC') or ((wellbore_exploration_all."wlbAgeAtTd" = 'TRIASSIC') or (wellbore_exploration_all."wlbAgeWithHc3" = 'TRIASSIC'))))
+
+0
+dtr for mapping 964:1.0
+1
+dtr for mapping 965:1541888.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/LowerJurassic")) <- create temporary table 
+table966 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'EARLY JURASSIC') or ((wellbore_exploration_all."wlbAgeAtTd" = 'EARLY JURASSIC') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'EARLY JURASSIC') or (wellbore_exploration_all."wlbAgeWithHc3" = 'EARLY JURASSIC'))))
+
+0
+dtr for mapping 966:1.0
+1
+dtr for mapping 967:1.0
+0
+dtr for mapping 968:1.0
+0
+dtr for mapping 969:1.0
+1
+dtr for mapping 970:245.4428227746592
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/UpperJurassic")) <- create temporary table 
+table971 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc1" = 'LATE JURASSIC') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'LATE JURASSIC') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'LATE JURASSIC') or (wellbore_exploration_all."wlbAgeAtTd" = 'LATE JURASSIC')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+1
+0
+dtr for mapping 972:1.0
+1
+dtr for mapping 973:1.0
+0
+dtr for mapping 974:1.0
+0
+dtr for mapping 975:1.0
+1
+dtr for mapping 976:1.0
+1
+dtr for mapping 977:1.0
+0
+dtr for mapping 978:1.0
+0
+dtr for mapping 979:1.0
+0
+dtr for mapping 980:1.0
+0
+dtr for mapping 981:1.0
+0
+dtr for mapping 982:1.0
+0
+dtr for mapping 983:1.0
+1
+dtr for mapping 984:1.0
+0
+dtr for mapping 985:2.3529411764705883
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#dateSyncNPD(URI("http://sws.ifi.uio.no/data/npd-v2/facility/{}",t4),http://www.w3.org/2001/XMLSchema#dateTime(t6)) <- create temporary table 
+table986 
+as 
+select distinct tuf_operator_hst."dateSyncNPD" as "dateSyncNPD", 
+tuf_operator_hst."tufNpdidTuf" as "tufNpdidTuf" from 
+"tuf_operator_hst" tuf_operator_hst 
+where 
+tuf_operator_hst."dateSyncNPD" <> '9999-12-31T00:00:00' and 
+tuf_operator_hst."tufNpdidTuf" IS NOT NULL and 
+tuf_operator_hst."dateSyncNPD" IS NOT NULL
+
+0
+dtr for mapping 986:1.0
+0
+dtr for mapping 987:1.0
+1
+dtr for mapping 988:1.0
+0
+dtr for mapping 989:1.0
+0
+dtr for mapping 990:1.0
+1
+dtr for mapping 991:1.0
+0
+dtr for mapping 992:1.0
+0
+dtr for mapping 993:3.2175360710321863
+view to materialize:http://www.opengis.net/ont/geosparql#Feature(URI("http://sws.ifi.uio.no/data/npd-v2/licence/{}",t9)) <- create temporary table 
+table994 
+as 
+select distinct licence_area_poly_hst."prlNpdidLicence" as "prlNpdidLicence" from 
+"licence_area_poly_hst" licence_area_poly_hst 
+where 
+licence_area_poly_hst."prlNpdidLicence" IS NOT NULL
+
+0
+dtr for mapping 994:1.0
+0
+dtr for mapping 995:1.0
+0
+dtr for mapping 996:8.068965517241379
+view to materialize:http://www.ifomis.org/bfo/1.1/snap#Continuant(URI("http://sws.ifi.uio.no/data/npd-v2/quadrant/{}",t2)) <- create temporary table 
+table997 
+as 
+select distinct apaAreaNet."qdrName" as "qdrName" from 
+"apaAreaNet" apaAreaNet 
+where 
+apaAreaNet."qdrName" IS NOT NULL
+
+0
+dtr for mapping 997:245.50657683670195
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/UpperTriassic")) <- create temporary table 
+table998 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeAtTd" = 'LATE TRIASSIC') or ((wellbore_exploration_all."wlbAgeWithHc1" = 'LATE TRIASSIC') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'LATE TRIASSIC') or (wellbore_exploration_all."wlbAgeWithHc2" = 'LATE TRIASSIC')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+0
+dtr for mapping 998:1.0
+0
+dtr for mapping 999:1.0
+1
+dtr for mapping 1000:1.0
+0
+dtr for mapping 1001:1.0
+1
+dtr for mapping 1002:1.0
+0
+dtr for mapping 1003:1.0
+0
+dtr for mapping 1004:1.0
+0
+dtr for mapping 1005:1.0
+0
+dtr for mapping 1006:1.0
+0
+dtr for mapping 1007:1.0
+1
+dtr for mapping 1008:1.0
+0
+0
+dtr for mapping 1010:1.0
+0
+dtr for mapping 1011:1.0
+1
+1
+dtr for mapping 1013:1.0
+0
+dtr for mapping 1014:1.0
+1
+dtr for mapping 1015:1.0
+0
+dtr for mapping 1016:1.0
+0
+dtr for mapping 1017:1.0
+0
+dtr for mapping 1018:1.0
+0
+dtr for mapping 1019:1.0
+0
+dtr for mapping 1020:1.0
+0
+dtr for mapping 1021:1.0
+0
+dtr for mapping 1022:1.0
+0
+dtr for mapping 1023:1.0
+1
+dtr for mapping 1024:7.040816326530612
+view to materialize:http://www.opengis.net/ont/geosparql#Feature(URI("http://sws.ifi.uio.no/data/npd-v2/baa/{}",t7)) <- create temporary table 
+table1025 
+as 
+select distinct bsns_arr_area_area_poly_hst."baaNpdidBsnsArrArea" as "baaNpdidBsnsArrArea" from 
+"bsns_arr_area_area_poly_hst" bsns_arr_area_area_poly_hst 
+where 
+bsns_arr_area_area_poly_hst."baaNpdidBsnsArrArea" IS NOT NULL
+
+0
+dtr for mapping 1025:1.0
+0
+dtr for mapping 1026:1.0
+1
+dtr for mapping 1027:12.98
+view to materialize:http://www.ifomis.org/bfo/1.1/snap#Continuant(URI("http://sws.ifi.uio.no/data/npd-v2/block/{}/{}",t43,t44)) <- create temporary table 
+table1028 
+as 
+select distinct wellbore_development_all."wlbNamePart1" as "wlbNamePart1", 
+wellbore_development_all."wlbNamePart2" as "wlbNamePart2" from 
+"wellbore_development_all" wellbore_development_all 
+where 
+wellbore_development_all."wlbNamePart1" IS NOT NULL and 
+wellbore_development_all."wlbNamePart2" IS NOT NULL
+
+0
+dtr for mapping 1028:1.0
+1
+dtr for mapping 1029:1.0
+0
+dtr for mapping 1030:1.0
+0
+dtr for mapping 1031:1.0
+0
+dtr for mapping 1032:1.0
+0
+dtr for mapping 1033:1.0
+0
+dtr for mapping 1034:1484128.0
+view to materialize:http://resource.geosciml.org/ontology/timescale/gts-30#GeochronologicEra(URI("http://resource.geosciml.org/classifier/ics/ischart/Paleocene")) <- create temporary table 
+table1035 
+as 
+select distinct 1 as "a" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeAtTd" = 'PALEOCENE') or ((wellbore_exploration_all."wlbAgeWithHc2" = 'PALEOCENE') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'PALEOCENE') or (wellbore_exploration_all."wlbAgeWithHc1" = 'PALEOCENE'))))
+
+1
+dtr for mapping 1035:1.0
+0
+dtr for mapping 1036:1.0
+0
+dtr for mapping 1037:1.0
+0
+dtr for mapping 1038:1.0
+0
+dtr for mapping 1039:1.0
+1
+dtr for mapping 1040:1.0
+0
+dtr for mapping 1041:1.0
+0
+dtr for mapping 1042:1.0
+0
+dtr for mapping 1043:1.0
+0
+dtr for mapping 1044:1.0
+0
+dtr for mapping 1045:1.0
+0
+dtr for mapping 1046:1.0
+0
+0
+dtr for mapping 1048:1.0
+1
+dtr for mapping 1049:1.0
+0
+0
+dtr for mapping 1051:1.0
+1
+dtr for mapping 1052:443.3723076923077
+view to materialize:http://sws.ifi.uio.no/vocab/npd-v2#geochronologicEra(URI("http://sws.ifi.uio.no/data/npd-v2/stratum/{}",t86),URI("http://resource.geosciml.org/classifier/ics/ischart/Pleistocene")) <- create temporary table 
+table1053 
+as 
+select distinct wellbore_formation_top."lsuNpdidLithoStrat" as "lsuNpdidLithoStrat" from 
+"wellbore_exploration_all" wellbore_exploration_all, 
+"wellbore_formation_top" wellbore_formation_top 
+where 
+wellbore_exploration_all."wlbFormationAtTd" = wellbore_formation_top."lsuName" and 
+((wellbore_exploration_all."wlbAgeWithHc2" = 'PLEISTOCENE') or ((wellbore_exploration_all."wlbAgeWithHc3" = 'PLEISTOCENE') or ((wellbore_exploration_all."wlbAgeAtTd" = 'PLEISTOCENE') or (wellbore_exploration_all."wlbAgeWithHc1" = 'PLEISTOCENE')))) and 
+wellbore_formation_top."lsuNpdidLithoStrat" IS NOT NULL
+
+0
+dtr for mapping 1053:1.0
+0
+dtr for mapping 1054:1.0
+0
+dtr for mapping 1055:1.0
+0
+dtr for mapping 1056:1.0
+0
+dtr for mapping 1057:1.0
+0
+dtr for mapping 1058:1.0
+0
+dtr for mapping 1059:1.0
+0
+dtr for mapping 1060:1.0
+1
+dtr for mapping 1061:1.0
+1
+dtr for mapping 1062:1.0
+0
+dtr for mapping 1063:1.0
+0
+dtr for mapping 1064:1.0
+0
+dtr for mapping 1065:1.0
+0
+dtr for mapping 1066:1.0
+1
+0
+dtr for mapping 1068:1.0
+0
+dtr for mapping 1069:1.0
+0
+dtr for mapping 1070:1.0
+0
+dtr for mapping 1071:1.0
+0
+0
+dtr for mapping 1073:1.0
+1
+dtr for mapping 1074:1.0
+0
+1
+dtr for mapping 1076:1.0
+0
+0
+dtr for mapping 1078:77.88
+view to materialize:http://www.ifomis.org/bfo/1.1/snap#Continuant(URI("http://sws.ifi.uio.no/data/npd-v2/wellbore/{}",t60)) <- create temporary table 
+table1079 
+as 
+select distinct wellbore_development_all."wlbNpdidWellboreReclass" as "wlbNpdidWellboreReclass" from 
+"wellbore_development_all" wellbore_development_all 
+where 
+wellbore_development_all."wlbNpdidWellboreReclass" IS NOT NULL
+
+0
+0
+dtr for mapping 1080:1.0
+1
+dtr for mapping 1081:1.0
+0
+dtr for mapping 1082:1.0
+1
+0
+dtr for mapping 1084:1.0
+1
+dtr for mapping 1085:6.5
+view to materialize:http://www.ifomis.org/bfo/1.1/snap#Continuant(URI("http://sws.ifi.uio.no/data/npd-v2/block/{}/{}",t57,t58)) <- create temporary table 
+table1086 
+as 
+select distinct wellbore_exploration_all."wlbNamePart1" as "wlbNamePart1", 
+wellbore_exploration_all."wlbNamePart2" as "wlbNamePart2" from 
+"wellbore_exploration_all" wellbore_exploration_all 
+where 
+wellbore_exploration_all."wlbNamePart2" IS NOT NULL and 
+wellbore_exploration_all."wlbNamePart1" IS NOT NULL
+
+1
+dtr for mapping 1086:1.0
+0
+dtr for mapping 1087:1.0
+0
+dtr for mapping 1088:1.0
+0
+dtr for mapping 1089:1.0
+1
+dtr for mapping 1090:1.0
+0
+dtr for mapping 1091:1.0
+Number of Mappings with Duplicates: 132
+
