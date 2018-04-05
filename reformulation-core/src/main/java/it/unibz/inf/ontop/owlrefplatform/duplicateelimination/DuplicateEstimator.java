@@ -58,7 +58,7 @@ public class DuplicateEstimator {
 	private boolean pushDE;
 
 	public DuplicateEstimator(DatalogProgram result, Multimap<Predicate, List<Integer>> primaryKeys,
-			DBMetadata metadata, OBDADataFactory fac) {
+			DBMetadata metadata, OBDADataFactory fac, boolean pushURI) {
 		this.queries = result;
 		this.primaryKeys = primaryKeys;
 		hashes = new NodeHashValues();
@@ -66,7 +66,10 @@ public class DuplicateEstimator {
 		this.fac = fac;
 		
 		pushDE=containsURIConstruction();
-		//pushDE=false;
+		if(!pushURI) {
+			pushDE=false;
+		}
+		
 		hashes.setSelectivityEstimator(fac.getNodeSelectivityEstimator());
 	}
 

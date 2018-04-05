@@ -13,6 +13,7 @@ import it.unibz.inf.ontop.owlrefplatform.core.mappingprocessing.MappingDataTypeR
 import it.unibz.inf.ontop.owlrefplatform.core.mappingprocessing.TMappingExclusionConfig;
 import it.unibz.inf.ontop.owlrefplatform.core.mappingprocessing.TMappingProcessor;
 import it.unibz.inf.ontop.owlrefplatform.core.unfolding.DatalogUnfolder;
+import it.unibz.inf.ontop.owlrefplatform.core.unfolding.UniqueConstraintOptimizer;
 import it.unibz.inf.ontop.owlrefplatform.duplicateelimination.DuplicateEstimator;
 import it.unibz.inf.ontop.parser.PreprocessProjection;
 import it.unibz.inf.ontop.utils.Mapping2DatalogConverter;
@@ -397,8 +398,7 @@ public class QuestUnfolder {
 	
 	public DatalogProgram unfold(DatalogProgram query) throws OBDAException {
 		DatalogProgram result=unfolder.unfold(query);
-		DuplicateEstimator de=new DuplicateEstimator(result, pkeys, metadata, fac);
-		de.estimate();
+		
 		return result;
 	}
 
@@ -446,6 +446,16 @@ public class QuestUnfolder {
 
 	public List<CQIE> getUnfolding() {
 		return this.ufp;
+	}
+
+	public DatalogProgram unfold(DatalogProgram query, int mode) {
+		DatalogProgram result=unfolder.unfold(query, mode);
+		
+		if(mode>0) {
+			DuplicateEstimator de=new DuplicateEstimator(result, pkeys, metadata, fac, mode==1);
+			de.estimate();
+		}
+		return result;
 	}
 
 

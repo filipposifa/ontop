@@ -368,6 +368,16 @@ public class QuestOWLStatement implements AutoCloseable {
 			throw new OntopOWLException(e);
 		}
 	}
+	
+	public List<String> getUnfolding(String query, int mode) throws OWLException {
+		try {
+			ParsedQuery pq = st.questInstance.getEngine().getParsedQuery(query); 			
+			return st.questInstance.getEngine().getSQL(pq, mode);
+		} 
+		catch (Exception e) {
+			throw new OntopOWLException(e);
+		}
+	}
 
 	private List<OWLAxiom> createOWLIndividualAxioms(GraphResultSet resultSet) throws Exception {
 		

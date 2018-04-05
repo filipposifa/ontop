@@ -22,16 +22,14 @@ import java.io.FileOutputStream;
 import java.io.FileReader;
 import java.io.IOException;
 import java.io.OutputStream;
+
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Map;
-import java.util.Set;
 
 import org.semanticweb.owlapi.apibinding.OWLManager;
 import org.semanticweb.owlapi.model.OWLException;
 import org.semanticweb.owlapi.model.OWLOntology;
 import org.semanticweb.owlapi.model.OWLOntologyManager;
-import org.semanticweb.owlapi.reasoner.SimpleConfiguration;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -69,12 +67,13 @@ public class QueryTester {
 
 	Logger log = LoggerFactory.getLogger(this.getClass());
 	private String histograms;
+	private int mode;
 
 	public static void main(String[] args) throws IOException {
 
 		System.out.println("GO!");
 
-		if (args.length < 6) {
+		if (args.length < 9) {
 			System.out.println("Usage");
 			System.out.println(
 					" QueryTester output mode owlfile obdafile [db_creds_file] constraints tmap_conf_file queryfiles...\n");
@@ -88,6 +87,7 @@ public class QueryTester {
 			System.out.println("  tmap_conf_file   :  0 or path to file with tmap configuration");
 			System.out.println(" queryfiles     :  paths SPARQL query files\n");
 			System.out.println(" histograms     :  paths to json histogram file\n");
+			System.out.println(" mode     :  0: no optimizations, 1 all optimizations, 2 only early DE\n");
 			System.exit(0);
 		}
 
@@ -123,23 +123,22 @@ public class QueryTester {
 		// String[] query_files = Arrays.copyOfRange(args, i, args.length);
 		String[] query_files = readFilesFromDir(args[i++]);
 		String histograms = args[i++].trim();
+		int mode=Integer.parseInt(args[i++].trim());
 
 		// for(int test_no = 0; test_no < 5; test_no++){
 		QueryTester tester;
 
 		/*
-		 * tester = new QueryTester (owlfile, obdafile, constraints_file,
-		 * is_r2rml, query_files, run_sql, timeout, output + "/" + test_no +
-		 * "KEYS_TMAP", db_creds_file, tmap_conf_file); tester.runQueries();
-		 * Thread.sleep(7200000);
+		 * tester = new QueryTester (owlfile, obdafile, constraints_file, is_r2rml,
+		 * query_files, run_sql, timeout, output + "/" + test_no + "KEYS_TMAP",
+		 * db_creds_file, tmap_conf_file); tester.runQueries(); Thread.sleep(7200000);
 		 * 
-		 * tester = new QueryTester (owlfile, obdafile, constraints_file,
-		 * is_r2rml, query_files, run_sql, timeout, (output + "/" + test_no +
-		 * "KEYS"), db_creds_file, null); tester.runQueries();
-		 * Thread.sleep(7200000);
+		 * tester = new QueryTester (owlfile, obdafile, constraints_file, is_r2rml,
+		 * query_files, run_sql, timeout, (output + "/" + test_no + "KEYS"),
+		 * db_creds_file, null); tester.runQueries(); Thread.sleep(7200000);
 		 */
 		tester = new QueryTester(owlfile, obdafile, constraints_file, is_r2rml, query_files, run_sql, timeout,
-				output + "/" + "666" + "NOTUNING", db_creds_file, null, histograms);
+				output + "/" + "RESULTS", db_creds_file, null, histograms, mode);
 		tester.runQueries();
 		// Thread.sleep(7200000);
 
@@ -152,24 +151,30 @@ public class QueryTester {
 		File[] listOfFiles = folder.listFiles();
 		List<String> files = new ArrayList<String>();
 		for (int i = 0; i < listOfFiles.length; i++) {
-			//if (listOfFiles[i].isFile() && listOfFiles[i].getCanonicalPath().endsWith("tum.q")) {
+			// if (listOfFiles[i].isFile() &&
+			// listOfFiles[i].getCanonicalPath().endsWith("2.q")) continue;
+			// files.add(listOfFiles[i].getCanonicalPath());
+			if (listOfFiles[i].isFile() && listOfFiles[i].getCanonicalPath().endsWith("Stratum.q")) {
+				// if(listOfFiles[i].isFile() &&
+				// listOfFiles[i].getCanonicalPath().endsWith("013-user.rq")) continue;
 				files.add(listOfFiles[i].getCanonicalPath());
-			//}
+			}
 		}
 		java.util.Collections.sort(files);
 		return files.toArray(new String[files.size()]);
 	}
 
 	/**
-	 * db_creds_file is needed for r2rml. db_creds_file must be a valid file
-	 * name String if is_r2rml is true. for .obda the db_creds_file is
-	 * disregarded and may be null
+	 * db_creds_file is needed for r2rml. db_creds_file must be a valid file name
+	 * String if is_r2rml is true. for .obda the db_creds_file is disregarded and
+	 * may be null
 	 * 
 	 * @param histograms
+	 * @param mode 
 	 **/
 	public QueryTester(String owlfile, String obdafile, String constraints_file, boolean is_r2rml, String[] query_files,
 			boolean run_sql, int timeout, String output, String db_creds_file, String tmap_conf_file,
-			String histograms) {
+			String histograms, int mode) {
 		this.owlfile = owlfile;
 		this.obdafile = obdafile;
 		this.is_r2rml = is_r2rml;
@@ -181,11 +186,12 @@ public class QueryTester {
 		this.constraints_file = constraints_file;
 		this.tmap_conf_file = tmap_conf_file;
 		this.histograms = histograms;
+		this.mode=mode;
 	}
 
 	/**
-	 * Returns everything after the last space, and except the end of line
-	 * Assumes input is a single line from an obda db cred spec
+	 * Returns everything after the last space, and except the end of line Assumes
+	 * input is a single line from an obda db cred spec
 	 **/
 	private String get_stuff_after_space(String line) {
 		return (line.split("\\s"))[1];
@@ -298,7 +304,8 @@ public class QueryTester {
 		// the statement we query.
 		myLog("Getting connection");
 		conn = reasoner.getConnection();
-		if (reasoner.getQuestInstance().getMetaData().getDbmsProductName().toLowerCase().contains("db2")) {
+		if (reasoner.getQuestInstance().getMetaData().getDbmsProductName().toLowerCase().contains("db2")
+				|| reasoner.getQuestInstance().getMetaData().getDbmsProductName().toLowerCase().contains("oracle")) {
 			fac.getNodeSelectivityEstimator().convertToUpperCase();
 		}
 
@@ -355,7 +362,17 @@ public class QueryTester {
 			if (this.run_sql) {
 				setQueryTimeout(st, timeout);
 				// Retrieving results:
+				long execStart = System.currentTimeMillis();
 				QuestOWLResultSet result = getResultSet(st, query, timer);
+				int count = 0;
+
+				// while (result.nextRow()) {
+				// count += 1;
+
+				// }
+
+				// System.out.println("results:::" + count +" in
+				// "+(System.currentTimeMillis()-execStart));
 				if (result != null) {
 					// Outputting and counting results:
 					writeResultSet(result, outputfolder + "/" + queryfile + ".ans",
@@ -392,7 +409,7 @@ public class QueryTester {
 		byte[] sql = null;
 		logIn(timer, UNFOLDING);
 		try {
-			List<String> result = st.getUnfolding(query);
+			List<String> result = st.getUnfolding(query, mode);
 			String delimiter = "";
 			StringBuffer q = new StringBuffer();
 			for (int i = 0; i < result.size(); i++) {
