@@ -61,6 +61,36 @@ public class ConjunctiveQueryDecomposer {
 			// String a=tempParent.dotPrint();
 			return tempParent;
 		}
+		
+		//add redundant not nulls
+				for (int i = 0; i < this.initialQuery.getUnaryWhereConditions().size(); i++) {
+					UnaryWhereCondition uwc = this.initialQuery.getUnaryWhereConditions().get(i);
+					if (uwc.getNot() && uwc.getType() == UnaryWhereCondition.IS_NULL) {
+						Column c = uwc.getAllColumnRefs().get(0);
+						for (NonUnaryWhereCondition nuwc : this.initialQuery.getBinaryWhereConditions()) {
+							if (nuwc.getOperator().equals("=")) {
+								Column other = null;
+								if (nuwc.getLeftOp().equals(c) && nuwc.getRightOp() instanceof Column) {
+									other = (Column) nuwc.getRightOp();
+								}
+								if (nuwc.getRightOp().equals(c) && nuwc.getLeftOp() instanceof Column) {
+									other = (Column) nuwc.getLeftOp();
+								}
+								if (other != null) {
+									try {
+										UnaryWhereCondition toAdd = new UnaryWhereCondition(UnaryWhereCondition.IS_NULL,
+												other.clone(), true);
+										if (!this.initialQuery.getUnaryWhereConditions().contains(toAdd)) {
+											this.initialQuery.getUnaryWhereConditions().add(toAdd);
+										}
+									} catch (CloneNotSupportedException ex) {
+										log.error(ex.getMessage());
+									}
+								}
+							}
+						}
+					}
+				}
 
 		// columnsToSubqueries tracks from which temporary table we take each
 		// column of the initial query

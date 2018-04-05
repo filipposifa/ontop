@@ -57,7 +57,6 @@ public class SQLQuery {
 	private Node nestedNode;
 	private HashCode hashId = null;
 
-
 	private Node joinNode;
 
 	private List<Operand> joinOperands;
@@ -151,7 +150,7 @@ public class SQLQuery {
 		}
 		StringBuilder output = new StringBuilder();
 		String separator = "";
-		
+
 		// if (!this.isHasUnionRootNode()) {
 		output.append("select ");
 		// }
@@ -168,8 +167,8 @@ public class SQLQuery {
 				output.append(c.toString());
 			}
 			/*
-			 * for (Function f : outputFunctions) { output.append(separator);
-			 * separator = ", "; output.append(f.toString()); }
+			 * for (Function f : outputFunctions) { output.append(separator); separator =
+			 * ", "; output.append(f.toString()); }
 			 */
 		}
 		separator = "";
@@ -180,15 +179,14 @@ public class SQLQuery {
 
 			for (int tableNo = 0; tableNo < this.inputTables.size() - 1; tableNo++) {
 				output.append("(");
-				
+
 				output.append(inputTables.get(tableNo).toString());
-				
+
 				output.append(" ");
 				output.append(getJoinType());
 				output.append(" ");
 			}
 			output.append(inputTables.get(this.inputTables.size() - 1));
-			
 
 			for (int joinOp = joinOperands.size() - 1; joinOp > -1; joinOp--) {
 				output.append(" on ");
@@ -199,9 +197,8 @@ public class SQLQuery {
 			/*
 			 * output.append(this.getLeftJoinTable().getResultTableName()); if
 			 * (this.getLeftJoinTableAlias() != null) { output.append(" as ");
-			 * output.append(getLeftJoinTableAlias()); }
-			 * output.append(inputTables.get(0)); output.append(" ");
-			 * output.append(getJoinType()); output.append(" ");
+			 * output.append(getLeftJoinTableAlias()); } output.append(inputTables.get(0));
+			 * output.append(" "); output.append(getJoinType()); output.append(" ");
 			 * output.append(inputTables.get(1));
 			 * output.append(this.getRightJoinTable().getResultTableName()); if
 			 * (this.getRightJoinTableAlias() != null) { output.append(" as ");
@@ -268,7 +265,7 @@ public class SQLQuery {
 				for (Table t : getInputTables()) {
 					output.append(separator);
 					output.append(t.toString());
-					
+
 					separator = " , ";
 				}
 			}
@@ -539,7 +536,6 @@ public class SQLQuery {
 		return result;
 	}
 
-
 	public ArrayList<Column> getWhereColumns() {
 		ArrayList<Column> result = new ArrayList<Column>();
 		for (NonUnaryWhereCondition wc : this.getBinaryWhereConditions()) {
@@ -657,8 +653,8 @@ public class SQLQuery {
 				}
 				/*
 				 * Operand left = bwc.getLeftOp();
-				 * bwc.setLeftOp(QueryUtils.createMySQLConcatFunction(left));
-				 * Operand right = bwc.getRightOp();
+				 * bwc.setLeftOp(QueryUtils.createMySQLConcatFunction(left)); Operand right =
+				 * bwc.getRightOp();
 				 * bwc.setRightOp(QueryUtils.createMySQLConcatFunction(right));
 				 */
 			}
@@ -1087,10 +1083,10 @@ public class SQLQuery {
 	}
 
 	/*
-	 * takes a list of where conditions and "breaks" the disjunctions. for
-	 * example if the input list contains a condition with an OR, it will return
-	 * two lists of where conditions, each one containing one of the operators
-	 * of OR and the rest of the initial conditions
+	 * takes a list of where conditions and "breaks" the disjunctions. for example
+	 * if the input list contains a condition with an OR, it will return two lists
+	 * of where conditions, each one containing one of the operators of OR and the
+	 * rest of the initial conditions
 	 */
 	private List<List<Operand>> normalize(List<Operand> in) {
 		List<List<Operand>> normalized = new ArrayList<List<Operand>>();
@@ -1178,25 +1174,21 @@ public class SQLQuery {
 					 * ArrayList<NonUnaryWhereCondition> r = new
 					 * ArrayList<NonUnaryWhereCondition>(); r.add(right);
 					 * List<List<NonUnaryWhereCondition>> nested = normalize(l);
-					 * //normalized.remove(in); for (int j = 0; j <
-					 * nested.size(); j++) { List<NonUnaryWhereCondition> leftL
-					 * = nested.get(j);
+					 * //normalized.remove(in); for (int j = 0; j < nested.size(); j++) {
+					 * List<NonUnaryWhereCondition> leftL = nested.get(j);
 					 * 
 					 * // List<BinaryWhereCondition> nestedOr=new
-					 * ArrayList<BinaryWhereCondition>(in); //
-					 * normalized.add(nestedOr); for (NonUnaryWhereCondition bl
-					 * : leftL) {
+					 * ArrayList<BinaryWhereCondition>(in); // normalized.add(nestedOr); for
+					 * (NonUnaryWhereCondition bl : leftL) {
 					 * 
 					 * in.add(bl); }
 					 * 
-					 * } nested = normalize(r); for (int j = 0; j <
-					 * nested.size(); j++) { List<NonUnaryWhereCondition> leftL
-					 * = nested.get(j);
+					 * } nested = normalize(r); for (int j = 0; j < nested.size(); j++) {
+					 * List<NonUnaryWhereCondition> leftL = nested.get(j);
 					 * 
 					 * // List<BinaryWhereCondition> nestedOr=new
-					 * ArrayList<BinaryWhereCondition>(in); //
-					 * normalized.add(nestedOr); for (NonUnaryWhereCondition bl
-					 * : leftL) {
+					 * ArrayList<BinaryWhereCondition>(in); // normalized.add(nestedOr); for
+					 * (NonUnaryWhereCondition bl : leftL) {
 					 * 
 					 * in.add(bl); }
 					 * 
@@ -1204,10 +1196,9 @@ public class SQLQuery {
 					 */
 
 					/*
-					 * for(List<BinaryWhereCondition> leftL:normalize(l)){
-					 * for(BinaryWhereCondition bl:leftL){ in.add(bl); } }
-					 * for(List<BinaryWhereCondition> rightL:normalize(r)){
-					 * for(BinaryWhereCondition br:rightL){ in.add(br); } }
+					 * for(List<BinaryWhereCondition> leftL:normalize(l)){ for(BinaryWhereCondition
+					 * bl:leftL){ in.add(bl); } } for(List<BinaryWhereCondition>
+					 * rightL:normalize(r)){ for(BinaryWhereCondition br:rightL){ in.add(br); } }
 					 */
 				}
 			}
@@ -1232,8 +1223,8 @@ public class SQLQuery {
 	}
 
 	/*
-	 * to be used when normalizing queries. deep cloning of input tables and
-	 * unary where conditions. Different table name. shallow cloning of outputs
+	 * to be used when normalizing queries. deep cloning of input tables and unary
+	 * where conditions. Different table name. shallow cloning of outputs
 	 */
 	public SQLQuery createNormalizedQueryForConditions(List<Operand> conditions) {
 		SQLQuery normalized = new SQLQuery();
@@ -1360,7 +1351,7 @@ public class SQLQuery {
 	public void addInputTableIfNotExists(Table table) {
 		if (!this.inputTables.contains(table) && !table.getName().equals(this.getTemporaryTableName())) {
 			this.inputTables.add(table);
-			
+
 		}
 	}
 
@@ -1574,8 +1565,8 @@ public class SQLQuery {
 				output.append(c.toString());
 			}
 			/*
-			 * for (Function f : outputFunctions) { output.append(separator);
-			 * separator = ", "; output.append(f.toString()); }
+			 * for (Function f : outputFunctions) { output.append(separator); separator =
+			 * ", "; output.append(f.toString()); }
 			 */
 
 		}
@@ -1766,8 +1757,6 @@ public class SQLQuery {
 		return result;
 	}
 
-	
-
 	public void generateRefCols(Map<String, Set<String>> refCols) {
 		List<Column> cols = this.getAllColumns();
 		Set<String> colsForT;
@@ -1904,7 +1893,6 @@ public class SQLQuery {
 
 	}
 
-
 	public Column getRepartition() {
 		return this.repartitionColumn;
 	}
@@ -1916,8 +1904,6 @@ public class SQLQuery {
 	public boolean isNested() {
 		return this.isNested;
 	}
-
-	
 
 	public Map<String, String> renameOracleOutputs() {
 		Map<String, String> result = new HashMap<String, String>();
@@ -1949,10 +1935,6 @@ public class SQLQuery {
 
 	}
 
-
-
-	
-
 	public void setSQL(String string) {
 		this.sql = string;
 
@@ -1975,30 +1957,27 @@ public class SQLQuery {
 
 	}
 
-
-	
-
 	public Set<Column> getAllJoinColumns() {
 		Set<Column> result = new HashSet<Column>();
 		for (NonUnaryWhereCondition nuwc : this.getBinaryWhereConditions()) {
 			if (nuwc.getOperator().equals("=")) {
-				if (!(nuwc.getLeftOp().getAllColumnRefs().isEmpty())){
+				if (!(nuwc.getLeftOp().getAllColumnRefs().isEmpty())) {
 					result.add(nuwc.getLeftOp().getAllColumnRefs().get(0));
 				}
-				if (!(nuwc.getRightOp().getAllColumnRefs().isEmpty())){
+				if (!(nuwc.getRightOp().getAllColumnRefs().isEmpty())) {
 					result.add(nuwc.getRightOp().getAllColumnRefs().get(0));
 				}
-				
-			}
-			else{
-				if (!(nuwc.getLeftOp().getAllColumnRefs().isEmpty())&&!(nuwc.getRightOp().getAllColumnRefs().isEmpty())){
-					//range join
+
+			} else {
+				if (!(nuwc.getLeftOp().getAllColumnRefs().isEmpty())
+						&& !(nuwc.getRightOp().getAllColumnRefs().isEmpty())) {
+					// range join
 					return result;
 				}
-				if (!(nuwc.getLeftOp().getAllColumnRefs().isEmpty())){
+				if (!(nuwc.getLeftOp().getAllColumnRefs().isEmpty())) {
 					result.add(nuwc.getLeftOp().getAllColumnRefs().get(0));
 				}
-				if (!(nuwc.getRightOp().getAllColumnRefs().isEmpty())){
+				if (!(nuwc.getRightOp().getAllColumnRefs().isEmpty())) {
 					result.add(nuwc.getRightOp().getAllColumnRefs().get(0));
 				}
 			}
@@ -2013,7 +1992,7 @@ public class SQLQuery {
 		if (!this.binaryWhereConditions.isEmpty()) {
 			result.append(del);
 			del = "";
-			
+
 			for (NonUnaryWhereCondition wc : getBinaryWhereConditions()) {
 				result.append(separator);
 				result.append(wc.toString());
@@ -2022,9 +2001,9 @@ public class SQLQuery {
 		}
 		if (!this.unaryWhereConditions.isEmpty()) {
 			result.append(del);
-			//String separator = "";
+			// String separator = "";
 			for (UnaryWhereCondition wc : getUnaryWhereConditions()) {
-				
+
 				result.append(separator);
 				result.append(wc.toString());
 				separator = " and \n";
@@ -2044,7 +2023,7 @@ public class SQLQuery {
 
 	public String getViewSQL(String name) {
 		this.setOutputColumnsDistinct(true);
-		StringBuffer sb=new StringBuffer();
+		StringBuffer sb = new StringBuffer();
 		sb.append("CREATE TEMPORARY TABLE ");
 		sb.append(name);
 		sb.append(" AS ");
@@ -2052,6 +2031,22 @@ public class SQLQuery {
 		return sb.toString();
 	}
 
-	
+	public String getViewSQLOracle(String name) {
+		this.setOutputColumnsDistinct(true);
+		StringBuffer sb = new StringBuffer();
+		sb.append("CREATE GLOBAL TEMPORARY TABLE ");
+		sb.append(name);
+
+		/*
+		 * if(this.getOutputs().size()==1) { sb.append(" (");
+		 * sb.append(this.getOutputs().get(0).getOutputName());
+		 * sb.append(" PRIMARY KEY)"); this.getOrderBy().add(new
+		 * ColumnOrderBy(this.getAllOutputColumns().get(0).getAlias(),this.
+		 * getAllOutputColumns().get(0).getName(), true)); } sb.append(" as ");
+		 */
+		sb.append(" ON COMMIT PRESERVE ROWS AS ");
+		sb.append(this.toSQL());
+		return sb.toString();
+	}
 
 }

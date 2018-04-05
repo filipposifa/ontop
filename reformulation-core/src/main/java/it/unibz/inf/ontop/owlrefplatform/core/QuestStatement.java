@@ -149,8 +149,14 @@ public class QuestStatement implements OBDAStatement {
 							fecthMinValue=true;
 							sqlStatement.setFetchSize(1000);
 						}
+						long timeForTemp=System.currentTimeMillis();
 						for(int i=0;i<sql.size()-1;i++){
 							String view=sql.get(i).split(" ")[3];
+							if(questInstance.getMetaData().getDriverName().toLowerCase().contains("oracle")){
+								
+									view=sql.get(i).split(" ")[4];
+								
+							}
 							
 							sqlStatement.execute(sql.get(i));	
 							if(questInstance.getMetaData().getDriverName().toLowerCase().contains("mysql")){
@@ -161,6 +167,10 @@ public class QuestStatement implements OBDAStatement {
 							else if(questInstance.getMetaData().getDbmsProductName().toLowerCase().contains("db2")){
 								sqlStatement.execute("Call Sysproc.admin_cmd ('runstats on table "+view+"')");
 							}
+							else if(questInstance.getMetaData().getDriverName().toLowerCase().contains("oracle")){
+								sqlStatement.execute("analyze table "+view+" compute statistics");	
+								//sqlStatement.execute("analyze table "+view+" COMPUTE statistics for all indexes");
+							}
 							else{
 								log.error("Not Supported DB from Temp Table creation");
 							}
@@ -168,7 +178,8 @@ public class QuestStatement implements OBDAStatement {
 							
 							//sqlStatement.execute("Call Sysproc.admin_cmd ('runstats on table "+view+"')");
 						}
-						if(fecthMinValue){
+						System.out.println("time for temp: "+(System.currentTimeMillis()-timeForTemp));
+							if(fecthMinValue){
 							//restore mysql streaming results to execute query
 							sqlStatement.setFetchSize(Integer.MIN_VALUE);
 						}

@@ -7,6 +7,7 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Set;
+import java.util.UUID;
 
 import madgik.analyzer.decomposer.dag.Node;
 import madgik.analyzer.decomposer.dag.NodeHashValues;
@@ -37,6 +38,7 @@ import it.unibz.inf.ontop.model.Predicate;
 import it.unibz.inf.ontop.model.Term;
 import it.unibz.inf.ontop.model.Variable;
 import it.unibz.inf.ontop.model.impl.OBDAVocabulary;
+import it.unibz.inf.ontop.owlrefplatform.core.basicoperations.CQCUtilities;
 import it.unibz.inf.ontop.model.Predicate.COL_TYPE;
 import it.unibz.inf.ontop.sql.Attribute;
 import it.unibz.inf.ontop.sql.DBMetadata;
@@ -62,7 +64,9 @@ public class DuplicateEstimator {
 		hashes = new NodeHashValues();
 		this.metadata = metadata;
 		this.fac = fac;
+		
 		pushDE=containsURIConstruction();
+		//pushDE=false;
 		hashes.setSelectivityEstimator(fac.getNodeSelectivityEstimator());
 	}
 
@@ -135,8 +139,10 @@ public class DuplicateEstimator {
 			Map<Variable, Set<Function>> notNulls = new HashMap<Variable, Set<Function>>();
 			Map<Function, Set<NonUnaryWhereCondition>> complexConditions = new HashMap<Function, Set<NonUnaryWhereCondition>>();
 			Map<Variable, Column> colsToBeRenamed = new HashMap<Variable, Column>();
-
+			Set<Function> processed=new HashSet<Function>(); 
 			for (Function f : q.getBody()) {
+				if(!processed.add(f)) continue;
+				
 				RelationID id = Relation2DatalogPredicate.createRelationFromPredicateName(metadata.getQuotedIDFactory(),
 						f.getFunctionSymbol());
 				RelationDefinition def = metadata.getRelation(id);
@@ -452,8 +458,10 @@ public class DuplicateEstimator {
 			double rightSide=(sizeBase/duplBase);
 			//System.out.println("sum:"+sum);
 			//System.out.println("rightSide:"+rightSide);
+			//if(sum>-10){
 			if(sum>(rightSide)){
 				System.out.println("beneficial");
+				System.out.println("dupl est fo base:"+duplBase+ " sum: "+ sum);
 				List<Integer> positions=new ArrayList<Integer>();
 				Predicate tableName=duplInfos.get(no).get(0).getRepl().getToBeReplaced().get(0).getFunctionSymbol();
 				RelationID id = Relation2DatalogPredicate.createRelationFromPredicateName(metadata.getQuotedIDFactory(),
@@ -477,7 +485,12 @@ public class DuplicateEstimator {
 				if(this.metadata.getDbmsProductName().toLowerCase().contains("db2")){
 					schema="SESSION";
 				}
+				
 				String viewName=viewtable+Util.createUniqueId();
+				if(this.metadata.getDbmsProductName().toLowerCase().contains("oracle")){
+					viewName="V"+UUID.randomUUID().toString().replace("-", "");
+					viewName=viewName.substring(0, 30).toUpperCase();
+				}
 				
 				String firstView=viewName;
 				viewNames.add(viewName);
@@ -525,17 +538,54 @@ public class DuplicateEstimator {
 						replacement.addAttribute(metadata.getQuotedIDFactory().createAttributeID(c.getName()), 1, "VARCHAR", false);
 					}
 					String q="create temporary table "+v+" as select * from "+firstView+";";
+					if(this.metadata.getDbmsProductName().toLowerCase().contains("oracle")){
+						q="create temporary global table "+v+" ON COMMIT PRESERVE ROWS  as select * from "+firstView+";";
+					}
 					if(v.equals(firstView)){
+						if(this.metadata.getDbmsProductName().toLowerCase().contains("oracle")){
+							//schema="NPD";
+							if(schema==null){
+								q=no.getOracleSQL(v);
+							}
+							else{
+								q=no.getOracleSQL(schema+"."+v);
+							}
+						}
+						else {
 						if(schema==null){
-					q=no.getSQL(v);
+							q=no.getSQL(v);
 						}
 						else{
 							q=no.getSQL(schema+"."+v);
 						}
+						}
 					}
+					
+					
 				Term stringTerm=fac.getConstantLiteral(q);
 				Function body=fac.getFunction(pr, stringTerm);
 				queries.appendRule(fac.getCQIE(f2, body));
+				/*if(this.metadata.getDbmsProductName().toLowerCase().contains("oracle")){
+					//add primary key definition
+					StringBuffer sb=new StringBuffer();
+					sb.append("ALTER TABLE ");
+					sb.append(v);
+					String keyname=v.substring(0, 28)+"pk";
+					sb.append(" ADD CONSTRAINT "+ keyname + " PRIMARY KEY (");
+					String del="";
+					for(Column c:no.getOutputColumns()) {
+						sb.append(del);
+						sb.append(c.getName());
+						del=", ";
+					}
+					sb.append(")");
+					
+					Term stringTermPK=fac.getConstantLiteral(sb.toString());
+					Function bodyPK=fac.getFunction(pr, stringTermPK);
+					queries.appendRule(fac.getCQIE(f2, bodyPK));
+				}*/
+				
+				
 				}
 			}
 		}

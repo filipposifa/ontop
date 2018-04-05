@@ -12,35 +12,31 @@ import madgik.analyzer.decomposer.query.SQLQuery;
 import madgik.analyzer.decomposer.query.Table;
 
 public class NodeOutputs {
-	
+
 	private final HashCode node;
 	private final SQLQuery sql;
-	
+
 	public NodeOutputs(HashCode node, SQLQuery q) {
 		super();
 		this.node = node;
-		this.sql=q;
+		this.sql = q;
 	}
-
-	
 
 	public HashCode getNode() {
 		return this.node;
 	}
 
 	public Set<String> getOutputs() {
-		Set<String> result=new HashSet<String>();
-		for(Column c:sql.getAllOutputColumns()){
+		Set<String> result = new HashSet<String>();
+		for (Column c : sql.getAllOutputColumns()) {
 			result.add(c.toString());
 		}
 		return result;
 	}
-	
+
 	public List<Column> getOutputColumns() {
 		return sql.getAllOutputColumns();
 	}
-
-	
 
 	@Override
 	public int hashCode() {
@@ -50,8 +46,6 @@ public class NodeOutputs {
 		result = prime * result + ((sql == null) ? 0 : sql.getOutputs().hashCode());
 		return result;
 	}
-
-
 
 	@Override
 	public boolean equals(Object obj) {
@@ -75,28 +69,26 @@ public class NodeOutputs {
 		return true;
 	}
 
-
-
 	public String getSQL(String name) {
 		return sql.getViewSQL(name);
 	}
 
-
-
 	public void refactorSQLWithQuote(String idQuotationString) {
-		for(Column c:sql.getAllColumns()){
-			if(!c.getName().startsWith(idQuotationString)){
-				c.setName(idQuotationString+c.getName()+idQuotationString);
+		for (Column c : sql.getAllColumns()) {
+			if (!c.getName().startsWith(idQuotationString)) {
+				c.setName(idQuotationString + c.getName() + idQuotationString);
 			}
 		}
-		for(Table t:sql.getInputTables()){
-			if(!t.getName().startsWith(idQuotationString)){
-				t.setName(idQuotationString+t.getName()+idQuotationString);
+		for (Table t : sql.getInputTables()) {
+			if (!t.getName().startsWith(idQuotationString)) {
+				t.setName(idQuotationString + t.getName() + idQuotationString);
 			}
 		}
-		
+
 	}
-	
-	
+
+	public String getOracleSQL(String name) {
+		return sql.getViewSQLOracle(name);
+	}
 
 }
