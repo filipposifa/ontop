@@ -154,7 +154,7 @@ public class QueryTester {
 			// if (listOfFiles[i].isFile() &&
 			// listOfFiles[i].getCanonicalPath().endsWith("2.q")) continue;
 			// files.add(listOfFiles[i].getCanonicalPath());
-			if (listOfFiles[i].isFile() && listOfFiles[i].getCanonicalPath().endsWith("Stratum.q")) {
+			if (listOfFiles[i].isFile() && listOfFiles[i].getCanonicalPath().endsWith(".q")) {
 				// if(listOfFiles[i].isFile() &&
 				// listOfFiles[i].getCanonicalPath().endsWith("013-user.rq")) continue;
 				files.add(listOfFiles[i].getCanonicalPath());
