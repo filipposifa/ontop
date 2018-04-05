@@ -1,0 +1,78 @@
+CREATE TEMPORARY TABLE SESSION.viewtable8036 AS select distinct alias3."WLBNAMEPART1" as "WLBNAMEPART1" from 
+"PUBLIC"."WELLBORE_SHALLOW_ALL" alias3 
+where 
+alias3."WLBNAMEPART1" IS NOT NULL
+
+CREATE TEMPORARY TABLE SESSION.viewtable8037 AS select distinct alias1."WLBNAMEPART1" as "WLBNAMEPART1" from 
+"PUBLIC"."WELLBORE_DEVELOPMENT_ALL" alias1 
+where 
+alias1."WLBNAMEPART1" IS NOT NULL
+
+CREATE TEMPORARY TABLE SESSION.viewtable8038 AS select distinct alias2."WLBNAMEPART1" as "WLBNAMEPART1" from 
+"PUBLIC"."WELLBORE_DEVELOPMENT_ALL" alias2 
+where 
+alias2."WLBNAMEPART1" IS NOT NULL
+
+CREATE TEMPORARY TABLE SESSION.viewtable8039 AS select distinct alias0."WLBNAMEPART1" as "WLBNAMEPART1" from 
+"PUBLIC"."WELLBORE_EXPLORATION_ALL" alias0 
+where 
+alias0."WLBNAMEPART1" IS NOT NULL
+
+CREATE TEMPORARY TABLE SESSION.viewtable8040 AS select distinct alias4."WLBNAMEPART1" as "WLBNAMEPART1" from 
+"PUBLIC"."WELLBORE_EXPLORATION_ALL" alias4 
+where 
+alias4."WLBNAMEPART1" IS NOT NULL
+
+SELECT 
+   1 AS "qQuestType", NULL AS "qLang", CAST(('http://sws.ifi.uio.no/data/npd-v2/quadrant/' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."WLBNAMEPART1" AS VARCHAR(500)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS VARCHAR(500)) AS "q", 
+   7 AS "nQuestType", NULL AS "nLang", CAST(QVIEW1."WLBNAMEPART1" AS VARCHAR(500)) AS "n"
+ FROM 
+SESSION.VIEWTABLE8037 QVIEW1,
+SESSION.VIEWTABLE8039 QVIEW2
+WHERE 
+(QVIEW1."WLBNAMEPART1" = QVIEW2."WLBNAMEPART1")
+UNION
+SELECT 
+   1 AS "qQuestType", NULL AS "qLang", CAST(('http://sws.ifi.uio.no/data/npd-v2/quadrant/' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."WLBNAMEPART1" AS VARCHAR(500)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS VARCHAR(500)) AS "q", 
+   7 AS "nQuestType", NULL AS "nLang", CAST(QVIEW1."WLBNAMEPART1" AS VARCHAR(500)) AS "n"
+ FROM 
+SESSION.VIEWTABLE8037 QVIEW1,
+SESSION.VIEWTABLE8038 QVIEW2
+WHERE 
+(QVIEW1."WLBNAMEPART1" = QVIEW2."WLBNAMEPART1")
+UNION
+SELECT 
+   1 AS "qQuestType", NULL AS "qLang", CAST(('http://sws.ifi.uio.no/data/npd-v2/quadrant/' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."WLBNAMEPART1" AS VARCHAR(500)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS VARCHAR(500)) AS "q", 
+   7 AS "nQuestType", NULL AS "nLang", CAST(QVIEW1."WLBNAMEPART1" AS VARCHAR(500)) AS "n"
+ FROM 
+SESSION.VIEWTABLE8036 QVIEW1,
+SESSION.VIEWTABLE8037 QVIEW2
+WHERE 
+(QVIEW1."WLBNAMEPART1" = QVIEW2."WLBNAMEPART1")
+UNION
+SELECT 
+   1 AS "qQuestType", NULL AS "qLang", CAST(('http://sws.ifi.uio.no/data/npd-v2/quadrant/' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."WLBNAMEPART1" AS VARCHAR(500)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS VARCHAR(500)) AS "q", 
+   7 AS "nQuestType", NULL AS "nLang", CAST(QVIEW1."WLBNAMEPART1" AS VARCHAR(500)) AS "n"
+ FROM 
+SESSION.VIEWTABLE8039 QVIEW1,
+SESSION.VIEWTABLE8040 QVIEW2
+WHERE 
+(QVIEW1."WLBNAMEPART1" = QVIEW2."WLBNAMEPART1")
+UNION
+SELECT 
+   1 AS "qQuestType", NULL AS "qLang", CAST(('http://sws.ifi.uio.no/data/npd-v2/quadrant/' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."WLBNAMEPART1" AS VARCHAR(500)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS VARCHAR(500)) AS "q", 
+   7 AS "nQuestType", NULL AS "nLang", CAST(QVIEW1."WLBNAMEPART1" AS VARCHAR(500)) AS "n"
+ FROM 
+SESSION.VIEWTABLE8037 QVIEW1,
+SESSION.VIEWTABLE8039 QVIEW2
+WHERE 
+(QVIEW1."WLBNAMEPART1" = QVIEW2."WLBNAMEPART1")
+UNION
+SELECT 
+   1 AS "qQuestType", NULL AS "qLang", CAST(('http://sws.ifi.uio.no/data/npd-v2/quadrant/' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."WLBNAMEPART1" AS VARCHAR(500)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS VARCHAR(500)) AS "q", 
+   7 AS "nQuestType", NULL AS "nLang", CAST(QVIEW1."WLBNAMEPART1" AS VARCHAR(500)) AS "n"
+ FROM 
+SESSION.VIEWTABLE8036 QVIEW1,
+SESSION.VIEWTABLE8039 QVIEW2
+WHERE 
+(QVIEW1."WLBNAMEPART1" = QVIEW2."WLBNAMEPART1")

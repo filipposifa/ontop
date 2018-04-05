@@ -1,0 +1,13127 @@
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."HEADS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."PROFID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."HEADS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."PROFID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."HEADS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW5."PROFID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."HEADS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."PROFID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."HEADS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."PROFID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/FullProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 3) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((3 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((3 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((3 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((3 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((3 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((3 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 3) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((3 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((3 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 1) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 1) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 1) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 1) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssistantProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 1) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."STYPE" = 0) AND
+(QVIEW2."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."STYPE" = 0) AND
+(QVIEW4."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."STYPE" = 0) AND
+(QVIEW6."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."STYPE" = 0) AND
+(QVIEW8."ADVISORTYPE" = 1) AND
+(QVIEW1."ID" = QVIEW8."ADVISORID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssociateProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 2) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssociateProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 2) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((2 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((2 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssociateProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 2) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((2 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((2 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssociateProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 2) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((2 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((2 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((2 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((2 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssociateProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 2) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((2 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((2 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssociateProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 2) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((2 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((2 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((2 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((2 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssociateProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 2) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((2 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((2 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((2 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((2 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssociateProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."TEACHERS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 2) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW2."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW2."ID") AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((2 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((2 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((2 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((2 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((2 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((2 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssociateProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 2) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((2 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((2 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssociateProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 2) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((2 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((2 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((2 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((2 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssociateProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 2) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((2 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((2 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((2 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((2 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssociateProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."TEACHERS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 2) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((2 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((2 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW4."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW4."ID") AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((2 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((2 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((2 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((2 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssociateProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 2) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((2 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((2 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((2 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((2 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssociateProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."TEACHERS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 2) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((2 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((2 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((2 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((2 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW6."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW6."ID") AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((2 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((2 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssociateProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."TEACHERS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 2) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((2 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((2 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((2 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((2 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((2 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((2 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW8."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW8."ID")
+UNION
+SELECT 
+   1 AS "xQuestType", NULL AS "xLang", ('http://www.Department' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.University' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST('0' AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D') || '.edu/AssociateProfessor' || REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(REPLACE(CAST(QVIEW1."ID" AS VARCHAR(4000)), ' ', '%20'), '!', '%21'), '''', '%22'), '#', '%23'), '$', '%24'), '&', '%26'), '(', '%28'), ')', '%29'), '*', '%2A'), '+', '%2B'), ',', '%2C'), '/', '%2F'), ':', '%3A'), ';', '%3B'), '=', '%3D'), '?', '%3F'), '@', '%40'), '[', '%5B'), ']', '%5D')) AS "x", 
+   5 AS "y1QuestType", NULL AS "y1Lang", QVIEW1."NAME" AS "y1", 
+   5 AS "y2QuestType", NULL AS "y2Lang", QVIEW3."EMAIL" AS "y2", 
+   3 AS "y3QuestType", NULL AS "y3Lang", QVIEW7."PHONE" AS "y3"
+ FROM 
+"LUBM"."TEACHERS" QVIEW1,
+"LUBM"."STUDENTS" QVIEW2,
+"LUBM"."TEACHERS" QVIEW3,
+"LUBM"."STUDENTS" QVIEW4,
+"LUBM"."TEACHERS" QVIEW5,
+"LUBM"."STUDENTS" QVIEW6,
+"LUBM"."TEACHERS" QVIEW7,
+"LUBM"."STUDENTS" QVIEW8
+WHERE 
+(QVIEW1."DEPID" = '0') AND
+(QVIEW1."UNIID" = '0') AND
+(QVIEW1."TTYPE" = 2) AND
+QVIEW1."NAME" IS NOT NULL AND
+QVIEW1."ID" IS NOT NULL AND
+(QVIEW2."DEPID" = '0') AND
+(QVIEW2."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW2."ADVISORID") AND
+(((2 = QVIEW2."ADVISORTYPE") AND (1 = QVIEW2."STYPE")) OR ((2 = QVIEW2."ADVISORTYPE") AND (0 = QVIEW2."STYPE"))) AND
+(QVIEW3."DEPID" = '0') AND
+(QVIEW3."UNIID" = '0') AND
+(QVIEW3."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW3."ID") AND
+QVIEW3."EMAIL" IS NOT NULL AND
+(QVIEW4."DEPID" = '0') AND
+(QVIEW4."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW4."ADVISORID") AND
+(((2 = QVIEW4."ADVISORTYPE") AND (1 = QVIEW4."STYPE")) OR ((2 = QVIEW4."ADVISORTYPE") AND (0 = QVIEW4."STYPE"))) AND
+(QVIEW5."DEPID" = '0') AND
+(QVIEW5."UNIID" = '0') AND
+(QVIEW5."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW5."ID") AND
+(QVIEW6."DEPID" = '0') AND
+(QVIEW6."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW6."ADVISORID") AND
+(((2 = QVIEW6."ADVISORTYPE") AND (1 = QVIEW6."STYPE")) OR ((2 = QVIEW6."ADVISORTYPE") AND (0 = QVIEW6."STYPE"))) AND
+(QVIEW7."DEPID" = '0') AND
+(QVIEW7."UNIID" = '0') AND
+(QVIEW7."TTYPE" = 2) AND
+(QVIEW1."ID" = QVIEW7."ID") AND
+QVIEW7."PHONE" IS NOT NULL AND
+(QVIEW8."DEPID" = '0') AND
+(QVIEW8."UNIID" = '0') AND
+(QVIEW1."ID" = QVIEW8."ADVISORID") AND
+(((2 = QVIEW8."ADVISORTYPE") AND (1 = QVIEW8."STYPE")) OR ((2 = QVIEW8."ADVISORTYPE") AND (0 = QVIEW8."STYPE")))

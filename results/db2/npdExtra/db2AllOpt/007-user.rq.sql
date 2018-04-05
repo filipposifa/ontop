@@ -1,0 +1,25 @@
+SELECT *
+FROM (
+SELECT
+
+   0 AS "NGLQuestType", NULL AS "NGLLang", CAST(NULL AS VARCHAR(500)) AS "NGL", 
+   0 AS "oilQuestType", NULL AS "oilLang", CAST(NULL AS VARCHAR(500)) AS "oil", 
+   0 AS "conQuestType", NULL AS "conLang", CAST(NULL AS VARCHAR(500)) AS "con", 
+   7 AS "fieldQuestType", NULL AS "fieldLang", CAST(var0 AS VARCHAR(500)) AS "field", 
+   0 AS "OEQuestType", NULL AS "OELang", CAST(NULL AS VARCHAR(500)) AS "OE", 
+   0 AS "gasQuestType", NULL AS "gasLang", CAST(NULL AS VARCHAR(500)) AS "gas"
+FROM (
+ (
+SELECT DISTINCT 
+   QVIEW1."FLDNAME" as var0
+ FROM 
+"PUBLIC"."FIELD" QVIEW1
+WHERE 
+QVIEW1."FLDNPDIDFIELD" IS NOT NULL AND
+QVIEW1."FLDNAME" IS NOT NULL
+ ) 
+ 
+ ) SUBQALIAS
+) SUB_QVIEW
+ORDER BY SUB_QVIEW."field"
+

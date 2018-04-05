@@ -1,0 +1,4 @@
+Total: 	1200139.169806 ms
+Inputting: 	0.316231 ms
+Unfolding: 	23.567723 ms
+Retrieving: 	ERROR: SQL query execution returns NULL
