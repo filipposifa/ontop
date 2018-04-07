@@ -1,4 +1,4 @@
-package it.unibz.inf.ontop.sql;
+package it.unibz.inf.ontop.sesame;
 import java.util.*;
 
 public class Timer {
