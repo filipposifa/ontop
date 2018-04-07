@@ -7,6 +7,7 @@
 		<groupId>it.unibz.inf.ontop</groupId>
 		<artifactId>ontop</artifactId>
 		<version>1.18.1</version>
+		<relativePath>..</relativePath>
 	</parent>
 	<artifactId>duplicate-handler</artifactId>
 	<name>duplicate-handler</name>
@@ -43,10 +44,13 @@
 			<artifactId>postgresql</artifactId>
 		</dependency>
 		<dependency>
-				<groupId>com.ibm</groupId>
-				<artifactId>db2jcc4.jar</artifactId>
-			</dependency>
-
+                        <groupId>com.oracle.jdbc</groupId>
+                        <artifactId>ojdbc8</artifactId>
+                </dependency>
+		<dependency>
+                        <groupId>com.ibm</groupId>
+                        <artifactId>db2jcc4.jar</artifactId>
+                </dependency>
 		<dependency>
 			<groupId>com.google.code.gson</groupId>
 			<artifactId>gson</artifactId>
@@ -59,4 +63,17 @@
 			<scope>test</scope>
 		</dependency>
 	</dependencies>
+	 <repositories>
+        <repository>
+                        <id>bolzano-nexus-public</id>
+                        <url>http://obdavm.inf.unibz.it:8080/nexus/content/groups/public/</url>
+                        <releases>
+                                <enabled>true</enabled>
+                        </releases>
+                        <snapshots>
+                                <enabled>true</enabled>
+                        </snapshots>
+                </repository>
+        </repositories>
+
 </project>
