@@ -16,7 +16,7 @@ This directory contains the results of the experiments as well as material neede
 * Make sure your java version is 8 and environment variable JAVA_HOME is set (check with java -version and echo $JAVA_HOME)
 * download or clone the repository (git clone https://github.com/dbilid/ontop.git )
 * cd to the directory (cd ontop)
-* run “mvn assembly:single -DskipTests=true -Dmaven.javadoc.skip=true”
+* run “mvn clean install -DskipTests=true -Dmaven.javadoc.skip=true”
 * cd to subdirectory quest-sesame (cd quest-sesame)
 * run “mvn assembly:single -DskipTests=true -Dmaven.javadoc.skip=true”
 * cd target
