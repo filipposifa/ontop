@@ -14,6 +14,7 @@ import it.unibz.inf.ontop.owlrefplatform.core.mappingprocessing.TMappingExclusio
 import it.unibz.inf.ontop.owlrefplatform.core.mappingprocessing.TMappingProcessor;
 import it.unibz.inf.ontop.owlrefplatform.core.unfolding.DatalogUnfolder;
 import it.unibz.inf.ontop.owlrefplatform.core.unfolding.UniqueConstraintOptimizer;
+import it.unibz.inf.ontop.owlrefplatform.core.unionhandler.UnionPair;
 import it.unibz.inf.ontop.owlrefplatform.duplicateelimination.DuplicateEstimator;
 import it.unibz.inf.ontop.parser.PreprocessProjection;
 import it.unibz.inf.ontop.utils.Mapping2DatalogConverter;
@@ -37,6 +38,7 @@ public class QuestUnfolder {
 
 	private final DBMetadata metadata;
 	private final Multimap<Predicate, List<Integer>> pkeys;
+	private final Map<Predicate, List<Integer>> notNulls;
 	private final CQContainmentCheckUnderLIDs foreignKeyCQC;
 	
 	/*
@@ -62,6 +64,7 @@ public class QuestUnfolder {
 
 		this.metadata = metadata;
 		this.pkeys = DBMetadataUtil.extractPKs(metadata);
+		this.notNulls = DBMetadataUtil.extractNotNulls(metadata);
 		
 		// for eliminating redundancy from the unfolding program
 		LinearInclusionDependencies foreignKeyRules = DBMetadataUtil.generateFKRules(metadata);
@@ -134,7 +137,7 @@ public class QuestUnfolder {
 			log.debug("Final set of mappings: \n {}", finalMappings);
 		}
 		
-		unfolder = new DatalogUnfolder(unfoldingProgram, pkeys);
+		unfolder = new DatalogUnfolder(unfoldingProgram, pkeys, notNulls);
 		
 		
 		this.ufp = unfoldingProgram;
@@ -169,7 +172,7 @@ public class QuestUnfolder {
 			log.debug("Final set of mappings: \n {}", finalMappings);
 		}
 		
-		unfolder = new DatalogUnfolder(unfoldingProgram, pkeys);	
+		unfolder = new DatalogUnfolder(unfoldingProgram, pkeys, notNulls);	
 		
 		this.ufp = unfoldingProgram;
 	}
@@ -397,7 +400,8 @@ public class QuestUnfolder {
 	}
 	
 	public DatalogProgram unfold(DatalogProgram query) throws OBDAException {
-		DatalogProgram result=unfolder.unfold(query);
+		Set<UnionPair> allunions=new HashSet<UnionPair>();
+		DatalogProgram result=unfolder.unfold(query, allunions);
 		
 		return result;
 	}
@@ -449,7 +453,8 @@ public class QuestUnfolder {
 	}
 
 	public DatalogProgram unfold(DatalogProgram query, int mode) {
-		DatalogProgram result=unfolder.unfold(query, mode);
+		Set<UnionPair> allunions=new HashSet<UnionPair>();
+		DatalogProgram result=unfolder.unfold(query, mode, allunions);
 		
 		if(mode>0) {
 			DuplicateEstimator de=new DuplicateEstimator(result, pkeys, metadata, fac, mode==1);

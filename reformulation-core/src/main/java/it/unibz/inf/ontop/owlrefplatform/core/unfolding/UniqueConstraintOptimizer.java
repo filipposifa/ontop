@@ -95,7 +95,7 @@ public class UniqueConstraintOptimizer {
 			System.out.println("ESJ ELIMINATION REMOVED " + diff + " ATOMS IN " + round + " ROUNDS");
 	}
 	
-	public static void coveredJoinElimination(CQIE query) {
+	public static void coveredJoinElimination(CQIE query, Map<Predicate, List<Integer>> notNullMeta) {
 
 		List<Function> body = query.getBody();
 		Map<Variable, Integer> variablesCount=null;
@@ -136,9 +136,10 @@ public class UniqueConstraintOptimizer {
 	                        continue;
 
 	                    boolean redundant = true;
+	                    mgu = UnifierUtilities.getMGU(currentAtom, tempatom);
 	                    if(variablesCount==null){
 	                    	variablesCount=new HashMap<Variable, Integer>();
-	                    	computeVariablesCount(variablesCount, query);
+	                    	computeVariablesCount(variablesCount, query, notNullMeta, mgu);
 	                    }
 	                    
 	                    for(int i=0;i<currentAtom.getArity();i++){
@@ -177,7 +178,7 @@ public class UniqueConstraintOptimizer {
 	                    
 	                    if (redundant) {
 	                        // found a candidate replacement atom 
-	                        mgu = UnifierUtilities.getMGU(currentAtom, tempatom);
+	                        
 	                        if (mgu != null) 
 	                            break;
 	                    }
@@ -207,23 +208,63 @@ public class UniqueConstraintOptimizer {
 			System.out.println("COVERED JOIN REMOVED " + diff + " ATOMS IN " + round + " ROUNDS");
 	}
 
-	private static void computeVariablesCount(Map<Variable, Integer> variablesCount, CQIE query) {
+	public static void computeVariablesCount(Map<Variable, Integer> variablesCount, CQIE query, Map<Predicate, List<Integer>> notNullMeta, Substitution mgu) {
 		Set<Term> notNulls=new HashSet<Term>();
 		
 		for(Term headTerm:query.getHead().getTerms()){
-			computeVariableCount(variablesCount, headTerm, notNulls);
+			computeVariableCount(variablesCount, headTerm, notNulls, notNullMeta, query);
 			
 		}
 		
 		for(Function f:query.getBody()){
 			
-				computeVariableCount(variablesCount, f, notNulls);
+				computeVariableCount(variablesCount, f, notNulls, notNullMeta, query);
 		
 		
 	}
+		
+		for(Term ft:notNulls) {
+			if(!(ft instanceof Variable)) continue;
+			boolean notNullFromMeta=false;
+				if(notNullMeta != null) {
+				for(Function conj:query.getBody()) {
+					List<Integer> ints=notNullMeta.get(conj.getFunctionSymbol());
+					if(ints != null) {
+						for(int tIndex=0;tIndex<conj.getTerms().size();tIndex++) {
+							Term term=conj.getTerm(tIndex);
+						
+							if(term.equals(ft) && ints.contains(tIndex)) {
+								//is not null from constraints, no need to exist
+								notNullFromMeta=true;
+								break;
+							}
+						}
+					}
+					if(notNullFromMeta)
+						break;
+					
+				}
+				}
+				if(notNullFromMeta)
+					continue;
+				
+				if(mgu!=null && notNulls.contains(mgu.get((Variable)ft))) {
+					continue;
+				}
+				else {
+					Variable v=(Variable)ft;
+					if(!variablesCount.containsKey(v)){
+						 variablesCount.put(v, 1);
+					 }
+					 else{
+						 variablesCount.put(v, variablesCount.get(v)+1);
+					 }
+				}
+		}
+
 }
 
-	private static void computeVariableCount(Map<Variable, Integer> variablesCount, Term t, Set<Term> notNulls) {
+	private static void computeVariableCount(Map<Variable, Integer> variablesCount, Term t, Set<Term> notNulls, Map<Predicate, List<Integer>> notNullMeta, CQIE query) {
 		if(t instanceof Variable){
 			Variable v=(Variable)t;
 		 if(!variablesCount.containsKey(v)){
@@ -235,17 +276,18 @@ public class UniqueConstraintOptimizer {
 		}
 		if(t instanceof Function){
 			Function f=(Function) t;
-			
-			for(Term ft:f.getTerms()){
-				if (f.getFunctionSymbol() == ExpressionOperation.IS_NOT_NULL){
-					if(!notNulls.add(ft)){
-						continue;
-					}
-				}
-				computeVariableCount(variablesCount, ft, notNulls);
+			if (f.getFunctionSymbol() == ExpressionOperation.IS_NOT_NULL){
+				notNulls.add(f.getTerm(0));
+				
 			}
-			//System.out.println("function!!!! :"+t);
+			else {
+				for(Term ft:f.getTerms()){
+				computeVariableCount(variablesCount, ft, notNulls, notNullMeta, query);
+				}
+			}
 		}
+			
+			
 		
 	}
 	

@@ -344,6 +344,9 @@ public class NodeSelectivityEstimator implements SelectivityEstimator {
 				} else if (nuwc.getRightOp() instanceof Column && nuwc.getLeftOp() instanceof Column) {
 					estimateFilterJoin(ni, nuwc, child);
 					return;
+				} else {
+					//condition with constants?
+					return;
 				}
 
 				// RelInfo lRel =

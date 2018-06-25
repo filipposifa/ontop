@@ -145,4 +145,24 @@ public class DBMetadataUtil {
 			System.out.println("===END OF FOREIGN KEY RULES");
 		return dependencies;
 	}
+
+
+
+	public static Map<Predicate, List<Integer>> extractNotNulls(DBMetadata metadata) {
+		Map<Predicate, List<Integer>> result = new HashMap<Predicate, List<Integer>>();
+		for (DatabaseRelationDefinition relation : metadata.getDatabaseRelations()) {
+			Predicate predicate = Relation2DatalogPredicate.createPredicateFromRelation(relation);
+			List<Integer> notnulls = new ArrayList<Integer>();
+			// primary key and unique constraints
+			for (Attribute a: relation.getAttributes()) {
+				
+				if(!a.canNull()) {
+					notnulls.add(a.getIndex()-1);
+				}
+				
+				result.put(predicate, notnulls);
+			}
+		}
+		return result;
+	}
 }

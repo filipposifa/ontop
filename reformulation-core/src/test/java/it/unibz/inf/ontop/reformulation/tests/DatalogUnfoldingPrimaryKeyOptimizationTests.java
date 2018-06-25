@@ -41,6 +41,7 @@ import java.sql.Types;
 import java.util.Collections;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Map;
 
 import com.google.common.collect.Multimap;
 
@@ -139,7 +140,8 @@ public class DatalogUnfoldingPrimaryKeyOptimizationTests extends TestCase {
 	public void testRedundancyElimination() throws Exception {
 		
 		Multimap<Predicate, List<Integer>> pkeys = DBMetadataUtil.extractPKs(metadata);
-		DatalogUnfolder unfolder = new DatalogUnfolder(unfoldingProgram.getRules(), pkeys);
+		Map<Predicate, List<Integer>> notNulls = DBMetadataUtil.extractNotNulls(metadata);
+		DatalogUnfolder unfolder = new DatalogUnfolder(unfoldingProgram.getRules(), pkeys, notNulls);
 
 		LinkedList<Term> headterms = new LinkedList<Term>();
 		headterms.add(fac.getVariable("m"));
