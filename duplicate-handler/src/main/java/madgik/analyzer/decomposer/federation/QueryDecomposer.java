@@ -87,7 +87,7 @@ public class QueryDecomposer {
 		}
 
 		root = new Node(Node.OR);
-		root.setObject(new Table("table" + Util.createUniqueId(), null));
+		root.setObject(new Table("table" + Util.createUniqueIdString(), null));
 		root.addChild(union);
 		if (initialQuery.getOrderBy().size() > 0) {
 			Node orderBy = new Node(Node.AND, Node.ORDERBY);
@@ -99,7 +99,7 @@ public class QueryDecomposer {
 			}
 			Node orderByParent = new Node(Node.OR);
 			orderByParent.addChild(orderBy);
-			orderByParent.setObject(new Table("table" + Util.createUniqueId(), null));
+			orderByParent.setObject(new Table("table" + Util.createUniqueIdString(), null));
 			root = orderByParent;
 		}
 
@@ -275,7 +275,7 @@ public class QueryDecomposer {
 
 					Node nestedNodeOr = new Node(Node.AND, Node.NESTED);
 					Node nestedNode = new Node(Node.OR);
-					nestedNode.setObject(new Table("table" + Util.createUniqueId().toString(), null));
+					nestedNode.setObject(new Table("table" + Util.createUniqueIdString().toString(), null));
 					nestedNode.addChild(nestedNodeOr);
 					nestedNodeOr.setObject(s.getNestedSubqueryAlias(nested));
 					nestedNode.addDescendantBaseTable(s.getNestedSubqueryAlias(nested));
@@ -365,7 +365,7 @@ public class QueryDecomposer {
 				newChidlren.add(h.get(newBaseTable.getHashId()));
 			} else {
 				Node newEqNode = new Node(Node.OR);
-				newEqNode.setObject(new Table("table" + Util.createUniqueId(), null));
+				newEqNode.setObject(new Table("table" + Util.createUniqueIdString(), null));
 				newEqNode.addChild(addAliasesToDAG(inpEq, firstAliases, nextAliases, h));
 				if (!h.containsKey(newEqNode.getHashId())) {
 					h.put(newEqNode.getHashId(), newEqNode);
@@ -444,7 +444,7 @@ public class QueryDecomposer {
 
 					} else {
 						orNode = new Node(Node.OR);
-						orNode.setObject(new Table("table" + Util.createUniqueId(), null));
+						orNode.setObject(new Table("table" + Util.createUniqueIdString(), null));
 						project = new Node(Node.AND, Node.BASEPROJECT);
 						orNode.addChild(project);
 						Projection prj = new Projection();

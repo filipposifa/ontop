@@ -191,7 +191,7 @@ public class SQLQueryVisitor extends AbstractVisitor {
 		
 		Node parent = new Node(Node.OR);
 
-		Table selt = new Table("table" + Util.createUniqueId(), null);
+		Table selt = new Table("table" + Util.createUniqueIdString(), null);
 		parent.setObject(selt);
 		parent.addChild(j);
 

@@ -27,8 +27,10 @@ import it.unibz.inf.ontop.model.Variable;
 import it.unibz.inf.ontop.utils.EventGeneratingLinkedList;
 import it.unibz.inf.ontop.utils.EventGeneratingList;
 import it.unibz.inf.ontop.utils.ListListener;
+import madgik.analyzer.decomposer.util.Util;
 
 import java.util.*;
+import java.util.concurrent.atomic.AtomicLong;
 
 /**
  * This is a rule implementation that keeps track of changes in the query by
@@ -44,6 +46,7 @@ public class CQIEImpl implements CQIE, ListListener {
 	private boolean rehash = true;
 
 	private String string = null;
+	private long id=-1;
 
 	private static final String SPACE = " ";
 	private static final String COMMA = ",";
@@ -214,5 +217,18 @@ public class CQIEImpl implements CQIE, ListListener {
 			TermUtils.addReferencedVariablesTo(vars, atom);
 		}
 		return vars;
+	}
+
+	@Override
+	public long getId() {
+		if(id<0) {
+			setId();
+		}
+		return id;
+	}
+
+	@Override
+	public void setId() {
+		this.id=Util.createUniqueId();
 	}
 }

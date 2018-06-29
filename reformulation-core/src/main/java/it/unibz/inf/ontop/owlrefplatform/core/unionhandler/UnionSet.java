@@ -16,6 +16,20 @@ public class UnionSet {
 		this.unions = new HashSet<UnionInfo>();
 		unions.add(firstUnion);
 	}
+
+	public Set<UnionInfo> getInfo() {
+		return unions;
+	}
+
+	public void remove(UnionInfo ui) {
+		this.unions.remove(ui);
+		
+	}
+
+	public void add(UnionInfo ui) {
+		this.unions.add(ui);
+		
+	}
 	
 	
 

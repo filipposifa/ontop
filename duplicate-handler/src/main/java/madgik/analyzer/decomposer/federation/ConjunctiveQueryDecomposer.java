@@ -349,7 +349,7 @@ public class ConjunctiveQueryDecomposer {
 
 				Node selTable = new Node(Node.OR);
 
-				Table selt = new Table("table" + Util.createUniqueId(), null);
+				Table selt = new Table("table" + Util.createUniqueIdString(), null);
 				selTable.setObject(selt);
 				selTable.addChild(selection);
 
@@ -418,7 +418,7 @@ public class ConjunctiveQueryDecomposer {
 
 				Node selTable = new Node(Node.OR);
 
-				Table selt = new Table("table" + Util.createUniqueId(), null);
+				Table selt = new Table("table" + Util.createUniqueIdString(), null);
 				selTable.setObject(selt);
 				selTable.addChild(selection);
 				selTable.setPartitionRecord(selection.getPartitionRecord());
@@ -514,7 +514,7 @@ public class ConjunctiveQueryDecomposer {
 			}
 
 			Node table = new Node(Node.OR);
-			Table t = new Table("table" + Util.createUniqueId(), null);
+			Table t = new Table("table" + Util.createUniqueIdString(), null);
 			table.setObject(t);
 			table.addChild(join);
 			// table.setIsCentralised(tableIsCentralised);
@@ -779,7 +779,7 @@ public class ConjunctiveQueryDecomposer {
 			 * n2.addChild(tempParent); tempParent = n2; }
 			 */
 			Node projTable = new Node(Node.OR);
-			projTable.setObject(new Table("table" + Util.createUniqueId(), null));
+			projTable.setObject(new Table("table" + Util.createUniqueIdString(), null));
 			projTable.addChild(tempParent);
 
 			if (!hashes.containsKey(projTable.getHashId())) {
@@ -810,7 +810,7 @@ public class ConjunctiveQueryDecomposer {
 			tempParent = limit;
 
 			Node limitTable = new Node(Node.OR);
-			limitTable.setObject(new Table("table" + Util.createUniqueId(), null));
+			limitTable.setObject(new Table("table" + Util.createUniqueIdString(), null));
 			limitTable.addChild(tempParent);
 
 			if (!hashes.containsKey(limitTable.getHashId())) {

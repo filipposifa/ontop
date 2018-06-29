@@ -25,13 +25,20 @@ public class Util {
 	private Util() {
 	}
 
-	public static String createUniqueId() {
+	public static String createUniqueIdString() {
 		
 			String a=String.valueOf(idCounter.getAndIncrement());
 			return a;
 		
 	}
+	
+	public static long createUniqueId() {
+		
+		return idCounter.getAndIncrement();
 
+	
+}
+	
 	public static boolean operandsAreEqual(Operand op1, Operand op2) {
 		if (op1.getClass() == op2.getClass()) {
 			return op1.getClass().cast(op1).equals(op2.getClass().cast(op2));

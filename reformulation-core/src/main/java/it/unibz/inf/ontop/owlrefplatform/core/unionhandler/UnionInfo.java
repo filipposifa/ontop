@@ -1,25 +1,24 @@
 package it.unibz.inf.ontop.owlrefplatform.core.unionhandler;
 
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
-import it.unibz.inf.ontop.model.CQIE;
-import it.unibz.inf.ontop.model.Function;
+import java.util.HashMap;
+import java.util.Map;
+import it.unibz.inf.ontop.model.Predicate;
 
 public class UnionInfo {
 	
 	
-	private List<CQIE> mappingSequence;
-	private CQIE cq;
+	private Map<Predicate, PredEntry> predicates;
 	
 	
-	public UnionInfo(CQIE q) {
+	
+	public UnionInfo() {
 		super();
-		mappingSequence=new ArrayList<CQIE>();
-		this.cq=q;
+		predicates=new HashMap<Predicate, PredEntry>();
 	}
+
+
+	
 	
 	
 

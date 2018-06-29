@@ -400,8 +400,8 @@ public class QuestUnfolder {
 	}
 	
 	public DatalogProgram unfold(DatalogProgram query) throws OBDAException {
-		Set<UnionPair> allunions=new HashSet<UnionPair>();
-		DatalogProgram result=unfolder.unfold(query, allunions);
+		//Set<UnionPair> allunions=new HashSet<UnionPair>();
+		DatalogProgram result=unfolder.unfold(query);
 		
 		return result;
 	}
@@ -453,8 +453,8 @@ public class QuestUnfolder {
 	}
 
 	public DatalogProgram unfold(DatalogProgram query, int mode) {
-		Set<UnionPair> allunions=new HashSet<UnionPair>();
-		DatalogProgram result=unfolder.unfold(query, mode, allunions);
+		//Set<UnionPair> allunions=new HashSet<UnionPair>();
+		DatalogProgram result=unfolder.unfold(query, mode);
 		
 		if(mode>0) {
 			DuplicateEstimator de=new DuplicateEstimator(result, pkeys, metadata, fac, mode==1);

@@ -27,10 +27,13 @@ import it.unibz.inf.ontop.model.impl.OBDADataFactoryImpl;
 import it.unibz.inf.ontop.model.impl.OBDAVocabulary;
 import it.unibz.inf.ontop.model.impl.TermUtils;
 import it.unibz.inf.ontop.owlrefplatform.core.basicoperations.*;
+import it.unibz.inf.ontop.owlrefplatform.core.unionhandler.Node;
+import it.unibz.inf.ontop.owlrefplatform.core.unionhandler.SequenceInfo;
 import it.unibz.inf.ontop.owlrefplatform.core.unionhandler.UnionInfo;
 import it.unibz.inf.ontop.owlrefplatform.core.unionhandler.UnionPair;
 import it.unibz.inf.ontop.owlrefplatform.core.unionhandler.UnionSet;
 import it.unibz.inf.ontop.owlrefplatform.duplicateelimination.DuplicateEstimator;
+import madgik.analyzer.decomposer.util.Util;
 
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -55,11 +58,14 @@ public class DatalogUnfolder {
 	private static final Logger log = LoggerFactory.getLogger(DatalogUnfolder.class);
 
 	private final Multimap<Predicate, List<Integer>> primaryKeys;
-	
+
 	private final Map<Predicate, List<Integer>> notNulls;
 
-
 	private final Map<Predicate, List<CQIE>> ruleIndex = new LinkedHashMap<>();
+	
+	private final Map<CQIE, Integer> mappingIDIndex;
+	
+	private final Map<Predicate, Integer> tMappingIDIndex;
 
 	/***
 	 * Leaf predicates are those that do not appear in the head of any rule. If a
@@ -72,28 +78,32 @@ public class DatalogUnfolder {
 	 */
 	private final Set<Predicate> extensionalPredicates = new HashSet<>();
 
-	
-
 	// LeftJoinUnfoldingTest only
 
 	public DatalogUnfolder(List<CQIE> unfoldingProgram) {
-		this(unfoldingProgram, HashMultimap.<Predicate, List<Integer>>create(), new HashMap<Predicate, List<Integer>>());
+		this(unfoldingProgram, HashMultimap.<Predicate, List<Integer>>create(),
+				new HashMap<Predicate, List<Integer>>());
 	}
 
 	// QuestUnfilder only
 
-	public DatalogUnfolder(List<CQIE> unfoldingProgram, Multimap<Predicate, List<Integer>> primaryKeys, 
+	public DatalogUnfolder(List<CQIE> unfoldingProgram, Multimap<Predicate, List<Integer>> primaryKeys,
 			Map<Predicate, List<Integer>> notNulls) {
-		
-		this.primaryKeys = primaryKeys;
-		this.notNulls=notNulls;
 
+		this.primaryKeys = primaryKeys;
+		this.notNulls = notNulls;
+		mappingIDIndex=new HashMap<CQIE, Integer>(unfoldingProgram.size());
+		tMappingIDIndex=new HashMap<Predicate, Integer>();
+		int id=1;
+		int tId=-1;
 		// Creating a local index for the rules according to their predicate
 		for (CQIE mappingrule : unfoldingProgram) {
+			mappingIDIndex.put(mappingrule, id++);
 			Function head = mappingrule.getHead();
 
 			List<CQIE> rules = ruleIndex.get(head.getFunctionSymbol());
 			if (rules == null) {
+				tMappingIDIndex.put(head.getFunctionSymbol(), tId--);
 				rules = new LinkedList<>();
 				ruleIndex.put(head.getFunctionSymbol(), rules);
 			}
@@ -183,16 +193,16 @@ public class DatalogUnfolder {
 	 * The goal for this partial evaluation is the predicate <b>ans1</b>
 	 * 
 	 */
-	public DatalogProgram unfold(DatalogProgram inputquery, Set<UnionPair> allunions) {
-
+	public DatalogProgram unfold(DatalogProgram inputquery) {
+		Map<Long, Node> idToCQs=new HashMap<Long, Node>();
 		List<CQIE> workingSet = new LinkedList<>();
 		for (CQIE query : inputquery.getRules())
 			workingSet.add(query.clone());
 
 		for (CQIE query : workingSet)
 			EQNormalizer.enforceEqualities(query);
-
-		computePartialEvaluation(workingSet, allunions);
+		
+		computePartialEvaluation(workingSet, idToCQs);
 
 		// We need to enforce equality again, because at this point it is
 		// possible that there is still some EQ(...)
@@ -945,14 +955,15 @@ public class DatalogUnfolder {
 	 * 
 	 * @return
 	 */
-	private void computePartialEvaluation(List<CQIE> workingList, Set<UnionPair> allunions) {
+	private void computePartialEvaluation(List<CQIE> workingList, Map<Long, Node> idToCQs) {
 
 		ListIterator<CQIE> iterator = workingList.listIterator();
 
 		while (iterator.hasNext()) {
 			CQIE rule = iterator.next();
+			
 
-			List<CQIE> result = computePartialEvaluation(rule.getBody(), rule, new Stack<Integer>(), false, allunions);
+			List<CQIE> result = computePartialEvaluation(rule.getBody(), rule, new Stack<Integer>(), false, idToCQs);
 
 			if (result == null) {
 				// if the result is null the rule is logically empty
@@ -990,7 +1001,7 @@ public class DatalogUnfolder {
 	 */
 
 	private List<CQIE> computePartialEvaluation(List<Function> atoms, CQIE rule, Stack<Integer> termidx,
-			boolean parentIsLeftJoin, Set<UnionPair> allunions) {
+			boolean parentIsLeftJoin, Map<Long, Node> idToCQs) {
 
 		int nonBooleanAtomCounter = 0;
 
@@ -1006,9 +1017,9 @@ public class DatalogUnfolder {
 				 * This is a data atom, it should be unfolded with the usual resolution
 				 * algorithm.
 				 */
-
 				boolean isLeftJoinSecondArgument = nonBooleanAtomCounter == 2 && parentIsLeftJoin;
-				List<CQIE> result = resolveDataAtom(atom, rule, termidx, parentIsLeftJoin, isLeftJoinSecondArgument, allunions);
+				List<CQIE> result = resolveDataAtom(atom, rule, termidx, parentIsLeftJoin, isLeftJoinSecondArgument,
+						idToCQs);
 
 				if (result == null)
 					return null;
@@ -1028,7 +1039,7 @@ public class DatalogUnfolder {
 				for (Term t : atom.getTerms())
 					innerTerms.add((Function) t);
 
-				List<CQIE> result = computePartialEvaluation(innerTerms, rule, termidx, focusAtomIsLeftJoin, allunions);
+				List<CQIE> result = computePartialEvaluation(innerTerms, rule, termidx, focusAtomIsLeftJoin, idToCQs);
 
 				if (result == null)
 					return null;
@@ -1098,7 +1109,7 @@ public class DatalogUnfolder {
 	 * @see UnifierUtilities
 	 */
 	private List<CQIE> resolveDataAtom(Function focusAtom, CQIE rule, Stack<Integer> termidx, boolean isLeftJoin,
-			boolean isSecondAtomInLeftJoin, Set<UnionPair> allunions) {
+			boolean isSecondAtomInLeftJoin, Map<Long, Node> idToCQs) {
 
 		/*
 		 * Leaf predicates are ignored (as boolean or algebra predicates)
@@ -1130,7 +1141,7 @@ public class DatalogUnfolder {
 		} else {
 			// Note, in this step result may get new CQIEs inside
 			result = generateResolutionResult(focusAtom, rule, termidx, rulesDefiningTheAtom, isLeftJoin,
-					isSecondAtomInLeftJoin, allunions);
+					isSecondAtomInLeftJoin, idToCQs);
 		}
 
 		if (result == null) {
@@ -1229,12 +1240,24 @@ public class DatalogUnfolder {
 	 * @return
 	 */
 	private List<CQIE> generateResolutionResult(Function focusAtom, CQIE rule, Stack<Integer> termidx,
-			List<CQIE> rulesDefiningTheAtom, boolean isLeftJoin, boolean isSecondAtomOfLeftJoin, Set<UnionPair> allunions) {
-
+			List<CQIE> rulesDefiningTheAtom, boolean isLeftJoin, boolean isSecondAtomOfLeftJoin,
+			Map<Long, Node> idToCQs) {
+		
 		List<CQIE> candidateMatches = new LinkedList<>(rulesDefiningTheAtom);
 		List<CQIE> result = new LinkedList<>();
-		UnionPair unions=new UnionPair();
+		UnionPair unions = new UnionPair(focusAtom.getFunctionSymbol());
 		int rulesGeneratedSoFar = 0;
+		Map<CQIE, CQIE> resultedQueryToOriginalMapping = new HashMap<CQIE, CQIE>();
+		long id=rule.getId();
+		Node n=null;
+		if(!idToCQs.containsKey(id)) {
+			System.out.println("Query not found!");
+			//n=new Node(id, candidateMatches.size());
+			//idToCQs.put(id, n);
+		}
+		else {
+			n=idToCQs.get(id);
+		}
 		for (CQIE candidateRule : candidateMatches) {
 
 			/* getting a rule with unique variables */
@@ -1282,12 +1305,14 @@ public class DatalogUnfolder {
 			 */
 
 			int newatomcount = freshRule.getBody().size();
-
-			boolean toRemoveOtherUnions = joinEliminationPKBased(termidx, newatomcount, partialEvalution, unions);
+			//int oldSize = unions.size();
+			boolean toRemoveOtherUnions = joinEliminationPKBased(termidx, newatomcount, partialEvalution, unions, candidateRule);
 			/***
 			 * DONE OPTIMIZING RETURN THE RESULT
 			 */
-
+			//if (unions.size() != oldSize) {
+				resultedQueryToOriginalMapping.put(partialEvalution, candidateRule);
+			//}
 			rulesGeneratedSoFar += 1;
 
 			if (isSecondAtomOfLeftJoin && rulesGeneratedSoFar > 1) {
@@ -1305,13 +1330,43 @@ public class DatalogUnfolder {
 			if (toRemoveOtherUnions) {
 				result.clear();
 				result.add(partialEvalution);
+				n.removeChildren();
+				idToCQs.put(partialEvalution.getId(), n);
 				return result;
 			}
 			result.add(partialEvalution);
+			Node child=new Node(partialEvalution.getId(), 10, termidx.peek(), newatomcount);
+			n.addChild(this.tMappingIDIndex.get(focusAtom.getFunctionSymbol()), 
+					this.mappingIDIndex.get(candidateRule), child);
+			idToCQs.put(partialEvalution.getId(), child);
 		} // end for candidate matches
-		if(unions.size()>1) {
-			allunions.add(unions);
+
+		/*for (UnionPair up : root) {
+			for (UnionSet us : up.getSets()) {
+				UnionInfo uiresult = null;
+				for (UnionInfo ui : us.getInfo()) {
+
+					if (ui.getCQ() == rule) {
+						uiresult = ui;
+						break;
+					}
+				}
+				if (uiresult != null) {
+					us.remove(uiresult);
+					for (CQIE newCQ : resultedQueryToOriginalMapping.keySet()) {
+						UnionInfo newUI = new UnionInfo(newCQ);
+						newUI.setSequence(new ArrayList<CQIE>(uiresult.getSequence()));
+						newUI.addToSequence(resultedQueryToOriginalMapping.get(newCQ));
+						us.add(newUI);
+
+					}
+				}
+			}
 		}
+		if (unions.size() > 1) {
+			System.out.println("Size:::"+unions.size());
+			root.add(unions);
+		}*/
 
 		return result;
 	}
@@ -1425,16 +1480,17 @@ public class DatalogUnfolder {
 	 * @param partialEvalution
 	 *            The CQIE currently being optimized, i.e., the result of the
 	 *            resolution step.
-	 * @param unions 
+	 * @param unions
 	 * 
 	 */
-	private boolean joinEliminationPKBased(Stack<Integer> termidx, int newatomcount, CQIE partialEvalution, UnionPair unions) {
+	private boolean joinEliminationPKBased(Stack<Integer> termidx, int newatomcount, CQIE partialEvalution,
+			UnionPair unions, CQIE mapping) {
 		System.out.println("goooo");
 		List<Function> innerAtoms = getNestedList(termidx, partialEvalution);
 
 		Function currentAtom = getTerm(termidx, partialEvalution);
-		
-		Map<Variable, Integer> variablesCount=null;
+
+		Map<Variable, Integer> variablesCount = null;
 
 		if (currentAtom == null) {
 			/*
@@ -1443,17 +1499,17 @@ public class DatalogUnfolder {
 
 			return false;
 		}
-		Set<Function> atoms=new HashSet<Function>();
+		Set<Function> atoms = new HashSet<Function>();
 		int newatomsfirstIndex = termidx.peek();
-		
+
 		if (newatomsfirstIndex <= 0) {
-			System.out.println("index:"+newatomsfirstIndex+":"+partialEvalution);
+			//System.out.println("index:" + newatomsfirstIndex + ":" + partialEvalution);
 			return false;
-			
+
 		}
-		boolean modified=false;
-		int noOfDataAtoms=0;
-		int coveredDataAtoms=0;
+		int noOfDataAtoms = 0;
+		//int coveredDataAtoms = 0;
+		Map<Function, Function> toRemove=new HashMap<Function, Function>();
 		for (int newatomidx = newatomsfirstIndex; newatomidx < newatomsfirstIndex + newatomcount; newatomidx++) {
 
 			Function newatom = innerAtoms.get(newatomidx);
@@ -1462,116 +1518,109 @@ public class DatalogUnfolder {
 			if (!newatom.isDataFunction()) {
 				continue;
 			}
-			boolean removed=false;
 			noOfDataAtoms++;
-			System.out.println("next data function");
-			
+			//System.out.println("next data function");
+
 			Substitution mgu = null;
 
 			Function tempatom = null;
-			
+
 			for (int idx2 = 0; idx2 < termidx.peek(); idx2++) {
 				tempatom = innerAtoms.get(idx2);
 
 				// predicates are different, atoms cannot be unified
 				if (!tempatom.getFunctionSymbol().equals(newatom.getFunctionSymbol()))
 					continue;
-				
-				mgu = UnifierUtilities.getMGU(currentAtom, tempatom);
-                if (mgu == null) {
-					//removeUnions = false;
+
+				mgu = UnifierUtilities.getMGU(newatom, tempatom);
+				if (mgu == null) {
+					// removeUnions = false;
 					continue;
 				}
-                
-                if (currentAtom.isAlgebraFunction()
+
+				if (currentAtom.isAlgebraFunction()
 						&& (currentAtom.getFunctionSymbol() == OBDAVocabulary.SPARQL_LEFTJOIN)) {
 					continue;
 				}
-				
-				
-				 boolean redundant = true;
-				 
-					if(variablesCount==null){
-                    	variablesCount=new HashMap<Variable, Integer>();
-                    	UniqueConstraintOptimizer.computeVariablesCount(variablesCount, partialEvalution, notNulls, mgu);
-                    }
-                    
-                    for(int i=0;i<currentAtom.getArity();i++){
-                    	Term next=currentAtom.getTerm(i);
-                    	if(next instanceof Constant){
-                    		if(!tempatom.getTerm(i).equals(next)){
-                    			redundant=false;
-                    			break;
-                    		}
-                    	}
-                    	else if(next instanceof Variable){
-                    		Variable v=(Variable)currentAtom.getTerm(i);
-                    		if(variablesCount.get(v)==1){
-                    			//this column is not used anywhere else in the query
-                    			continue;
-                    		}
-                    		else{
-                    			if(!tempatom.getTerm(i).equals(next)){
-	                    			redundant=false;
-	                    			break;
-	                    		}
-                    			else{
-                    				continue;
-                    			}
-                    		}
-                    	}
-                    }
-                    	
-                    
-                    //for (Integer termidx2 : pKey) {
-                    //    if (!currentAtom.getTerm(termidx2 - 1).equals(tempatom.getTerm(termidx2 - 1))) {
-                    //        redundant = false;
-                    //        break;
-                    //    }
-                    //}
-                    
-                    if (redundant) {
-                        // found a candidate replacement atom 
-                        
-                        SubstitutionUtilities.applySubstitution(partialEvalution, mgu, false);
-                        modified=true;
-        				log.debug("covered join elimination for redundant self join of {} and {}",
-        						 newatom, tempatom);
 
-        				System.out.println("eliminating covered self join of " + newatom + " and " + tempatom);
-        				coveredDataAtoms++;
-        				innerAtoms.remove(newatomidx);
-        				newatomidx -= 1;
-        				newatomcount -= 1;
-        				removed=true;
-        				break;
-                        
-                    }
-				
-				
+				boolean redundant = true;
+
+				if (variablesCount == null) {
+					variablesCount = new HashMap<Variable, Integer>();
+					UniqueConstraintOptimizer.computeVariablesCount(variablesCount, partialEvalution, notNulls, mgu);
+				}
+
+				for (int i = 0; i < currentAtom.getArity(); i++) {
+					Term next = currentAtom.getTerm(i);
+					if (next instanceof Constant) {
+						if (!tempatom.getTerm(i).equals(next)) {
+							redundant = false;
+							break;
+						}
+					} else if (next instanceof Variable) {
+						Variable v = (Variable) currentAtom.getTerm(i);
+						if (variablesCount.get(v) == 1) {
+							// this column is not used anywhere else in the query
+							continue;
+						} else {
+							if (!tempatom.getTerm(i).equals(next)) {
+								redundant = false;
+								break;
+							} else {
+								continue;
+							}
+						}
+					}
+				}
+
+				// for (Integer termidx2 : pKey) {
+				// if (!currentAtom.getTerm(termidx2 - 1).equals(tempatom.getTerm(termidx2 -
+				// 1))) {
+				// redundant = false;
+				// break;
+				// }
+				// }
+
+				if (redundant) {
+					// found a candidate replacement atom
+					toRemove.put(newatom, tempatom);
+				/*	SubstitutionUtilities.applySubstitution(partialEvalution, mgu, false);
+				//	modified = true;
+					log.debug("covered join elimination for redundant self join of {} and {}", newatom, tempatom);
+
+					System.out.println("eliminating covered self join of " + newatom + " and " + tempatom);
+					//coveredDataAtoms++;
+					innerAtoms.remove(newatomidx);
+					newatomidx -= 1;
+					newatomcount -= 1;
+					//removed = true;*/
+					break;
+
+				}
+
 			}
-			if(removed) continue;
+			/* if (removed)
+				continue;
 
 			Collection<List<Integer>> pKeys = primaryKeys.get(newatom.getFunctionSymbol());
 
 			for (List<Integer> pKey : pKeys) {
 				// no pkeys for this predicate
 				if (pKey == null || pKey.isEmpty()) {
-					
-					continue;
-					
-				}
-				
-					
-				/*
-				 * the predicate has a primary key, looking for candidates for unification, when
-				 * we find one we can stop, since the application of this optimization at each
-				 * step of the derivation tree guarantees there wont be any other redundant
-				 * atom.
-				 */
-				 mgu = null;
 
-				 tempatom = null;
+					continue;
+
+				}
+
+			//	
+			//	  the predicate has a primary key, looking for candidates for unification, when
+			//	  we find one we can stop, since the application of this optimization at each
+			//	  step of the derivation tree guarantees there wont be any other redundant
+			//	  atom.
+			//	 
+				mgu = null;
+
+				tempatom = null;
 
 				for (int idx2 = 0; idx2 < termidx.peek(); idx2++) {
 					tempatom = innerAtoms.get(idx2);
@@ -1589,7 +1638,7 @@ public class DatalogUnfolder {
 					}
 
 					if (redundant) {
-						// found a candidate replacement atom */
+						// found a candidate replacement atom 
 						mgu = UnifierUtilities.getMGU(newatom, tempatom);
 						if (mgu != null)
 							break;
@@ -1605,16 +1654,12 @@ public class DatalogUnfolder {
 						&& (currentAtom.getFunctionSymbol() == OBDAVocabulary.SPARQL_LEFTJOIN)) {
 					continue;
 				}
+
 				
-				
-				/*for(int t=0;t<newatom.getTerms().size();t++ ) {
-					Term old=newatom.getTerm(t);
-					if(old instanceof Constant && !(old.equals(tempatom.getTerm(t)))) {
-						System.out.println("consntannnt");
-						allDataFunctionsRemoved=false;
-						break;
-					}
-				}*/
+				 // for(int t=0;t<newatom.getTerms().size();t++ ) { Term old=newatom.getTerm(t);
+				 // if(old instanceof Constant && !(old.equals(tempatom.getTerm(t)))) {
+				 // System.out.println("consntannnt"); allDataFunctionsRemoved=false; break; } }
+				 //
 
 				SubstitutionUtilities.applySubstitution(partialEvalution, mgu, false);
 
@@ -1623,13 +1668,13 @@ public class DatalogUnfolder {
 
 				System.out.println("The Unique Constraint " + newatom.getFunctionSymbol() + " " + pKey
 						+ " is used for eliminating the redundant self join of " + newatom + " and " + tempatom);
-				modified=true;
+				modified = true;
 				innerAtoms.remove(newatomidx);
 				newatomidx -= 1;
 				newatomcount -= 1;
 				break;
-				
-			}
+
+			}*/
 		}
 
 		/*
@@ -1638,30 +1683,47 @@ public class DatalogUnfolder {
 		 * eliminate the join atom attach the inner atoms to the parent of the join
 		 * (body or another join/leftjoin). This is done with the normalizer.
 		 */
-
-		int dataAtoms = DatalogNormalizer.countDataItems(innerAtoms);
-		if (dataAtoms == 1) {
-			// Eliminates Join atoms when they only have one data atom, i.e., they are
-			// not really JOINs
 		
-			DatalogNormalizer.unfoldJoinTrees(partialEvalution);
-			
-		}
-		if (noOfDataAtoms>0&&noOfDataAtoms==coveredDataAtoms) {
-			
-				
+		if (noOfDataAtoms > 0 && noOfDataAtoms == toRemove.size()) {
+			for(Function newatom:toRemove.keySet()) {
+				Substitution mgu = UnifierUtilities.getMGU(newatom, toRemove.get(newatom));
+				SubstitutionUtilities.applySubstitution(partialEvalution, mgu, false);
+				for (int newatomidx = newatomsfirstIndex; newatomidx < newatomsfirstIndex + newatomcount; newatomidx++) {
+					if(innerAtoms.get(newatomidx).equals(newatom)) {
+						innerAtoms.remove(newatomidx);
+						break;
+					}
+				}
+				//partialEvalution.getBody().re.remove(newatom);
+			}
+			int dataAtoms = DatalogNormalizer.countDataItems(innerAtoms);
+			if (dataAtoms == 1) {
+				// Eliminates Join atoms when they only have one data atom, i.e., they are
+				// not really JOINs
+
+				DatalogNormalizer.unfoldJoinTrees(partialEvalution);
+			}
 				System.out.println("Removing other unions!!!");
 				System.out.println(partialEvalution);
 				return true;
-			
 
+			
+		}else {
+			int dataAtoms = DatalogNormalizer.countDataItems(innerAtoms);
+			if (dataAtoms == 1) {
+				// Eliminates Join atoms when they only have one data atom, i.e., they are
+				// not really JOINs
+
+				DatalogNormalizer.unfoldJoinTrees(partialEvalution);
+			}
+		
+			//UnionInfo info = new UnionInfo(partialEvalution);
+			//UnionSet unionset = new UnionSet(atoms, info);
+			//unions.add(mapping, unionset);
+			return false; 
+		
 		}
-		if(!modified) {
-			UnionInfo info=new UnionInfo(partialEvalution);
-			UnionSet unionset=new UnionSet(atoms, info);
-			unions.add(unionset);
-		}
-		return false;
+		
 	}
 
 	/***
@@ -1763,12 +1825,11 @@ public class DatalogUnfolder {
 		return atom;
 	}
 
-	public DatalogProgram unfold(DatalogProgram inputquery, int mode, Set<UnionPair> allunions) {
+	public DatalogProgram unfold(DatalogProgram inputquery, int mode) {
 
 		List<CQIE> workingSet = new LinkedList<>();
 		for (CQIE query : inputquery.getRules())
 			workingSet.add(query.clone());
-
 		for (CQIE q : workingSet) {
 			Set<Function> existingAtoms = new HashSet<Function>();
 			System.out.println("initial size:::" + q.getBody().size());
@@ -1780,11 +1841,27 @@ public class DatalogUnfolder {
 			}
 			System.out.println("final size:::" + q.getBody().size());
 		}
-
-		for (CQIE query : workingSet)
+		Map<Long, Node> idToCQs=new HashMap<Long, Node>();
+		List<Node> forest=new ArrayList<Node>(workingSet.size());
+		for (CQIE query : workingSet) {
 			EQNormalizer.enforceEqualities(query);
+			
+				long id=query.getId();
+				Node root=new Node(id, 10, 0, 0);
+				if(!idToCQs.containsKey(id)) {
+					idToCQs.put(id, root);	
+					forest.add(root);
+			}
+		}
+		computePartialEvaluation(workingSet, idToCQs);
+		Map<Integer, UnionInfo> unions=new HashMap<Integer, UnionInfo>();
 
-		computePartialEvaluation(workingSet, allunions);
+		for(int i=0;i<forest.size();i++) {
+			Node nextRoot=forest.get(i);
+			List<SequenceInfo> sequences=new ArrayList<SequenceInfo>();
+			nextRoot.traverse(unions, sequences);
+			
+		}
 
 		// We need to enforce equality again, because at this point it is
 		// possible that there is still some EQ(...)

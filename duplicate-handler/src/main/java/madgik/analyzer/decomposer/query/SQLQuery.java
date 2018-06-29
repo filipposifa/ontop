@@ -67,7 +67,7 @@ public class SQLQuery {
 
 	public SQLQuery() {
 		super();
-		temporaryTableName = "table" + Util.createUniqueId();
+		temporaryTableName = "table" + Util.createUniqueIdString();
 		selectAll = false;
 		temporary = true;
 		outputColumnsDinstict = false;

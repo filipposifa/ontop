@@ -23,6 +23,7 @@ package it.unibz.inf.ontop.model;
 import java.io.Serializable;
 import java.util.List;
 import java.util.Set;
+import java.util.concurrent.atomic.AtomicLong;
 
 public interface CQIE extends Serializable {
 
@@ -37,4 +38,8 @@ public interface CQIE extends Serializable {
 	public CQIE clone();
 	
 	public Set<Variable> getReferencedVariables();
+	
+	public long getId();
+	
+	public void setId();
 }

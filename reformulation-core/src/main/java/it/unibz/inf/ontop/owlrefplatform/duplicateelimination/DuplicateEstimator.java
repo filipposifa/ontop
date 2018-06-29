@@ -489,7 +489,7 @@ public class DuplicateEstimator {
 					schema="SESSION";
 				}
 				
-				String viewName=viewtable+Util.createUniqueId();
+				String viewName=viewtable+Util.createUniqueIdString();
 				if(this.metadata.getDbmsProductName().toLowerCase().contains("oracle")){
 					viewName="V"+UUID.randomUUID().toString().replace("-", "");
 					viewName=viewName.substring(0, 30).toUpperCase();
@@ -524,7 +524,7 @@ public class DuplicateEstimator {
 					q.getBody().add(f);	
 					
 					if(this.metadata.getDriverName().toLowerCase().contains("mysql")){
-						viewName=viewtable+Util.createUniqueId();
+						viewName=viewtable+Util.createUniqueIdString();
 						//mysql cannot use a temp table more than once in each query!!!
 						//"Can't reopen table" error
 					}
