@@ -28,6 +28,7 @@ import it.unibz.inf.ontop.model.impl.OBDAVocabulary;
 import it.unibz.inf.ontop.model.impl.TermUtils;
 import it.unibz.inf.ontop.owlrefplatform.core.basicoperations.*;
 import it.unibz.inf.ontop.owlrefplatform.core.unionhandler.Node;
+import it.unibz.inf.ontop.owlrefplatform.core.unionhandler.PredEntry;
 import it.unibz.inf.ontop.owlrefplatform.core.unionhandler.SequenceInfo;
 import it.unibz.inf.ontop.owlrefplatform.core.unionhandler.UnionInfo;
 import it.unibz.inf.ontop.owlrefplatform.core.unionhandler.UnionPair;
@@ -1860,6 +1861,76 @@ public class DatalogUnfolder {
 			Node nextRoot=forest.get(i);
 			List<SequenceInfo> sequences=new ArrayList<SequenceInfo>();
 			nextRoot.traverse(unions, sequences);
+			
+		}
+		
+		int card=0;
+		UnionInfo maxUnion=null;
+		for(UnionInfo ui:unions.values()) {
+			if(card<ui.getCardinality()) {
+				card=ui.getCardinality();
+				maxUnion=ui;
+			}
+		}
+		if(maxUnion!=null) {
+			Map<List<Integer>, Set<Long>> groupedQueries =new HashMap<List<Integer>, Set<Long>>();
+			List<Integer> first=null;
+			Set<Set<Function>> atoms=new HashSet<Set<Function>>();
+			Iterator<PredEntry> entries=maxUnion.getPredicates();
+			while(entries.hasNext()) {
+				PredEntry next=entries.next();
+				boolean notadded=true;
+				for(List<Integer> seq:next.getSequences()) {
+					
+					if(!groupedQueries.containsKey(seq)) {
+						groupedQueries.put(seq, new HashSet<Long>());
+	
+					}
+					if(notadded && (first==null||first.equals(seq))) {
+						if(first==null) {
+							first=seq;
+						}
+						Long queryId=next.getQueryForSequence(seq);
+						for(CQIE q:workingSet) {
+							if(q.getId()==queryId) {
+								Set<Function> preds=new HashSet<Function>();
+								for(int i=next.getStartPos();i<next.getStartPos()+next.getAtomCount();i++) {
+									preds.add(q.getBody().get(i));
+								}
+								atoms.add(preds);
+								notadded=false;
+								break;
+							}
+						}
+						
+					}
+					groupedQueries.get(seq).add(next.getQueryForSequence(seq));
+				}
+				
+			}
+			System.out.println("first unions:");
+			for(Long qID:groupedQueries.values().iterator().next()) {
+				for(CQIE q:workingSet) {
+					if(q.getId()==qID) {
+						
+					
+						System.out.println(q);
+						System.out.println(" UNION ");
+					}
+					}
+			}
+			
+			System.out.println("Temp table to be created:");
+			for(Set<Function> f:atoms) {
+				System.out.println(f);
+				System.out.println(" UNION ");
+			}
+			
+			//System.out.println("query after:");
+			//for(Function f:atoms.get(first.getId())) {
+			//	first.getBody().remove(f);
+			//}
+			//System.out.println(first);
 			
 		}
 

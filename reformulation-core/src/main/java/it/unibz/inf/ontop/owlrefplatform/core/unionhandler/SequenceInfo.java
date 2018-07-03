@@ -1,5 +1,6 @@
 package it.unibz.inf.ontop.owlrefplatform.core.unionhandler;
 
+import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -7,6 +8,7 @@ public class SequenceInfo {
 	
 	private Node startingNode;
 	private LinkedList<Integer> sequence;
+
 	
 	public SequenceInfo(Node startingNode) {
 		super();
@@ -24,5 +26,26 @@ public class SequenceInfo {
 		this.sequence.removeLast();
 		
 	}
+	
+	public int getStartPos() {
+		return startingNode.getStartPos();
+	}
+
+	public int getAtomcount() {
+		return startingNode.getAtomcount();
+	}
+
+	public Iterator<Integer> nextSequence() {
+		return sequence.iterator();
+		
+	}
+	
+	
+	public long getStartingNodeID() {
+		return startingNode.getObject();
+		
+	}
+	
+	
 
 }
