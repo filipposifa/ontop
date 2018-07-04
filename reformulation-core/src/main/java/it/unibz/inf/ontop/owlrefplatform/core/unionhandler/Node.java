@@ -5,15 +5,19 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 
+import it.unibz.inf.ontop.model.Term;
+
 
 public class Node {
 	
 	private List<Node> children;
 	private List<Integer> mappingIds;
 	private List<Integer> tMappingIds;
+	private List<List<Term>> projections;
 	private long object;
 	private int startPos;
 	private int atomcount;
+	private boolean compatible;
 
 	public Node(long queryID, int noOfChildren, Integer startPos, int count) {
 		super();
@@ -23,6 +27,8 @@ public class Node {
 		this.object=queryID;
 		this.startPos=startPos;
 		this.atomcount=count;
+		this.compatible=true;
+		this.projections=new ArrayList<List<Term>>(noOfChildren);
 	}
 
 	public void removeChildren() {
@@ -61,8 +67,8 @@ public class Node {
 		
 		for(int i=0;i<children.size();i++) {
 			SequenceInfo si=null;
-			if(children.size()>1) {
-				si=new SequenceInfo(children.get(i));
+			if(children.size()>1&&this.compatible) {
+				si=new SequenceInfo(children.get(i), projections.get(i));
 				sequences.add(si);
 				}
 			for(SequenceInfo si2:sequences) {
@@ -114,6 +120,19 @@ public class Node {
 
 	public long getObject() {
 		return object;
+	}
+
+	public boolean isCompatible() {
+		return compatible;
+	}
+
+	public void setCompatible(boolean compatible) {
+		this.compatible = compatible;
+	}
+
+	public void addProjection(List<Term> nextProjection) {
+		this.projections.add(nextProjection);
+		
 	}
 	
 	

@@ -4,16 +4,20 @@ import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 
+import it.unibz.inf.ontop.model.Term;
+
 public class SequenceInfo {
 	
 	private Node startingNode;
 	private LinkedList<Integer> sequence;
+	private List<Term> projection;
 
 	
-	public SequenceInfo(Node startingNode) {
+	public SequenceInfo(Node startingNode, List<Term> list) {
 		super();
 		this.startingNode = startingNode;
 		this.sequence=new LinkedList<Integer>();
+		this.projection=list;
 	}
 	
 	public void addToSequence(int tMappingID, int mappingID) {
@@ -40,10 +44,13 @@ public class SequenceInfo {
 		
 	}
 	
-	
 	public long getStartingNodeID() {
 		return startingNode.getObject();
 		
+	}
+
+	public List<Term> getProjection() {
+		return projection;
 	}
 	
 	

@@ -5,12 +5,14 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 
+import it.unibz.inf.ontop.model.Term;
+
 public class PredEntry {
 	
 	private int startingPos;
 	private int atomcount;
 	private Map<List<Integer>, Long> sequences;
-	
+	private List<Term> projection;
 	
 	
 	
@@ -60,6 +62,22 @@ public class PredEntry {
 
 	public int getAtomCount() {
 		return this.atomcount;
+	}
+
+
+
+
+
+	public void setProjection(List<Term> projection) {
+		this.projection=projection;
+	}
+
+
+
+
+
+	public List<Term> getProjection() {
+		return projection;
 	}
 
 }

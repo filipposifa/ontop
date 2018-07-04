@@ -1259,6 +1259,7 @@ public class DatalogUnfolder {
 		else {
 			n=idToCQs.get(id);
 		}
+		List<CQIE> matches=new ArrayList<CQIE>();
 		for (CQIE candidateRule : candidateMatches) {
 
 			/* getting a rule with unique variables */
@@ -1273,7 +1274,7 @@ public class DatalogUnfolder {
 			/*
 			 * We have a matching rule, now we prepare for the resolution step
 			 */
-
+			matches.add(candidateRule);
 			// if we are in a left join, we need to make sure the fresh rule
 			// has only one data atom
 			if (isLeftJoin) {
@@ -1368,7 +1369,36 @@ public class DatalogUnfolder {
 			System.out.println("Size:::"+unions.size());
 			root.add(unions);
 		}*/
-
+		List<Term> projection=null;
+		for(int i=1;i<matches.size();i++) {
+			Substitution mgu=UnifierUtilities.getMGU( matches.get(0).getHead(), matches.get(i).getHead());
+			if(mgu==null) {
+				n.setCompatible(false);
+				break;
+			}
+			if(i==1) {
+				projection=new ArrayList<Term>();
+				Set<Variable> vars = new HashSet<Variable>();
+				TermUtils.addReferencedVariablesTo(vars, matches.get(0).getHead());
+				for(Variable t:vars) {
+					if(t instanceof Variable) {
+						projection.add(t);
+					}
+				}
+				n.addProjection(projection);
+			}
+			
+			List<Term> nextProjection=new ArrayList<Term>(projection.size());
+			for(Term t:projection) {
+				if(mgu.getMap().containsKey(t)) {
+					nextProjection.add(mgu.get((Variable) t));
+				}
+				else {
+					nextProjection.add(t);
+				}
+			}
+			n.addProjection(nextProjection);
+		}
 		return result;
 	}
 
@@ -1876,9 +1906,10 @@ public class DatalogUnfolder {
 			Map<List<Integer>, Set<Long>> groupedQueries =new HashMap<List<Integer>, Set<Long>>();
 			List<Integer> first=null;
 			Set<Set<Function>> atoms=new HashSet<Set<Function>>();
-			Iterator<PredEntry> entries=maxUnion.getPredicates();
+			Iterator<Integer> entries=maxUnion.getMappings();
 			while(entries.hasNext()) {
-				PredEntry next=entries.next();
+				Integer mapId=entries.next();
+				PredEntry next=maxUnion.getPredicate(mapId);
 				boolean notadded=true;
 				for(List<Integer> seq:next.getSequences()) {
 					
@@ -1895,8 +1926,17 @@ public class DatalogUnfolder {
 							if(q.getId()==queryId) {
 								Set<Function> preds=new HashSet<Function>();
 								for(int i=next.getStartPos();i<next.getStartPos()+next.getAtomCount();i++) {
-									preds.add(q.getBody().get(i));
+									//preds.add(q.getBody().get(i));
+									//to remove
 								}
+								for(CQIE mapping:this.mappingIDIndex.keySet()) {
+									if(this.mappingIDIndex.get(mapping).equals(mapId)) {
+										for(Function f:mapping.getBody()) {
+											preds.add(f);
+										}
+									}
+								}
+								System.out.println("projections: "+next.getProjection());
 								atoms.add(preds);
 								notadded=false;
 								break;

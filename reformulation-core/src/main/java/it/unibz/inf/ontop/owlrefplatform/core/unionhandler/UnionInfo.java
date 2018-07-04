@@ -30,6 +30,7 @@ public class UnionInfo {
 		while(it.hasNext()) {
 			seq.add(it.next());
 		}
+		pe.setProjection(si.getProjection());
 		pe.addSequence(seq, nodeId);
 		
 	}
@@ -43,6 +44,18 @@ public class UnionInfo {
 	public Iterator<PredEntry> getPredicates() {
 		return predicates.values().iterator();
 		
+	}
+
+
+
+	public Iterator<Integer> getMappings() {
+		return predicates.keySet().iterator();
+	}
+
+
+
+	public PredEntry getPredicate(Integer mapping) {
+		return predicates.get(mapping);
 	}
 	
 	
