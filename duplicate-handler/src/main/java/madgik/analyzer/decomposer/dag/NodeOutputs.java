@@ -74,16 +74,7 @@ public class NodeOutputs {
 	}
 
 	public void refactorSQLWithQuote(String idQuotationString) {
-		for (Column c : sql.getAllColumns()) {
-			if (!c.getName().startsWith(idQuotationString)) {
-				c.setName(idQuotationString + c.getName() + idQuotationString);
-			}
-		}
-		for (Table t : sql.getInputTables()) {
-			if (!t.getName().startsWith(idQuotationString)) {
-				t.setName(idQuotationString + t.getName() + idQuotationString);
-			}
-		}
+		sql.refactorSQLWithQuote(idQuotationString);
 
 	}
 

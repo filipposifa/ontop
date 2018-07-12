@@ -23,6 +23,7 @@ package it.unibz.inf.ontop.owlrefplatform.core.unfolding;
 import com.google.common.collect.HashMultimap;
 import com.google.common.collect.Multimap;
 import it.unibz.inf.ontop.model.*;
+import it.unibz.inf.ontop.model.Predicate.COL_TYPE;
 import it.unibz.inf.ontop.model.impl.OBDADataFactoryImpl;
 import it.unibz.inf.ontop.model.impl.OBDAVocabulary;
 import it.unibz.inf.ontop.model.impl.TermUtils;
@@ -1902,33 +1903,36 @@ public class DatalogUnfolder {
 				maxUnion=ui;
 			}
 		}
-		if(maxUnion!=null) {
+		boolean useUnions=true;
+		if(maxUnion!=null&&useUnions) {
+			Set<CQIE> unionqueries=new HashSet<CQIE>();
+			String viewName="uniontable"+Util.createUniqueIdString();
 			Map<List<Integer>, Set<Long>> groupedQueries =new HashMap<List<Integer>, Set<Long>>();
 			List<Integer> first=null;
-			Set<Set<Function>> atoms=new HashSet<Set<Function>>();
 			Iterator<Integer> entries=maxUnion.getMappings();
+			Set<Long> toRemove=new HashSet<Long>();
+			Set<List<Integer>> addedSeqs=new HashSet<List<Integer>>();
 			while(entries.hasNext()) {
 				Integer mapId=entries.next();
 				PredEntry next=maxUnion.getPredicate(mapId);
-				boolean notadded=true;
+				//boolean notadded=true;
+				
 				for(List<Integer> seq:next.getSequences()) {
-					
+					boolean added=false;
 					if(!groupedQueries.containsKey(seq)) {
 						groupedQueries.put(seq, new HashSet<Long>());
 	
 					}
-					if(notadded && (first==null||first.equals(seq))) {
+					if(!addedSeqs.contains(seq)) {
+					//if(notadded && (first==null||first.equals(seq))) {
 						if(first==null) {
 							first=seq;
 						}
 						Long queryId=next.getQueryForSequence(seq);
 						for(CQIE q:workingSet) {
 							if(q.getId()==queryId) {
-								Set<Function> preds=new HashSet<Function>();
-								for(int i=next.getStartPos();i<next.getStartPos()+next.getAtomCount();i++) {
-									//preds.add(q.getBody().get(i));
-									//to remove
-								}
+								List<Function> preds=new ArrayList<Function>();
+								
 								for(CQIE mapping:this.mappingIDIndex.keySet()) {
 									if(this.mappingIDIndex.get(mapping).equals(mapId)) {
 										for(Function f:mapping.getBody()) {
@@ -1936,34 +1940,99 @@ public class DatalogUnfolder {
 										}
 									}
 								}
+								List<Function> removed=new ArrayList<Function>(next.getAtomCount());
+								for(int i=next.getStartPos();i<next.getStartPos()+next.getAtomCount();i++) {
+									removed.add(q.getBody().remove(next.getStartPos()));
+									
+									//preds.add(q.getBody().get(i));
+									//to remove
+								}
+								Substitution mgu=UnifierUtilities.getMGU(preds.get(0), removed.get(0));
+								if(mgu==null) {
+									System.out.println("null substitution");
+								}
+								for(int i=1;i<removed.size();i++) {
+									//Substitution mgu1=UnifierUtilities.getMGU(removed.get(i), preds.get(i));
+									//if(mgu1==null) {
+									//	System.out.println("null substitution");
+									//}
+									//mgu.compose(mgu1);
+									mgu.composeFunctions(preds.get(i), removed.get(i));
+								}
+								
 								System.out.println("projections: "+next.getProjection());
-								atoms.add(preds);
-								notadded=false;
+								COL_TYPE[]  types= new COL_TYPE[next.getProjection().size()] ;
+								Predicate p2=termFactory.getPredicate(viewName, types);
+								Function ans=termFactory.getFunction(p2, next.getProjection());
+								List<Term> toReplace=new ArrayList<Term>(next.getProjection().size());
+								for(Term t:next.getProjection()) {
+									toReplace.add(mgu.get((Variable) t));
+								}
+								Function ansReplace=termFactory.getFunction(p2, toReplace);
+								CQIE q1=termFactory.getCQIE(ans, preds);
+								q.getBody().add(ansReplace);
+								unionqueries.add(q1);
+								//notadded=false;
+								addedSeqs.add(seq);
 								break;
 							}
 						}
 						
 					}
+					else {
+						toRemove.add(next.getQueryForSequence(seq));
+						if(!added) {
+							Long queryId=next.getQueryForSequence(seq);
+							for(CQIE q:workingSet) {
+								if(q.getId()==queryId) {
+									List<Function> preds=new ArrayList<Function>();
+									
+									for(CQIE mapping:this.mappingIDIndex.keySet()) {
+										if(this.mappingIDIndex.get(mapping).equals(mapId)) {
+											for(Function f:mapping.getBody()) {
+												preds.add(f);
+											}
+										}
+									}
+									
+									System.out.println("projections: "+next.getProjection());
+									COL_TYPE[]  types= new COL_TYPE[next.getProjection().size()] ;
+									Predicate p2=termFactory.getPredicate(viewName, types);
+									Function ans=termFactory.getFunction(p2, next.getProjection());
+									
+									CQIE q1=termFactory.getCQIE(ans, preds);
+									unionqueries.add(q1);
+									//notadded=false;
+									break;
+								}
+								
+							}
+							added=true;
+							
+						}
+					}
 					groupedQueries.get(seq).add(next.getQueryForSequence(seq));
 				}
 				
 			}
-			System.out.println("first unions:");
-			for(Long qID:groupedQueries.values().iterator().next()) {
+			//System.out.println("first unions:");
+			Set<CQIE> toRemoveQ=new HashSet<CQIE>(toRemove.size());
+			for(Long qID:toRemove) {
 				for(CQIE q:workingSet) {
 					if(q.getId()==qID) {
-						
+						toRemoveQ.add(q);
 					
-						System.out.println(q);
-						System.out.println(" UNION ");
+						//System.out.println(q);
+						//System.out.println(" UNION ");
 					}
 					}
 			}
+			workingSet.removeAll(toRemoveQ);
 			
-			System.out.println("Temp table to be created:");
-			for(Set<Function> f:atoms) {
-				System.out.println(f);
-				System.out.println(" UNION ");
+			
+			
+			for(CQIE un:unionqueries) {
+				workingSet.add(0, un);
 			}
 			
 			//System.out.println("query after:");

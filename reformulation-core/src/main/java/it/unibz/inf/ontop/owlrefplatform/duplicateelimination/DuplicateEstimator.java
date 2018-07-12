@@ -100,6 +100,9 @@ public class DuplicateEstimator {
 		queries.setAnonToQueries(anonToQueries);
 		}
 		// int tt=0;
+		Set<SQLQuery> union=new HashSet<SQLQuery>();
+		//String delimiter="";
+		Set<CQIE> unionqueries=new HashSet<CQIE>();
 		Map<NodeOutputs, List<CQDuplicateInfo>> duplInfos = new HashMap<NodeOutputs, List<CQDuplicateInfo>>();
 		for (CQIE q : queries.getRules()) {
 			boolean nonRelationalFunctions = false;
@@ -114,7 +117,7 @@ public class DuplicateEstimator {
 			getVariablesForTerm(projectedVars, q.getHead());
 			Function head = q.getHead();
 			Term anonHead = null;
-			if(pushDE){
+			if(pushDE && !q.getHead().getFunctionSymbol().toString().startsWith("union")){
 			anonHead = head.clone();
 			List<Term> vars = new ArrayList<Term>();
 			
@@ -260,7 +263,7 @@ public class DuplicateEstimator {
 				atomsToBeReplaced.get(alias).add(f);
 				query.addInputTable(tbl);
 				List<Integer> projected = new ArrayList<Integer>();
-
+				Map<Term, Output> orderedOutputs=new HashMap<Term, Output>();
 				// Set<String> projections=new HashSet<String>();
 
 				for (int i = 0; i < f.getArity(); i++) {
@@ -295,6 +298,7 @@ public class DuplicateEstimator {
 						if (projectedVars.contains(v)) {
 							Column c = new Column(alias, def.getAttributes().get(i).getID().getName());
 							Output o = new Output(c.getName(), c);
+							orderedOutputs.put(v, o);
 							query.getOutputs().add(o);
 							projectedVars.remove(v);
 							// outputs.add(alias+"."+def.getAttributes().get(i).getID().getName());
@@ -369,6 +373,19 @@ public class DuplicateEstimator {
 						}
 					}
 				}
+				
+				if(q.getHead().getFunctionSymbol().toString().startsWith("union")) {
+					nonRelationalFunctions=true;
+					//union.append(delimiter);
+					query.removeOutputs();
+					for(Term t:q.getHead().getTerms()) {
+						query.addOutput(orderedOutputs.get(t));
+					}
+					union.add(query);
+					unionqueries.add(q);
+					//delimiter="";
+				}
+				
 				boolean hasDtr1 = false;
 				for (List<Integer> pks : primaryKeys.get(f.getFunctionSymbol())) {
 					if (projected.containsAll(pks)) {
@@ -442,6 +459,83 @@ public class DuplicateEstimator {
 
 			}
 		}
+		if(!unionqueries.isEmpty()) {
+			queries.removeRules(unionqueries);
+			String schema=null;
+			if(this.metadata.getDbmsProductName().toLowerCase().contains("db2")){
+				schema="SESSION";
+			}
+			
+			String viewName=unionqueries.iterator().next().getHead().getFunctionSymbol().getName();
+			if(this.metadata.getDbmsProductName().toLowerCase().contains("oracle")){
+				//viewName="V"+UUID.randomUUID().toString().replace("-", "");
+				//viewName=viewName.substring(0, 30).toUpperCase();
+			}
+			
+			COL_TYPE[]  types= new COL_TYPE[unionqueries.iterator().next().getHead().getArity()] ;
+			
+			
+				
+			
+			Predicate pr=fac.getPredicate("stringview", new COL_TYPE[] { null });
+			Predicate p2=fac.getPredicate(OBDAVocabulary.QUEST_TEMP_VIEW, types);
+			Function f2=fac.getFunction(p2);
+				for(SQLQuery sqlq:union) {
+					sqlq.refactorSQLWithQuote(metadata.getQuotedIDFactory().getIDQuotationString());
+				}
+				DatabaseRelationDefinition replacement=metadata.createDatabaseRelation(metadata.getQuotedIDFactory().createRelationID(schema, viewName));
+				for(String c:union.iterator().next().getOutputAliases()){
+					replacement.addAttribute(metadata.getQuotedIDFactory().createAttributeID(c), 1, "VARCHAR", false);
+				}
+				
+				StringBuffer unionstring=new StringBuffer();
+				String delimiter="";
+				
+					if(this.metadata.getDbmsProductName().toLowerCase().contains("oracle")){
+						//schema="NPD";
+						if(schema==null){
+							unionstring.append("CREATE GLOBAL TEMPORARY TABLE ");
+							unionstring.append(viewName);
+							unionstring.append(" ON COMMIT PRESERVE ROWS AS ");
+						
+							
+						}
+						else{
+							unionstring.append("CREATE GLOBAL TEMPORARY TABLE ");
+							unionstring.append(schema+"."+viewName);
+							unionstring.append(" ON COMMIT PRESERVE ROWS AS ");
+						}
+					
+					}
+					else {
+					if(schema==null){
+						unionstring.append("CREATE TEMPORARY TABLE ");
+						unionstring.append(viewName);
+						unionstring.append(" AS ");
+					}
+					else{
+						unionstring.append("CREATE TEMPORARY TABLE ");
+						unionstring.append(schema+"."+viewName);
+						unionstring.append(" AS ");
+				
+					}
+					
+				}
+					for(SQLQuery sql:union) {
+						
+						unionstring.append(delimiter);
+						unionstring.append(sql.toSQL());
+						delimiter = "\n UNION \n";
+					}
+				
+				
+				
+			Term stringTerm=fac.getConstantLiteral(unionstring.toString());
+			Function body=fac.getFunction(pr, stringTerm);
+			queries.appendRule(fac.getCQIE(f2, body));
+			
+		}
+		
 		computeBeneficialEliminations(duplInfos);
 		System.out.println("OK");
 	}

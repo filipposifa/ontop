@@ -2048,5 +2048,27 @@ public class SQLQuery {
 		sb.append(this.toSQL());
 		return sb.toString();
 	}
+	
+	public void refactorSQLWithQuote(String idQuotationString) {
+		for (Column c : this.getAllColumns()) {
+			if (!c.getName().startsWith(idQuotationString)) {
+				c.setName(idQuotationString + c.getName() + idQuotationString);
+			}
+		}
+		for (Table t : this.getInputTables()) {
+			if (!t.getName().startsWith(idQuotationString)) {
+				t.setName(idQuotationString + t.getName() + idQuotationString);
+			}
+		}
+		for(Output o:this.outputs) {
+			o.setOutputName(idQuotationString + o.getOutputName() + idQuotationString);
+		}
+
+	}
+
+	public void addOutput(Output output) {
+		this.outputs.add(output);
+		
+	}
 
 }
