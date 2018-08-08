@@ -9,31 +9,21 @@ import it.unibz.inf.ontop.model.Term;
 
 public class PredEntry {
 	
-	private int startingPos;
-	private int atomcount;
-	private Map<List<Integer>, Long> sequences;
+
+	private Map<List<Integer>, NodeAtomReplacement> sequences;
 	private List<Term> projection;
 	
 	
-	
-	public PredEntry(int startingPos, int atomcount) {
+	public PredEntry() {
 		super();
-		this.startingPos = startingPos;
-		this.atomcount = atomcount;
-		sequences=new HashMap<List<Integer>, Long>();
+		sequences=new HashMap<List<Integer>, NodeAtomReplacement>();
 	}
 
 
-
-
-
-	public void addSequence(List<Integer> seq, long startingNodeID) {
+	public void addSequence(List<Integer> seq, NodeAtomReplacement startingNodeID) {
 		sequences.put(seq, startingNodeID);
 		
 	}
-
-
-
 
 
 	public Set<List<Integer>> getSequences() {
@@ -41,31 +31,9 @@ public class PredEntry {
 	}
 
 
-
-
-
-	public Long getQueryForSequence(List<Integer> seq) {
+	public NodeAtomReplacement getQueryForSequence(List<Integer> seq) {
 		return sequences.get(seq);
 	}
-
-
-
-
-
-	public int getStartPos() {
-		return this.startingPos;
-	}
-
-
-
-
-
-	public int getAtomCount() {
-		return this.atomcount;
-	}
-
-
-
 
 
 	public void setProjection(List<Term> projection) {
@@ -73,11 +41,16 @@ public class PredEntry {
 	}
 
 
-
-
-
 	public List<Term> getProjection() {
 		return projection;
 	}
+
+
+	@Override
+	public String toString() {
+		return "PredEntry [sequences=" + sequences + ", projection=" + projection + "]";
+	}
+	
+	
 
 }

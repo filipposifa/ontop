@@ -29,6 +29,7 @@ import it.unibz.inf.ontop.model.impl.OBDAVocabulary;
 import it.unibz.inf.ontop.model.impl.TermUtils;
 import it.unibz.inf.ontop.owlrefplatform.core.basicoperations.*;
 import it.unibz.inf.ontop.owlrefplatform.core.unionhandler.Node;
+import it.unibz.inf.ontop.owlrefplatform.core.unionhandler.NodeAtomReplacement;
 import it.unibz.inf.ontop.owlrefplatform.core.unionhandler.PredEntry;
 import it.unibz.inf.ontop.owlrefplatform.core.unionhandler.SequenceInfo;
 import it.unibz.inf.ontop.owlrefplatform.core.unionhandler.UnionInfo;
@@ -1379,7 +1380,7 @@ public class DatalogUnfolder {
 			}
 			if(i==1) {
 				projection=new ArrayList<Term>();
-				Set<Variable> vars = new HashSet<Variable>();
+				List<Variable> vars = new ArrayList<Variable>();
 				TermUtils.addReferencedVariablesTo(vars, matches.get(0).getHead());
 				for(Variable t:vars) {
 					if(t instanceof Variable) {
@@ -1388,7 +1389,16 @@ public class DatalogUnfolder {
 				}
 				n.addProjection(projection);
 			}
-			
+			projection=new ArrayList<Term>();
+			List<Variable> vars = new ArrayList<Variable>();
+			TermUtils.addReferencedVariablesTo(vars, matches.get(i).getHead());
+			for(Variable t:vars) {
+				if(t instanceof Variable) {
+					projection.add(t);
+				}
+			}
+			n.addProjection(projection);
+			/*
 			List<Term> nextProjection=new ArrayList<Term>(projection.size());
 			for(Term t:projection) {
 				if(mgu.getMap().containsKey(t)) {
@@ -1398,7 +1408,7 @@ public class DatalogUnfolder {
 					nextProjection.add(t);
 				}
 			}
-			n.addProjection(nextProjection);
+			n.addProjection(nextProjection);*/
 		}
 		return result;
 	}
@@ -1916,6 +1926,17 @@ public class DatalogUnfolder {
 				Integer mapId=entries.next();
 				PredEntry next=maxUnion.getPredicate(mapId);
 				//boolean notadded=true;
+				List<Function> preds=new ArrayList<Function>();
+				
+				for(CQIE mapping:this.mappingIDIndex.keySet()) {
+					if(this.mappingIDIndex.get(mapping).equals(mapId)) {
+						System.out.println("mapping:"+mapId);
+						for(Function f:mapping.getBody()) {
+							preds.add(f);
+						}
+						break;
+					}
+				}
 				
 				for(List<Integer> seq:next.getSequences()) {
 					boolean added=false;
@@ -1928,21 +1949,14 @@ public class DatalogUnfolder {
 						if(first==null) {
 							first=seq;
 						}
-						Long queryId=next.getQueryForSequence(seq);
+						NodeAtomReplacement queryId=next.getQueryForSequence(seq);
 						for(CQIE q:workingSet) {
-							if(q.getId()==queryId) {
-								List<Function> preds=new ArrayList<Function>();
+							if(q.getId()==queryId.getQuery()) {
+								System.out.println("query:"+q.getId());
 								
-								for(CQIE mapping:this.mappingIDIndex.keySet()) {
-									if(this.mappingIDIndex.get(mapping).equals(mapId)) {
-										for(Function f:mapping.getBody()) {
-											preds.add(f);
-										}
-									}
-								}
-								List<Function> removed=new ArrayList<Function>(next.getAtomCount());
-								for(int i=next.getStartPos();i<next.getStartPos()+next.getAtomCount();i++) {
-									removed.add(q.getBody().remove(next.getStartPos()));
+								List<Function> removed=new ArrayList<Function>();
+								for(int i=queryId.getStartPos();i<queryId.getStartPos()+queryId.getAtomCount();i++) {
+									removed.add(q.getBody().remove(queryId.getStartPos()));
 									
 									//preds.add(q.getBody().get(i));
 									//to remove
@@ -1980,20 +1994,12 @@ public class DatalogUnfolder {
 						
 					}
 					else {
-						toRemove.add(next.getQueryForSequence(seq));
+						toRemove.add(next.getQueryForSequence(seq).getQuery());
 						if(!added) {
-							Long queryId=next.getQueryForSequence(seq);
+							Long queryId=next.getQueryForSequence(seq).getQuery();
 							for(CQIE q:workingSet) {
 								if(q.getId()==queryId) {
-									List<Function> preds=new ArrayList<Function>();
 									
-									for(CQIE mapping:this.mappingIDIndex.keySet()) {
-										if(this.mappingIDIndex.get(mapping).equals(mapId)) {
-											for(Function f:mapping.getBody()) {
-												preds.add(f);
-											}
-										}
-									}
 									
 									System.out.println("projections: "+next.getProjection());
 									COL_TYPE[]  types= new COL_TYPE[next.getProjection().size()] ;
@@ -2011,7 +2017,7 @@ public class DatalogUnfolder {
 							
 						}
 					}
-					groupedQueries.get(seq).add(next.getQueryForSequence(seq));
+					groupedQueries.get(seq).add(next.getQueryForSequence(seq).getQuery());
 				}
 				
 			}

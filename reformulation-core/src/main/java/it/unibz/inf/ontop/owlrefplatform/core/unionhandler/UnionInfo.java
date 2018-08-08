@@ -23,15 +23,18 @@ public class UnionInfo {
 
 	public void addSequence(int map, Iterator<Integer> it, SequenceInfo si, long nodeId) {
 		if(!predicates.containsKey(map)) {
-			predicates.put(map, new PredEntry(si.getStartPos(), si.getAtomcount()));
+			predicates.put(map, new PredEntry());
 		}
+		
 		PredEntry pe=predicates.get(map);
+		
 		List<Integer> seq=new ArrayList<Integer>();
 		while(it.hasNext()) {
 			seq.add(it.next());
 		}
 		pe.setProjection(si.getProjection());
-		pe.addSequence(seq, nodeId);
+		NodeAtomReplacement repl=new NodeAtomReplacement(nodeId, si.getAtomcount(), si.getStartPos());
+		pe.addSequence(seq, repl);
 		
 	}
 
@@ -56,6 +59,13 @@ public class UnionInfo {
 
 	public PredEntry getPredicate(Integer mapping) {
 		return predicates.get(mapping);
+	}
+
+
+
+	@Override
+	public String toString() {
+		return "UnionInfo [predicates=" + predicates + "]";
 	}
 	
 	

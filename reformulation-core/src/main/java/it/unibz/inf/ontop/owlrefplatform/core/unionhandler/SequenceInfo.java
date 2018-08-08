@@ -52,6 +52,12 @@ public class SequenceInfo {
 	public List<Term> getProjection() {
 		return projection;
 	}
+
+	@Override
+	public String toString() {
+		return "SequenceInfo [startingNode=" + startingNode + ", sequence=" + sequence + ", projection=" + projection
+				+ "]";
+	}
 	
 	
 

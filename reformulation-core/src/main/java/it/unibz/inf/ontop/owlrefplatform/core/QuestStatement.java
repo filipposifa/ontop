@@ -174,6 +174,7 @@ public class QuestStatement implements OBDAStatement {
 							else{
 								log.error("Not Supported DB from Temp Table creation");
 							}
+							//sqlStatement.execute("create index aaa on "+view+" (\"wlbNpdidWellbore\")");
 							//System.out.println("OK");
 							
 							//sqlStatement.execute("Call Sysproc.admin_cmd ('runstats on table "+view+"')");
