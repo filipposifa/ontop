@@ -134,6 +134,10 @@
 			<artifactId>postgresql</artifactId>
 			<version>42.0.0</version>
 		</dependency>
+		<dependency>
+                        <groupId>com.oracle</groupId>
+                        <artifactId>ojdbc16</artifactId>
+                </dependency>
 		
 		<!-- Optique R2RML API -->
 		<dependency>
