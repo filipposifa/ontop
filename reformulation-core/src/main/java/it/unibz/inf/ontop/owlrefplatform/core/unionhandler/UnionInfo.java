@@ -21,7 +21,7 @@ public class UnionInfo {
 
 
 
-	public void addSequence(int map, Iterator<Integer> it, SequenceInfo si, long nodeId) {
+	public void addSequence(int map, Iterator<Integer> it, SequenceInfo si, long nodeId, int tMap) {
 		if(!predicates.containsKey(map)) {
 			predicates.put(map, new PredEntry());
 		}
@@ -29,6 +29,8 @@ public class UnionInfo {
 		PredEntry pe=predicates.get(map);
 		
 		List<Integer> seq=new ArrayList<Integer>();
+		seq.add((int) nodeId);
+		
 		while(it.hasNext()) {
 			seq.add(it.next());
 		}

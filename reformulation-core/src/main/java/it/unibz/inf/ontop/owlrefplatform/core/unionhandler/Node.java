@@ -93,7 +93,7 @@ public class Node {
 					unions.put(tMap, new UnionInfo());
 				}
 				UnionInfo ui=unions.get(tMap);
-				ui.addSequence(map, it, si3, object);
+				ui.addSequence(map, it, si3, object, tMap);
 				
 			}
 						

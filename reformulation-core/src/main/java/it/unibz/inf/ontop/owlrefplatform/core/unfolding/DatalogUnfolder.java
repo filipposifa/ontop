@@ -1913,8 +1913,13 @@ public class DatalogUnfolder {
 				maxUnion=ui;
 			}
 		}
+		
+		Map<Long, List<Integer>> removedPositions=new HashMap<Long, List<Integer>>();
+		
 		boolean useUnions=true;
-		if(maxUnion!=null&&useUnions) {
+		//if(maxUnion!=null&&useUnions) {
+		for(UnionInfo ui:unions.values()) {
+			maxUnion=ui;
 			Set<CQIE> unionqueries=new HashSet<CQIE>();
 			String viewName="uniontable"+Util.createUniqueIdString();
 			Map<List<Integer>, Set<Long>> groupedQueries =new HashMap<List<Integer>, Set<Long>>();
@@ -1955,8 +1960,20 @@ public class DatalogUnfolder {
 								System.out.println("query:"+q.getId());
 								
 								List<Function> removed=new ArrayList<Function>();
+								
+								if(!removedPositions.containsKey(q.getId())) {
+									removedPositions.put(q.getId(), new ArrayList<Integer>());
+								}
+								int minus=0;
+								for(Integer i:removedPositions.get(q.getId())) {
+									if(i<queryId.getStartPos())
+										minus++;
+								}
+								List<Integer> removedPos=removedPositions.get(q.getId());
 								for(int i=queryId.getStartPos();i<queryId.getStartPos()+queryId.getAtomCount();i++) {
-									removed.add(q.getBody().remove(queryId.getStartPos()));
+									removed.add(q.getBody().remove(queryId.getStartPos()-minus));
+									
+									removedPos.add(i);
 									
 									//preds.add(q.getBody().get(i));
 									//to remove

@@ -100,9 +100,9 @@ public class DuplicateEstimator {
 		queries.setAnonToQueries(anonToQueries);
 		}
 		// int tt=0;
-		Set<SQLQuery> union=new HashSet<SQLQuery>();
+		//Set<SQLQuery> union=new HashSet<SQLQuery>();
 		//String delimiter="";
-		Set<CQIE> unionqueries=new HashSet<CQIE>();
+		Map<CQIE, Set<SQLQuery>> unionqueries=new HashMap<CQIE, Set<SQLQuery>>();
 		Map<NodeOutputs, List<CQDuplicateInfo>> duplInfos = new HashMap<NodeOutputs, List<CQDuplicateInfo>>();
 		for (CQIE q : queries.getRules()) {
 			boolean nonRelationalFunctions = false;
@@ -245,6 +245,7 @@ public class DuplicateEstimator {
 
 			}
 			boolean hasDTR1FromKeys = true;
+			Map<Term, Output> orderedOutputs=new HashMap<Term, Output>();
 			for (Function f : tables) {
 
 				RelationID id = Relation2DatalogPredicate.createRelationFromPredicateName(metadata.getQuotedIDFactory(),
@@ -263,7 +264,7 @@ public class DuplicateEstimator {
 				atomsToBeReplaced.get(alias).add(f);
 				query.addInputTable(tbl);
 				List<Integer> projected = new ArrayList<Integer>();
-				Map<Term, Output> orderedOutputs=new HashMap<Term, Output>();
+				
 				// Set<String> projections=new HashSet<String>();
 
 				for (int i = 0; i < f.getArity(); i++) {
@@ -374,17 +375,7 @@ public class DuplicateEstimator {
 					}
 				}
 				
-				if(q.getHead().getFunctionSymbol().toString().startsWith("union")) {
-					nonRelationalFunctions=true;
-					//union.append(delimiter);
-					query.removeOutputs();
-					for(Term t:q.getHead().getTerms()) {
-						query.addOutput(orderedOutputs.get(t));
-					}
-					union.add(query);
-					unionqueries.add(q);
-					//delimiter="";
-				}
+				
 				
 				boolean hasDtr1 = false;
 				for (List<Integer> pks : primaryKeys.get(f.getFunctionSymbol())) {
@@ -422,6 +413,32 @@ public class DuplicateEstimator {
 					}
 				}
 			}
+			
+			if(q.getHead().getFunctionSymbol().toString().startsWith("union")) {
+				nonRelationalFunctions=true;
+				//union.append(delimiter);
+				query.removeOutputs();
+				for(Term t:q.getHead().getTerms()) {
+					query.addOutput(orderedOutputs.get(t));
+				}
+				CQIE unionq=null;
+				for(CQIE uq:unionqueries.keySet()) {
+					if(uq.getHead().getFunctionSymbol().equals(q.getHead().getFunctionSymbol())) {
+						unionq=uq;
+						break;
+					}
+				}
+				if(unionq==null) {
+					unionqueries.put(q, new HashSet<SQLQuery>());
+					unionq=q;
+				}
+				unionqueries.get(unionq).add(query);
+				//union.add(query);
+				//unionqueries.add(q);
+				//delimiter="";
+			}
+			
+			
 			if (nonRelationalFunctions) {
 				continue;
 			}
@@ -460,19 +477,20 @@ public class DuplicateEstimator {
 			}
 		}
 		if(!unionqueries.isEmpty()) {
-			queries.removeRules(unionqueries);
+			queries.removeRules(unionqueries.keySet());
 			String schema=null;
 			if(this.metadata.getDbmsProductName().toLowerCase().contains("db2")){
 				schema="SESSION";
 			}
+			for(CQIE unq:unionqueries.keySet()){
 			
-			String viewName=unionqueries.iterator().next().getHead().getFunctionSymbol().getName();
-			if(this.metadata.getDbmsProductName().toLowerCase().contains("oracle")){
+			String viewName=unq.getHead().getFunctionSymbol().getName();
+			//if(this.metadata.getDbmsProductName().toLowerCase().contains("oracle")){
 				//viewName="V"+UUID.randomUUID().toString().replace("-", "");
 				//viewName=viewName.substring(0, 30).toUpperCase();
-			}
+			//}
 			
-			COL_TYPE[]  types= new COL_TYPE[unionqueries.iterator().next().getHead().getArity()] ;
+			COL_TYPE[]  types= new COL_TYPE[unq.getHead().getArity()] ;
 			
 			
 				
@@ -480,11 +498,11 @@ public class DuplicateEstimator {
 			Predicate pr=fac.getPredicate("stringview", new COL_TYPE[] { null });
 			Predicate p2=fac.getPredicate(OBDAVocabulary.QUEST_TEMP_VIEW, types);
 			Function f2=fac.getFunction(p2);
-				for(SQLQuery sqlq:union) {
+				for(SQLQuery sqlq:unionqueries.get(unq)) {
 					sqlq.refactorSQLWithQuote(metadata.getQuotedIDFactory().getIDQuotationString());
 				}
 				DatabaseRelationDefinition replacement=metadata.createDatabaseRelation(metadata.getQuotedIDFactory().createRelationID(schema, viewName));
-				for(String c:union.iterator().next().getOutputAliases()){
+				for(String c:unionqueries.get(unq).iterator().next().getOutputAliases()){
 					replacement.addAttribute(metadata.getQuotedIDFactory().createAttributeID(c), 1, "VARCHAR", false);
 				}
 				
@@ -521,7 +539,7 @@ public class DuplicateEstimator {
 					}
 					
 				}
-					for(SQLQuery sql:union) {
+					for(SQLQuery sql:unionqueries.get(unq)) {
 						
 						unionstring.append(delimiter);
 						unionstring.append(sql.toSQL());
@@ -533,7 +551,7 @@ public class DuplicateEstimator {
 			Term stringTerm=fac.getConstantLiteral(unionstring.toString());
 			Function body=fac.getFunction(pr, stringTerm);
 			queries.appendRule(fac.getCQIE(f2, body));
-			
+			}
 		}
 		
 		computeBeneficialEliminations(duplInfos);
