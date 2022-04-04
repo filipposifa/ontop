@@ -14,6 +14,7 @@ import it.unibz.inf.ontop.answering.reformulation.unfolding.QueryUnfolder;
 import it.unibz.inf.ontop.exception.OntopReformulationException;
 import it.unibz.inf.ontop.injection.TranslationFactory;
 import it.unibz.inf.ontop.iq.IQ;
+import it.unibz.inf.ontop.iq.cachemanager.QueryCacheManager;
 import it.unibz.inf.ontop.iq.exception.EmptyQueryException;
 import it.unibz.inf.ontop.iq.optimizer.*;
 import it.unibz.inf.ontop.iq.planner.QueryPlanner;
@@ -41,6 +42,7 @@ public class QuestQueryProcessor implements QueryReformulator {
 	private final InputQueryFactory inputQueryFactory;
 	private final GeneralStructuralAndSemanticIQOptimizer generalOptimizer;
 	private final QueryPlanner queryPlanner;
+	private final QueryCacheManager cacheManager;
 	private final QueryLogger.Factory queryLoggerFactory;
 
 	@AssistedInject
@@ -52,11 +54,13 @@ public class QuestQueryProcessor implements QueryReformulator {
 								InputQueryTranslator inputQueryTranslator,
 								GeneralStructuralAndSemanticIQOptimizer generalOptimizer,
 								QueryPlanner queryPlanner,
+								QueryCacheManager cacheManager,
 								QueryLogger.Factory queryLoggerFactory) {
 		this.inputQueryFactory = inputQueryFactory;
 		this.rewriter = queryRewriter;
 		this.generalOptimizer = generalOptimizer;
 		this.queryPlanner = queryPlanner;
+		this.cacheManager = cacheManager;
 		this.queryLoggerFactory = queryLoggerFactory;
 
 		this.rewriter.setTBox(obdaSpecification.getSaturatedTBox());
@@ -110,7 +114,10 @@ public class QuestQueryProcessor implements QueryReformulator {
 
 				queryLogger.setPlannedQuery(plannedQuery);
 
-				IQ executableQuery = generateExecutableQuery(plannedQuery);
+				IQ queryWithCache = cacheManager.optimize(plannedQuery);
+
+				IQ executableQuery = generateExecutableQuery(queryWithCache);
+				//TODO: if data cache is being used, query cache should be disabled
 				queryCache.put(inputQuery, executableQuery);
 				queryLogger.declareReformulationFinishedAndSerialize(executableQuery, false);
 				LOGGER.debug("Reformulation time: {} ms\n", System.currentTimeMillis() - beginning);
