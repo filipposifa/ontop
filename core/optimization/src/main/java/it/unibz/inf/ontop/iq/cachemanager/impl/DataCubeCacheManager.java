@@ -61,10 +61,7 @@ public class DataCubeCacheManager implements QueryCacheManager {
                 : iqFactory.createIQ(query.getProjectionAtom(), newTree);
 
         return newIQ;
-
     }
-
-
 
 
     @Singleton
@@ -72,28 +69,33 @@ public class DataCubeCacheManager implements QueryCacheManager {
         private Set<ImmutableExpression> filters;
         private static Cache cache;
 
-        //TODO get the following from property file
-        private static final String cubetableName = "cubetable_uc3";
-        private static final String connectionString = "jdbc::::";
-        private static final String tableFDW = "datacube_uc3";
+        //following data collected from property file
+        private static final String connectionString = "jdbc:postgresql://88.197.53.173:82/cubez";
+        private static final String connectionUsr = "postgres";
+        private static final String connectionPwd = "???";   //other way to provide pwd ?
+        private static final String tableFDW = "cubetable_uc3";
         private static final String tableCache= "cache_uc3";
 
         @Inject
         protected DataCubeFilterTransformer(IntermediateQueryFactory iqFactory) {
             super(iqFactory);
+            System.out.println("DCFT: Building hash set for filters.");
+
             filters = new HashSet<>();
             Connection con = null;
             try {
-                con = java.sql.DriverManager.getConnection(connectionString);
+                con = java.sql.DriverManager.getConnection(connectionString, connectionUsr, connectionPwd);
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            cache = new SimpleCache(tableFDW, tableCache, 1000, con);
+            int maxSize = 1000; //max size of cache (days * variables);
+            cache = new SimpleCache(tableFDW, tableCache, maxSize, con);
         }
 
         @Override
         public IQTree transformFilter(IQTree tree, FilterNode rootNode, IQTree child) {
             //filters.add(rootNode);
+            System.out.println("tF: " + rootNode.toString());
             IQTree newChild = child.acceptTransformer(this);
             return newChild.equals(child) && rootNode.equals(tree.getRootNode())
                     ? tree
@@ -105,8 +107,12 @@ public class DataCubeCacheManager implements QueryCacheManager {
             /* For each extensional node, check if it corresponds to data cube table.
                If yes, check the filters for time, lat, lon and variable filters
                on this table */
-            System.out.println("Filters: " + filters);
-            System.out.println("For Extensional: " + dataNode.toString());
+            System.out.println("tED: Filters: " + filters);
+            System.out.println("tED: Extensional: " + dataNode.toString());
+
+            /* Parse query and determine columns, tables and filters */
+            String query = dataNode.toString();
+
             return dataNode;
         }
 
@@ -121,6 +127,7 @@ public class DataCubeCacheManager implements QueryCacheManager {
                 if (filterConditions.isPresent()) {
                     ImmutableExpression expression = filterConditions.get();
                     filters.add(expression);
+                    System.out.println("tNCN: Filters: " + filters);
                 }
             }
             ImmutableList<IQTree> newChildren = children.stream()
