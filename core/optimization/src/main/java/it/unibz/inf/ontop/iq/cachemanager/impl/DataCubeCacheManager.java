@@ -75,6 +75,7 @@ public class DataCubeCacheManager implements QueryCacheManager {
         private static final String connectionPwd = "???";   //other way to provide pwd ?
         private static final String tableFDW = "cubetable_uc3";
         private static final String tableCache= "cache_uc3";
+        //utilize OntopExtractDBMetadata.java code?
 
         @Inject
         protected DataCubeFilterTransformer(IntermediateQueryFactory iqFactory) {
