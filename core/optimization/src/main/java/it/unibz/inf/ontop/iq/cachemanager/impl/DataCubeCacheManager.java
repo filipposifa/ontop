@@ -113,6 +113,7 @@ public class DataCubeCacheManager implements QueryCacheManager {
 
             /* Parse query and determine columns, tables and filters */
             String query = dataNode.toString();
+            System.out.println("tED: Query: " + query);
 
             return dataNode;
         }
