@@ -36,11 +36,13 @@ public class SimpleCache implements Cache {
 
         System.out.println("SC: In the constructor.");
         try (Statement stmt = this.con.createStatement()) {
-            String stmtStr = "CREATE TABLE IF NOT EXISTS" + this.cacheTable +
+            String stmtStr = "CREATE TABLE IF NOT EXISTS " + this.cacheTable +
                     " (time timestamp without time zone NULL, " +
                     " y double precision NULL, " +
                     " x double precision NULL, " +
                     "PRIMARY KEY (time, y, x))";
+            stmt.executeUpdate(stmtStr);
+            stmtStr = "DELETE FROM " + this.cacheTable + ";";
             stmt.executeUpdate(stmtStr);
         } catch (SQLException e) {
             e.printStackTrace();
@@ -48,7 +50,6 @@ public class SimpleCache implements Cache {
         System.out.println("SC: Created cache table in given database.");
     }
 
-    @Override
     public boolean manage(String minDate, String maxDate, double minX, double maxX, double minY, double maxY, String[] variables) {
         System.out.println("SC: In the manage method.");
 
@@ -118,6 +119,13 @@ public class SimpleCache implements Cache {
                         e.printStackTrace();
                     }
                     System.out.println("SC: Successfully updated cache for variable: " + column);
+
+                    //update current cache size and hash
+                    this.currSize += querySize;
+                    for (LocalDate tmpD = minD; tmpD.isBefore(maxD); tmpD = tmpD.plusDays(1)) {
+                        TreeSet<String> vars = new TreeSet<String>(Arrays.asList(variables));
+                        this.timeCache.put(tmpD, vars);
+                    }
                 }
             } else if (querySize < this.maxSize && querySize > this.maxSize - this.currSize) {
                 //FOR NOW: delete & update everything
