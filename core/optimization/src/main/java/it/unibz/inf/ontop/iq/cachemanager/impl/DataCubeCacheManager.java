@@ -1,9 +1,10 @@
 package it.unibz.inf.ontop.iq.cachemanager.impl;
 
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableSet;
-import com.google.common.collect.Maps;
-import com.google.common.collect.Sets;
+import com.google.common.collect.*;
+import it.unibz.inf.ontop.dbschema.*;
+import it.unibz.inf.ontop.dbschema.impl.AbstractRelationDefinition;
+import it.unibz.inf.ontop.dbschema.impl.SQLStandardQuotedIDFactory;
+import it.unibz.inf.ontop.injection.CoreSingletons;
 import it.unibz.inf.ontop.injection.IntermediateQueryFactory;
 import it.unibz.inf.ontop.iq.IQ;
 import it.unibz.inf.ontop.iq.IQTree;
@@ -15,6 +16,7 @@ import it.unibz.inf.ontop.iq.node.*;
 import it.unibz.inf.ontop.iq.optimizer.GeneralStructuralAndSemanticIQOptimizer;
 import it.unibz.inf.ontop.iq.transform.impl.DefaultRecursiveIQTreeVisitingTransformer;
 import it.unibz.inf.ontop.model.term.*;
+import it.unibz.inf.ontop.model.type.DBTermType;
 import it.unibz.inf.ontop.utils.ImmutableCollectors;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
@@ -23,10 +25,7 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.sql.Connection;
 import java.sql.SQLException;
-import java.util.HashSet;
-import java.util.Map;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
 
@@ -53,19 +52,17 @@ public class DataCubeCacheManager implements QueryCacheManager {
     public IQ optimize(IQ query) {
         IQTree tree = query.getTree();
         IQTree newTree = transformer.transform(tree);
-
         IQ newIQ = newTree.equals(tree)
                 ? query
                 : iqFactory.createIQ(query.getProjectionAtom(), newTree);
-
         return newIQ;
     }
-
 
     @Singleton
     protected static class DataCubeFilterTransformer extends DefaultRecursiveIQTreeVisitingTransformer {
         private Set<ImmutableExpression> filters;
         private static Cache cache;
+        private static CoreSingletons coreSingletons;
 
         //following data collected from property file
         private static final String connectionString = "jdbc:postgresql://88.197.53.173:82/cubez";
@@ -76,14 +73,20 @@ public class DataCubeCacheManager implements QueryCacheManager {
         //utilize OntopQuery.java/OntopExtractDBMetadata.java code to get properties?
 
         @Inject
-        protected DataCubeFilterTransformer(IntermediateQueryFactory iqFactory) {
+        protected DataCubeFilterTransformer(IntermediateQueryFactory iqFactory, CoreSingletons coreSingletons) {
             super(iqFactory);
+            this.coreSingletons = coreSingletons;
             System.out.println("DCFT-1: Building hash set for filters.");
 
             filters = new HashSet<>();
             Connection con = null;
             try {
                 con = java.sql.DriverManager.getConnection(connectionString, connectionUsr, connectionPwd);
+                //further testing:
+                // DBMetadataProvider dbmeta = metadataProviderFactory.getMetadataProvider(con)
+                // RelationID rID = dbmeta.getRelationIDs().get(0)
+                // NamedRelationDefinition nRD = dbmeta.getRelation(rID)
+                // System.out.println(nRD)
             } catch (SQLException e) {
                 e.printStackTrace();
             }
@@ -108,8 +111,10 @@ public class DataCubeCacheManager implements QueryCacheManager {
                on this table */
 
             /* Parse query and determine columns, tables and filters */
+            boolean replaceWithCacheTable = false;
             String query = dataNode.toString();
             System.out.println("tED-1: Query: " + query);
+            // Use dataNode.getRelationDefinition().getAttribute(INDEX) to get specific variable
 
             /*
                 TODO:
@@ -118,9 +123,9 @@ public class DataCubeCacheManager implements QueryCacheManager {
                  - Run initial tests
              */
 
-            int variablePos = 0;
+            int variablePos;
             int variableCount = 0;
-            Variable cubeVar = null;
+            Attribute cubeVar;
 
             String specDate;
             String specX;
@@ -132,11 +137,11 @@ public class DataCubeCacheManager implements QueryCacheManager {
             double maxX = 28.19;
             double minY = 34.93;
             double maxY = 41.62;
-            String[] variables = null;
+            HashSet<String> variables = new HashSet<String>();
 
-            Variable date = null;
-            Variable xCoord;
-            Variable yCoord;
+            Attribute date = null;
+            Attribute xCoord;
+            Attribute yCoord;
 
             if (dataNode.getRelationDefinition().getAtomPredicate().getName().contains("cubetable_uc3")) {
                 for (Integer i : dataNode.getArgumentMap().keySet()) {
@@ -150,7 +155,7 @@ public class DataCubeCacheManager implements QueryCacheManager {
                             minDate = maxDate = specDate;
                         } else {
                             //date is variable
-                            date = (Variable) dataNode.getArgumentMap().get(0);
+                            date = dataNode.getRelationDefinition().getAttribute(1);
                             System.out.println("tED-Date: " + date);
                         }
                     } else if (i == 1) {
@@ -164,7 +169,7 @@ public class DataCubeCacheManager implements QueryCacheManager {
 
                         } else {
                             //y is variable
-                            yCoord = (Variable) dataNode.getArgumentMap().get(1);
+                            yCoord = dataNode.getRelationDefinition().getAttribute(2);
                             System.out.println("tED-yCoord: " + yCoord);
                         }
                     } else if (i == 2) {
@@ -177,7 +182,7 @@ public class DataCubeCacheManager implements QueryCacheManager {
                             minX = maxX = parseDouble(specX);
                         } else {
                             //x is variable
-                            xCoord = (Variable) dataNode.getArgumentMap().get(2);
+                            xCoord = dataNode.getRelationDefinition().getAttribute(3);
                             System.out.println("tED-xCoord: " + xCoord);
                         }
                     } else {
@@ -188,49 +193,72 @@ public class DataCubeCacheManager implements QueryCacheManager {
                             System.out.println("tED: TESTING MULTIPLE VARIABLES");
                         }
                         variablePos = i;
+                        System.out.println("tED-varPos: " + variablePos);
                         if (dataNode.getArgumentMap().get(i).isGround()) {
-                            //specific value for cube variable! what to do?
-                            cubeVar = (Variable) dataNode.getArgumentMap().get(i);
-                            System.out.println("tED-cubeVar: " + cubeVar);
+                            /*
+                                TODO:
+                                - add another set/map for specific values of variables
+                                - handle it as min/max, same way with dimensions
+                             */
+
+                            Variable tmpVar = (Variable) dataNode.getArgumentMap().get(i);
+                            System.out.println("tED-SpecificVar: " + tmpVar);
+                            variables.add(tmpVar.toString());
                         } else {
-                            cubeVar = (Variable) dataNode.getArgumentMap().get(i);
-                            System.out.println("tED-cubeVar: " + cubeVar);
+                            /* delete this after testing
+                            Variable tmpVar = (Variable) dataNode.getArgumentMap().get(i);
+                            System.out.println("tED-cubeVarMap: " + tmpVar);
+                            variables.add(tmpVar.toString());
+                             */
+
+                            //this is the correct one
+                            cubeVar = dataNode.getRelationDefinition().getAttribute(i+1);
+                            String cubeAttr = cubeVar.toString().split("\\s")[0].replace("\"", "");
+                            System.out.println("tED-cubeVarAttr: " + cubeAttr);
+                            variables.add(cubeAttr);
                         }
                     }
                 }
 
                 //now check Filters to find possible filters on date, x or y
                 for (ImmutableExpression exp : filters) {
-                    for (ImmutableExpression andExp :
-                            exp.flattenAND().collect(ImmutableCollectors.toList())) {
+                    for (ImmutableExpression andExp : exp.flattenAND().collect(ImmutableCollectors.toList())) {
                         for (Variable v : andExp.getVariables()) {
                             if (v.equals(date)) {
                                 //restriction on cube date
                                 System.out.println("tED-andExp: " + andExp);
+                                if (andExp.getFunctionSymbol().getName().equals("DATETIME_NON_STRICT_EQ")) {
+                                    //for example: DATETIME_NON_STRICT_EQ(isoTimestampDenorm(VARCHARToTEXT(time223m1)),"2020-07-15 00:00:00"^^TIMESTAMPTZ)
+                                    for (ImmutableTerm innerTerm : andExp.getTerms()) {
+                                        if (innerTerm instanceof DBConstant) {
+                                            DBConstant dateFilter = (DBConstant) innerTerm;
+                                            String dateString = dateFilter.getValue();
+                                            System.out.println("tED-dateString: " + dateString);
+                                        }
+                                    }
+                                }
                             }
                         }
                     }
                 }
-            }
-            // Manage cache with gathered data
-            boolean flag = false;
-            System.out.println("- tED-Manage -");
-            System.out.println("MinDate: " + minDate);
-            System.out.println("MaxDate: " + maxDate);
-            System.out.println("MinX: " + minX);
-            System.out.println("MaxX: " + maxX);
-            System.out.println("MinY: " + minY);
-            System.out.println("MaxY: " + maxY);
-            System.out.println("Variables: " + variables.toString());
-            //flag = this.cache.manage(minDate, maxDate, minX, maxX, minY, maxY, variables);
 
-            if (flag) {
-                // Query can be answered by cache
-                // TODO: change RelationDefintion somehow... through the DataNode
-                System.out.println("tED-Cache: Changing query table...");
+                // Manage cache with gathered data
+                System.out.println("tED-Manage:");
+                System.out.println("\tMinDate: " + minDate);
+                System.out.println("\tMaxDate: " + maxDate);
+                System.out.println("\tMinX: " + minX);
+                System.out.println("\tMaxX: " + maxX);
+                System.out.println("\tMinY: " + minY);
+                System.out.println("\tMaxY: " + maxY);
+                System.out.println("\tVariables: " + variables);
+                replaceWithCacheTable = this.cache.manage(minDate, maxDate, minX, maxX, minY, maxY, variables);
             }
 
-            return dataNode;
+            /* Modify DataNode if query can be answered by cache */
+            if (replaceWithCacheTable)
+                return DataCubeCacheManager.renameExtensionalDataNode(dataNode, coreSingletons, "cache_uc3");
+            else
+                return dataNode;
         }
 
         @Override
@@ -313,4 +341,47 @@ public class DataCubeCacheManager implements QueryCacheManager {
         }
     }
 
+    /**
+     * Temporary (should disappear when converting back the CQ into IQ
+     */
+    private static class ValuesRelationDefinition extends AbstractRelationDefinition {
+
+        //private final ValuesNode valuesNode;
+
+        private ValuesRelationDefinition(String name, DBTermType rootType, QuotedIDFactory idFactory, ExtensionalDataNode original) {
+            super(name, extractAttributes(original, rootType, idFactory));
+            //this.valuesNode = valuesNode;
+        }
+
+        private static RelationDefinition.AttributeListBuilder extractAttributes(ExtensionalDataNode original, DBTermType rootType, QuotedIDFactory idFactory) {
+            RelationDefinition.AttributeListBuilder builder = AbstractRelationDefinition.attributeListBuilder();
+            VariableNullability variableNullability = original.getVariableNullability();//valuesNode.getVariableNullability();
+
+            original.getRelationDefinition().getAttributes()//.getVariables()//.getOrderedVariables()
+                    .forEach(v -> builder.addAttribute(v.getID(), v.getTermType(),
+                            v.isNullable()));
+            return builder;
+        }
+
+        @Override
+        public ImmutableList<UniqueConstraint> getUniqueConstraints() {
+            return ImmutableList.of();
+        }
+
+        @Override
+        public ImmutableList<FunctionalDependency> getOtherFunctionalDependencies() {
+            return ImmutableList.of();
+        }
+
+        @Override
+        public ImmutableList<ForeignKeyConstraint> getForeignKeys() {
+            return ImmutableList.of();
+        }
+    }
+
+    private static ExtensionalDataNode renameExtensionalDataNode(ExtensionalDataNode node, CoreSingletons coreSingletons, String name) {
+        return coreSingletons.getIQFactory().createExtensionalDataNode(new DataCubeCacheManager.ValuesRelationDefinition(
+                name, coreSingletons.getTypeFactory().getDBTypeFactory().getAbstractRootDBType(), new SQLStandardQuotedIDFactory(), node
+        ), node.getArgumentMap());
+    }
 }
