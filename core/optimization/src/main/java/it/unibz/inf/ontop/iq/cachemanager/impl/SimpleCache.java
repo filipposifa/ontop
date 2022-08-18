@@ -5,6 +5,7 @@ import it.unibz.inf.ontop.iq.cachemanager.Cache;
 
 import java.io.File;
 import java.io.FileReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Reader;
 import java.lang.reflect.Type;
@@ -23,6 +24,7 @@ public class SimpleCache implements Cache {
     //simple cache, uses h hash set of strings that correspond to dates to denote presence of data in cache
 
     private HashMap<LocalDate, HashSet> timeCache;
+    private String timeFile;
     //different structure:
     // private HashMap<Double, TreeSet> xCache
     // private HashMap<Double, TreeSet> yCache
@@ -49,13 +51,13 @@ public class SimpleCache implements Cache {
         - Dump json of hash table for next run
         - If there is no json, build hash table based on existing cache
          */
-        String jsonPath = "../CacheData.json";
-        File jsonFile = new File(jsonPath);
+        this.timeFile = "../CacheData.json";
+        File jsonFile = new File(this.timeFile);
         if (jsonFile.exists() && !jsonFile.isDirectory()) {
             try {
                 Gson gson = new Gson();
                 Type hashType = new TypeToken<Map<LocalDate, Set<String>>>(){}.getType();
-                Reader jsonReader = new FileReader(jsonPath);
+                Reader jsonReader = new FileReader(this.timeFile);
                 this.timeCache = gson.fromJson(jsonReader, hashType);
             } catch (IOException e) {
                 e.printStackTrace();
@@ -166,6 +168,15 @@ public class SimpleCache implements Cache {
                         HashSet<String> vars = new HashSet<String>(variables);
                         this.timeCache.put(tmpD, vars);
                     }
+
+                    /* Template Export to Json:
+                    try {
+                        Gson gson = new Gson();
+                        gson.toJson(this.timeCache, new FileWriter(this.timeFile));
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                    */
                 }
             } else if (querySize < this.maxSize && querySize > this.maxSize - this.currSize) {
                 //FOR NOW: delete & update everything
@@ -208,6 +219,14 @@ public class SimpleCache implements Cache {
                     HashSet<String> vars = new HashSet<String>(variables);
                     this.timeCache.put(tmpD, vars);
                 }
+                /* Template Export to Json:
+                try {
+                    Gson gson = new Gson();
+                    gson.toJson(this.timeCache, new FileWriter(this.timeFile));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                */
             } else {
                 System.out.println("SC: Case 3 - Query Smaller than Remaining Cache Size");
                 for (String column : variables) {
@@ -233,6 +252,15 @@ public class SimpleCache implements Cache {
                     HashSet<String> vars = new HashSet<String>(variables);
                     this.timeCache.put(tmpD, vars);
                 }
+
+                /* Template Export to Json:
+                try {
+                    Gson gson = new Gson();
+                    gson.toJson(this.timeCache, new FileWriter(this.timeFile));
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+                */
 
                 //Exit and proceed with cache
                 System.out.println("SC: Exiting...");
