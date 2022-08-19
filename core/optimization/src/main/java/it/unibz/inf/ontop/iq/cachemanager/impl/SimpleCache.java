@@ -18,7 +18,6 @@ import java.util.*;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 import com.google.gson.Gson;
-import jdk.vm.ci.meta.Local;
 
 public class SimpleCache implements Cache {
     //simple cache, uses h hash set of strings that correspond to dates to denote presence of data in cache
@@ -121,6 +120,13 @@ public class SimpleCache implements Cache {
         If query cannot be answered by cache in total,
         - update cache accordingly, return and proceed with usual workflow (FDW)
         - if query was fully imported, return and proceed with cache
+
+        TODO:
+        - handle duplicate insert when adding a new variable to a hash set
+        - check how upsert works in postgres and edit queries accordingly
+        - get database password from properties
+        - handle complex queries, requiring access to both fdw and cache
+        - improve and optimize code (?)
         */
         if (miss) {
             System.out.println("SC: Updating cache...");
