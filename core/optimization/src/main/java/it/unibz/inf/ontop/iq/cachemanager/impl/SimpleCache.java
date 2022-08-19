@@ -7,7 +7,6 @@ import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-import java.io.Reader;
 import java.lang.reflect.Type;
 import java.sql.Connection;
 import java.sql.SQLException;
@@ -19,11 +18,12 @@ import java.util.*;
 
 import static java.time.temporal.ChronoUnit.DAYS;
 import com.google.gson.Gson;
+import jdk.vm.ci.meta.Local;
 
 public class SimpleCache implements Cache {
     //simple cache, uses h hash set of strings that correspond to dates to denote presence of data in cache
 
-    private HashMap<LocalDate, HashSet> timeCache;
+    private HashMap<String, HashSet> timeCache;
     private String timeFile;
     //different structure:
     // private HashMap<Double, TreeSet> xCache
@@ -38,48 +38,53 @@ public class SimpleCache implements Cache {
     public SimpleCache(String tablenameFDW, String tablenameCache, int maxSize, Connection con) {
 
         //Initialize Cache Fields
+        System.out.println("SC: In the constructor.");
         this.maxSize = maxSize;
         this.currSize = 0;
         this.cacheTable = tablenameCache;
         this.dcTable = tablenameFDW;
         this.con = con;
 
-        /*
-        TODO:
-        - Remove emptying cache if it already exists (DELETE FROM)
-        - Fill hash table with existing data
-        - Dump json of hash table for next run
-        - If there is no json, build hash table based on existing cache
-         */
-        this.timeFile = "../CacheData.json";
+        //Get tmp folder to handle hash data
+        this.timeCache = new HashMap<String, HashSet>();
+        this.timeFile = System.getProperty("java.io.tmpdir");
+        this.timeFile += "/CacheData.json";
         File jsonFile = new File(this.timeFile);
+        System.out.println("SC: Hash File Path: " + this.timeFile);
+
+        //If hash file exists import in hash table; If not, build everything from start
         if (jsonFile.exists() && !jsonFile.isDirectory()) {
             try {
+                System.out.println("SC: Hash file found.");
                 Gson gson = new Gson();
-                Type hashType = new TypeToken<Map<LocalDate, Set<String>>>(){}.getType();
-                Reader jsonReader = new FileReader(this.timeFile);
+                FileReader jsonReader = new FileReader(this.timeFile);
+                Type hashType = new TypeToken<HashMap<String, HashSet<String>>>(){}.getType();
                 this.timeCache = gson.fromJson(jsonReader, hashType);
             } catch (IOException e) {
                 e.printStackTrace();
             }
+            //Before continuing, print hash set for debug
+            this.timeCache.forEach((key, value) -> System.out.println(key + ": " + value.toString()));
+            System.out.println("SC: Hash table updated.");
         }
-        else this.timeCache = new HashMap<LocalDate, HashSet>();
-
-        System.out.println("SC: In the constructor.");
-        try (Statement stmt = this.con.createStatement()) {
-            //time: character varying instead of timestamp without time zone
-            String stmtStr = "CREATE TABLE IF NOT EXISTS " + this.cacheTable +
-                    " (time character varying NULL, " +
-                    " y double precision NULL, " +
-                    " x double precision NULL, " +
-                    "PRIMARY KEY (time, y, x))";
-            stmt.executeUpdate(stmtStr);
-            stmtStr = "DELETE FROM " + this.cacheTable + ";";
-            stmt.executeUpdate(stmtStr);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        else {
+            try (Statement stmt = this.con.createStatement()) {
+                System.out.println("SC: Hash file NOT found.");
+                //time: character varying instead of timestamp without time zone
+                String stmtStr = "CREATE TABLE IF NOT EXISTS " + this.cacheTable +
+                        " (time character varying NULL, " +
+                        " y double precision NULL, " +
+                        " x double precision NULL, " +
+                        "PRIMARY KEY (time, y, x))";
+                stmt.executeUpdate(stmtStr);
+                // Redundant Statement; To be deleted
+                stmtStr = "DELETE FROM " + this.cacheTable + ";";
+                stmt.executeUpdate(stmtStr);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+            System.out.println("SC: Created cache table in given database.");
         }
-        System.out.println("SC: Created cache table in given database.");
     }
 
     public boolean manage(String minDate, String maxDate, double minX, double maxX, double minY, double maxY, HashSet<String> variables) {
@@ -93,7 +98,8 @@ public class SimpleCache implements Cache {
         boolean miss = false;
         System.out.println("SC: Check time hash.");
         outerLoop: for (LocalDate tmpD = minD; tmpD.isBefore(maxD); tmpD = tmpD.plusDays(1)) {
-            if (!this.timeCache.containsKey(tmpD)) {
+            String tmpStr = tmpD.toString();
+            if (!this.timeCache.containsKey(tmpStr)) {
                 //if current date is NOT in hash, break
                 System.out.println("SC: Found date miss. BREAK!");
                 miss = true;
@@ -102,7 +108,7 @@ public class SimpleCache implements Cache {
                 //if current date IS in hash, check if requested variables are in its hash set
                 for (String var:variables) {
                     //if current variable is not in current date's hash set, break
-                    if (!this.timeCache.get(tmpD).contains(var)) {
+                    if (!this.timeCache.get(tmpStr).contains(var)) {
                         System.out.println("SC: Found var miss. BREAK!");
                         miss = true;
                         break outerLoop;
@@ -142,7 +148,7 @@ public class SimpleCache implements Cache {
                 //update with new data
                 int dateRange = this.maxSize/variables.size();
                 minD = maxD.minusDays(dateRange);
-                minDate = minD.format(formatter);
+                minDate = minD.toString();
                 System.out.println("SC: Number of Dates to be imported: " + dateRange);
                 System.out.println("SC: [" + minDate + ", " + maxDate + "]");
 
@@ -166,17 +172,21 @@ public class SimpleCache implements Cache {
                     this.currSize = this.maxSize;
                     for (LocalDate tmpD = minD; tmpD.isBefore(maxD); tmpD = tmpD.plusDays(1)) {
                         HashSet<String> vars = new HashSet<String>(variables);
-                        this.timeCache.put(tmpD, vars);
+                        this.timeCache.put(tmpD.toString(), vars);
                     }
 
-                    /* Template Export to Json:
+                    /* Template Export to Json: */
                     try {
                         Gson gson = new Gson();
-                        gson.toJson(this.timeCache, new FileWriter(this.timeFile));
+                        FileWriter writer = new FileWriter(this.timeFile);
+                        Type hashType = new TypeToken<Map<LocalDate, Set<String>>>(){}.getType();
+                        gson.toJson(this.timeCache, hashType, writer);
+                        writer.flush();
+                        writer.close();
+                        System.out.println("SC: Successfully updated hash json file.");
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
-                    */
                 }
             } else if (querySize < this.maxSize && querySize > this.maxSize - this.currSize) {
                 //FOR NOW: delete & update everything
@@ -194,7 +204,7 @@ public class SimpleCache implements Cache {
                 //update with new data
                 int dateRange = (this.maxSize - this.currSize)/variables.size();
                 minD = maxD.minusDays(dateRange);
-                minDate = minD.format(formatter);
+                minDate = minD.toString();
 
                 for (String column : variables) {
                     try (Statement stmt = this.con.createStatement()) {
@@ -217,16 +227,21 @@ public class SimpleCache implements Cache {
                 this.currSize = (int) querySize;
                 for (LocalDate tmpD = minD; tmpD.isBefore(maxD); tmpD = tmpD.plusDays(1)) {
                     HashSet<String> vars = new HashSet<String>(variables);
-                    this.timeCache.put(tmpD, vars);
+                    this.timeCache.put(tmpD.toString(), vars);
                 }
-                /* Template Export to Json:
+
+                /* Template Export to Json: */
                 try {
                     Gson gson = new Gson();
-                    gson.toJson(this.timeCache, new FileWriter(this.timeFile));
+                    FileWriter writer = new FileWriter(this.timeFile);
+                    Type hashType = new TypeToken<HashMap<String, HashSet<String>>>(){}.getType();
+                    gson.toJson(this.timeCache, hashType, writer);
+                    writer.flush();
+                    writer.close();
+                    System.out.println("SC: Successfully updated hash json file.");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                */
             } else {
                 System.out.println("SC: Case 3 - Query Smaller than Remaining Cache Size");
                 for (String column : variables) {
@@ -250,17 +265,24 @@ public class SimpleCache implements Cache {
                 this.currSize += querySize;
                 for (LocalDate tmpD = minD; tmpD.isBefore(maxD); tmpD = tmpD.plusDays(1)) {
                     HashSet<String> vars = new HashSet<String>(variables);
-                    this.timeCache.put(tmpD, vars);
+                    this.timeCache.put(tmpD.toString(), vars);
                 }
 
-                /* Template Export to Json:
+                /* Template Export to Json: */
                 try {
                     Gson gson = new Gson();
-                    gson.toJson(this.timeCache, new FileWriter(this.timeFile));
+                    FileWriter writer = new FileWriter(this.timeFile);
+                    Type hashType = new TypeToken<HashMap<String, HashSet<String>>>(){}.getType();
+                    gson.toJson(this.timeCache, hashType, writer);
+                    writer.flush();
+                    writer.close();
+                    System.out.println("SC: Successfully updated hash json file.");
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
-                */
+
+                //Before exiting, print hash set for debug
+                this.timeCache.forEach((key, value) -> System.out.println(key + ": " + value.toString()));
 
                 //Exit and proceed with cache
                 System.out.println("SC: Exiting...");

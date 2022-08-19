@@ -118,7 +118,7 @@ public class QuestQueryProcessor implements QueryReformulator {
 
 				IQ executableQuery = generateExecutableQuery(queryWithCache);
 				//TODO: if data cache is being used, query cache should be disabled
-				queryCache.put(inputQuery, executableQuery);
+				//queryCache.put(inputQuery, executableQuery);
 				queryLogger.declareReformulationFinishedAndSerialize(executableQuery, false);
 				LOGGER.debug("Reformulation time: {} ms\n", System.currentTimeMillis() - beginning);
 				return executableQuery;
