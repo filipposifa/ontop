@@ -62,8 +62,11 @@ public class SimpleCache implements Cache {
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            //Before continuing, print hash set for debug
-            this.timeCache.forEach((key, value) -> System.out.println(key + ": " + value.toString()));
+            //Before continuing, update current size of hash and print it for debug
+            this.timeCache.forEach((key, value) -> {
+                System.out.println(key + ": " + value.toString());
+                this.currSize += value.size();  //add number of variables for each day
+            });
             System.out.println("SC: Hash table updated.");
         }
         else {
@@ -76,7 +79,7 @@ public class SimpleCache implements Cache {
                         " x double precision NULL, " +
                         "PRIMARY KEY (time, y, x))";
                 stmt.executeUpdate(stmtStr);
-                // Redundant Statement; To be deleted
+                //Redundant Statement; To be deleted
                 stmtStr = "DELETE FROM " + this.cacheTable + ";";
                 stmt.executeUpdate(stmtStr);
             } catch (SQLException e) {
@@ -94,10 +97,11 @@ public class SimpleCache implements Cache {
         LocalDate maxD = LocalDate.parse(maxDate, formatter).plusDays(1);
 
         /* First check if data is in time hash (exists in cache table) */
+        String tmpStr;
         boolean miss = false;
         System.out.println("SC: Check time hash.");
         outerLoop: for (LocalDate tmpD = minD; tmpD.isBefore(maxD); tmpD = tmpD.plusDays(1)) {
-            String tmpStr = tmpD.toString();
+             tmpStr = tmpD.toString();
             if (!this.timeCache.containsKey(tmpStr)) {
                 //if current date is NOT in hash, break
                 System.out.println("SC: Found date miss. BREAK!");
@@ -139,8 +143,10 @@ public class SimpleCache implements Cache {
 
             /* Different cases based on query size */
             if (querySize > this.maxSize) {
-                //FOR NOW: delete & update everything
+                //delete & update everything
                 System.out.println("SC: Case 1 - Query Larger than Max Cache Size");
+
+                //clear hash and cache
                 this.currSize = 0;
                 this.timeCache.clear();
                 try (Statement stmt = this.con.createStatement()) {
@@ -151,7 +157,7 @@ public class SimpleCache implements Cache {
                 }
                 System.out.println("SC: Successfully deleted data from cache.");
 
-                //update with new data
+                //update with as much new data as possible
                 int dateRange = this.maxSize/variables.size();
                 minD = maxD.minusDays(dateRange);
                 minDate = minD.toString();
@@ -166,7 +172,9 @@ public class SimpleCache implements Cache {
                                 " SELECT time, x, y, " + column + " FROM " + this.dcTable +
                                 " WHERE time >= '" + minDate + "' AND time <= '" + maxDate + "'" +
                                 " AND x >= " + minX + " AND x <= " + maxX +
-                                " AND y >= " + minY + " AND y <= " + maxY + ";";
+                                " AND y >= " + minY + " AND y <= " + maxY +
+                                " ON CONFLICT (time, x, y) DO UPDATE" +
+                                " SET " + column + " = EXCLUDED." + column + ";";
                         System.out.println("SC: Query: \n" + "\u001B[33m" + stmtStr + "\u001B[0m");
                         stmt.executeUpdate(stmtStr);
                     } catch (SQLException e) {
@@ -193,63 +201,42 @@ public class SimpleCache implements Cache {
                     } catch (IOException e) {
                         e.printStackTrace();
                     }
+
+                    //Before exiting, print hash set for debug
+                    this.timeCache.forEach((key, value) -> System.out.println(key + ": " + value.toString()));
+
+                    //Exit and proceed with usual workflow (FDW)
+                    System.out.println("SC: Exiting...");
+                    return false;
                 }
             } else if (querySize < this.maxSize && querySize > this.maxSize - this.currSize) {
-                //FOR NOW: delete & update everything
+                //delete necessary rows to import new query
                 System.out.println("SC: Case 2 - Query Larger than Remaining Cache Size");
-                this.currSize = 0;
-                this.timeCache.clear();
-                try (Statement stmt = this.con.createStatement()) {
-                    String stmtStr = "DELETE FROM " + this.cacheTable + ";";
-                    stmt.executeUpdate(stmtStr);
-                } catch (SQLException e) {
-                    e.printStackTrace();
-                }
-                System.out.println("SC: Successfully deleted data from cache.");
 
-                //update with new data
-                int dateRange = (this.maxSize - this.currSize)/variables.size();
-                minD = maxD.minusDays(dateRange);
-                minDate = minD.toString();
+                //calculate the least amount of rows to be deleted
+                int delSum = 0;
+                int excess = ((int) querySize + this.currSize) - this.maxSize;
 
-                for (String column : variables) {
+                //iterate through hash data, remove entry and delete corresponding rows
+                Iterator it = this.timeCache.entrySet().iterator();
+                while (it.hasNext() && delSum < excess) {
+                    HashMap.Entry pair = (HashMap.Entry) it.next();
+                    String key = (String) pair.getKey();
+                    HashSet val = (HashSet) pair.getValue();
+                    delSum += val.size();
                     try (Statement stmt = this.con.createStatement()) {
-                        String stmtStr = "ALTER TABLE " + this.cacheTable +
-                                " ADD COLUMN IF NOT EXISTS " + column + " double precision;" +
-                                " INSERT INTO " + this.cacheTable + " (time, x, y, " + column + ")" +
-                                " SELECT time, x, y, " + column + " FROM " + this.dcTable +
-                                " WHERE time >= '" + minDate + "' AND time <= '" + maxDate + "'" +
-                                " AND x >= " + minX + " AND x <= " + maxX +
-                                " AND y >= " + minY + " AND y <= " + maxY + ";";
-                        System.out.println("SC: Query: \n" + stmtStr);
+                        String stmtStr = "DELETE FROM " + this.cacheTable +
+                        " WHERE time = " + key + ";";
                         stmt.executeUpdate(stmtStr);
                     } catch (SQLException e) {
                         e.printStackTrace();
                     }
-                    System.out.println("SC: Successfully updated cache for variable: " + column);
+                    it.remove(); //avoids a ConcurrentModificationException
                 }
+                this.currSize -= delSum;
+                System.out.println("SC: Successfully deleted data from cache.");
 
-                //update current cache size and hash
-                this.currSize = (int) querySize;
-                for (LocalDate tmpD = minD; tmpD.isBefore(maxD); tmpD = tmpD.plusDays(1)) {
-                    HashSet<String> vars = new HashSet<String>(variables);
-                    this.timeCache.put(tmpD.toString(), vars);
-                }
-
-                /* Template Export to Json: */
-                try {
-                    Gson gson = new Gson();
-                    FileWriter writer = new FileWriter(this.timeFile);
-                    Type hashType = new TypeToken<HashMap<String, HashSet<String>>>(){}.getType();
-                    gson.toJson(this.timeCache, hashType, writer);
-                    writer.flush();
-                    writer.close();
-                    System.out.println("SC: Successfully updated hash json file.");
-                } catch (IOException e) {
-                    e.printStackTrace();
-                }
-            } else {
-                System.out.println("SC: Case 3 - Query Smaller than Remaining Cache Size");
+                //update with new data
                 for (String column : variables) {
                     try (Statement stmt = this.con.createStatement()) {
                         String stmtStr = "ALTER TABLE " + this.cacheTable +
@@ -258,7 +245,9 @@ public class SimpleCache implements Cache {
                                 " SELECT time, x, y, " + column + " FROM " + this.dcTable +
                                 " WHERE time >= '" + minDate + "' AND time <= '" + maxDate + "'" +
                                 " AND x >= " + minX + " AND x <= " + maxX +
-                                " AND y >= " + minY + " AND y <= " + maxY + ";";
+                                " AND y >= " + minY + " AND y <= " + maxY +
+                                " ON CONFLICT (time, x, y) DO UPDATE" +
+                                " SET " + column + " = EXCLUDED." + column + ";";
                         System.out.println("SC: Query: \n" + stmtStr);
                         stmt.executeUpdate(stmtStr);
                     } catch (SQLException e) {
@@ -286,13 +275,49 @@ public class SimpleCache implements Cache {
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
+            } else {
+                //no deletions necessary
+                System.out.println("SC: Case 3 - Query Smaller than Remaining Cache Size");
 
-                //Before exiting, print hash set for debug
-                this.timeCache.forEach((key, value) -> System.out.println(key + ": " + value.toString()));
+                //update with new data
+                for (String column : variables) {
+                    try (Statement stmt = this.con.createStatement()) {
+                        String stmtStr = "ALTER TABLE " + this.cacheTable +
+                                " ADD COLUMN IF NOT EXISTS " + column + " double precision;" +
+                                " INSERT INTO " + this.cacheTable + " (time, x, y, " + column + ")" +
+                                " SELECT time, x, y, " + column + " FROM " + this.dcTable +
+                                " WHERE time >= '" + minDate + "' AND time <= '" + maxDate + "'" +
+                                " AND x >= " + minX + " AND x <= " + maxX +
+                                " AND y >= " + minY + " AND y <= " + maxY +
+                                " ON CONFLICT (time, x, y) DO UPDATE" +
+                                " SET " + column + " = EXCLUDED." + column + ";";
+                        System.out.println("SC: Query: \n" + stmtStr);
+                        stmt.executeUpdate(stmtStr);
+                    } catch (SQLException e) {
+                        e.printStackTrace();
+                    }
+                    System.out.println("SC: Successfully updated cache for variable: " + column);
+                }
 
-                //Exit and proceed with cache
-                System.out.println("SC: Exiting...");
-                return true;
+                //update current cache size and hash
+                this.currSize += querySize;
+                for (LocalDate tmpD = minD; tmpD.isBefore(maxD); tmpD = tmpD.plusDays(1)) {
+                    HashSet<String> vars = new HashSet<String>(variables);
+                    this.timeCache.put(tmpD.toString(), vars);
+                }
+
+                /* Template Export to Json: */
+                try {
+                    Gson gson = new Gson();
+                    FileWriter writer = new FileWriter(this.timeFile);
+                    Type hashType = new TypeToken<HashMap<String, HashSet<String>>>(){}.getType();
+                    gson.toJson(this.timeCache, hashType, writer);
+                    writer.flush();
+                    writer.close();
+                    System.out.println("SC: Successfully updated hash json file.");
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
 
             //Before exiting, print hash set for debug
@@ -300,7 +325,7 @@ public class SimpleCache implements Cache {
 
             //Exit and proceed with usual workflow (FDW)
             System.out.println("SC: Exiting...");
-            return false;
+            return true;
         }
         else {
             //Exit and proceed with cache
