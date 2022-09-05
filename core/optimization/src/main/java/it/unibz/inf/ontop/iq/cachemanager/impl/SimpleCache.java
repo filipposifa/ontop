@@ -158,7 +158,7 @@ public class SimpleCache implements Cache {
                 System.out.println("SC: Successfully deleted data from cache.");
 
                 //update with as much new data as possible
-                int dateRange = this.maxSize/variables.size();
+                int dateRange = this.maxSize / variables.size();
                 minD = maxD.minusDays(dateRange);
                 minDate = minD.toString();
                 System.out.println("SC: Number of Dates to be imported: " + dateRange);
@@ -186,14 +186,18 @@ public class SimpleCache implements Cache {
                     this.currSize = this.maxSize;
                     for (LocalDate tmpD = minD; tmpD.isBefore(maxD); tmpD = tmpD.plusDays(1)) {
                         HashSet<String> vars = new HashSet<String>(variables);
-                        this.timeCache.put(tmpD.toString(), vars);
+                        if (this.timeCache.containsKey(tmpD.toString()))
+                            this.timeCache.get(tmpD.toString()).addAll(vars);
+                        else
+                            this.timeCache.put(tmpD.toString(), vars);
                     }
 
                     /* Template Export to Json: */
                     try {
                         Gson gson = new Gson();
                         FileWriter writer = new FileWriter(this.timeFile);
-                        Type hashType = new TypeToken<Map<LocalDate, Set<String>>>(){}.getType();
+                        Type hashType = new TypeToken<Map<LocalDate, Set<String>>>() {
+                        }.getType();
                         gson.toJson(this.timeCache, hashType, writer);
                         writer.flush();
                         writer.close();
@@ -221,12 +225,15 @@ public class SimpleCache implements Cache {
                 Iterator it = this.timeCache.entrySet().iterator();
                 while (it.hasNext() && delSum < excess) {
                     HashMap.Entry pair = (HashMap.Entry) it.next();
-                    String key = (String) pair.getKey();
+                    String key = (String) pair.getKey() + "T00:00:00"; //hardcoded fix for LocalDateTime
                     HashSet val = (HashSet) pair.getValue();
+                    System.out.println("SC:\n\tKey: " + key + "\n\tVal" + val);
+
                     delSum += val.size();
                     try (Statement stmt = this.con.createStatement()) {
                         String stmtStr = "DELETE FROM " + this.cacheTable +
-                        " WHERE time = " + key + ";";
+                                " WHERE time = '" + key + "';";
+                        System.out.println("SC: Query: \n" + stmtStr);
                         stmt.executeUpdate(stmtStr);
                     } catch (SQLException e) {
                         e.printStackTrace();
@@ -234,7 +241,7 @@ public class SimpleCache implements Cache {
                     it.remove(); //avoids a ConcurrentModificationException
                 }
                 this.currSize -= delSum;
-                System.out.println("SC: Successfully deleted data from cache.");
+                System.out.println("SC: Successfully deleted data from cache. Current Cache Size: " + this.currSize);
 
                 //update with new data
                 for (String column : variables) {
@@ -260,14 +267,18 @@ public class SimpleCache implements Cache {
                 this.currSize += querySize;
                 for (LocalDate tmpD = minD; tmpD.isBefore(maxD); tmpD = tmpD.plusDays(1)) {
                     HashSet<String> vars = new HashSet<String>(variables);
-                    this.timeCache.put(tmpD.toString(), vars);
+                    if (this.timeCache.containsKey(tmpD.toString()))
+                        this.timeCache.get(tmpD.toString()).addAll(vars);
+                    else
+                        this.timeCache.put(tmpD.toString(), vars);
                 }
 
                 /* Template Export to Json: */
                 try {
                     Gson gson = new Gson();
                     FileWriter writer = new FileWriter(this.timeFile);
-                    Type hashType = new TypeToken<HashMap<String, HashSet<String>>>(){}.getType();
+                    Type hashType = new TypeToken<HashMap<String, HashSet<String>>>() {
+                    }.getType();
                     gson.toJson(this.timeCache, hashType, writer);
                     writer.flush();
                     writer.close();
@@ -303,14 +314,18 @@ public class SimpleCache implements Cache {
                 this.currSize += querySize;
                 for (LocalDate tmpD = minD; tmpD.isBefore(maxD); tmpD = tmpD.plusDays(1)) {
                     HashSet<String> vars = new HashSet<String>(variables);
-                    this.timeCache.put(tmpD.toString(), vars);
+                    if (this.timeCache.containsKey(tmpD.toString()))
+                        this.timeCache.get(tmpD.toString()).addAll(vars);
+                    else
+                        this.timeCache.put(tmpD.toString(), vars);
                 }
 
                 /* Template Export to Json: */
                 try {
                     Gson gson = new Gson();
                     FileWriter writer = new FileWriter(this.timeFile);
-                    Type hashType = new TypeToken<HashMap<String, HashSet<String>>>(){}.getType();
+                    Type hashType = new TypeToken<HashMap<String, HashSet<String>>>() {
+                    }.getType();
                     gson.toJson(this.timeCache, hashType, writer);
                     writer.flush();
                     writer.close();
@@ -322,15 +337,10 @@ public class SimpleCache implements Cache {
 
             //Before exiting, print hash set for debug
             this.timeCache.forEach((key, value) -> System.out.println(key + ": " + value.toString()));
+        }
 
-            //Exit and proceed with usual workflow (FDW)
-            System.out.println("SC: Exiting...");
-            return true;
-        }
-        else {
-            //Exit and proceed with cache
-            System.out.println("SC: Exiting...");
-            return true;
-        }
+        //Exit and proceed with cache
+        System.out.println("SC: Exiting...");
+        return true;
     }
 }

@@ -90,7 +90,7 @@ public class DataCubeCacheManager implements QueryCacheManager {
             } catch (SQLException e) {
                 e.printStackTrace();
             }
-            int maxSize = 1000; //max size of cache (days * variables);
+            int maxSize = 10; //max size of cache (days * variables); Normal: 1000; Testing: 10
             cache = new SimpleCache(tableFDW, tableCache, maxSize, con);
         }
 
@@ -187,12 +187,8 @@ public class DataCubeCacheManager implements QueryCacheManager {
                         }
                     } else {
                         //some other cube variable
-                        variableCount++;
-                        if (variableCount > 1) {
-                            //more than one variable? what to do?
-                            System.out.println("tED: TESTING MULTIPLE VARIABLES");
-                        }
                         variablePos = i;
+                        variableCount++;
                         System.out.println("tED-varPos: " + variablePos);
                         if (dataNode.getArgumentMap().get(i).isGround()) {
                             /*
@@ -205,13 +201,7 @@ public class DataCubeCacheManager implements QueryCacheManager {
                             System.out.println("tED-SpecificVar: " + tmpVar);
                             variables.add(tmpVar.toString());
                         } else {
-                            /* delete this after testing
-                            Variable tmpVar = (Variable) dataNode.getArgumentMap().get(i);
-                            System.out.println("tED-cubeVarMap: " + tmpVar);
-                            variables.add(tmpVar.toString());
-                             */
-
-                            //this is the correct one
+                            //parse for cube variables
                             cubeVar = dataNode.getRelationDefinition().getAttribute(i+1);
                             String cubeAttr = cubeVar.toString().split("\\s")[0].replace("\"", "");
                             System.out.println("tED-cubeVarAttr: " + cubeAttr);
