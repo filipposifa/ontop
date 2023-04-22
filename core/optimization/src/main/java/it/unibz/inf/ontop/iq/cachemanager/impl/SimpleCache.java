@@ -138,7 +138,7 @@ public class SimpleCache implements Cache {
         - check how upsert works in postgres and edit queries accordingly
         - get database password from properties
         - handle complex queries, requiring access to both fdw and cache
-        - improve and optimize code (?)
+        - change index implementation to R-tree
         */
         if (miss) {
             System.out.println("SC: Updating cache...");
