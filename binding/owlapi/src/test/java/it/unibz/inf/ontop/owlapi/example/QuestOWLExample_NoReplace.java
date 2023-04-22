@@ -23,10 +23,10 @@ package it.unibz.inf.ontop.owlapi.example;
 
 import it.unibz.inf.ontop.injection.OntopSQLOWLAPIConfiguration;
 import it.unibz.inf.ontop.iq.IQ;
-import it.unibz.inf.ontop.owlapi.OntopOWLFactory;
-import it.unibz.inf.ontop.owlapi.OntopOWLReasoner;
+import it.unibz.inf.ontop.owlapi.OntopOWLEngine;
 import it.unibz.inf.ontop.owlapi.connection.OntopOWLConnection;
 import it.unibz.inf.ontop.owlapi.connection.OntopOWLStatement;
+import it.unibz.inf.ontop.owlapi.impl.SimpleOntopOWLEngine;
 import it.unibz.inf.ontop.owlapi.resultset.OWLBindingSet;
 import it.unibz.inf.ontop.owlapi.resultset.TupleOWLResultSet;
 import org.semanticweb.owlapi.io.ToStringRenderer;
@@ -51,14 +51,13 @@ public class QuestOWLExample_NoReplace {
 		/*
          * Create the instance of Quest OWL reasoner.
 		 */
-        OntopOWLFactory factory = OntopOWLFactory.defaultFactory();
         OntopSQLOWLAPIConfiguration config = OntopSQLOWLAPIConfiguration.defaultBuilder()
                 .ontologyFile(owlfile)
                 .nativeOntopMappingFile(obdafile)
                 .propertyFile(propertiesfile)
                 .enableTestMode()
                 .build();
-        OntopOWLReasoner reasoner = factory.createReasoner(config);
+        OntopOWLEngine reasoner = new SimpleOntopOWLEngine(config);
 
 		/*
          * Get the book information that is stored in the database
@@ -81,7 +80,7 @@ public class QuestOWLExample_NoReplace {
                 final OWLBindingSet bindingSet = rs.next();
                 for (String name: rs.getSignature()) {
                     OWLObject binding = bindingSet.getOWLObject(name);
-                    System.out.print(ToStringRenderer.getInstance().getRendering(binding) + ", ");
+                    System.out.print(ToStringRenderer.getInstance().render(binding) + ", ");
                 }
                 System.out.print("\n");
             }
@@ -108,7 +107,7 @@ public class QuestOWLExample_NoReplace {
             System.out.println((t2 - t1) + "ms");
 
         } finally {
-            reasoner.dispose();
+            reasoner.close();
         }
     }
 

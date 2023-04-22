@@ -347,6 +347,8 @@ public interface TermFactory {
 	ImmutableFunctionalTerm getConversionFromRDFLexical2DB(DBTermType targetDBType, ImmutableTerm dbTerm,
 														   RDFTermType rdfType);
 
+	ImmutableFunctionalTerm getConversionFromRDFLexical2DB(DBTermType targetDBType, ImmutableTerm dbTerm);
+
 	ImmutableFunctionalTerm getConversionFromRDFLexical2DB(ImmutableTerm dbTerm, RDFTermType rdfType);
 
 
@@ -357,7 +359,7 @@ public interface TermFactory {
 	 *
 	 * This functional term must not appear in the final mapping
 	 */
-	ImmutableFunctionalTerm getPartiallyDefinedToStringCast(Variable variable);
+	ImmutableFunctionalTerm getPartiallyDefinedConversionToString(Variable variable);
 
 	ImmutableExpression getRDF2DBBooleanFunctionalTerm(ImmutableTerm xsdBooleanTerm);
 
@@ -495,7 +497,10 @@ public interface TermFactory {
 	ImmutableFunctionalTerm getDBMd5(ImmutableTerm stringTerm);
 	ImmutableFunctionalTerm getDBSha1(ImmutableTerm stringTerm);
 	ImmutableFunctionalTerm getDBSha256(ImmutableTerm stringTerm);
+	ImmutableFunctionalTerm getDBSha384(ImmutableTerm stringTerm);
 	ImmutableFunctionalTerm getDBSha512(ImmutableTerm stringTerm);
+
+//	ImmutableFunctionalTerm getDBIndexIn(Variable arg);
 
 	ImmutableFunctionalTerm getCommonPropagatedOrSubstitutedNumericType(ImmutableTerm rdfTypeTerm1,
 																		ImmutableTerm rdfTypeTerm2);
@@ -562,6 +567,8 @@ public interface TermFactory {
 
 	ImmutableFunctionalTerm getDBRowUniqueStr();
 
+	ImmutableFunctionalTerm getDBRowNumber();
+
 	ImmutableFunctionalTerm getDBIriStringResolution(IRI baseIRI, ImmutableTerm argLexical);
 
 	//-------------
@@ -626,4 +633,12 @@ public interface TermFactory {
 	ImmutableFunctionalTerm getDBSecondsBetweenFromDateTime(ImmutableTerm arg1, ImmutableTerm arg2);
 	ImmutableFunctionalTerm getDBMillisBetweenFromDateTime(ImmutableTerm arg1, ImmutableTerm arg2);
 
+
+	// JSON
+	ImmutableFunctionalTerm getDBJsonElement(ImmutableTerm arg, ImmutableList<String> path);
+	ImmutableFunctionalTerm getDBJsonElementAsText(ImmutableTerm arg, ImmutableList<String> path);
+	ImmutableExpression getDBJsonIsBoolean(DBTermType dbType, ImmutableTerm arg);
+	ImmutableExpression getDBJsonIsNumber(DBTermType dbType, ImmutableTerm arg);
+	ImmutableExpression getDBJsonIsScalar(DBTermType dbType, ImmutableTerm arg);
+	ImmutableExpression getDBIsArray(DBTermType dbType, ImmutableTerm arg);
 }

@@ -1,21 +1,16 @@
 package it.unibz.inf.ontop.model.term.functionsymbol.db.impl;
 
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableTable;
-import com.google.common.collect.Table;
+import com.google.common.collect.*;
 import com.google.inject.Inject;
+import it.unibz.inf.ontop.model.term.ImmutableFunctionalTerm;
 import it.unibz.inf.ontop.model.term.ImmutableTerm;
 import it.unibz.inf.ontop.model.term.TermFactory;
 import it.unibz.inf.ontop.model.term.functionsymbol.db.*;
-import it.unibz.inf.ontop.model.type.DBTermType;
-import it.unibz.inf.ontop.model.type.DBTypeFactory;
-import it.unibz.inf.ontop.model.type.RDFDatatype;
-import it.unibz.inf.ontop.model.type.TypeFactory;
-import it.unibz.inf.ontop.model.vocabulary.XSD;
+import it.unibz.inf.ontop.model.type.*;
 
 import java.util.UUID;
 import java.util.function.Function;
+import java.util.stream.Collectors;
 
 
 import static it.unibz.inf.ontop.model.term.functionsymbol.db.impl.MySQLDBFunctionSymbolFactory.UUID_STR;
@@ -27,15 +22,22 @@ public class PostgreSQLDBFunctionSymbolFactory extends AbstractSQLDBFunctionSymb
     private static final String RANDOM_STR = "RANDOM";
     private static final String POSITION_STR = "POSITION";
 
+    private final DBTermType dbJsonType;
+    private final DBTermType dbJsonBType;
+
     @Inject
     protected PostgreSQLDBFunctionSymbolFactory(TypeFactory typeFactory) {
         super(createPostgreSQLRegularFunctionTable(typeFactory), typeFactory);
+        this.dbJsonType = dbTypeFactory.getDBTermType(JSON_STR);
+        this.dbJsonBType = dbTypeFactory.getDBTermType(JSONB_STR);
     }
 
     protected static ImmutableTable<String, Integer, DBFunctionSymbol> createPostgreSQLRegularFunctionTable(
             TypeFactory typeFactory) {
         DBTypeFactory dbTypeFactory = typeFactory.getDBTypeFactory();
         DBTermType abstractRootDBType = dbTypeFactory.getAbstractRootDBType();
+        DBTermType dbStringType = dbTypeFactory.getDBStringType();
+        DBTermType dbInt4 = dbTypeFactory.getDBTermType(INTEGER_STR);
 
         Table<String, Integer, DBFunctionSymbol> table = HashBasedTable.create(
                 createDefaultRegularFunctionTable(typeFactory));
@@ -50,6 +52,35 @@ public class PostgreSQLDBFunctionSymbolFactory extends AbstractSQLDBFunctionSymb
                 CURRENT_TIMESTAMP_STR,
                 dbTypeFactory.getDBDateTimestampType(), abstractRootDBType);
         table.put(CURRENT_TIMESTAMP_STR, 0, nowFunctionSymbol);
+
+        DBFunctionSymbol substr2FunctionSymbol = new DBFunctionSymbolWithSerializerImpl(
+                SUBSTR_STR + "2",
+                ImmutableList.of(dbStringType, dbInt4),
+                dbStringType,
+                false,
+                (terms, termConverter, termFactory) -> {
+                    // PostgreSQL does not tolerate bigint as argument (int8), just int4 (integer)
+                    ImmutableTerm newTerm1 = termFactory.getDBCastFunctionalTerm(dbInt4, terms.get(1)).simplify();
+
+                    return String.format("substr(%s,%s)", termConverter.apply(terms.get(0)), termConverter.apply(newTerm1));
+                });
+        table.put(SUBSTR_STR, 2, substr2FunctionSymbol);
+
+        DBFunctionSymbol substr3FunctionSymbol = new DBFunctionSymbolWithSerializerImpl(
+                SUBSTR_STR + "3",
+                ImmutableList.of(dbStringType, dbInt4, dbInt4),
+                dbStringType,
+                false,
+                (terms, termConverter, termFactory) -> {
+                    // PostgreSQL does not tolerate bigint as argument (int8), just int4 (integer)
+                    ImmutableTerm newTerm1 = termFactory.getDBCastFunctionalTerm(dbInt4, terms.get(1)).simplify();
+                    ImmutableTerm newTerm2 = termFactory.getDBCastFunctionalTerm(dbInt4, terms.get(2)).simplify();
+
+                    return String.format("substr(%s,%s,%s)",
+                        termConverter.apply(terms.get(0)), termConverter.apply(newTerm1), termConverter.apply(newTerm2));
+                });
+        table.put(SUBSTR_STR, 3, substr3FunctionSymbol);
+
         table.remove(REGEXP_LIKE_STR, 2);
         table.remove(REGEXP_LIKE_STR, 3);
 
@@ -57,17 +88,14 @@ public class PostgreSQLDBFunctionSymbolFactory extends AbstractSQLDBFunctionSymb
     }
 
     @Override
-    protected ImmutableTable<DBTermType, RDFDatatype, DBTypeConversionFunctionSymbol> createNormalizationTable() {
-        ImmutableTable.Builder<DBTermType, RDFDatatype, DBTypeConversionFunctionSymbol> builder = ImmutableTable.builder();
-        builder.putAll(super.createNormalizationTable());
+    protected ImmutableMap<DBTermType, DBTypeConversionFunctionSymbol> createNormalizationMap() {
+        ImmutableMap.Builder<DBTermType, DBTypeConversionFunctionSymbol> builder = ImmutableMap.builder();
+        builder.putAll(super.createNormalizationMap());
 
         //TIMESTAMP
         DBTermType timeStamp = dbTypeFactory.getDBTermType(TIMESTAMP_STR);
-        RDFDatatype xsdDatetime = typeFactory.getXsdDatetimeDatatype();
-        RDFDatatype xsdDatetimeStamp = typeFactory.getXsdDatetimeStampDatatype();
         DBTypeConversionFunctionSymbol datetimeNormFunctionSymbol = createDateTimeNormFunctionSymbol(timeStamp);
-        builder.put(timeStamp, xsdDatetime, datetimeNormFunctionSymbol);
-        builder.put(timeStamp, xsdDatetimeStamp, datetimeNormFunctionSymbol);
+        builder.put(timeStamp, datetimeNormFunctionSymbol);
 
         //TIMETZ
         DBTermType timeTZType = dbTypeFactory.getDBTermType(TIMETZ_STR);
@@ -76,7 +104,15 @@ public class PostgreSQLDBFunctionSymbolFactory extends AbstractSQLDBFunctionSymb
                 timeTZType, dbStringType,
                 (terms, termConverter, termFactory) -> String.format(
                         "REGEXP_REPLACE(CAST(%s AS TEXT),'([-+]\\d\\d)$', '\\1:00')", termConverter.apply(terms.get(0))));
-        builder.put(timeTZType, typeFactory.getDatatype(XSD.TIME), timeTZNormFunctionSymbol);
+        builder.put(timeTZType, timeTZNormFunctionSymbol);
+
+        return builder.build();
+    }
+
+    @Override
+    protected ImmutableTable<DBTermType, RDFDatatype, DBTypeConversionFunctionSymbol> createNormalizationTable() {
+        ImmutableTable.Builder<DBTermType, RDFDatatype, DBTypeConversionFunctionSymbol> builder = ImmutableTable.builder();
+        builder.putAll(super.createNormalizationTable());
 
         //GEOMETRY
         DBTermType defaultDBGeometryType = dbTypeFactory.getDBGeometryType();
@@ -89,6 +125,50 @@ public class PostgreSQLDBFunctionSymbolFactory extends AbstractSQLDBFunctionSymb
         builder.put(defaultDBGeographyType,typeFactory.getWktLiteralDatatype(), geographyNormFunctionSymbol);
 
         return builder.build();
+    }
+
+    @Override
+    public DBFunctionSymbol getDBJsonEltAsText(ImmutableList<String> path) {
+        return new DBFunctionSymbolWithSerializerImpl(
+                "JSON_GET_ELT_AS_TEXT:"+printPath(path),
+                ImmutableList.of(
+                        dbJsonType
+                ),
+                dbStringType,
+                false,
+                (terms, termConverter, termFactory) -> String.format(
+                        "%s#>>%s",
+                        termConverter.apply(terms.get(0)),
+                        serializePath(path)
+                ));
+    }
+
+    @Override
+    public DBFunctionSymbol getDBJsonElt(ImmutableList<String> path) {
+        return new DBFunctionSymbolWithSerializerImpl(
+                "JSON_GET_ELT:"+printPath(path),
+                ImmutableList.of(
+                        dbJsonType
+                ),
+                dbJsonType,
+                false,
+                (terms, termConverter, termFactory) -> String.format(
+                        "%s#>%s",
+                        termConverter.apply(terms.get(0)),
+                        serializePath(path)
+                ));
+    }
+
+    private String serializePath(ImmutableList<String> path) {
+        return "\'{"+
+                path.stream()
+                        .collect(Collectors.joining(","))
+                +"}\'";
+    }
+
+    private String printPath(ImmutableList<String> path) {
+        return path.stream()
+                        .collect(Collectors.joining("."));
     }
 
     @Override
@@ -116,8 +196,6 @@ public class PostgreSQLDBFunctionSymbolFactory extends AbstractSQLDBFunctionSymb
             return new NonSimplifiableTypedNullFunctionSymbol(termType, dbTypeFactory.getDBTermType(INTEGER_STR));
         else
             return new NonSimplifiableTypedNullFunctionSymbol(termType);
-
-
     }
 
     @Override
@@ -141,8 +219,78 @@ public class PostgreSQLDBFunctionSymbolFactory extends AbstractSQLDBFunctionSymb
         return new OneLetterDBIsTrueFunctionSymbolImpl(dbBooleanType);
     }
 
+    @Override
+    protected DBBooleanFunctionSymbol createIsArray(DBTermType dbTermType) {
+        if (dbTermType.equals(dbJsonType)) {
+            return new DBBooleanFunctionSymbolWithSerializerImpl(
+                    "JSON_IS_ARRAY",
+                    ImmutableList.of(dbJsonType),
+                    dbBooleanType,
+                    false,
+                    (terms, termConverter, termFactory) -> String.format(
+                            "json_typeof(%s) = 'array'",
+                            termConverter.apply(terms.get(0))
+                    ));
+        }
+
+        if (dbTermType.equals(dbJsonBType)) {
+            return new DBBooleanFunctionSymbolWithSerializerImpl(
+                    "JSONB_IS_ARRAY",
+                    ImmutableList.of(dbJsonBType),
+                    dbBooleanType,
+                    false,
+                    (terms, termConverter, termFactory) -> String.format(
+                            "jsonb_typeof(%s) = 'array'",
+                            termConverter.apply(terms.get(0))
+                    ));
+        }
+        throw new UnsupportedOperationException("Unsupported nested datatype: " + dbTermType.getName());
+    }
+
+    @Override
+    protected DBBooleanFunctionSymbol createJsonIsBoolean(DBTermType dbType) {
+        return createJsonHasType("JSON_IS_BOOLEAN", dbType, ImmutableList.of("boolean"));
+    }
+
+    @Override
+    protected DBBooleanFunctionSymbol createJsonIsScalar(DBTermType dbType) {
+        return createJsonHasType("JSON_IS_SCALAR", dbType, ImmutableList.of("boolean", "string", "number"));
+    }
+
+    @Override
+    protected DBBooleanFunctionSymbol createJsonIsNumber(DBTermType dbType) {
+        return createJsonHasType("JSON_IS_NUMBER", dbType, ImmutableList.of("number"));
+    }
+
+    private DBBooleanFunctionSymbol createJsonHasType(String functionName, DBTermType jsonLikeType, ImmutableList<String> types) {
+        String typeOfFunctionString;
+        if (jsonLikeType.equals(dbJsonType)) {
+            typeOfFunctionString = "json_typeof";
+        }
+        else if (jsonLikeType.equals(dbJsonBType)) {
+            typeOfFunctionString = "jsonb_typeof";
+        }
+        else
+            throw new UnsupportedOperationException("Unsupported JSON-like type: " + jsonLikeType.getName());
+
+        return new DBBooleanFunctionSymbolWithSerializerImpl(
+                functionName,
+                ImmutableList.of(dbJsonType),
+                dbBooleanType,
+                false,
+                (terms, termConverter, termFactory) ->
+                        String.format(
+                                "%s(%s) IN (%s) ",
+                                typeOfFunctionString,
+                                termConverter.apply(terms.get(0)),
+                                types.stream()
+                                        .map(t -> "\'"+ t+ "\'")
+                                        .collect(Collectors.joining(","))
+                        ));
+    }
+
     /**
-     * TODO: find a way to use the stored TZ instead of the local one
+     * TODO: find a way to use the stored TZ instead of the local one
      */
     @Override
     protected String serializeDateTimeNorm(ImmutableList<? extends ImmutableTerm> terms, Function<ImmutableTerm, String> termConverter, TermFactory termFactory) {
@@ -224,6 +372,14 @@ public class PostgreSQLDBFunctionSymbolFactory extends AbstractSQLDBFunctionSymb
     @Override
     protected String serializeSHA256(ImmutableList<? extends ImmutableTerm> terms, Function<ImmutableTerm, String> termConverter, TermFactory termFactory) {
         return String.format("encode(digest(%s, 'sha256'), 'hex')", termConverter.apply(terms.get(0)));
+    }
+
+    /**
+     * Requires pgcrypto to be enabled (CREATE EXTENSION pgcrypto)
+     */
+    @Override
+    protected String serializeSHA384(ImmutableList<? extends ImmutableTerm> terms, Function<ImmutableTerm, String> termConverter, TermFactory termFactory) {
+        return String.format("encode(digest(%s, 'sha384'), 'hex')", termConverter.apply(terms.get(0)));
     }
 
     /**
@@ -343,5 +499,25 @@ public class PostgreSQLDBFunctionSymbolFactory extends AbstractSQLDBFunctionSymb
         return String.format("CEIL((EXTRACT (EPOCH FROM %s) - EXTRACT (EPOCH FROM %s))*1000)",
                 termConverter.apply(terms.get(0)),
                 termConverter.apply(terms.get(1)));
+    }
+
+    @Override
+    protected String serializeHexBinaryNorm(ImmutableList<? extends ImmutableTerm> terms, Function<ImmutableTerm, String> termConverter, TermFactory termFactory) {
+        return String.format("upper(encode(%s, 'hex'))", termConverter.apply(terms.get(0)));
+    }
+
+    @Override
+    protected String serializeHexBinaryDenorm(ImmutableList<? extends ImmutableTerm> terms, Function<ImmutableTerm, String> termConverter, TermFactory termFactory) {
+        return String.format("decode(%s, 'hex')", termConverter.apply(terms.get(0)));
+    }
+
+    @Override
+    public DBFunctionSymbol getDBRegexpReplace3() {
+        return new DBFunctionSymbolWithSerializerImpl("DB_REGEXP_REPLACE_3",
+                ImmutableList.of(abstractRootDBType, abstractRootDBType, abstractRootDBType), dbStringType, false,
+                ((terms, termConverter, termFactory) -> String.format("regexp_replace(%s,%s,%s,'g')",
+                        termConverter.apply(terms.get(0)),
+                        termConverter.apply(terms.get(1)),
+                        termConverter.apply(terms.get(2)))));
     }
 }

@@ -27,7 +27,7 @@ public class OntopEndpointTest {
     public static ExternalResource h2Connection = new H2ExternalResourceForBookExample();
     private static String PORT = "29831";
     private static String DBNAME = "books";
-    private static String DBURL = "jdbc:h2:tcp://localhost:19123/./src/test/resources/h2/books;ACCESS_MODE_DATA=r";
+    private static String DBURL = "jdbc:h2:tcp://localhost:19123/./src/test/resources/h2/books.h2;ACCESS_MODE_DATA=r";
     private static String DBUSER = "sa";
     private static String DBPASSWORD = "test";
 
@@ -37,7 +37,7 @@ public class OntopEndpointTest {
         Ontop.main("endpoint", "-m", "src/test/resources/books/exampleBooks.obda",
                 //"-p", "src/test/resources/books/exampleBooks.properties",
                 "-t", "src/test/resources/books/exampleBooks.owl",
-                //"-d", "src/test/resources/output/exampleBooks-metadata.json",
+                //"-d", "src/test/resources/exampleBooks-metadata.json",
                 //"-v", "src/test/resources/output/exampleBooks-metadata.json",
                 "--db-url=" + DBURL,
                 //"--db-driver="
@@ -51,7 +51,7 @@ public class OntopEndpointTest {
     public void testQuery() {
         String sparqlEndpoint = "http://localhost:" + PORT + "/sparql";
         Repository repo = new SPARQLRepository(sparqlEndpoint);
-        repo.initialize();
+        repo.init();
 
         try (RepositoryConnection conn = repo.getConnection()) {
             String queryString = "PREFIX : <http://meraka/moss/exampleBooks.owl#>\n" +
@@ -77,7 +77,7 @@ public class OntopEndpointTest {
     public void testDescribeQuery() {
         String sparqlEndpoint = "http://localhost:" + PORT + "/sparql";
         Repository repo = new SPARQLRepository(sparqlEndpoint);
-        repo.initialize();
+        repo.init();
 
         try (RepositoryConnection conn = repo.getConnection()) {
             String queryString = "DESCRIBE <http://meraka/moss/exampleBooks.owl#book/10/>";
@@ -98,7 +98,7 @@ public class OntopEndpointTest {
 
         String sparqlEndpoint = "http://localhost:" + PORT + "/sparql";
         Repository repo = new SPARQLRepository(sparqlEndpoint);
-        repo.initialize();
+        repo.init();
         try (RepositoryConnection conn = repo.getConnection()) {
             String queryString = "X";
             TupleQuery tupleQuery = conn.prepareTupleQuery(QueryLanguage.SPARQL, queryString);

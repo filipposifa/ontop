@@ -10,6 +10,7 @@ import it.unibz.inf.ontop.model.term.functionsymbol.InequalityLabel;
 import it.unibz.inf.ontop.model.term.functionsymbol.db.*;
 import it.unibz.inf.ontop.model.type.*;
 import it.unibz.inf.ontop.model.vocabulary.SPARQL;
+import it.unibz.inf.ontop.model.vocabulary.XSD;
 import org.apache.commons.rdf.api.IRI;
 
 import java.util.Map;
@@ -63,6 +64,8 @@ public abstract class AbstractDBFunctionSymbolFactory implements DBFunctionSymbo
     private DBFunctionSymbol sha1FunctionSymbol;
     // Created in init()
     private DBFunctionSymbol sha256FunctionSymbol;
+    // Created in init()
+    private DBFunctionSymbol sha384FunctionSymbol;
     // Created in init()
     private DBFunctionSymbol sha512FunctionSymbol;
     // Created in init()
@@ -120,20 +123,46 @@ public abstract class AbstractDBFunctionSymbolFactory implements DBFunctionSymbo
     private DBFunctionSymbol rowUniqueStrFct;
     // Created in init()
     private DBFunctionSymbol rowNumberFct;
+    private DBFunctionSymbol rowNumberWithOrderByFct;
+
+    private IRISafenessDeclarationFunctionSymbol iriSafenessDeclarationFunctionSymbol;
+
+    private Map<DBTermType, DBBooleanFunctionSymbol> jsonIsScalarMap;
+    private Map<DBTermType, DBBooleanFunctionSymbol> jsonIsBooleanMap;
+    private Map<DBTermType, DBBooleanFunctionSymbol> jsonIsNumberMap;
+    private Map<DBTermType, DBBooleanFunctionSymbol> isArrayMap;
 
     /**
      *  For conversion function symbols that are SIMPLE CASTs from an undetermined type (no normalization)
      */
     private final Map<DBTermType, DBTypeConversionFunctionSymbol> castMap;
     /**
-     *  For conversion function symbols that implies a NORMALIZATION as RDF lexical term
+     *  For conversion function symbols that implies a NORMALIZATION as specified in R2RML
+     *
+     *  Created in init()
+     */
+    private ImmutableMap<DBTermType, DBTypeConversionFunctionSymbol> normalizationMap;
+
+    /**
+     *  For NORMALIZATION as RDF lexical term where the RDF datatype matters.
+     *  Most functions are going to the map, not the table.
      *
      *  Created in init()
      */
     private ImmutableTable<DBTermType, RDFDatatype, DBTypeConversionFunctionSymbol> normalizationTable;
 
     /**
+     *  For conversion function symbols that implies a DENORMALIZATION from RDF lexical term.
+     *
+     *  Created in init()
+     */
+    private ImmutableMap<DBTermType, DBTypeConversionFunctionSymbol> deNormalizationMap;
+
+    /**
      *  For conversion function symbols that implies a DENORMALIZATION from RDF lexical term
+     *  when the target RDF datatype matters.
+     *
+     *  Most functions are going to the map, not the table.
      *
      *  Created in init()
      */
@@ -323,6 +352,11 @@ public abstract class AbstractDBFunctionSymbolFactory implements DBFunctionSymbo
 
         this.extractFunctionSymbolsMap = new ConcurrentHashMap<>();
         this.currentDateTimeFunctionSymbolsMap = new ConcurrentHashMap<>();
+
+        this.isArrayMap = new ConcurrentHashMap<>();
+        this.jsonIsNumberMap = new ConcurrentHashMap<>();
+        this.jsonIsBooleanMap = new ConcurrentHashMap<>();
+        this.jsonIsScalarMap = new ConcurrentHashMap<>();
     }
 
     /**
@@ -330,7 +364,9 @@ public abstract class AbstractDBFunctionSymbolFactory implements DBFunctionSymbo
      */
     @Inject
     protected void init() {
+        normalizationMap = createNormalizationMap();
         normalizationTable = createNormalizationTable();
+        deNormalizationMap = createDenormalizationMap();
         deNormalizationTable = createDenormalizationTable();
         countTable = createDBCountTable();
 
@@ -357,6 +393,7 @@ public abstract class AbstractDBFunctionSymbolFactory implements DBFunctionSymbo
         md5FunctionSymbol = createMD5FunctionSymbol();
         sha1FunctionSymbol = createSHA1FunctionSymbol();
         sha256FunctionSymbol = createSHA256FunctionSymbol();
+        sha384FunctionSymbol = createSHA384FunctionSymbol();
         sha512FunctionSymbol = createSHA512FunctionSymbol();
 
         yearFromDatetimeFunctionSymbol = createYearFromDatetimeFunctionSymbol();
@@ -384,42 +421,57 @@ public abstract class AbstractDBFunctionSymbolFactory implements DBFunctionSymbo
 
         rowUniqueStrFct = createDBRowUniqueStr();
         rowNumberFct = createDBRowNumber();
+        rowNumberWithOrderByFct = createDBRowNumberWithOrderBy();
+        iriSafenessDeclarationFunctionSymbol = new IRISafenessDeclarationFunctionSymbolImpl(rootDBType);
+    }
+
+    protected ImmutableMap<DBTermType, DBTypeConversionFunctionSymbol> createNormalizationMap() {
+        DBTypeFactory dbTypeFactory = typeFactory.getDBTypeFactory();
+        ImmutableMap.Builder<DBTermType, DBTypeConversionFunctionSymbol> builder = ImmutableMap.builder();
+
+        // Date time
+        DBTermType defaultDBDateTimestampType = dbTypeFactory.getDBDateTimestampType();
+        DBTypeConversionFunctionSymbol datetimeNormFunctionSymbol = createDateTimeNormFunctionSymbol(defaultDBDateTimestampType);
+        builder.put(defaultDBDateTimestampType, datetimeNormFunctionSymbol);
+        // Boolean
+        builder.put(dbBooleanType, createBooleanNormFunctionSymbol(dbBooleanType));
+        // Binary
+        DBTermType defaultBinaryType = dbTypeFactory.getDBHexBinaryType();
+        DBTypeConversionFunctionSymbol hexBinaryNormFunctionSymbol = createHexBinaryNormFunctionSymbol(defaultBinaryType);
+        builder.put(defaultBinaryType, hexBinaryNormFunctionSymbol);
+
+        return builder.build();
     }
 
     protected ImmutableTable<DBTermType, RDFDatatype, DBTypeConversionFunctionSymbol> createNormalizationTable() {
+        return ImmutableTable.of();
+    }
+
+    protected ImmutableMap<DBTermType, DBTypeConversionFunctionSymbol> createDenormalizationMap() {
         DBTypeFactory dbTypeFactory = typeFactory.getDBTypeFactory();
-        ImmutableTable.Builder<DBTermType, RDFDatatype, DBTypeConversionFunctionSymbol> builder = ImmutableTable.builder();
+
+        DBTermType timestampType = dbTypeFactory.getDBDateTimestampType();
+        DBTermType booleanType = dbTypeFactory.getDBBooleanType();
+        DBTermType binaryType = dbTypeFactory.getDBHexBinaryType();
+
+        ImmutableMap.Builder<DBTermType, DBTypeConversionFunctionSymbol> builder = ImmutableMap.builder();
 
         // Date time
-        RDFDatatype xsdDatetime = typeFactory.getXsdDatetimeDatatype();
-        RDFDatatype xsdDatetimeStamp = typeFactory.getXsdDatetimeStampDatatype();
-        DBTermType defaultDBDateTimestampType = dbTypeFactory.getDBDateTimestampType();
-        DBTypeConversionFunctionSymbol datetimeNormFunctionSymbol = createDateTimeNormFunctionSymbol(defaultDBDateTimestampType);
-        builder.put(defaultDBDateTimestampType, xsdDatetime, datetimeNormFunctionSymbol);
-        builder.put(defaultDBDateTimestampType, xsdDatetimeStamp, datetimeNormFunctionSymbol);
+        DBTypeConversionFunctionSymbol timestampDenormalization = createDateTimeDenormFunctionSymbol(timestampType);
+        builder.put(timestampType, timestampDenormalization);
+
         // Boolean
-        builder.put(dbBooleanType, typeFactory.getXsdBooleanDatatype(), createBooleanNormFunctionSymbol(dbBooleanType));
+        builder.put(booleanType, createBooleanDenormFunctionSymbol());
+
+        // Binary
+        DBTypeConversionFunctionSymbol hexBinaryDenormFunctionSymbol = createHexBinaryDenormFunctionSymbol(binaryType);
+        builder.put(binaryType, hexBinaryDenormFunctionSymbol);
 
         return builder.build();
     }
 
     protected ImmutableTable<DBTermType, RDFDatatype, DBTypeConversionFunctionSymbol> createDenormalizationTable() {
-        DBTypeFactory dbTypeFactory = typeFactory.getDBTypeFactory();
-
-        DBTermType timestampType = dbTypeFactory.getDBDateTimestampType();
-        DBTermType booleanType = dbTypeFactory.getDBBooleanType();
-
-        ImmutableTable.Builder<DBTermType, RDFDatatype, DBTypeConversionFunctionSymbol> builder = ImmutableTable.builder();
-
-        // Date time
-        DBTypeConversionFunctionSymbol timestampDenormalization = createDateTimeDenormFunctionSymbol(timestampType);
-        builder.put(timestampType, typeFactory.getXsdDatetimeDatatype(), timestampDenormalization);
-        builder.put(timestampType, typeFactory.getXsdDatetimeStampDatatype(), timestampDenormalization);
-
-        // Boolean
-        builder.put(booleanType, typeFactory.getXsdBooleanDatatype(), createBooleanDenormFunctionSymbol());
-
-        return builder.build();
+        return ImmutableTable.of();
     }
 
     protected ImmutableTable<Integer, Boolean, DBFunctionSymbol> createDBCountTable() {
@@ -770,6 +822,11 @@ public abstract class AbstractDBFunctionSymbolFactory implements DBFunctionSymbo
     }
 
     @Override
+    public DBFunctionSymbol getDBSha384() {
+        return sha384FunctionSymbol;
+    }
+
+    @Override
     public DBFunctionSymbol getDBSha512() {
         return sha512FunctionSymbol;
     }
@@ -957,6 +1014,11 @@ public abstract class AbstractDBFunctionSymbolFactory implements DBFunctionSymbo
     }
 
     @Override
+    public DBFunctionSymbol getDBRowNumberWithOrderBy() {
+        return rowNumberWithOrderByFct;
+    }
+
+    @Override
     public DBFunctionSymbol getDBIriStringResolver(IRI baseIRI) {
         return iriStringResolverMap.computeIfAbsent(baseIRI, this::createDBIriStringResolver);
     }
@@ -1018,6 +1080,40 @@ public abstract class AbstractDBFunctionSymbolFactory implements DBFunctionSymbo
         return new DBIntIndexFunctionSymbolImpl(dbIntegerType, rootDBType, nbValues);
     }
 
+    @Override
+    public DBFunctionSymbol getDBJsonElt(ImmutableList<String> path) {
+            throw new UnsupportedOperationException("Json support unavailable for this DBMS");
+    }
+
+    @Override
+    public DBFunctionSymbol getDBJsonEltAsText(ImmutableList<String> path) {
+            throw new UnsupportedOperationException("Json support unavailable for this DBMS");
+    }
+
+    @Override
+    public DBBooleanFunctionSymbol getDBJsonIsScalar(DBTermType dbType) {
+        return jsonIsScalarMap.computeIfAbsent(dbType, this::createJsonIsScalar);
+    }
+
+    @Override
+    public DBBooleanFunctionSymbol getDBJsonIsNumber(DBTermType dbType) {
+        return jsonIsNumberMap.computeIfAbsent(dbType, this::createJsonIsNumber);
+    }
+
+    @Override
+    public DBBooleanFunctionSymbol getDBJsonIsBoolean(DBTermType dbType) {
+        return jsonIsBooleanMap.computeIfAbsent(dbType, this::createJsonIsBoolean);
+    }
+
+    @Override
+    public DBBooleanFunctionSymbol getDBIsArray(DBTermType dbType) {
+        return isArrayMap.computeIfAbsent(dbType, this::createIsArray);
+    }
+
+    @Override
+    public IRISafenessDeclarationFunctionSymbol getIRISafenessDeclaration() {
+        return iriSafenessDeclarationFunctionSymbol;
+    }
 
     protected abstract DBFunctionSymbol createDBCount(boolean isUnary, boolean isDistinct);
     protected abstract DBFunctionSymbol createDBSum(DBTermType termType, boolean isDistinct);
@@ -1038,9 +1134,11 @@ public abstract class AbstractDBFunctionSymbolFactory implements DBFunctionSymbo
 
     protected abstract DBTypeConversionFunctionSymbol createDateTimeNormFunctionSymbol(DBTermType dbDateTimestampType);
     protected abstract DBTypeConversionFunctionSymbol createBooleanNormFunctionSymbol(DBTermType booleanType);
+    protected abstract DBTypeConversionFunctionSymbol createHexBinaryNormFunctionSymbol(DBTermType binaryType);
     protected abstract DBTypeConversionFunctionSymbol createDateTimeDenormFunctionSymbol(DBTermType timestampType);
     protected abstract DBTypeConversionFunctionSymbol createBooleanDenormFunctionSymbol();
     protected abstract DBTypeConversionFunctionSymbol createGeometryNormFunctionSymbol(DBTermType geoType);
+    protected abstract DBTypeConversionFunctionSymbol createHexBinaryDenormFunctionSymbol(DBTermType binaryType);
 
     protected DBBooleanFunctionSymbol createLikeFunctionSymbol() {
         return new DBLikeFunctionSymbolImpl(dbBooleanType, rootDBType);
@@ -1129,6 +1227,10 @@ public abstract class AbstractDBFunctionSymbolFactory implements DBFunctionSymbo
         return new DBHashFunctionSymbolImpl("DB_SHA256", rootDBType, dbStringType, this::serializeSHA256);
     }
 
+    protected DBFunctionSymbol createSHA384FunctionSymbol() {
+        return new DBHashFunctionSymbolImpl("DB_SHA384", rootDBType, dbStringType, this::serializeSHA384);
+    }
+
     protected DBFunctionSymbol createSHA512FunctionSymbol() {
         return new DBHashFunctionSymbolImpl("DB_SHA512", rootDBType, dbStringType, this::serializeSHA512);
     }
@@ -1195,12 +1297,22 @@ public abstract class AbstractDBFunctionSymbolFactory implements DBFunctionSymbo
 
     protected DBFunctionSymbol createDBRowUniqueStr() {
         return new DBFunctionSymbolWithSerializerImpl("ROW_UNIQUE_STR", ImmutableList.of(), dbStringType, true,
-                (t, c, f) -> serializeDBRowUniqueStr(c, f));
+                (t, c, f) -> serializeDBRowUniqueStr(c, f)) {
+            @Override
+            public boolean isDeterministic() {
+                return false;
+            }
+        };
     }
 
     protected DBFunctionSymbol createDBRowNumber() {
         return new DBFunctionSymbolWithSerializerImpl("ROW_NUMBER", ImmutableList.of(), dbIntegerType, true,
                 (t, c, f) -> serializeDBRowNumber(c, f));
+    }
+
+    protected DBFunctionSymbol createDBRowNumberWithOrderBy() {
+        return new UnaryDBFunctionSymbolWithSerializerImpl("ROW_NUMBER_WITH_ORDERBY", rootDBType, dbIntegerType, true,
+                (t, c, f) -> serializeDBRowNumberWithOrderBy(t, c, f));
     }
 
 
@@ -1297,6 +1409,10 @@ public abstract class AbstractDBFunctionSymbolFactory implements DBFunctionSymbo
     protected abstract String serializeSHA256(ImmutableList<? extends ImmutableTerm> terms,
                                             Function<ImmutableTerm, String> termConverter,
                                             TermFactory termFactory);
+
+    protected abstract String serializeSHA384(ImmutableList<? extends ImmutableTerm> terms,
+                                              Function<ImmutableTerm, String> termConverter,
+                                              TermFactory termFactory);
 
     protected abstract String serializeSHA512(ImmutableList<? extends ImmutableTerm> terms,
                                             Function<ImmutableTerm, String> termConverter,
@@ -1435,6 +1551,22 @@ public abstract class AbstractDBFunctionSymbolFactory implements DBFunctionSymbo
                 this::serializeMillisBetween);
     }
 
+    protected DBBooleanFunctionSymbol createIsArray(DBTermType dbType) {
+        throw new UnsupportedOperationException("Unsupported nested datatype: " + dbType.getName());
+    }
+
+    protected DBBooleanFunctionSymbol createJsonIsNumber(DBTermType dbType) {
+        throw new UnsupportedOperationException("Unsupported JSON-like datatype: " + dbType.getName());
+    }
+
+    protected DBBooleanFunctionSymbol createJsonIsBoolean(DBTermType dbType) {
+        throw new UnsupportedOperationException("Unsupported JSON-like datatype: " + dbType.getName());
+    }
+
+    protected DBBooleanFunctionSymbol createJsonIsScalar(DBTermType dbType) {
+        throw new UnsupportedOperationException("Unsupported JSON-like datatype: " + dbType.getName());
+    }
+
     /**
      * By default, uses the row number
      */
@@ -1447,6 +1579,10 @@ public abstract class AbstractDBFunctionSymbolFactory implements DBFunctionSymbo
 
     protected abstract String serializeDBRowNumber(Function<ImmutableTerm, String> converter, TermFactory termFactory);
 
+    protected abstract String serializeDBRowNumberWithOrderBy(ImmutableList<? extends ImmutableTerm> terms,
+                                                                Function<ImmutableTerm, String> converter,
+                                                              TermFactory termFactory);
+
 
 
     @Override
@@ -1455,8 +1591,9 @@ public abstract class AbstractDBFunctionSymbolFactory implements DBFunctionSymbo
                 .filter(t -> t instanceof RDFDatatype)
                 .map(t -> (RDFDatatype) t)
                 .flatMap(t -> Optional.ofNullable(normalizationTable.get(inputType, t)))
-                // Fallback to simple cast
-                .orElseGet(() -> getDBCastFunctionSymbol(inputType, dbStringType));
+                .orElseGet(() -> Optional.ofNullable(normalizationMap.get(inputType))
+                        // Fallback to simple cast
+                        .orElseGet(() -> getDBCastFunctionSymbol(inputType, dbStringType)));
     }
 
     @Override
@@ -1466,6 +1603,12 @@ public abstract class AbstractDBFunctionSymbolFactory implements DBFunctionSymbo
                 .filter(t -> t instanceof RDFDatatype)
                 .map(t -> (RDFDatatype) t)
                 .flatMap(t -> Optional.ofNullable(deNormalizationTable.get(targetDBType, t)))
+                .orElseGet(() -> getConversionFromRDFLexical2DBFunctionSymbol(targetDBType));
+    }
+
+    @Override
+    public DBTypeConversionFunctionSymbol getConversionFromRDFLexical2DBFunctionSymbol(DBTermType targetDBType) {
+        return Optional.ofNullable(deNormalizationMap.get(targetDBType))
                 // Fallback to simple cast
                 .orElseGet(() -> getDBCastFunctionSymbol(dbStringType, targetDBType));
     }

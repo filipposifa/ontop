@@ -8,12 +8,12 @@ import it.unibz.inf.ontop.injection.OntopOptimizationConfiguration;
 import it.unibz.inf.ontop.injection.OntopOptimizationSettings;
 import it.unibz.inf.ontop.injection.OptimizationSingletons;
 import it.unibz.inf.ontop.injection.OptimizerFactory;
-import it.unibz.inf.ontop.iq.cachemanager.QueryCacheManager;
 import it.unibz.inf.ontop.iq.optimizer.*;
 import it.unibz.inf.ontop.iq.planner.QueryPlanner;
+import it.unibz.inf.ontop.iq.cachemanager.QueryCacheManager;
 import it.unibz.inf.ontop.iq.tools.UnionBasedQueryMerger;
 import it.unibz.inf.ontop.iq.transformer.*;
-import it.unibz.inf.ontop.iq.view.OntopViewUnfolder;
+import it.unibz.inf.ontop.iq.lens.LensUnfolder;
 import it.unibz.inf.ontop.iq.visitor.RequiredExtensionalDataNodeExtractor;
 
 public class OntopOptimizationModule extends OntopAbstractModule {
@@ -51,8 +51,12 @@ public class OntopOptimizationModule extends OntopAbstractModule {
         bindFromSettings(RequiredExtensionalDataNodeExtractor.class);
         bindFromSettings(SelfJoinUCIQOptimizer.class);
         bindFromSettings(RedundantJoinFKOptimizer.class);
-        bindFromSettings(OntopViewUnfolder.class);
+        bindFromSettings(BelowDistinctJoinWithClassUnionOptimizer.class);
+        bindFromSettings(LensUnfolder.class);
         bindFromSettings(AggregationSplitter.class);
+        bindFromSettings(FlattenLifter.class);
+        bindFromSettings(FilterLifter.class);
+        bindFromSettings(BooleanExpressionPushDownOptimizer.class);
 
         bind(OptimizationSingletons.class).to(OptimizationSingletonsImpl.class);
 

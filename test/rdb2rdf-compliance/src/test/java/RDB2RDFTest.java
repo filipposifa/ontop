@@ -99,8 +99,6 @@ public class RDB2RDFTest {
 			"tc0016b",
 			// Timezone was not expected to be added. Same for milliseconds (not so relevant test)
 			"tc0016c",
-			// H2 returns varbinary in lower case while upper case was expected. Modified test added.
-			"tc0016e",
 			// H2 does not store the implicit trailing spaces in CHAR(15) and does not output them.
 			"dg0018",
 			// H2 does not store the implicit trailing spaces in CHAR(15) and does not output them.
@@ -291,7 +289,7 @@ public class RDB2RDFTest {
 			configuration = bootstrapDMConfiguration();
 		}
 		OntopRepository repo = OntopRepository.defaultRepository(configuration);
-		repo.initialize();
+		repo.init();
 		return repo;
 	}
 

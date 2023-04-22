@@ -1,10 +1,8 @@
 package it.unibz.inf.ontop.model.term.functionsymbol.db.impl;
 
-import com.google.common.collect.HashBasedTable;
-import com.google.common.collect.ImmutableList;
-import com.google.common.collect.ImmutableTable;
-import com.google.common.collect.Table;
+import com.google.common.collect.*;
 import com.google.inject.Inject;
+import it.unibz.inf.ontop.dbschema.DatabaseInfoSupplier;
 import it.unibz.inf.ontop.model.term.ImmutableTerm;
 import it.unibz.inf.ontop.model.term.TermFactory;
 import it.unibz.inf.ontop.model.term.functionsymbol.db.DBConcatFunctionSymbol;
@@ -14,9 +12,13 @@ import it.unibz.inf.ontop.model.type.DBTermType;
 import it.unibz.inf.ontop.model.type.DBTypeFactory;
 import it.unibz.inf.ontop.model.type.RDFDatatype;
 import it.unibz.inf.ontop.model.type.TypeFactory;
+import it.unibz.inf.ontop.model.vocabulary.XSD;
 
 import java.util.Optional;
 import java.util.function.Function;
+
+import static it.unibz.inf.ontop.model.type.impl.DefaultSQLDBTypeFactory.BINARY_VAR_STR;
+import static it.unibz.inf.ontop.model.type.impl.DefaultSQLDBTypeFactory.VARBINARY_STR;
 
 public class H2SQLDBFunctionSymbolFactory extends AbstractSQLDBFunctionSymbolFactory {
 
@@ -25,19 +27,16 @@ public class H2SQLDBFunctionSymbolFactory extends AbstractSQLDBFunctionSymbolFac
     private static final String LISTAGG_STR = "LISTAGG";
 
     private static final String UNSUPPORTED_MSG = "Not supported by H2";
-;
+    private final DatabaseInfoSupplier databaseInfoSupplier;
 
     @Inject
-    private H2SQLDBFunctionSymbolFactory(TypeFactory typeFactory) {
+    private H2SQLDBFunctionSymbolFactory(TypeFactory typeFactory, DatabaseInfoSupplier databaseInfoSupplier) {
         super(createH2RegularFunctionTable(typeFactory), typeFactory);
+        this.databaseInfoSupplier = databaseInfoSupplier;
     }
 
     protected static ImmutableTable<String, Integer, DBFunctionSymbol> createH2RegularFunctionTable(
             TypeFactory typeFactory) {
-        DBTypeFactory dbTypeFactory = typeFactory.getDBTypeFactory();
-        DBTermType dbBooleanType = dbTypeFactory.getDBBooleanType();
-        DBTermType abstractRootDBType = dbTypeFactory.getAbstractRootDBType();
-        DBTermType dbGeometryType = dbTypeFactory.getDBGeometryType();
 
         Table<String, Integer, DBFunctionSymbol> table = HashBasedTable.create(
                 createDefaultRegularFunctionTable(typeFactory));
@@ -45,27 +44,36 @@ public class H2SQLDBFunctionSymbolFactory extends AbstractSQLDBFunctionSymbolFac
         return ImmutableTable.copyOf(table);
     }
 
+    @Override
+    protected ImmutableMap<DBTermType, DBTypeConversionFunctionSymbol> createNormalizationMap() {
+        DBTypeFactory dbTypeFactory = typeFactory.getDBTypeFactory();
+        ImmutableMap.Builder<DBTermType, DBTypeConversionFunctionSymbol> builder = ImmutableMap.builder();
+        builder.putAll(super.createNormalizationMap());
+
+        DBTermType varBinary = dbTypeFactory.getDBTermType(VARBINARY_STR);
+        builder.put(varBinary, createHexBinaryNormFunctionSymbol(varBinary));
+        DBTermType varBinary2 = dbTypeFactory.getDBTermType(BINARY_VAR_STR);
+        builder.put(varBinary2, createHexBinaryNormFunctionSymbol(varBinary2));
+
+        return builder.build();
+    }
+
     /**
-     * Ensure geometries are recast back from text
+     * Ensure geometries are recast back from text.
+     *
+     * At moment only WKT is supported, but in the future GML could also be.
+     * It is therefore important to consider the target datatype for choosing the right normalization.
+     *
      */
     @Override
     protected ImmutableTable<DBTermType, RDFDatatype, DBTypeConversionFunctionSymbol> createNormalizationTable() {
         DBTypeFactory dbTypeFactory = typeFactory.getDBTypeFactory();
         ImmutableTable.Builder<DBTermType, RDFDatatype, DBTypeConversionFunctionSymbol> builder = ImmutableTable.builder();
 
-        // Date time
-        RDFDatatype xsdDatetime = typeFactory.getXsdDatetimeDatatype();
-        RDFDatatype xsdDatetimeStamp = typeFactory.getXsdDatetimeStampDatatype();
-        DBTermType defaultDBDateTimestampType = dbTypeFactory.getDBDateTimestampType();
-        DBTypeConversionFunctionSymbol datetimeNormFunctionSymbol = createDateTimeNormFunctionSymbol(defaultDBDateTimestampType);
-        builder.put(defaultDBDateTimestampType, xsdDatetime, datetimeNormFunctionSymbol);
-        builder.put(defaultDBDateTimestampType, xsdDatetimeStamp, datetimeNormFunctionSymbol);
-        // Boolean
-        builder.put(dbBooleanType, typeFactory.getXsdBooleanDatatype(), createBooleanNormFunctionSymbol(dbBooleanType));
-
         //GEOMETRY
         DBTermType defaultDBGeometryType = dbTypeFactory.getDBGeometryType();
         DBTypeConversionFunctionSymbol geometryNormFunctionSymbol = createGeometryNormFunctionSymbol(defaultDBGeometryType);
+        // For WKT
         builder.put(defaultDBGeometryType,typeFactory.getWktLiteralDatatype(), geometryNormFunctionSymbol);
 
         return builder.build();
@@ -118,7 +126,14 @@ public class H2SQLDBFunctionSymbolFactory extends AbstractSQLDBFunctionSymbolFac
     @Override
     protected String serializeSHA256(ImmutableList<? extends ImmutableTerm> terms,
                                      Function<ImmutableTerm, String> termConverter, TermFactory termFactory) {
-        return String.format("HASH('SHA256', STRINGTOUTF8(%s), 1)", termConverter.apply(terms.get(0)));
+        return String.format("RAWTOHEX(HASH('SHA256', STRINGTOUTF8(%s), 1))", termConverter.apply(terms.get(0)));
+    }
+
+    @Override
+    protected String serializeSHA384(ImmutableList<? extends ImmutableTerm> terms,
+                                     Function<ImmutableTerm, String> termConverter, TermFactory termFactory) {
+        // TODO: throw a better exception
+        throw new UnsupportedOperationException(UNSUPPORTED_MSG);
     }
 
     @Override
@@ -191,9 +206,19 @@ public class H2SQLDBFunctionSymbolFactory extends AbstractSQLDBFunctionSymbolFac
     }
 
     @Override
+    protected String serializeHexBinaryNorm(ImmutableList<? extends ImmutableTerm> terms, Function<ImmutableTerm, String> termConverter, TermFactory termFactory) {
+        if (databaseInfoSupplier.getDatabaseVersion()
+                .filter(s -> s.startsWith("1"))
+                .isPresent())
+            return super.serializeHexBinaryNorm(terms, termConverter, termFactory);
+
+        return String.format("UPPER(RAWTOHEX(%s))", termConverter.apply(terms.get(0)));
+    }
+
+    @Override
     protected DBFunctionSymbol createDBAvg(DBTermType inputType, boolean isDistinct) {
         // To make sure the AVG does not return an integer but a decimal
-        if (inputType.equals(dbIntegerType))
+        if (inputType.equals(dbIntegerType) && databaseInfoSupplier.getDatabaseVersion().get().startsWith("1"))
             return new ForcingFloatingDBAvgFunctionSymbolImpl(inputType, dbDecimalType, isDistinct);
 
         return super.createDBAvg(inputType, isDistinct);
@@ -204,5 +229,56 @@ public class H2SQLDBFunctionSymbolFactory extends AbstractSQLDBFunctionSymbolFac
         return UUID_STR;
     }
 
+    /**
+     * Time extension - duration arithmetic
+     */
+
+    @Override
+    protected String serializeWeeksBetween(ImmutableList<? extends ImmutableTerm> terms,
+                                           Function<ImmutableTerm, String> termConverter, TermFactory termFactory) {
+        return String.format("TRUNC((EXTRACT (EPOCH FROM %s) - EXTRACT (EPOCH FROM %s))/604800)",
+                termConverter.apply(terms.get(0)),
+                termConverter.apply(terms.get(1)));
+    }
+
+    @Override
+    protected String serializeDaysBetween(ImmutableList<? extends ImmutableTerm> terms,
+                                          Function<ImmutableTerm, String> termConverter, TermFactory termFactory) {
+        return String.format("TRUNC((EXTRACT (EPOCH FROM %s) - EXTRACT (EPOCH FROM %s))/86400)",
+                termConverter.apply(terms.get(0)),
+                termConverter.apply(terms.get(1)));
+    }
+
+    @Override
+    protected String serializeHoursBetween(ImmutableList<? extends ImmutableTerm> terms,
+                                           Function<ImmutableTerm, String> termConverter, TermFactory termFactory) {
+        return String.format("TRUNC((EXTRACT (EPOCH FROM %s) - EXTRACT (EPOCH FROM %s))/3600)",
+                termConverter.apply(terms.get(0)),
+                termConverter.apply(terms.get(1)));
+    }
+
+    @Override
+    protected String serializeMinutesBetween(ImmutableList<? extends ImmutableTerm> terms,
+                                             Function<ImmutableTerm, String> termConverter, TermFactory termFactory) {
+        return String.format("TRUNC((EXTRACT (EPOCH FROM %s) - EXTRACT (EPOCH FROM %s))/60)",
+                termConverter.apply(terms.get(0)),
+                termConverter.apply(terms.get(1)));
+    }
+
+    @Override
+    protected String serializeSecondsBetween(ImmutableList<? extends ImmutableTerm> terms,
+                                             Function<ImmutableTerm, String> termConverter, TermFactory termFactory) {
+        return String.format("TRUNC((EXTRACT (EPOCH FROM %s) - EXTRACT (EPOCH FROM %s)))",
+                termConverter.apply(terms.get(0)),
+                termConverter.apply(terms.get(1)));
+    }
+
+    @Override
+    protected String serializeMillisBetween(ImmutableList<? extends ImmutableTerm> terms,
+                                            Function<ImmutableTerm, String> termConverter, TermFactory termFactory) {
+        return String.format("CEIL((EXTRACT (EPOCH FROM %s) - EXTRACT (EPOCH FROM %s))*1000)",
+                termConverter.apply(terms.get(0)),
+                termConverter.apply(terms.get(1)));
+    }
 
 }

@@ -1,7 +1,9 @@
 package it.unibz.inf.ontop.iq.node.impl;
 
 import com.google.common.collect.ImmutableList;
+import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableSet;
+import com.google.common.collect.Maps;
 import com.google.inject.assistedinject.Assisted;
 import com.google.inject.assistedinject.AssistedInject;
 import it.unibz.inf.ontop.injection.IntermediateQueryFactory;
@@ -50,6 +52,9 @@ public class ValuesNodeImpl extends LeafIQTreeImpl implements ValuesNode {
     private VariableNullability variableNullability;
     // LAZY
     private Boolean isDistinct;
+
+    // LAZY
+    private ImmutableSet<ImmutableSubstitution<NonVariableTerm>> possibleVariableDefinitions;
 
 
     @AssistedInject
@@ -182,6 +187,11 @@ public class ValuesNodeImpl extends LeafIQTreeImpl implements ValuesNode {
     }
 
     @Override
+    public boolean wouldKeepDescendingGroundTermInFilterAbove(Variable variable, boolean isConstant) {
+        return projectedVariables.contains(variable) && (!isConstant);
+    }
+
+    @Override
     public int hashCode() {
         return Objects.hash(projectedVariables, values);
     }
@@ -218,7 +228,8 @@ public class ValuesNodeImpl extends LeafIQTreeImpl implements ValuesNode {
     }
 
     @Override
-    public IQTree applyDescendingSubstitutionWithoutOptimizing(ImmutableSubstitution<? extends VariableOrGroundTerm> descendingSubstitution) {
+    public IQTree applyDescendingSubstitutionWithoutOptimizing(ImmutableSubstitution<? extends VariableOrGroundTerm> descendingSubstitution,
+                                                               VariableGenerator variableGenerator) {
         if (descendingSubstitution.isEmpty())
             return this;
         ConstructionAndFilterAndValues constructionAndFilterAndValues =
@@ -232,7 +243,7 @@ public class ValuesNodeImpl extends LeafIQTreeImpl implements ValuesNode {
 
         if (!functionalSubstitutionFragment.isEmpty()) {
             constructionAndFilterAndValues = addProjectedVariablesToConstruction(descendingSubstitution, constructionAndFilterAndValues);
-            constructionAndFilterAndValues = substituteGroundFunctionalTerms(functionalSubstitutionFragment, constructionAndFilterAndValues);
+            constructionAndFilterAndValues = substituteGroundFunctionalTerms(functionalSubstitutionFragment, constructionAndFilterAndValues, variableGenerator);
         }
         if (!constantSubstitutionFragment.isEmpty()) {
             constructionAndFilterAndValues = substituteConstants(constantSubstitutionFragment, constructionAndFilterAndValues);
@@ -244,9 +255,9 @@ public class ValuesNodeImpl extends LeafIQTreeImpl implements ValuesNode {
     }
 
     private ConstructionAndFilterAndValues substituteGroundFunctionalTerms(ImmutableSubstitution<? extends GroundFunctionalTerm> substitution,
-                                                                           ConstructionAndFilterAndValues constructionAndFilterAndValues) {
+                                                                           ConstructionAndFilterAndValues constructionAndFilterAndValues,
+                                                                           VariableGenerator variableGenerator) {
         ValuesNode valuesNode = constructionAndFilterAndValues.valuesNode;
-        VariableGenerator variableGenerator = coreUtilsFactory.createVariableGenerator(valuesNode.getKnownVariables());
         InjectiveVar2VarSubstitution renaming = substitutionFactory.getInjectiveVar2VarSubstitution(
                         valuesNode.getVariables().stream(),
                         variableGenerator::generateNewVariableFromVar)
@@ -368,7 +379,7 @@ public class ValuesNodeImpl extends LeafIQTreeImpl implements ValuesNode {
     }
 
     @Override
-    public IQTree propagateDownConstraint(ImmutableExpression constraint) {
+    public IQTree propagateDownConstraint(ImmutableExpression constraint, VariableGenerator variableGenerator) {
         if (constraint.isGround())
             return this;
         getVariableNullability();
@@ -379,6 +390,24 @@ public class ValuesNodeImpl extends LeafIQTreeImpl implements ValuesNode {
                         .isEffectiveFalse())
                 .collect(ImmutableCollectors.toList());
         return iqFactory.createValuesNode(getOrderedVariables(), newValues);
+    }
+
+    @Override
+    public ImmutableSet<ImmutableSubstitution<NonVariableTerm>> getPossibleVariableDefinitions() {
+        if (possibleVariableDefinitions == null) {
+            Stream<ImmutableList<Constant>> distinctValuesStream = ((isDistinct != null) && isDistinct)
+                    ? values.stream()
+                    : values.stream().distinct();
+
+
+            possibleVariableDefinitions = distinctValuesStream
+                    .map(row -> IntStream.range(0, getVariables().size())
+                            .mapToObj(i -> Maps.immutableEntry(orderedVariables.get(i), (NonVariableTerm) row.get(i)))
+                            .collect(ImmutableCollectors.toMap()))
+                    .map(substitutionFactory::getSubstitution)
+                    .collect(ImmutableCollectors.toSet());
+        }
+        return possibleVariableDefinitions;
     }
 
     @Override

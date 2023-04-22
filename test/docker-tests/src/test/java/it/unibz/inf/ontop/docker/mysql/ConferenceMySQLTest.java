@@ -21,8 +21,9 @@ package it.unibz.inf.ontop.docker.mysql;
  */
 
 import it.unibz.inf.ontop.injection.OntopSQLOWLAPIConfiguration;
-import it.unibz.inf.ontop.owlapi.OntopOWLFactory;
-import it.unibz.inf.ontop.owlapi.OntopOWLReasoner;
+
+import it.unibz.inf.ontop.owlapi.OntopOWLEngine;
+import it.unibz.inf.ontop.owlapi.impl.SimpleOntopOWLEngine;
 import org.junit.Test;
 import org.semanticweb.owlapi.reasoner.IllegalConfigurationException;
 
@@ -45,18 +46,17 @@ public class ConferenceMySQLTest  {
 		String propertyFileName =  this.getClass().getResource(propertyFile).toString();
 
         // Creating a new instance of the reasoner
-        OntopOWLFactory factory = OntopOWLFactory.defaultFactory();
         OntopSQLOWLAPIConfiguration config = OntopSQLOWLAPIConfiguration.defaultBuilder()
 				.ontologyFile(owlFileName)
 				.nativeOntopMappingFile(obdaFileName)
 				.propertyFile(propertyFileName)
 				.enableTestMode()
 				.build();
-        OntopOWLReasoner reasoner = factory.createReasoner(config);
+		OntopOWLEngine reasoner = new SimpleOntopOWLEngine(config);
 	}
 
 
-	@Test(expected = IllegalConfigurationException.class)
+	@Test(expected = SimpleOntopOWLEngine.InvalidOBDASpecificationException.class)
 	public void testWrongMappings() throws Exception {
         String query1 = "PREFIX : <http://myproject.org/odbs#> SELECT ?x ?y\n" +
                 "WHERE {\n" +

@@ -34,12 +34,13 @@ import it.unibz.inf.ontop.model.vocabulary.XSD;
 import it.unibz.inf.ontop.spec.mapping.TargetAtom;
 import it.unibz.inf.ontop.spec.mapping.PrefixManager;
 import org.apache.commons.rdf.api.IRI;
-import org.junit.Ignore;
-import org.junit.Test;
+import org.junit.jupiter.api.Disabled;
+import org.junit.jupiter.api.Test;
 
 import static it.unibz.inf.ontop.utils.MappingTestingTools.*;
 import static it.unibz.inf.ontop.utils.MappingTestingTools.TARGET_ATOM_FACTORY;
-import static org.junit.Assert.assertEquals;
+
+import static org.junit.jupiter.api.Assertions.*;
 
 
 /**
@@ -83,18 +84,18 @@ public class TurtleSyntaxParserTest {
 
 	private static ImmutableFunctionalTerm getIRIFunctionalTerm(ImmutableList<Template.Component> template, Variable v1) {
 		return TERM_FACTORY.getIRIFunctionalTerm(template,
-				ImmutableList.of(TERM_FACTORY.getPartiallyDefinedToStringCast(v1)));
+				ImmutableList.of(TERM_FACTORY.getPartiallyDefinedConversionToString(v1)));
 	}
 
 	private static ImmutableFunctionalTerm getIRIFunctionalTerm(ImmutableList<Template.Component> template, Variable v1, Variable v2) {
 		return TERM_FACTORY.getIRIFunctionalTerm(template,
-				ImmutableList.of(TERM_FACTORY.getPartiallyDefinedToStringCast(v1),
-				TERM_FACTORY.getPartiallyDefinedToStringCast(v2)));
+				ImmutableList.of(TERM_FACTORY.getPartiallyDefinedConversionToString(v1),
+				TERM_FACTORY.getPartiallyDefinedConversionToString(v2)));
 	}
 
 	private static ImmutableFunctionalTerm getBnodeFunctionalTerm(ImmutableList<Template.Component> template, Variable v1) {
 		return TERM_FACTORY.getBnodeFunctionalTerm(template,
-				ImmutableList.of(TERM_FACTORY.getPartiallyDefinedToStringCast(v1)));
+				ImmutableList.of(TERM_FACTORY.getPartiallyDefinedConversionToString(v1)));
 	}
 
 	private static ImmutableFunctionalTerm getRDFLiteralFunctionalTerm(ImmutableTerm t, IRI type) {
@@ -105,9 +106,11 @@ public class TurtleSyntaxParserTest {
 		return TERM_FACTORY.getRDFLiteralFunctionalTerm(t, lang);
 	}
 
-	@Test(expected = TargetQueryParserException.class)
-	public void test_1_1_empty_placeholder() throws TargetQueryParserException {
-		parser.parse(":Person-{} a :Person .");
+	@Test
+	public void test_1_1_empty_placeholder()  {
+		assertThrows(TargetQueryParserException.class,
+				() -> parser.parse(":Person-{} a :Person ."),
+				"mismatched input '{' expecting {'a', IRIREF, PNAME_LN}");
 	}
 
 	@Test
@@ -170,9 +173,11 @@ public class TurtleSyntaxParserTest {
 				getConstantIRI("http://obda.inf.unibz.it/testcase#Person"))), result);
 	}
 
-	@Test(expected = TargetQueryParserException.class)
-	public void test_1_2_empty_placeholder() throws TargetQueryParserException {
-		parser.parse("<http://example.org/testcase#Person-{}> a :Person .");
+	@Test
+	public void test_1_2_empty_placeholder() {
+		assertThrows(TargetQueryParserException.class,
+				() -> parser.parse("<http://example.org/testcase#Person-{}> a :Person ."),
+				"token recognition error at: '<http://example.org/testcase#Person-{}'");
 	}
 
 	@Test
@@ -282,7 +287,7 @@ public class TurtleSyntaxParserTest {
 				getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 						getVariable("id")),
 				getConstantIRI("http://obda.inf.unibz.it/testcase#firstName"),
-				getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+				getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 						getVariable("fname")), DEFAULT_DATATYPE))), result);
 	}
 
@@ -295,7 +300,7 @@ public class TurtleSyntaxParserTest {
 				getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 						getVariable("id")),
 				getConstantIRI("http://obda.inf.unibz.it/testcase#firstName"),
-				getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+				getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 						getVariable("\"fname\"")), DEFAULT_DATATYPE))), result);
 	}
 
@@ -308,7 +313,7 @@ public class TurtleSyntaxParserTest {
 				getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 						getVariable("id")),
 				getConstantIRI("http://obda.inf.unibz.it/testcase#firstName"),
-				getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+				getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 						getVariable("fname")), XSD.STRING))), result);
 	}
 
@@ -321,7 +326,7 @@ public class TurtleSyntaxParserTest {
 				getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 						getVariable("id")),
 				getConstantIRI("http://obda.inf.unibz.it/testcase#firstName"),
-				getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+				getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 						getVariable("\"fname\"")), XSD.STRING))), result);
 	}
 
@@ -346,7 +351,7 @@ public class TurtleSyntaxParserTest {
 				getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 						getVariable("id")),
 				getConstantIRI("http://obda.inf.unibz.it/testcase#firstName"),
-				getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+				getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 						getVariable("fname")), XSD.STRING))), result);
 	}
 
@@ -360,7 +365,7 @@ public class TurtleSyntaxParserTest {
 						getVariable("id")),
 				getConstantIRI("http://obda.inf.unibz.it/testcase#firstName"),
 				TERM_FACTORY.getIRIFunctionalTerm(
-						TERM_FACTORY.getPartiallyDefinedToStringCast(getVariable("fname"))))), result);
+						TERM_FACTORY.getPartiallyDefinedConversionToString(getVariable("fname"))))), result);
 	}
 
 	@Test
@@ -372,7 +377,7 @@ public class TurtleSyntaxParserTest {
 				getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 						getVariable("id")),
 				getConstantIRI("http://obda.inf.unibz.it/testcase#firstName"),
-				getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+				getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 						getVariable("fname")), XSD.STRING))), result);
 	}
 
@@ -388,10 +393,10 @@ public class TurtleSyntaxParserTest {
 				getRDFLiteralFunctionalTerm(
 						TERM_FACTORY.getNullRejectingDBConcatFunctionalTerm(ImmutableList.of(
 								TERM_FACTORY.getDBStringConstant("adres : "),
-								TERM_FACTORY.getPartiallyDefinedToStringCast(getVariable("Address")),
+								TERM_FACTORY.getPartiallyDefinedConversionToString(getVariable("Address")),
 								TERM_FACTORY.getDBStringConstant(" {city:} "),
-								TERM_FACTORY.getPartiallyDefinedToStringCast(getVariable("City")),
-								TERM_FACTORY.getPartiallyDefinedToStringCast(getVariable("Country")),
+								TERM_FACTORY.getPartiallyDefinedConversionToString(getVariable("City")),
+								TERM_FACTORY.getPartiallyDefinedConversionToString(getVariable("Country")),
 								TERM_FACTORY.getDBStringConstant("something"))), "en-us"))), result);
 	}
 
@@ -407,7 +412,7 @@ public class TurtleSyntaxParserTest {
 				getRDFLiteralFunctionalTerm(
 						TERM_FACTORY.getNullRejectingDBConcatFunctionalTerm(ImmutableList.of(
 								TERM_FACTORY.getDBStringConstant("hello "),
-								TERM_FACTORY.getPartiallyDefinedToStringCast(getVariable("fname")))), XSD.STRING))), result);
+								TERM_FACTORY.getPartiallyDefinedConversionToString(getVariable("fname")))), XSD.STRING))), result);
 	}
 
 	@Test
@@ -422,7 +427,7 @@ public class TurtleSyntaxParserTest {
 				getRDFLiteralFunctionalTerm(
 						TERM_FACTORY.getNullRejectingDBConcatFunctionalTerm(ImmutableList.of(
 								TERM_FACTORY.getDBStringConstant("hello "),
-								TERM_FACTORY.getPartiallyDefinedToStringCast(
+								TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("fname")))), XSD.DOUBLE))), result);
 	}
 
@@ -434,7 +439,7 @@ public class TurtleSyntaxParserTest {
 				getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 						getVariable("id")),
 				getConstantIRI("http://obda.inf.unibz.it/testcase#firstName"),
-				getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+				getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 						getVariable("fname")), "en-us"))), result);
 	}
 
@@ -505,7 +510,7 @@ public class TurtleSyntaxParserTest {
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 								getVariable("id")),
 						getConstantIRI("http://obda.inf.unibz.it/testcase#firstName"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("fname")), DEFAULT_DATATYPE))), result);
 	}
 
@@ -525,14 +530,14 @@ public class TurtleSyntaxParserTest {
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 								getVariable("id")),
 						getConstantIRI("http://obda.inf.unibz.it/testcase#firstName"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("fname")), DEFAULT_DATATYPE)),
 
 				getTripleTargetAtom(
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 								getVariable("id")),
 						getConstantIRI("http://obda.inf.unibz.it/testcase#age"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("age")), DEFAULT_DATATYPE))), result);
 	}
 
@@ -559,14 +564,14 @@ public class TurtleSyntaxParserTest {
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 								getVariable("id")),
 						getConstantIRI("http://obda.inf.unibz.it/testcase#firstName"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("fname")), DEFAULT_DATATYPE)),
 
 				getTripleTargetAtom(
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 								getVariable("id")),
 						getConstantIRI("http://obda.inf.unibz.it/testcase#age"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("age")), DEFAULT_DATATYPE))), result);
 	}
 
@@ -586,7 +591,7 @@ public class TurtleSyntaxParserTest {
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 								getVariable("id")),
 						getConstantIRI("http://obda.inf.unibz.it/testcase#firstName"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("fname")), XSD.STRING))), result);
 	}
 
@@ -606,14 +611,14 @@ public class TurtleSyntaxParserTest {
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 								getVariable("id")),
 						getConstantIRI("http://obda.inf.unibz.it/testcase#firstName"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("fname")), XSD.STRING)),
 
 				getTripleTargetAtom(
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 								getVariable("id")),
 						getConstantIRI("http://obda.inf.unibz.it/testcase#age"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("age")), XSD.INTEGER))), result);
 	}
 
@@ -640,14 +645,14 @@ public class TurtleSyntaxParserTest {
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 								getVariable("id")),
 						getConstantIRI("http://obda.inf.unibz.it/testcase#firstName"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("fname")), XSD.STRING)),
 
 				getTripleTargetAtom(
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 								getVariable("id")),
 						getConstantIRI("http://obda.inf.unibz.it/testcase#age"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("age")), XSD.INTEGER))), result);
 	}
 
@@ -674,21 +679,21 @@ public class TurtleSyntaxParserTest {
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 								getVariable("id")),
 						getConstantIRI("http://obda.inf.unibz.it/testcase#firstName"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("fname")), XSD.STRING)),
 
 				getTripleTargetAtom(
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 								getVariable("id")),
 						getConstantIRI("http://obda.inf.unibz.it/testcase#age"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("age")), XSD.INTEGER)),
 
 				getTripleTargetAtom(
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 								getVariable("id")),
 						getConstantIRI("http://obda.inf.unibz.it/testcase#description"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("text")), "en-us"))), result);
 	}
 
@@ -715,25 +720,25 @@ public class TurtleSyntaxParserTest {
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 								getVariable("id")),
 						getConstantIRI("http://example.org/testcase#firstName"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("fname")), XSD.STRING)),
 
 				getTripleTargetAtom(
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 								getVariable("id")),
 						getConstantIRI("http://example.org/testcase#age"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("age")), XSD.INTEGER)),
 
 				getTripleTargetAtom(
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 								getVariable("id")),
 						getConstantIRI("http://example.org/testcase#description"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("text")), "en-us"))), result);
 	}
 
-	@Ignore("TODO: should we forbid non-recognized datatypes using the XSD prefix?")
+	@Disabled("TODO: should we forbid non-recognized datatypes using the XSD prefix?")
 	@Test
 	public void test_6_1() throws TargetQueryParserException {
 		ImmutableList<TargetAtom> result = parser.parse(":Person-{id} a :Person ; :firstName {fname}^^xsd:String .");
@@ -775,7 +780,7 @@ public class TurtleSyntaxParserTest {
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#Person-", 0),
 								getVariable("id")),
 						getConstantIRI("http://obda.inf.unibz.it/testcase#firstName"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("fname")),
 								RDF_FACTORY.createIRI("http://www.example.org/randomDatatype")))), result);
 	}
@@ -853,14 +858,19 @@ public class TurtleSyntaxParserTest {
 		assertEquals(4, result.size());
 	}
 
-	@Test(expected = TargetQueryParserException.class)
-	public void test_for_fully_qualified_column() throws TargetQueryParserException {
-		parser.parse(":Person-{person.id} a  :Person ;  :age 25 .");
+	@Test
+	public void test_for_fully_qualified_column() {
+		assertThrows(TargetQueryParserException.class,
+				() -> parser.parse(":Person-{person.id} a  :Person ;  :age 25 ."),
+				"Fully qualified columns as person.id are not accepted.\n" +
+						"Please, use an alias instead.\n");
 	}
 
-	@Test(expected = TargetQueryParserException.class)
-	public void test_for_language_tag_from_a_variable() throws TargetQueryParserException {
-		parser.parse(":Person-{id} a :Person ; :firstName {name}@{lang} . ");
+	@Test
+	public void test_for_language_tag_from_a_variable() {
+		assertThrows(TargetQueryParserException.class,
+				() -> parser.parse(":Person-{id} a :Person ; :firstName {name}@{lang} . "),
+				"token recognition error at: '@{'");
 	}
 
 	@Test
@@ -871,7 +881,7 @@ public class TurtleSyntaxParserTest {
 						getVariable("empno")),
 				getConstantIRI("http://example.com/emp#c_ref_deptno"),
 				TERM_FACTORY.getBnodeFunctionalTerm(
-						TERM_FACTORY.getPartiallyDefinedToStringCast(getVariable("deptId"))))), result);
+						TERM_FACTORY.getPartiallyDefinedConversionToString(getVariable("deptId"))))), result);
 	}
 
 	// Reproduces Issue #319
@@ -971,7 +981,7 @@ public class TurtleSyntaxParserTest {
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#uni1/student/", 0),
 								getVariable("s_id")),
 						getConstantIRI("http://www.example.org/firstName"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("first_name")), XSD.STRING),
 						getConstantIRI("http://obda.inf.unibz.it/testcase#uni1")),
 
@@ -979,7 +989,7 @@ public class TurtleSyntaxParserTest {
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#uni1/student/", 0),
 								getVariable("s_id")),
 						getConstantIRI("http://www.example.org/lastName"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("last_name")), XSD.STRING),
 						getConstantIRI("http://obda.inf.unibz.it/testcase#uni1"))), result);
 	}
@@ -1002,7 +1012,7 @@ public class TurtleSyntaxParserTest {
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#uni1/student/", 0),
 								getVariable("s_id")),
 						getConstantIRI("http://www.example.org/firstName"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("first_name")), XSD.STRING),
 						getConstantIRI("http://obda.inf.unibz.it/testcase#uni1")),
 
@@ -1010,7 +1020,7 @@ public class TurtleSyntaxParserTest {
 						getIRIFunctionalTerm(Template.of("http://obda.inf.unibz.it/testcase#uni1/student/", 0),
 								getVariable("s_id")),
 						getConstantIRI("http://www.example.org/lastName"),
-						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedToStringCast(
+						getRDFLiteralFunctionalTerm(TERM_FACTORY.getPartiallyDefinedConversionToString(
 								getVariable("last_name")), XSD.STRING),
 						getConstantIRI("http://obda.inf.unibz.it/testcase#uni1")),
 
@@ -1052,7 +1062,7 @@ public class TurtleSyntaxParserTest {
 	}
 
 
-	@Ignore("Anonymous blank nodes are not supported in general")
+	@Disabled("Anonymous blank nodes are not supported in general")
 	@Test
 	public void test_qootec() throws TargetQueryParserException {
 		ImmutableList<TargetAtom> result = parser.parse(

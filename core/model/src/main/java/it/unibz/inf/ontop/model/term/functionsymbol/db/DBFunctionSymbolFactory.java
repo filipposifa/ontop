@@ -2,6 +2,7 @@ package it.unibz.inf.ontop.model.term.functionsymbol.db;
 
 import com.google.common.collect.ImmutableList;
 import it.unibz.inf.ontop.model.template.Template;
+import it.unibz.inf.ontop.model.term.ImmutableTerm;
 import it.unibz.inf.ontop.model.term.functionsymbol.FunctionSymbol;
 import it.unibz.inf.ontop.model.term.functionsymbol.InequalityLabel;
 import it.unibz.inf.ontop.model.type.DBTermType;
@@ -58,6 +59,11 @@ public interface DBFunctionSymbolFactory {
      * From a possibly "normalized" DB string to another DB type
      */
     DBTypeConversionFunctionSymbol getConversionFromRDFLexical2DBFunctionSymbol(DBTermType targetDBType, RDFTermType rdfType);
+
+    /**
+     * From a possibly "normalized" DB string to another DB type
+     */
+    DBTypeConversionFunctionSymbol getConversionFromRDFLexical2DBFunctionSymbol(DBTermType targetDBType);
 
 
     /**
@@ -212,6 +218,7 @@ public interface DBFunctionSymbolFactory {
     DBFunctionSymbol getDBMd5();
     DBFunctionSymbol getDBSha1();
     DBFunctionSymbol getDBSha256();
+    DBFunctionSymbol getDBSha384();
     DBFunctionSymbol getDBSha512();
 
     DBMathBinaryOperator getDBMathBinaryOperator(String dbMathOperatorName, DBTermType dbNumericType);
@@ -259,7 +266,13 @@ public interface DBFunctionSymbolFactory {
      */
     DBFunctionSymbol getDBRowNumber();
 
+    /**
+     * Considers OrderBy when handling ROW_NUM() for pre 2012 versions of SQL Server
+     */
+    DBFunctionSymbol getDBRowNumberWithOrderBy();
+
     DBFunctionSymbol getDBIriStringResolver(IRI baseIRI);
+
 
     //-------------
     // Aggregation
@@ -347,5 +360,15 @@ public interface DBFunctionSymbolFactory {
     DBFunctionSymbol getDBMinutesBetweenFromDateTime();
     DBFunctionSymbol getDBSecondsBetweenFromDateTime();
     DBFunctionSymbol getDBMillisBetweenFromDateTime();
+
+    //JSON
+    DBFunctionSymbol getDBJsonElt(ImmutableList<String> path);
+    DBFunctionSymbol getDBJsonEltAsText(ImmutableList<String> path);
+    DBBooleanFunctionSymbol getDBJsonIsNumber(DBTermType dbType);
+    DBBooleanFunctionSymbol getDBJsonIsBoolean(DBTermType dbType);
+    DBBooleanFunctionSymbol getDBJsonIsScalar(DBTermType dbType);
+    DBBooleanFunctionSymbol getDBIsArray(DBTermType dbType);
+
+    IRISafenessDeclarationFunctionSymbol getIRISafenessDeclaration();
 
 }

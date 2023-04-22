@@ -65,7 +65,7 @@ public class DataCubeCacheManager implements QueryCacheManager {
         private static CoreSingletons coreSingletons;
 
         //following data collected from property file
-        private static final String connectionString = "jdbc:postgresql://88.197.53.173:82/cubez";
+        private static final String connectionString = "jdbc:postgresql://88.197.53.173:86/cubez";
         private static final String connectionUsr = "postgres";
         private static final String connectionPwd = "???";   //other way to provide pwd ?
         private static final String tableFDW = "cubetable_uc3";

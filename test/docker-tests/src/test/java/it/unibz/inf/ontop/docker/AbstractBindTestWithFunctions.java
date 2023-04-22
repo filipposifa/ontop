@@ -1,10 +1,12 @@
 package it.unibz.inf.ontop.docker;
 
 import it.unibz.inf.ontop.injection.OntopSQLOWLAPIConfiguration;
-import it.unibz.inf.ontop.owlapi.OntopOWLFactory;
-import it.unibz.inf.ontop.owlapi.OntopOWLReasoner;
+import it.unibz.inf.ontop.owlapi.OntopOWLEngine;
+
+import it.unibz.inf.ontop.owlapi.OntopOWLEngine;
 import it.unibz.inf.ontop.owlapi.connection.OWLConnection;
 import it.unibz.inf.ontop.owlapi.connection.OWLStatement;
+import it.unibz.inf.ontop.owlapi.impl.SimpleOntopOWLEngine;
 import it.unibz.inf.ontop.owlapi.resultset.OWLBindingSet;
 import it.unibz.inf.ontop.owlapi.resultset.TupleOWLResultSet;
 import org.junit.Ignore;
@@ -31,31 +33,30 @@ import static org.junit.Assert.assertTrue;
 public abstract class AbstractBindTestWithFunctions {
 
     protected static Logger log = LoggerFactory.getLogger(AbstractBindTestWithFunctions.class);
-    private final OntopOWLReasoner reasoner;
+    private final OntopOWLEngine reasoner;
     private final OWLConnection conn;
 
 
-    protected AbstractBindTestWithFunctions(OntopOWLReasoner reasoner) {
+    protected AbstractBindTestWithFunctions(OntopOWLEngine reasoner) {
         this.reasoner = reasoner;
         this.conn = reasoner.getConnection();
     }
 
-    protected static OntopOWLReasoner createReasoner(String owlFile, String obdaFile, String propertiesFile) throws OWLOntologyCreationException {
+    protected static OntopOWLEngine createReasoner(String owlFile, String obdaFile, String propertiesFile) throws OWLOntologyCreationException {
         owlFile = AbstractBindTestWithFunctions.class.getResource(owlFile).toString();
         obdaFile =  AbstractBindTestWithFunctions.class.getResource(obdaFile).toString();
         propertiesFile =  AbstractBindTestWithFunctions.class.getResource(propertiesFile).toString();
 
-        OntopOWLFactory factory = OntopOWLFactory.defaultFactory();
         OntopSQLOWLAPIConfiguration config = OntopSQLOWLAPIConfiguration.defaultBuilder()
                 .nativeOntopMappingFile(obdaFile)
                 .ontologyFile(owlFile)
                 .propertyFile(propertiesFile)
                 .enableTestMode()
                 .build();
-        return factory.createReasoner(config);
+        return new SimpleOntopOWLEngine(config);
     }
 
-    public OntopOWLReasoner getReasoner() {
+    public OntopOWLEngine getReasoner() {
         return reasoner;
     }
 
@@ -1815,7 +1816,7 @@ public abstract class AbstractBindTestWithFunctions {
                     OWLObject ind1 = bindingSet.getOWLObject("w");
 
                     if (ind1 != null) {
-                        String value = ToStringRenderer.getInstance().getRendering(ind1);
+                        String value = ToStringRenderer.getInstance().render(ind1);
                         returnedValues.add(value);
                         log.debug(value);
                     }
@@ -1826,6 +1827,7 @@ public abstract class AbstractBindTestWithFunctions {
                 }
             }
             if(!sameOrder){
+                expectedValues = new ArrayList<>(expectedValues);
                 Collections.sort(expectedValues);
                 Collections.sort(returnedValues);
             }

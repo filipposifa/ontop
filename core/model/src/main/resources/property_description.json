@@ -35,6 +35,10 @@
     "type": "String",
     "description": "DEPRECATED. This value is ignored."
   },
+  "jdbc.fetchSize": {
+    "type": "Integer",
+    "description": "If more than 1, fetch the results by batches of the specified size. Otherwise, relies on the default configuration of the JDBC driver. Default value: 500 for query answering, 50000 for materialization."
+  },
   "ontop.queryOntologyAnnotation": {
     "type": "Boolean",
     "description": "Default value: `false`. If true, includes annotations about classes and properties in the virtual graph."
@@ -63,9 +67,13 @@
     "type": "Boolean",
     "description": "Since 4.2.0. Default value: `false`. If `true`, saturated tbox will be used to extract facts in addition to the explicit ontology facts."
   },
-  "ontop.ontop.querySuperClassesOfDomainRange": {
+  "ontop.querySuperClassesOfDomainRange": {
     "type": "Boolean",
     "description": "Since 4.2.0. Default value: `true`. If `false`, no additional facts on superclasses for rdfs:domain/range are integrated in addition to the explicit ontology facts."
+  },
+  "ontop.disableLimitOptimization": {
+    "type": "Boolean",
+    "description": "Since 5.0.0. Default value: `false`. If `true`, most limit optimizations won't be applied."
   },
   "mapping.baseIri": {
     "type": "IRI",
@@ -82,6 +90,10 @@
   "ontop.avoidPostProcessing": {
     "type": "Boolean",
     "description": "Default value: `false`. If true, maximizes the processing done by the SQL query."
+  },
+  "ontop.reformulateToFullNativeQuery": {
+    "type": "Boolean",
+    "description": "Since 5.0.0. Default value: `false`. If true, fully translates SPARQL queries into native (e.g. SQL) queries, with the same column names and their corresponding natural DB data types. Rejects SPARQL queries that are not strongly-typed."
   },
   "ontop.excludeInvalidTriplesFromResultSet": {
     "type": "Boolean",
@@ -137,7 +149,7 @@
   },
   "ontop.query.defaultTimeout": {
     "type": "Integer",
-    "description": "Query timeout assigned to the DB engine. Has no effect if negative or equal to 0."
+    "description": "Query timeout (in seconds) assigned to the DB engine. Has no effect if negative or equal to 0."
   },
   "ontop.permanentConnection": {
     "type": "Boolean",

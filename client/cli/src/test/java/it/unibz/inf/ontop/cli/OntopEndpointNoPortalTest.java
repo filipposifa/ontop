@@ -31,7 +31,7 @@ public class OntopEndpointNoPortalTest {
         Ontop.main("endpoint", "-m", "src/test/resources/books/exampleBooks.obda",
                 "-p", "src/test/resources/books/exampleBooks.properties",
                 "-t", "src/test/resources/books/exampleBooks.owl",
-                "-d", "src/test/resources/output/exampleBooks-metadata.json",
+                "-d", "src/test/resources/exampleBooks-metadata.json",
                 "--port=" + PORT,
                 "--disable-portal-page");
     }
@@ -42,7 +42,7 @@ public class OntopEndpointNoPortalTest {
 
         String sparqlEndpoint = "http://localhost:" + PORT + "/sparql";
         Repository repo = new SPARQLRepository(sparqlEndpoint);
-        repo.initialize();
+        repo.init();
 
         try (RepositoryConnection conn = repo.getConnection()) {
             String queryString = "PREFIX : <http://meraka/moss/exampleBooks.owl#>\n" +

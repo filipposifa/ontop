@@ -34,20 +34,28 @@ public class SimpleCache implements Cache {
     private String cacheTable;
     private String dcTable;
 
-    public SimpleCache(String tablenameFDW, String tablenameCache, int maxSize, Connection con) {
+    public SimpleCache(String tableNameFDW, String tableNameCache, int maxSize, Connection con) {
 
         //Initialize Cache Fields
         System.out.println("SC: In the constructor.");
         this.maxSize = maxSize;
         this.currSize = 0;
-        this.cacheTable = tablenameCache;
-        this.dcTable = tablenameFDW;
+        this.cacheTable = tableNameCache;
+        this.dcTable = tableNameFDW;
         this.con = con;
 
-        //Get tmp folder to handle hash data
+        //Initialize map for hash data
         this.timeCache = new HashMap<String, HashSet>();
+
+        /* Get tmp folder to handle hash data - Old Version
         this.timeFile = System.getProperty("java.io.tmpdir");
         this.timeFile += "/CacheData.json";
+         */
+
+        //Get home folder to handle hash data
+        this.timeFile = System.getProperty("user.home");
+        this.timeFile += "/CacheData.json";
+
         File jsonFile = new File(this.timeFile);
         System.out.println("SC: Hash File Path: " + this.timeFile);
 
@@ -173,6 +181,7 @@ public class SimpleCache implements Cache {
                                 " WHERE time >= '" + minDate + "' AND time <= '" + maxDate + "'" +
                                 " AND x >= " + minX + " AND x <= " + maxX +
                                 " AND y >= " + minY + " AND y <= " + maxY +
+                                " AND " + column + " != 'NaN'" +
                                 " ON CONFLICT (time, x, y) DO UPDATE" +
                                 " SET " + column + " = EXCLUDED." + column + ";";
                         System.out.println("SC: Query: \n" + "\u001B[33m" + stmtStr + "\u001B[0m");
@@ -196,8 +205,7 @@ public class SimpleCache implements Cache {
                     try {
                         Gson gson = new Gson();
                         FileWriter writer = new FileWriter(this.timeFile);
-                        Type hashType = new TypeToken<Map<LocalDate, Set<String>>>() {
-                        }.getType();
+                        Type hashType = new TypeToken<Map<LocalDate, Set<String>>>(){}.getType();
                         gson.toJson(this.timeCache, hashType, writer);
                         writer.flush();
                         writer.close();
@@ -253,6 +261,7 @@ public class SimpleCache implements Cache {
                                 " WHERE time >= '" + minDate + "' AND time <= '" + maxDate + "'" +
                                 " AND x >= " + minX + " AND x <= " + maxX +
                                 " AND y >= " + minY + " AND y <= " + maxY +
+                                " AND " + column + " != 'NaN'" +
                                 " ON CONFLICT (time, x, y) DO UPDATE" +
                                 " SET " + column + " = EXCLUDED." + column + ";";
                         System.out.println("SC: Query: \n" + stmtStr);
@@ -277,8 +286,7 @@ public class SimpleCache implements Cache {
                 try {
                     Gson gson = new Gson();
                     FileWriter writer = new FileWriter(this.timeFile);
-                    Type hashType = new TypeToken<HashMap<String, HashSet<String>>>() {
-                    }.getType();
+                    Type hashType = new TypeToken<HashMap<String, HashSet<String>>>(){}.getType();
                     gson.toJson(this.timeCache, hashType, writer);
                     writer.flush();
                     writer.close();
@@ -300,6 +308,7 @@ public class SimpleCache implements Cache {
                                 " WHERE time >= '" + minDate + "' AND time <= '" + maxDate + "'" +
                                 " AND x >= " + minX + " AND x <= " + maxX +
                                 " AND y >= " + minY + " AND y <= " + maxY +
+                                " AND " + column + " != 'NaN'" +
                                 " ON CONFLICT (time, x, y) DO UPDATE" +
                                 " SET " + column + " = EXCLUDED." + column + ";";
                         System.out.println("SC: Query: \n" + stmtStr);
@@ -324,8 +333,7 @@ public class SimpleCache implements Cache {
                 try {
                     Gson gson = new Gson();
                     FileWriter writer = new FileWriter(this.timeFile);
-                    Type hashType = new TypeToken<HashMap<String, HashSet<String>>>() {
-                    }.getType();
+                    Type hashType = new TypeToken<HashMap<String, HashSet<String>>>(){}.getType();
                     gson.toJson(this.timeCache, hashType, writer);
                     writer.flush();
                     writer.close();

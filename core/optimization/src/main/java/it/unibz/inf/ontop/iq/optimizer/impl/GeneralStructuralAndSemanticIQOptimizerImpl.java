@@ -2,7 +2,7 @@ package it.unibz.inf.ontop.iq.optimizer.impl;
 
 import it.unibz.inf.ontop.iq.IQ;
 import it.unibz.inf.ontop.iq.optimizer.*;
-import it.unibz.inf.ontop.iq.view.OntopViewUnfolder;
+import it.unibz.inf.ontop.iq.lens.LensUnfolder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -18,22 +18,25 @@ public class GeneralStructuralAndSemanticIQOptimizerImpl implements GeneralStruc
     private final JoinLikeOptimizer joinLikeOptimizer;
     private final OrderBySimplifier orderBySimplifier;
     private final AggregationSimplifier aggregationSimplifier;
-    private final OntopViewUnfolder viewUnfolder;
+    private final LensUnfolder lensUnfolder;
     private final AggregationSplitter aggregationSplitter;
+    private final FlattenLifter flattenLifter;
 
     @Inject
     private GeneralStructuralAndSemanticIQOptimizerImpl(UnionAndBindingLiftOptimizer bindingLiftOptimizer,
                                                         JoinLikeOptimizer joinLikeOptimizer,
                                                         OrderBySimplifier orderBySimplifier,
                                                         AggregationSimplifier aggregationSimplifier,
-                                                        OntopViewUnfolder viewUnfolder,
-                                                        AggregationSplitter aggregationSplitter) {
+                                                        LensUnfolder lensUnfolder,
+                                                        AggregationSplitter aggregationSplitter,
+                                                        FlattenLifter flattenLifter) {
         this.bindingLiftOptimizer = bindingLiftOptimizer;
         this.joinLikeOptimizer = joinLikeOptimizer;
         this.orderBySimplifier = orderBySimplifier;
         this.aggregationSimplifier = aggregationSimplifier;
-        this.viewUnfolder = viewUnfolder;
+        this.lensUnfolder = lensUnfolder;
         this.aggregationSplitter = aggregationSplitter;
+        this.flattenLifter = flattenLifter;
     }
 
     @Override
@@ -43,25 +46,32 @@ public class GeneralStructuralAndSemanticIQOptimizerImpl implements GeneralStruc
 
         LOGGER.debug("New lifted query:\n{}\n", liftedQuery);
 
-        IQ queryAfterJoinLikeAndViewUnfolding = liftedQuery;
+        IQ current = liftedQuery;
         do {
+
             long beginningJoinLike = System.currentTimeMillis();
-            queryAfterJoinLikeAndViewUnfolding = joinLikeOptimizer.optimize(queryAfterJoinLikeAndViewUnfolding);
+            current = joinLikeOptimizer.optimize(current);
 
             LOGGER.debug("New query after fixed point join optimization ({} ms):\n{}\n",
                         System.currentTimeMillis() - beginningJoinLike,
-                        queryAfterJoinLikeAndViewUnfolding);
+                        current);
 
-            IQ queryBeforeUnfolding = queryAfterJoinLikeAndViewUnfolding;
+            IQ queryBeforeUnfolding = current;
             // Unfolds Ontop views one level at a time (hence the loop)
-            queryAfterJoinLikeAndViewUnfolding = viewUnfolder.optimize(queryBeforeUnfolding);
+            current = lensUnfolder.optimize(queryBeforeUnfolding);
+            LOGGER.debug("New query after view unfolding:\n{}\n",
+                    current
+            );
 
-            if (queryBeforeUnfolding.equals(queryAfterJoinLikeAndViewUnfolding))
+            if (queryBeforeUnfolding.equals(current))
                 break;
+
+            current = flattenLifter.optimize(current);
+            LOGGER.debug("New query after flatten lift:\n{}\n", current);
 
         } while (true);
 
-        IQ queryAfterAggregationSimplification = aggregationSimplifier.optimize(queryAfterJoinLikeAndViewUnfolding);
+        IQ queryAfterAggregationSimplification = aggregationSimplifier.optimize(current);
         LOGGER.debug("New query after simplifying the aggregation node:\n{}\n", queryAfterAggregationSimplification);
 
         IQ queryAfterAggregationSplitting = aggregationSplitter.optimize(queryAfterAggregationSimplification);

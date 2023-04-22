@@ -1,6 +1,6 @@
 package it.unibz.inf.ontop.owlapi.resultset.impl;
 
-import it.unibz.inf.ontop.answering.resultset.TupleResultSet;
+import it.unibz.inf.ontop.query.resultset.TupleResultSet;
 import it.unibz.inf.ontop.exception.OntopConnectionException;
 import it.unibz.inf.ontop.exception.OntopResultConversionException;
 import it.unibz.inf.ontop.owlapi.exception.OntopOWLException;
@@ -42,15 +42,6 @@ public class OntopTupleOWLResultSet implements TupleOWLResultSet {
 	public List<String> getSignature() throws OWLException {
 		try {
 			return res.getSignature();
-		} catch (Exception e) {
-			throw new OntopOWLException(e);
-		}
-	}
-
-	@Override
-	public int getFetchSize() throws OWLException {
-		try {
-			return res.getFetchSize();
 		} catch (Exception e) {
 			throw new OntopOWLException(e);
 		}

@@ -23,6 +23,7 @@ package it.unibz.inf.ontop.owlapi;
 import it.unibz.inf.ontop.injection.OntopSQLOWLAPIConfiguration;
 import it.unibz.inf.ontop.owlapi.connection.OWLConnection;
 import it.unibz.inf.ontop.owlapi.connection.OWLStatement;
+import it.unibz.inf.ontop.owlapi.impl.SimpleOntopOWLEngine;
 import it.unibz.inf.ontop.owlapi.resultset.OWLBindingSet;
 import it.unibz.inf.ontop.owlapi.resultset.TupleOWLResultSet;
 import it.unibz.inf.ontop.si.OntopSemanticIndexLoader;
@@ -105,9 +106,7 @@ public class ComplexWhereMappingTest {
 	}
 
 	private void runTests(OntopSQLOWLAPIConfiguration config) throws Exception {
-
-        OntopOWLFactory factory = OntopOWLFactory.defaultFactory();
-        OntopOWLReasoner reasoner = factory.createReasoner(config);
+        OntopOWLEngine reasoner = new SimpleOntopOWLEngine(config);
 
 		String query = "PREFIX : <http://it.unibz.inf/obda/test/simple#> SELECT * WHERE { ?x a :A; :P ?y; :U ?z; :P ?y; :U ?z; :P ?y ; :U ?z; :P ?y; :U ?z; :P ?y ; :U ?z; :P ?y; :U ?z; :P ?y ; :U ?z; :P ?y; :U ?z; :P ?y ; :U ?z; :P ?y; :U ?z; :P ?y ; :U ?z; :P ?y; :U ?z; :P ?y ; :U ?z; :P ?y; :U ?z; :P ?y ; :U ?z }";
 		try (OWLConnection conn = reasoner.getConnection();
@@ -120,10 +119,10 @@ public class ComplexWhereMappingTest {
 			OWLLiteral val = bindingSet.getOWLLiteral("z");
 			assertEquals("<http://it.unibz.inf/obda/test/simple#uri1>", ind1.toString());
 			assertEquals("<http://it.unibz.inf/obda/test/simple#uri1>", ind2.toString());
-			assertEquals("\"value1\"^^xsd:string", ToStringRenderer.getInstance().getRendering(val));
+			assertEquals("\"value1\"^^xsd:string", ToStringRenderer.getInstance().render(val));
 		}
 		finally {
-			reasoner.dispose();
+			reasoner.close();
 		}
 	}
 

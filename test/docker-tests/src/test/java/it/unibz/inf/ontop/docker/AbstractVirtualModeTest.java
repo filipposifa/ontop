@@ -7,10 +7,11 @@ import it.unibz.inf.ontop.injection.OntopSQLOWLAPIConfiguration;
 import it.unibz.inf.ontop.iq.IQ;
 import it.unibz.inf.ontop.iq.UnaryIQTree;
 import it.unibz.inf.ontop.iq.node.NativeNode;
-import it.unibz.inf.ontop.owlapi.OntopOWLFactory;
-import it.unibz.inf.ontop.owlapi.OntopOWLReasoner;
+import it.unibz.inf.ontop.owlapi.OntopOWLEngine;
+
 import it.unibz.inf.ontop.owlapi.connection.OWLStatement;
 import it.unibz.inf.ontop.owlapi.connection.OntopOWLStatement;
+import it.unibz.inf.ontop.owlapi.impl.SimpleOntopOWLEngine;
 import it.unibz.inf.ontop.owlapi.resultset.BooleanOWLResultSet;
 import it.unibz.inf.ontop.owlapi.resultset.OWLBindingSet;
 import it.unibz.inf.ontop.owlapi.resultset.TupleOWLResultSet;
@@ -32,58 +33,54 @@ public abstract class AbstractVirtualModeTest {
 
     protected abstract OntopOWLStatement createStatement() throws OWLException;
 
-    protected static OntopOWLReasoner createReasoner(String owlFile, String obdaFile, String propertiesFile) throws OWLOntologyCreationException {
-        return createReasoner(owlFile,obdaFile, propertiesFile,Optional.empty());
+    protected static OntopOWLEngine createReasoner(String owlFile, String obdaFile, String propertiesFile) throws OWLOntologyCreationException {
+        return createReasoner(owlFile,obdaFile, propertiesFile,Optional.empty(), Optional.empty());
     }
 
-    protected static OntopOWLReasoner createReasonerWithConstraints(String owlFile, String obdaFile, String propertiesFile, String implicitConstraintsFile) throws OWLOntologyCreationException {
-        return createReasoner(owlFile,obdaFile,propertiesFile,Optional.of(implicitConstraintsFile));
+    protected static OntopOWLEngine createReasonerWithConstraints(String owlFile, String obdaFile, String propertiesFile, String implicitConstraintsFile) throws OWLOntologyCreationException {
+        return createReasoner(owlFile,obdaFile,propertiesFile,Optional.of(implicitConstraintsFile), Optional.empty());
     }
 
-    private static OntopOWLReasoner createReasoner(String owlFile, String obdaFile, String propertiesFile, Optional<String> optionalImplicitConstraintsFile) throws OWLOntologyCreationException {
+    protected static OntopOWLEngine createReasonerWithLenses(String owlFile, String obdaFile, String propertiesFile, String lensesFile) throws OWLOntologyCreationException {
+        return createReasoner(owlFile,obdaFile,propertiesFile, Optional.empty(), Optional.of(lensesFile));
+    }
+
+    private static OntopOWLEngine createReasoner(String owlFile, String obdaFile, String propertiesFile, Optional<String> optionalImplicitConstraintsFile, Optional<String> lensesFile) throws OWLOntologyCreationException {
         owlFile = AbstractVirtualModeTest.class.getResource(owlFile).toString();
         obdaFile =  AbstractVirtualModeTest.class.getResource(obdaFile).toString();
         propertiesFile =  AbstractVirtualModeTest.class.getResource(propertiesFile).toString();
 
-        OntopOWLFactory factory = OntopOWLFactory.defaultFactory();
-        OntopSQLOWLAPIConfiguration config = createConfig(owlFile, obdaFile, propertiesFile, optionalImplicitConstraintsFile);
-        return factory.createReasoner(config);
+        OntopSQLOWLAPIConfiguration config = createConfig(owlFile, obdaFile, propertiesFile, optionalImplicitConstraintsFile, lensesFile);
+        return new SimpleOntopOWLEngine(config);
     }
 
-    private static OntopSQLOWLAPIConfiguration createConfig(String owlFile, String obdaFile, String propertiesFile, Optional<String> optionalImplicitConstraintsFile) {
+    private static OntopSQLOWLAPIConfiguration createConfig(String owlFile, String obdaFile, String propertiesFile,
+                                                            Optional<String> implicitConstraintsFile, Optional<String> lensesFile) {
 
-        if(optionalImplicitConstraintsFile.isPresent()) {
-            return OntopSQLOWLAPIConfiguration.defaultBuilder()
-                    .nativeOntopMappingFile(obdaFile)
-                    .ontologyFile(owlFile)
-                    .propertyFile(propertiesFile)
-                    .basicImplicitConstraintFile(
-                            AbstractVirtualModeTest.class.getResource(optionalImplicitConstraintsFile.get()).toString())
-                    .enableTestMode()
-                    .build();
-        }
-
-        return OntopSQLOWLAPIConfiguration.defaultBuilder()
+        OntopSQLOWLAPIConfiguration.Builder<? extends OntopSQLOWLAPIConfiguration.Builder<?>> builder = OntopSQLOWLAPIConfiguration.defaultBuilder()
                 .nativeOntopMappingFile(obdaFile)
                 .ontologyFile(owlFile)
                 .propertyFile(propertiesFile)
-                .enableTestMode()
-                .build();
+                .enableTestMode();
+
+        implicitConstraintsFile.ifPresent(f -> builder.basicImplicitConstraintFile( AbstractVirtualModeTest.class.getResource(f).toString()));
+
+        lensesFile.ifPresent(f -> builder.lensesFile(AbstractVirtualModeTest.class.getResource(f).getPath()));
+        return builder.build();
     }
 
-    protected static OntopOWLReasoner createR2RMLReasoner(String owlFile, String r2rmlFile, String propertiesFile) throws OWLOntologyCreationException {
+    protected static OntopOWLEngine createR2RMLReasoner(String owlFile, String r2rmlFile, String propertiesFile) throws OWLOntologyCreationException {
         owlFile = AbstractVirtualModeTest.class.getResource(owlFile).toString();
         r2rmlFile =  AbstractVirtualModeTest.class.getResource(r2rmlFile).toString();
         propertiesFile = AbstractVirtualModeTest.class.getResource(propertiesFile).toString();
 
-        OntopOWLFactory factory = OntopOWLFactory.defaultFactory();
         OntopSQLOWLAPIConfiguration config = OntopSQLOWLAPIConfiguration.defaultBuilder()
                 .r2rmlMappingFile(r2rmlFile)
                 .ontologyFile(owlFile)
                 .propertyFile(propertiesFile)
                 .enableTestMode()
                 .build();
-        return factory.createReasoner(config);
+        return new SimpleOntopOWLEngine(config);
     }
 
     protected String runQueryAndReturnStringOfIndividualX(String query) throws OWLException {
@@ -100,7 +97,7 @@ public abstract class AbstractVirtualModeTest {
             assertTrue(rs.hasNext());
             final OWLBindingSet bindingSet = rs.next();
             OWLLiteral ind1 = bindingSet.getOWLLiteral("x");
-            return ToStringRenderer.getInstance().getRendering(ind1);
+            return ToStringRenderer.getInstance().render(ind1);
         }
     }
 

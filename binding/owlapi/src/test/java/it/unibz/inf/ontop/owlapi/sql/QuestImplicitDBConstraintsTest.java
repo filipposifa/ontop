@@ -1,10 +1,10 @@
 package it.unibz.inf.ontop.owlapi.sql;
 
 import it.unibz.inf.ontop.injection.OntopSQLOWLAPIConfiguration;
-import it.unibz.inf.ontop.owlapi.OntopOWLFactory;
-import it.unibz.inf.ontop.owlapi.OntopOWLReasoner;
+import it.unibz.inf.ontop.owlapi.OntopOWLEngine;
 import it.unibz.inf.ontop.owlapi.connection.OntopOWLConnection;
 import it.unibz.inf.ontop.owlapi.connection.OntopOWLStatement;
+import it.unibz.inf.ontop.owlapi.impl.SimpleOntopOWLEngine;
 import it.unibz.inf.ontop.utils.OWLAPITestingTools;
 import org.junit.After;
 import org.junit.Test;
@@ -38,7 +38,7 @@ public class QuestImplicitDBConstraintsTest {
 
 	private OntopOWLConnection conn;
 
-	private OntopOWLReasoner reasoner;
+	private OntopOWLEngine reasoner;
 	private Connection sqlConnection;
 
 	
@@ -53,7 +53,7 @@ public class QuestImplicitDBConstraintsTest {
 		if (conn != null)
 			conn.close();
 		if (reasoner != null)
-			reasoner.dispose();
+			reasoner.close();
 		if (!sqlConnection.isClosed()) {
 			try (java.sql.Statement s = sqlConnection.createStatement()) {
 				s.execute("DROP ALL OBJECTS DELETE FILES");
@@ -67,8 +67,6 @@ public class QuestImplicitDBConstraintsTest {
 	@Test
 	public void testSelfJoinElimSameVariables() throws Exception {
 		this.prepareDB(uc_create);
-		//this.reasoner = factory.createReasoner(new SimpleConfiguration());
-		OntopOWLFactory factory = OntopOWLFactory.defaultFactory();
         OntopSQLOWLAPIConfiguration config = OntopSQLOWLAPIConfiguration.defaultBuilder()
 				.ontologyFile(uc_owlfile)
 				.nativeOntopMappingFile(uc_obdafile)
@@ -77,7 +75,7 @@ public class QuestImplicitDBConstraintsTest {
 				.jdbcPassword(PASSWORD)
 				.enableTestMode()
 				.build();
-        reasoner = factory.createReasoner(config);
+		reasoner = new SimpleOntopOWLEngine(config);
         
 
 		// Now we are ready for querying
@@ -95,7 +93,6 @@ public class QuestImplicitDBConstraintsTest {
 	public void testForeignKeysSelfJoinElimSameVar() throws Exception {
 		this.prepareDB(uc_create);
 		
-		OntopOWLFactory factory = OntopOWLFactory.defaultFactory();
         OntopSQLOWLAPIConfiguration config = OntopSQLOWLAPIConfiguration.defaultBuilder()
 				.nativeOntopMappingFile(uc_obdafile)
 				.ontologyFile(uc_owlfile)
@@ -104,7 +101,7 @@ public class QuestImplicitDBConstraintsTest {
 				.jdbcPassword(PASSWORD)
 				.enableTestMode()
 				.build();
-        reasoner = factory.createReasoner(config);
+		reasoner = new SimpleOntopOWLEngine(config);
         
 		
 		//this.reasoner = factory.createReasoner(new SimpleConfiguration());
@@ -124,8 +121,6 @@ public class QuestImplicitDBConstraintsTest {
 	public void testWithSelfJoinElim() throws Exception {
 		this.prepareDB(uc_create);
 
-
-		OntopOWLFactory factory = OntopOWLFactory.defaultFactory();
         OntopSQLOWLAPIConfiguration config = OntopSQLOWLAPIConfiguration.defaultBuilder()
 				.ontologyFile(uc_owlfile)
 				.nativeOntopMappingFile(uc_obdafile)
@@ -135,7 +130,7 @@ public class QuestImplicitDBConstraintsTest {
 				.jdbcPassword(PASSWORD)
 				.enableTestMode()
 				.build();
-        reasoner = factory.createReasoner(config);
+		reasoner = new SimpleOntopOWLEngine(config);
 
 		// Now we are ready for querying
 		this.conn = reasoner.getConnection();
@@ -152,7 +147,6 @@ public class QuestImplicitDBConstraintsTest {
 	public void testForeignKeysWithSelfJoinElim() throws Exception {
 		this.prepareDB(uc_create);
 
-		OntopOWLFactory factory = OntopOWLFactory.defaultFactory();
         OntopSQLOWLAPIConfiguration config = OntopSQLOWLAPIConfiguration.defaultBuilder()
 				.ontologyFile(uc_owlfile)
 				.nativeOntopMappingFile(uc_obdafile)
@@ -162,7 +156,7 @@ public class QuestImplicitDBConstraintsTest {
 				.jdbcPassword(PASSWORD)
 				.enableTestMode()
 				.build();
-        reasoner = factory.createReasoner(config);
+		reasoner = new SimpleOntopOWLEngine(config);
         
 		// Now we are ready for querying
 		this.conn = reasoner.getConnection();
@@ -183,7 +177,6 @@ public class QuestImplicitDBConstraintsTest {
 	public void testForeignKeysTablesNOUc() throws Exception {
 		this.prepareDB(fk_create);
 		
-		OntopOWLFactory factory = OntopOWLFactory.defaultFactory();
         OntopSQLOWLAPIConfiguration config = OntopSQLOWLAPIConfiguration.defaultBuilder()
 				.ontologyFile(fk_owlfile)
 				.nativeOntopMappingFile(fk_obdafile)
@@ -192,7 +185,7 @@ public class QuestImplicitDBConstraintsTest {
 				.jdbcPassword(PASSWORD)
 				.enableTestMode()
 				.build();
-        reasoner = factory.createReasoner(config);
+		reasoner = new SimpleOntopOWLEngine(config);
         
 		//this.reasoner = factory.createReasoner(new SimpleConfiguration());
 
@@ -215,7 +208,6 @@ public class QuestImplicitDBConstraintsTest {
 	public void testForeignKeysTablesWithUC() throws Exception {
 		this.prepareDB(fk_create);
 
-		OntopOWLFactory factory = OntopOWLFactory.defaultFactory();
         OntopSQLOWLAPIConfiguration config = OntopSQLOWLAPIConfiguration.defaultBuilder()
 				.ontologyFile(fk_owlfile)
 				.nativeOntopMappingFile(fk_obdafile)
@@ -225,7 +217,7 @@ public class QuestImplicitDBConstraintsTest {
 				.jdbcPassword(PASSWORD)
 				.enableTestMode()
 				.build();
-        reasoner = factory.createReasoner(config);
+		reasoner = new SimpleOntopOWLEngine(config);
         
 		// Now we are ready for querying
 		this.conn = reasoner.getConnection();

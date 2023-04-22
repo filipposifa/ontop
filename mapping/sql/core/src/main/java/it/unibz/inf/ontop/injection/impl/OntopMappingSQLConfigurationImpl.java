@@ -1,7 +1,6 @@
 package it.unibz.inf.ontop.injection.impl;
 
 
-import com.google.common.collect.ImmutableMap;
 import com.google.inject.Module;
 import it.unibz.inf.ontop.exception.InvalidMappingException;
 import it.unibz.inf.ontop.exception.MappingIOException;
@@ -81,8 +80,8 @@ public class OntopMappingSQLConfigurationImpl extends OntopMappingConfigurationI
                                         Supplier<Optional<File>> constraintFileSupplier,
                                         Supplier<Optional<File>> dbMetadataFileSupplier,
                                         Supplier<Optional<Reader>> dbMetadataReaderSupplier,
-                                        Supplier<Optional<File>> ontopViewFileSupplier,
-                                        Supplier<Optional<Reader>> ontopViewReaderSupplier)
+                                        Supplier<Optional<File>> lensesFileSupplier,
+                                        Supplier<Optional<Reader>> lensesReaderSupplier)
             throws OBDASpecificationException {
         return loadSpecification(
                 ontologySupplier,
@@ -93,8 +92,8 @@ public class OntopMappingSQLConfigurationImpl extends OntopMappingConfigurationI
                 constraintFileSupplier,
                 dbMetadataFileSupplier,
                 dbMetadataReaderSupplier,
-                ontopViewFileSupplier,
-                ontopViewReaderSupplier
+                lensesFileSupplier,
+                lensesReaderSupplier
         );
     }
 

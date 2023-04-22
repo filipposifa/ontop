@@ -22,15 +22,13 @@ package it.unibz.inf.ontop.owlapi;
 
 import com.google.common.collect.ImmutableSet;
 import it.unibz.inf.ontop.injection.OntopSQLOWLAPIConfiguration;
-import it.unibz.inf.ontop.owlapi.OntopOWLFactory;
-import it.unibz.inf.ontop.owlapi.OntopOWLReasoner;
 import it.unibz.inf.ontop.owlapi.connection.OWLConnection;
 import it.unibz.inf.ontop.owlapi.connection.OWLStatement;
+import it.unibz.inf.ontop.owlapi.impl.SimpleOntopOWLEngine;
 import it.unibz.inf.ontop.owlapi.resultset.OWLBindingSet;
 import it.unibz.inf.ontop.owlapi.resultset.TupleOWLResultSet;
 import org.junit.After;
 import org.junit.Before;
-import org.junit.Ignore;
 import org.junit.Test;
 import org.semanticweb.owlapi.io.ToStringRenderer;
 import org.semanticweb.owlapi.model.OWLObject;
@@ -40,7 +38,6 @@ import org.slf4j.LoggerFactory;
 import java.io.File;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.SQLException;
 import java.util.*;
 
 import static org.junit.Assert.assertEquals;
@@ -58,7 +55,7 @@ public class H2SameAsTest {
 	private static final String owlfile = "src/test/resources/sameAs/wellbores.owl";
 	private static final String obdafile = "src/test/resources/sameAs/wellbores.obda";
 
-	private OntopOWLReasoner reasoner;
+	private OntopOWLEngine reasoner;
 	private Connection sqlConnection;
 
 	private static final String JDBC_URL =  "jdbc:h2:mem:wellboresNoDuplicates";
@@ -78,7 +75,7 @@ public class H2SameAsTest {
 	@After
 	public void tearDown() throws Exception{
 		conn.close();
-		reasoner.dispose();
+		reasoner.close();
 		if (!sqlConnection.isClosed()) {
 			try (java.sql.Statement s = sqlConnection.createStatement()) {
 				s.execute("DROP ALL OBJECTS DELETE FILES");
@@ -92,10 +89,6 @@ public class H2SameAsTest {
 
 	
 	private List<String> runTests(String query, boolean sameAs) throws Exception {
-
-		// Creating a new instance of the reasoner
-		OntopOWLFactory factory = OntopOWLFactory.defaultFactory();
-
 		OntopSQLOWLAPIConfiguration config = OntopSQLOWLAPIConfiguration.defaultBuilder()
 				.ontologyFile(owlfile)
 				.nativeOntopMappingFile(obdafile)
@@ -106,7 +99,7 @@ public class H2SameAsTest {
 				.enableTestMode()
 				.build();
 
-		reasoner =  factory.createReasoner(config);
+		reasoner = new SimpleOntopOWLEngine(config);
 
 		// Now we are ready for querying
 		conn = reasoner.getConnection();
@@ -118,7 +111,7 @@ public class H2SameAsTest {
                 final OWLBindingSet bindingSet = rs.next();
                 for (String s : rs.getSignature()) {
 					OWLObject binding = bindingSet.getOWLObject(s);
-					String rendering = ToStringRenderer.getInstance().getRendering(binding);
+					String rendering = ToStringRenderer.getInstance().render(binding);
 					retVal.add(rendering);
 					log.debug((s + ":  " + rendering));
                 }
@@ -126,7 +119,7 @@ public class H2SameAsTest {
 		}
 		finally {
 			conn.close();
-			reasoner.dispose();
+			reasoner.close();
 		}
 		return retVal;
 

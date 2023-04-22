@@ -22,7 +22,6 @@ import it.unibz.inf.ontop.spec.sqlparser.exception.UnsupportedSelectQueryExcepti
 import net.sf.jsqlparser.JSQLParserException;
 import net.sf.jsqlparser.parser.TokenMgrException;
 import net.sf.jsqlparser.statement.select.Select;
-import net.sf.jsqlparser.statement.select.SelectBody;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -49,6 +48,7 @@ public abstract class AbstractDBMetadataProvider implements DBMetadataProvider {
     private final DBTypeFactory dbTypeFactory;
     private final OntopOBDASettings settings;
 
+    @FunctionalInterface
     protected interface QuotedIDFactoryFactory {
         QuotedIDFactory create(DatabaseMetaData m) throws SQLException;
     }
@@ -65,12 +65,18 @@ public abstract class AbstractDBMetadataProvider implements DBMetadataProvider {
             this.escape = metadata.getSearchStringEscape();
             QuotedIDFactory idFactory = idFactoryProvider.create(metadata);
             this.rawIdFactory = new RawQuotedIDFactory(idFactory);
+
+            String dbVersion = metadata.getDatabaseProductVersion();
+
             this.dbParameters = new BasicDBParametersImpl(metadata.getDriverName(),
                     metadata.getDriverVersion(),
                     metadata.getDatabaseProductName(),
-                    metadata.getDatabaseProductVersion(),
+                    dbVersion,
                     idFactory,
                     coreSingletons);
+
+            coreSingletons.getDatabaseInfoSupplier().setDatabaseVersion(dbVersion);
+
             this.coreSingletons = coreSingletons;
             this.dbTypeFactory = coreSingletons.getTypeFactory().getDBTypeFactory();
 
@@ -124,9 +130,9 @@ public abstract class AbstractDBMetadataProvider implements DBMetadataProvider {
     protected abstract RelationID getRelationID(ResultSet rs, String catalogNameColumn, String schemaNameColumn, String tableNameColum) throws SQLException;
 
     // can be overridden, 4 usages
-    protected void checkSameRelationID(RelationID extractedId, RelationID givenId) throws MetadataExtractionException {
+    protected void checkSameRelationID(RelationID extractedId, RelationID givenId, String method) throws MetadataExtractionException {
         if (!extractedId.equals(givenId))
-            throw new MetadataExtractionException("Relation IDs mismatch: " + givenId + " v " + extractedId );
+            throw new MetadataExtractionException("Relation IDs mismatch: for relation " + givenId + ", the JDBC " + method + " returns " + extractedId);
     }
 
     protected @Nullable String escapeRelationIdComponentPattern(@Nullable String s) {
@@ -149,7 +155,7 @@ public abstract class AbstractDBMetadataProvider implements DBMetadataProvider {
 
             while (rs.next()) {
                 RelationID extractedId = getRelationID(rs, "TABLE_CAT", "TABLE_SCHEM","TABLE_NAME");
-                checkSameRelationID(extractedId, id);
+                checkSameRelationID(extractedId, id, "getColumns");
 
                 RelationDefinition.AttributeListBuilder builder = relations.computeIfAbsent(extractedId,
                         i -> DatabaseTableDefinition.attributeListBuilder());
@@ -213,35 +219,47 @@ public abstract class AbstractDBMetadataProvider implements DBMetadataProvider {
         }
     }
 
+    protected boolean isPrimaryKeyDisabled(RelationID id, String primaryKeyId) { return false; }
+
     private void insertPrimaryKey(NamedRelationDefinition relation) throws MetadataExtractionException, SQLException {
         RelationID id = getCanonicalRelationId(relation.getID());
         // Retrieves a description of the given table's primary key columns. They are ordered by COLUMN_NAME (sic!)
         try (ResultSet rs = metadata.getPrimaryKeys(getRelationCatalog(id), getRelationSchema(id), getRelationName(id))) {
             Map<Integer, QuotedID> primaryKeyAttributes = new HashMap<>();
-            String currentName = null;
+            String currentPkName = null;
             while (rs.next()) {
                 RelationID extractedId = getRelationID(rs, "TABLE_CAT", "TABLE_SCHEM","TABLE_NAME");
-                checkSameRelationID(extractedId, id);
+                checkSameRelationID(extractedId, id, "getPrimaryKeys");
 
-                currentName = rs.getString("PK_NAME"); // may be null
+                String pkName = rs.getString("PK_NAME"); // may be null
+                if (currentPkName != null && pkName != null && !currentPkName.equals(pkName))
+                    throw new MetadataExtractionException("Two primary keys for the same table " + id + ": " + currentPkName + " and " + pkName);
+                currentPkName = pkName;
                 QuotedID attrId = rawIdFactory.createAttributeID(rs.getString("COLUMN_NAME"));
                 int seq = rs.getShort("KEY_SEQ");
-                primaryKeyAttributes.put(seq, attrId);
+                QuotedID previous = primaryKeyAttributes.put(seq, attrId);
+                if (previous != null)
+                    throw new MetadataExtractionException("Duplicate attribute " + previous + " in the primary key " + currentPkName + " for " + id);
             }
             if (!primaryKeyAttributes.isEmpty()) {
-                try {
-                    // use the KEY_SEQ values to restore the correct order of attributes in the PK
-                    UniqueConstraint.Builder builder = UniqueConstraint.primaryKeyBuilder(relation, currentName);
-                    for (int i = 1; i <= primaryKeyAttributes.size(); i++)
-                        builder.addDeterminant(primaryKeyAttributes.get(i));
-                    builder.build();
-                }
-                catch (AttributeNotFoundException e) {
-                    throw new MetadataExtractionException(e);
-                }
+                if (currentPkName != null && isPrimaryKeyDisabled(id, currentPkName))
+                    LOGGER.error("WARNING: primary key {} in table {} is disabled and will not be used in optimizations.", currentPkName, id);
+                else
+                    try {
+                        // use the KEY_SEQ values to restore the correct order of attributes in the PK
+                        UniqueConstraint.Builder builder = UniqueConstraint.primaryKeyBuilder(relation, currentPkName);
+                        for (int i = 1; i <= primaryKeyAttributes.size(); i++)
+                            builder.addDeterminant(primaryKeyAttributes.get(i));
+                        builder.build();
+                    }
+                    catch (AttributeNotFoundException e) {
+                        throw new MetadataExtractionException(e);
+                    }
             }
         }
     }
+
+    protected boolean isUniqueConstraintDisabled(RelationID id, String constraintId) { return false; }
 
     private void insertUniqueAttributes(NamedRelationDefinition relation) throws MetadataExtractionException, SQLException {
         RelationID id = getCanonicalRelationId(relation.getID());
@@ -249,26 +267,26 @@ public abstract class AbstractDBMetadataProvider implements DBMetadataProvider {
         try (ResultSet rs = metadata.getIndexInfo(getRelationCatalog(id), getRelationSchema(id), getRelationName(id), true, true)) {
             UniqueConstraint.Builder builder = null;
             List<String> columnsNotFound = new ArrayList<>();
-            String indexId = null;
+            String constraintId = null;
             while (rs.next()) {
                 RelationID extractedId = getRelationID(rs, "TABLE_CAT", "TABLE_SCHEM","TABLE_NAME");
-                checkSameRelationID(extractedId, id);
+                checkSameRelationID(extractedId, id, "getIndexInfo");
 
                 // TYPE: tableIndexStatistic - this identifies table statistics that are returned in conjunction with a table's index descriptions
                 //       tableIndexClustered - this is a clustered index
                 //       tableIndexHashed - this is a hashed index
                 //       tableIndexOther (all are static final int in DatabaseMetaData)
                 if (rs.getShort("TYPE") == DatabaseMetaData.tableIndexStatistic) {
-                    createIndex(id, builder, indexId, columnsNotFound);
+                    createUniqueConstraint(id, builder, constraintId, columnsNotFound);
                     builder = null;
                     continue;
                 }
                 if (rs.getShort("ORDINAL_POSITION") == 1) {
-                    createIndex(id, builder, indexId, columnsNotFound);
+                    createUniqueConstraint(id, builder, constraintId, columnsNotFound);
 
                     if (!rs.getBoolean("NON_UNIQUE")) {
-                        indexId = rs.getString("INDEX_NAME");
-                        builder = UniqueConstraint.builder(relation, indexId);
+                        constraintId = rs.getString("INDEX_NAME");
+                        builder = UniqueConstraint.builder(relation, constraintId);
                         columnsNotFound.clear();
                     }
                     else
@@ -299,40 +317,44 @@ public abstract class AbstractDBMetadataProvider implements DBMetadataProvider {
                     }
                 }
             }
-            createIndex(id, builder, indexId, columnsNotFound);
+            createUniqueConstraint(id, builder, constraintId, columnsNotFound);
         }
     }
 
-    private static void createIndex(RelationID id, UniqueConstraint.Builder builder, String indexId, List<String> columnsNotFound) {
+    private void createUniqueConstraint(RelationID id, UniqueConstraint.Builder builder, String constraintId, List<String> columnsNotFound) {
         if (builder != null) {
-            if (columnsNotFound.isEmpty())
-                builder.build();
-            else
+            if (constraintId != null && isUniqueConstraintDisabled(id, constraintId))
+                LOGGER.error("WARNING: unique constraint {} in table {} is disabled and will not be used in optimizations.", constraintId, id);
+            else if (!columnsNotFound.isEmpty())
                 LOGGER.error("WARNING: column{} {} not found for the unique index {} (table {}): the constraint will not be used in optimizations.",
-                        columnsNotFound.size() == 1 ? "" : "s", String.join(", ", columnsNotFound), indexId, id);
+                        columnsNotFound.size() == 1 ? "" : "s", String.join(", ", columnsNotFound), constraintId, id);
+            else
+                builder.build();
         }
     }
+
+    protected boolean isForeignKeyDisabled(RelationID id, String constraintId) { return false; }
 
     private void insertForeignKeys(NamedRelationDefinition relation, MetadataLookup dbMetadata) throws MetadataExtractionException, SQLException {
         RelationID id = getCanonicalRelationId(relation.getID());
         try (ResultSet rs = metadata.getImportedKeys(getRelationCatalog(id), getRelationSchema(id), getRelationName(id))) {
             ForeignKeyConstraint.Builder builder = null;
+            String constraintId = null;
             while (rs.next()) {
                 RelationID extractedId = getRelationID(rs, "FKTABLE_CAT", "FKTABLE_SCHEM","FKTABLE_NAME");
-                checkSameRelationID(extractedId, id);
+                checkSameRelationID(extractedId, id, "getImportedKeys");
                 RelationID pkId = getRelationID(rs, "PKTABLE_CAT", "PKTABLE_SCHEM","PKTABLE_NAME");
 
                 try {
                     int seq = rs.getShort("KEY_SEQ");
                     if (seq == 1) {
-                        if (builder != null)
-                            builder.build();
+                        createForeignKeyConstraint(id, builder, constraintId);
 
-                        String name = rs.getString("FK_NAME"); // String => foreign key name (may be null)
+                        constraintId = rs.getString("FK_NAME"); // String => foreign key name (may be null)
 
                         NamedRelationDefinition ref = dbMetadata.getRelation(pkId);
 
-                        builder = ForeignKeyConstraint.builder(name, relation, ref);
+                        builder = ForeignKeyConstraint.builder(constraintId, relation, ref);
                     }
                     if (builder != null) {
                         try {
@@ -346,11 +368,19 @@ public abstract class AbstractDBMetadataProvider implements DBMetadataProvider {
                     }
                 }
                 catch (MetadataExtractionException e) {
-                    LOGGER.warn("Cannot find table {} for FK {}", pkId, rs.getString("FK_NAME"));
+                    LOGGER.warn("Cannot find table {} for foreign key {}", pkId, constraintId);
                     builder = null; // do not add this foreign key because there is no table it refers to
                 }
             }
-            if (builder != null)
+            createForeignKeyConstraint(id, builder, constraintId);
+        }
+    }
+
+    private void createForeignKeyConstraint(RelationID id, ForeignKeyConstraint.Builder builder, String constraintId) {
+        if (builder != null) {
+            if (constraintId != null && isForeignKeyDisabled(id, constraintId))
+                LOGGER.error("WARNING: foreign key {} in table {} is disabled and will not be used in optimizations.", constraintId, id);
+            else
                 builder.build();
         }
     }

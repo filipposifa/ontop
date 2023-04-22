@@ -23,13 +23,9 @@ import org.eclipse.rdf4j.rio.ntriples.NTriplesWriter;
 import org.eclipse.rdf4j.rio.rdfxml.RDFXMLWriter;
 import org.eclipse.rdf4j.rio.turtle.TurtleWriter;
 import org.eclipse.rdf4j.rio.trig.TriGWriter;
-import org.semanticweb.owlapi.apibinding.OWLManager;
-import org.semanticweb.owlapi.model.OWLOntology;
-import org.semanticweb.owlapi.model.OWLOntologyCreationException;
 
 import javax.annotation.Nullable;
 import java.io.BufferedWriter;
-import java.io.File;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.nio.charset.Charset;
@@ -47,7 +43,7 @@ import static org.apache.commons.io.FilenameUtils.removeExtension;
 
 @Command(name = "materialize",
         description = "Materialize the RDF graph exposed by the mapping and the OWL ontology")
-public class OntopMaterialize extends OntopReasoningCommandBase {
+public class OntopMaterialize extends OntopMappingOntologyRelatedCommand {
 
     private enum PredicateType {
         CLASS("C"),
@@ -117,30 +113,19 @@ public class OntopMaterialize extends OntopReasoningCommandBase {
 
         RDF4JMaterializer materializer;
         try {
-            OWLOntology ontology = loadOntology();
-            OntopSQLOWLAPIConfiguration materializerConfiguration = createAndInitConfigurationBuilder()
-                    .ontology(ontology)
-                    .build();
+            Builder<? extends Builder<?>> configurationBuilder = createAndInitConfigurationBuilder();
+            if (owlFile != null)
+                configurationBuilder.ontologyFile(owlFile);
+
             materializer = RDF4JMaterializer.defaultMaterializer(
-                    materializerConfiguration,
+                    configurationBuilder.build(),
                     MaterializationParams.defaultBuilder()
                             .build()
             );
-        } catch (OBDASpecificationException | OWLOntologyCreationException e) {
+        } catch (OBDASpecificationException e) {
             throw new RuntimeException(e);
         }
         return materializer;
-    }
-
-    private OWLOntology loadOntology() throws OWLOntologyCreationException {
-        if (owlFile != null) {
-            OWLOntology ontology = OWLManager.createOWLOntologyManager().loadOntologyFromOntologyDocument(new File(owlFile));
-            if (disableReasoning) {
-                return extractDeclarations(ontology.getOWLOntologyManager(), ontology);
-            }
-            return ontology;
-        }
-        return OWLManager.createOWLOntologyManager().createOntology();
     }
 
     private void runWithSingleFile(RDF4JMaterializer materializer, OutputSpec outputSpec) {
@@ -267,8 +252,11 @@ public class OntopMaterialize extends OntopReasoningCommandBase {
         if (dbMetadataFile != null)
             configBuilder.dbMetadataFile(dbMetadataFile);
 
-        if (ontopViewFile != null)
-            configBuilder.ontopViewFile(ontopViewFile);
+        if (ontopLensesFile != null)
+            configBuilder.lensesFile(ontopLensesFile);
+
+        if (sparqlRulesFile != null)
+            configBuilder.sparqlRulesFile(sparqlRulesFile);
 
         Properties properties = OntopModelConfigurationImpl.extractProperties(
                 OntopModelConfigurationImpl.extractPropertyFile(propertiesFile));
