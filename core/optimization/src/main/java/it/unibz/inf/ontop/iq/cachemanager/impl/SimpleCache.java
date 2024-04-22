@@ -12,11 +12,12 @@ import java.sql.Connection;
 import java.sql.SQLException;
 import java.sql.Statement;
 
-import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.*;
 
 import static java.time.temporal.ChronoUnit.DAYS;
+import static java.time.temporal.ChronoUnit.HOURS;
 import com.google.gson.Gson;
 
 public class SimpleCache implements Cache {
@@ -49,12 +50,40 @@ public class SimpleCache implements Cache {
 
         /* Get tmp folder to handle hash data - Old Version
         this.timeFile = System.getProperty("java.io.tmpdir");
-        this.timeFile += "/CacheData.json";
+        this.timeFile += "/.cache_data.json";
          */
 
         //Get home folder to handle hash data
         this.timeFile = System.getProperty("user.home");
-        this.timeFile += "/CacheData.json";
+        //this.timeFile += "/.cache_data_uc3.json";
+        //this.timeFile += "/.cache_data_fire.json";
+        //this.timeFile += "/.cache_data_brazil.json";
+        //this.timeFile += "/.cache_data_slovenia.json";
+        //this.timeFile += "/.cache_data_france.json";
+        this.timeFile += "/.cache_data_mesogeos.json";
+
+        /*
+        Note:
+        UC3, Fire, Mesogeos - x,y
+            String stmtStr = "CREATE TABLE IF NOT EXISTS " + this.cacheTable +
+                " (time character varying NULL, " +
+                " y double precision NULL, " +
+                " x double precision NULL, " +
+                "PRIMARY KEY (time, y, x))";
+        Brazil - lon, lat
+            String stmtStr = "CREATE TABLE IF NOT EXISTS " + this.cacheTable +
+                " (time character varying NULL, " +
+                " lat double precision NULL, " +
+                " lon double precision NULL, " +
+                "PRIMARY KEY (time, lat, lon))";
+        Slovenia, France - longitude, latitude
+            String stmtStr = "CREATE TABLE IF NOT EXISTS " + this.cacheTable +
+                " (time character varying NULL, " +
+                " latitude double precision NULL, " +
+                " longitude double precision NULL, " +
+                "PRIMARY KEY (time, latitude, longitude))";
+        */
+
 
         File jsonFile = new File(this.timeFile);
         System.out.println("SC: Hash File Path: " + this.timeFile);
@@ -100,16 +129,55 @@ public class SimpleCache implements Cache {
     public boolean manage(String minDate, String maxDate, double minX, double maxX, double minY, double maxY, HashSet<String> variables) {
         System.out.println("SC: In the manage method.");
 
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd'T'hh:mm:ss");
-        LocalDate minD = LocalDate.parse(minDate, formatter);
-        LocalDate maxD = LocalDate.parse(maxDate, formatter).plusDays(1);
+        /*
+        Note:
+        UC3, Fire, Mesogeos - x,y
+            String stmtStr = "ALTER TABLE " + this.cacheTable +
+                " ADD COLUMN IF NOT EXISTS " + column + " double precision;" +
+                " INSERT INTO " + this.cacheTable + " (time, x, y, " + column + ")" +
+                " SELECT time, x, y, " + column + " FROM " + this.dcTable +
+                " WHERE time >= '" + minDate + "' AND time <= '" + maxDate + "'" +
+                " AND x >= " + minX + " AND x <= " + maxX +
+                " AND y >= " + minY + " AND y <= " + maxY +
+                " AND " + column + " != 'NaN'" +
+                " ON CONFLICT (time, x, y) DO UPDATE" +
+                " SET " + column + " = EXCLUDED." + column + ";";
+        Brazil - lon, lat
+            String stmtStr = "ALTER TABLE " + this.cacheTable +
+                " ADD COLUMN IF NOT EXISTS " + column + " double precision;" +
+                " INSERT INTO " + this.cacheTable + " (time, lon, lat, " + column + ")" +
+                " SELECT time, lon, lat, " + column + " FROM " + this.dcTable +
+                " WHERE time >= '" + minDate + "' AND time <= '" + maxDate + "'" +
+                " AND lon >= " + minX + " AND lon <= " + maxX +
+                " AND lat >= " + minY + " AND lat <= " + maxY +
+                " AND " + column + " != 'NaN'" +
+                " ON CONFLICT (time, lon, lat) DO UPDATE" +
+                " SET " + column + " = EXCLUDED." + column + ";";
+        Slovenia, France - longitude, latitude
+            String stmtStr = "ALTER TABLE " + this.cacheTable +
+                " ADD COLUMN IF NOT EXISTS " + column + " double precision;" +
+                " INSERT INTO " + this.cacheTable + " (time, longitude, latitude, " + column + ")" +
+                " SELECT time, longitude, latitude, " + column + " FROM " + this.dcTable +
+                " WHERE time >= '" + minDate + "' AND time <= '" + maxDate + "'" +
+                " AND longitude >= " + minX + " AND longitude <= " + maxX +
+                " AND latitude >= " + minY + " AND latitude <= " + maxY +
+                " AND " + column + " != 'NaN'" +
+                " ON CONFLICT (time, longitude, latitude) DO UPDATE" +
+                " SET " + column + " = EXCLUDED." + column + ";";
+        */
+
+        DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+        LocalDateTime minD = LocalDateTime.parse(minDate);
+        LocalDateTime maxD = LocalDateTime.parse(maxDate).plusDays(1);      // UC3, Fire, Mesogeos
+        //LocalDateTime maxD = LocalDateTime.parse(maxDate).plusHours(1);    // Brazil, Slovenia, France
 
         /* First check if data is in time hash (exists in cache table) */
         String tmpStr;
         boolean miss = false;
+
         System.out.println("SC: Check time hash.");
-        outerLoop: for (LocalDate tmpD = minD; tmpD.isBefore(maxD); tmpD = tmpD.plusDays(1)) {
-             tmpStr = tmpD.toString();
+        outerLoop: for (LocalDateTime tmpD = minD; tmpD.isBefore(maxD); tmpD = tmpD.plusDays(1)) {
+             tmpStr = tmpD.format(formatter);
             if (!this.timeCache.containsKey(tmpStr)) {
                 //if current date is NOT in hash, break
                 System.out.println("SC: Found date miss. BREAK!");
@@ -134,20 +202,22 @@ public class SimpleCache implements Cache {
         - if query was fully imported, return and proceed with cache
 
         TODO:
-        - handle duplicate insert when adding a new variable to a hash set
-        - check how upsert works in postgres and edit queries accordingly
         - get database password from properties
         - handle complex queries, requiring access to both fdw and cache
-        - change index implementation to R-tree
+        - change OnTop index to R-tree
+        - change SQL index to R-tree
         */
         if (miss) {
             System.out.println("SC: Updating cache...");
 
             /* Get range for data */
-            long difDate = DAYS.between(minD, maxD);            //range of dates
+            long difDate = DAYS.between(minD, maxD);            //range of dates - UC3, Fire, Mesogeos
+            //long difDate = HOURS.between(minD, maxD);         //range of dates - Brazil, Slovenia, France
             long querySize = difDate * variables.size();        //total query size
             System.out.println("SC: Range of Dates: " + difDate);
             System.out.println("SC: Query Size: " + querySize);
+
+            if (difDate < 1) return false;                      //error in range of dates
 
             /* Different cases based on query size */
             if (querySize > this.maxSize) {
@@ -162,13 +232,16 @@ public class SimpleCache implements Cache {
                     stmt.executeUpdate(stmtStr);
                 } catch (SQLException e) {
                     e.printStackTrace();
+                    return false;
                 }
                 System.out.println("SC: Successfully deleted data from cache.");
 
                 //update with as much new data as possible
                 int dateRange = this.maxSize / variables.size();
-                minD = maxD.minusDays(dateRange);
-                minDate = minD.toString();
+                minD = maxD.minusDays(dateRange);       // UC3, Fire, Mesogeos
+                //minD = maxD.minusHours(dateRange);    // Brazil, Slovenia, France
+                minDate = minD.format(formatter);
+
                 System.out.println("SC: Number of Dates to be imported: " + dateRange);
                 System.out.println("SC: [" + minDate + ", " + maxDate + "]");
 
@@ -188,30 +261,32 @@ public class SimpleCache implements Cache {
                         stmt.executeUpdate(stmtStr);
                     } catch (SQLException e) {
                         e.printStackTrace();
+                        return false;
                     }
                     System.out.println("SC: Successfully updated cache for variable: " + column);
 
                     //update current cache size and hash
                     this.currSize = this.maxSize;
-                    for (LocalDate tmpD = minD; tmpD.isBefore(maxD); tmpD = tmpD.plusDays(1)) {
+                    for (LocalDateTime tmpD = minD; tmpD.isBefore(maxD); tmpD = tmpD.plusDays(1)) {
                         HashSet<String> vars = new HashSet<String>(variables);
-                        if (this.timeCache.containsKey(tmpD.toString()))
-                            this.timeCache.get(tmpD.toString()).addAll(vars);
+                        if (this.timeCache.containsKey(tmpD.format(formatter)))
+                            this.timeCache.get(tmpD.format(formatter)).addAll(vars);
                         else
-                            this.timeCache.put(tmpD.toString(), vars);
+                            this.timeCache.put(tmpD.format(formatter), vars);
                     }
 
                     /* Template Export to Json: */
                     try {
                         Gson gson = new Gson();
                         FileWriter writer = new FileWriter(this.timeFile);
-                        Type hashType = new TypeToken<Map<LocalDate, Set<String>>>(){}.getType();
+                        Type hashType = new TypeToken<Map<LocalDateTime, Set<String>>>(){}.getType();
                         gson.toJson(this.timeCache, hashType, writer);
                         writer.flush();
                         writer.close();
                         System.out.println("SC: Successfully updated hash json file.");
                     } catch (IOException e) {
                         e.printStackTrace();
+                        return false;
                     }
 
                     //Before exiting, print hash set for debug
@@ -233,7 +308,7 @@ public class SimpleCache implements Cache {
                 Iterator it = this.timeCache.entrySet().iterator();
                 while (it.hasNext() && delSum < excess) {
                     HashMap.Entry pair = (HashMap.Entry) it.next();
-                    String key = (String) pair.getKey() + "T00:00:00"; //hardcoded fix for LocalDateTime
+                    String key = (String) pair.getKey();
                     HashSet val = (HashSet) pair.getValue();
                     System.out.println("SC:\n\tKey: " + key + "\n\tVal" + val);
 
@@ -245,6 +320,7 @@ public class SimpleCache implements Cache {
                         stmt.executeUpdate(stmtStr);
                     } catch (SQLException e) {
                         e.printStackTrace();
+                        return false;
                     }
                     it.remove(); //avoids a ConcurrentModificationException
                 }
@@ -268,18 +344,19 @@ public class SimpleCache implements Cache {
                         stmt.executeUpdate(stmtStr);
                     } catch (SQLException e) {
                         e.printStackTrace();
+                        return false;
                     }
                     System.out.println("SC: Successfully updated cache for variable: " + column);
                 }
 
                 //update current cache size and hash
                 this.currSize += querySize;
-                for (LocalDate tmpD = minD; tmpD.isBefore(maxD); tmpD = tmpD.plusDays(1)) {
+                for (LocalDateTime tmpD = minD; tmpD.isBefore(maxD); tmpD = tmpD.plusDays(1)) {
                     HashSet<String> vars = new HashSet<String>(variables);
-                    if (this.timeCache.containsKey(tmpD.toString()))
-                        this.timeCache.get(tmpD.toString()).addAll(vars);
+                    if (this.timeCache.containsKey(tmpD.format(formatter)))
+                        this.timeCache.get(tmpD.format(formatter)).addAll(vars);
                     else
-                        this.timeCache.put(tmpD.toString(), vars);
+                        this.timeCache.put(tmpD.format(formatter), vars);
                 }
 
                 /* Template Export to Json: */
@@ -293,6 +370,7 @@ public class SimpleCache implements Cache {
                     System.out.println("SC: Successfully updated hash json file.");
                 } catch (IOException e) {
                     e.printStackTrace();
+                    return false;
                 }
             } else {
                 //no deletions necessary
@@ -315,18 +393,19 @@ public class SimpleCache implements Cache {
                         stmt.executeUpdate(stmtStr);
                     } catch (SQLException e) {
                         e.printStackTrace();
+                        return false;
                     }
                     System.out.println("SC: Successfully updated cache for variable: " + column);
                 }
 
                 //update current cache size and hash
                 this.currSize += querySize;
-                for (LocalDate tmpD = minD; tmpD.isBefore(maxD); tmpD = tmpD.plusDays(1)) {
+                for (LocalDateTime tmpD = minD; tmpD.isBefore(maxD); tmpD = tmpD.plusDays(1)) {
                     HashSet<String> vars = new HashSet<String>(variables);
-                    if (this.timeCache.containsKey(tmpD.toString()))
-                        this.timeCache.get(tmpD.toString()).addAll(vars);
+                    if (this.timeCache.containsKey(tmpD.format(formatter)))
+                        this.timeCache.get(tmpD.format(formatter)).addAll(vars);
                     else
-                        this.timeCache.put(tmpD.toString(), vars);
+                        this.timeCache.put(tmpD.format(formatter), vars);
                 }
 
                 /* Template Export to Json: */
@@ -340,6 +419,7 @@ public class SimpleCache implements Cache {
                     System.out.println("SC: Successfully updated hash json file.");
                 } catch (IOException e) {
                     e.printStackTrace();
+                    return false;
                 }
             }
 

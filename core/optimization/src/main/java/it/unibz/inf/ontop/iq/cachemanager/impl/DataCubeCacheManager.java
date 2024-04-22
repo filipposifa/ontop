@@ -25,6 +25,8 @@ import javax.inject.Inject;
 import javax.inject.Singleton;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
 import java.util.*;
 import java.util.stream.IntStream;
 import java.util.stream.Stream;
@@ -66,23 +68,38 @@ public class DataCubeCacheManager implements QueryCacheManager {
 
         //following data collected from property file
         private static final String connectionString = "jdbc:postgresql://88.197.53.173:86/cubez";
-        private static final String connectionUsr = "postgres";
-        private static final String connectionPwd = "???";   //other way to provide pwd ?
-        private static final String tableFDW = "cubetable_uc3";
-        private static final String tableCache= "cache_uc3";
-        //utilize OntopQuery.java/OntopExtractDBMetadata.java code to get properties?
+        private static final String connectionUsr = "???";
+        private static final String connectionPwd = "???";   //TODO: read connection parameters from file
+
+        // Foreign table name
+        //private static final String tableFDW = "cubetable_uc3";
+        //private static final String tableFDW = "cubetable_fire";
+        //private static final String tableFDW = "cubetable_uc5";
+        //private static final String tableFDW = "cubetable_uc5_new";
+        //private static final String tableFDW = "cubetable_uc5_france";
+        private static final String tableFDW = "cubetable_uc3_mesogeos";
+
+        // Cache table name
+        //private static final String tableCache = "cache_uc3";
+        //private static final String tableCache = "cache_fire";
+        //private static final String tableCache = "cache_brazil";
+        //private static final String tableCache = "cache_slovenia";
+        //private static final String tableCache = "cache_france";
+        private static final String tableCache = "cache_mesogeos";
+        private static String filterStr = "";
 
         @Inject
         protected DataCubeFilterTransformer(IntermediateQueryFactory iqFactory, CoreSingletons coreSingletons) {
             super(iqFactory);
-            this.coreSingletons = coreSingletons;
-            System.out.println("DCFT-1: Building hash set for filters.");
 
-            filters = new HashSet<>();
+            this.filters = new HashSet<>();
+            this.coreSingletons = coreSingletons;
+            System.out.println("DCFT: Building hash set for filters.");
+
             Connection con = null;
             try {
                 con = java.sql.DriverManager.getConnection(connectionString, connectionUsr, connectionPwd);
-                //further testing:
+                // Further testing on how to get properties:
                 // DBMetadataProvider dbmeta = metadataProviderFactory.getMetadataProvider(con)
                 // RelationID rID = dbmeta.getRelationIDs().get(0)
                 // NamedRelationDefinition nRD = dbmeta.getRelation(rID)
@@ -97,7 +114,7 @@ public class DataCubeCacheManager implements QueryCacheManager {
         @Override
         public IQTree transformFilter(IQTree tree, FilterNode rootNode, IQTree child) {
             //filters.add(rootNode);
-            System.out.println("tF-1: " + rootNode.toString());
+            filterStr = rootNode.toString();
             IQTree newChild = child.acceptTransformer(this);
             return newChild.equals(child) && rootNode.equals(tree.getRootNode())
                     ? tree
@@ -113,14 +130,15 @@ public class DataCubeCacheManager implements QueryCacheManager {
             /* Parse query and determine columns, tables and filters */
             boolean replaceWithCacheTable = false;
             String query = dataNode.toString();
-            System.out.println("tED-1: Query: " + query);
+            String filterVar = "";
+            System.out.println("tED-Query: " + query);
+            System.out.println("tED-Filter String: " + filterStr);
             // Use dataNode.getRelationDefinition().getAttribute(INDEX) to get specific variable
 
             /*
                 TODO:
                  - Check relationDefinition pipeline and see how to modify which table it refers to
                  - Arrange necessary variables to pass as arguments in manage
-                 - Run initial tests
              */
 
             int variablePos;
@@ -131,19 +149,72 @@ public class DataCubeCacheManager implements QueryCacheManager {
             String specX;
             String specY;
 
+            /* UC3
             String minDate = "2009-03-06T00:00:00";
             String maxDate = "2020-12-26T00:00:00";
             double minX = 19.86;
             double maxX = 28.19;
             double minY = 34.93;
             double maxY = 41.62;
+            */
+
+            /* UC3-Fire
+            String minDate = "2022-07-08T12:00:00";
+            String maxDate = "2022-12-26T12:00:00";
+            double minX = 18.30;
+            double maxX = 31.18;
+            double minY = 32.67;
+            double maxY = 43.50;
+            */
+
+            /* UC3-Mesogeos */
+            String minDate = "2006-04-01T00:00:00";
+            String maxDate = "2022-09-29T00:00:00";
+            double minX = -10.72;
+            double maxX = 36.75;
+            double minY = 30.06;
+            double maxY = 47.70;
+
+            /* UC3-Brazil
+            String minDate = "2019-01-01T00:00:00";
+            String maxDate = "2019-04-01T00:00:00";
+            double minX = -47.01;
+            double maxX = -41.99;
+            double minY = -6.01;
+            double maxY = -0.99;
+            */
+
+            /* UC3-Slovenia
+            String minDate = "2021-01-01T00:00:00";
+            String maxDate = "2022-01-01T00:00:00";
+            double minX = 13.44;
+            double maxX = 16.46;
+            double minY = 45.44;
+            double maxY = 46.86;
+            */
+
+            /* UC3-France
+            String minDate = "2022-01-01T00:00:00";
+            String maxDate = "2022-12-31T00:00:00";
+            double minX = -0.33;
+            double maxX = 4.85;
+            double minY = 42.33;
+            double maxY = 45.06;
+            */
+
             HashSet<String> variables = new HashSet<String>();
-
             Attribute date = null;
-            Attribute xCoord;
-            Attribute yCoord;
+            //Attribute xCoord, yCoord;
 
-            if (dataNode.getRelationDefinition().getAtomPredicate().getName().contains("cubetable_uc3")) {
+            /* Parsing helper variables for dimension ranges */
+            int strIndex;
+            String strFilter;
+            String strDate;
+            LocalDateTime tmpDate;
+            DateTimeFormatter formatter = DateTimeFormatter.ISO_LOCAL_DATE_TIME;
+            //double tmpCoord;
+
+            if (dataNode.getRelationDefinition().getAtomPredicate().getName().contains(tableFDW)) {
                 for (Integer i : dataNode.getArgumentMap().keySet()) {
                     if (i == 0) {
                         //date!
@@ -155,8 +226,48 @@ public class DataCubeCacheManager implements QueryCacheManager {
                             minDate = maxDate = specDate;
                         } else {
                             //date is variable
-                            date = dataNode.getRelationDefinition().getAttribute(1);
-                            System.out.println("tED-Date: " + date);
+                            filterVar = dataNode.getArgumentMap().get(0).toString();
+                            strIndex = filterStr.indexOf(filterVar);
+                            System.out.println("tED-Date: Looking for time filters: " + filterVar);
+                            while (strIndex > -1) {
+                                if (filterStr.charAt(strIndex-21) == 'S')   //STR_GT, STR_LT
+                                    strFilter = filterStr.substring(strIndex-21, strIndex-15);
+                                else if (filterStr.charAt(strIndex-21) == 'T')  //STR_GTE, STR_LTE
+                                    strFilter = filterStr.substring(strIndex-22, strIndex-15);
+                                else if (filterStr.charAt(strIndex-2) == 'L') {   //IS_NOT_NULL
+                                    strIndex = filterStr.indexOf(filterVar, strIndex + 1);
+                                    continue;
+                                }
+                                else
+                                    return dataNode;
+
+                                strDate = filterStr.substring(strIndex+filterVar.length()+3, strIndex+filterVar.length()+22);
+                                switch (strFilter) {
+                                    case "STR_LT":
+                                        if (tableFDW.contains("uc3") || tableFDW.contains("mesogeos"))
+                                            tmpDate = LocalDateTime.parse(strDate).minusDays(1);
+                                        else
+                                            tmpDate = LocalDateTime.parse(strDate).minusHours(1);
+                                        strDate = tmpDate.format(formatter);
+                                        if (strDate.compareTo(maxDate) < 0) maxDate = strDate;
+                                        break;
+                                    case "STR_LTE":
+                                        if (strDate.compareTo(maxDate) < 0) maxDate = strDate;
+                                        break;
+                                    case "STR_GT":
+                                        if (tableFDW.contains("uc3") || tableFDW.contains("mesogeos"))
+                                            tmpDate = LocalDateTime.parse(strDate).plusDays(1);
+                                        else
+                                            tmpDate = LocalDateTime.parse(strDate).plusHours(1);
+                                        strDate = formatter.format(tmpDate);
+                                        if (strDate.compareTo(minDate) > 0) minDate = strDate;
+                                        break;
+                                    case "STR_GTE":
+                                        if (strDate.compareTo(minDate) > 0) minDate = strDate;
+                                        break;
+                                }
+                                strIndex = filterStr.indexOf(filterVar, strIndex+1);
+                            }
                         }
                     } else if (i == 1) {
                         //y!
@@ -169,8 +280,9 @@ public class DataCubeCacheManager implements QueryCacheManager {
 
                         } else {
                             //y is variable
-                            yCoord = dataNode.getRelationDefinition().getAttribute(2);
-                            System.out.println("tED-yCoord: " + yCoord);
+                            System.out.println("tED-Date: Looking for y filters...");
+                            filterVar = dataNode.getArgumentMap().get(1).toString();
+                            strIndex = filterStr.indexOf(filterVar);
                         }
                     } else if (i == 2) {
                         //x!
@@ -182,8 +294,9 @@ public class DataCubeCacheManager implements QueryCacheManager {
                             minX = maxX = parseDouble(specX);
                         } else {
                             //x is variable
-                            xCoord = dataNode.getRelationDefinition().getAttribute(3);
-                            System.out.println("tED-xCoord: " + xCoord);
+                            System.out.println("tED-Date: Looking for x filters...");
+                            filterVar = dataNode.getArgumentMap().get(2).toString();
+                            strIndex = filterStr.indexOf(filterVar);
                         }
                     } else {
                         //some other cube variable
@@ -196,7 +309,6 @@ public class DataCubeCacheManager implements QueryCacheManager {
                                 - add another set/map for specific values of variables
                                 - handle it as min/max, same way with dimensions
                              */
-
                             Variable tmpVar = (Variable) dataNode.getArgumentMap().get(i);
                             System.out.println("tED-SpecificVar: " + tmpVar);
                             variables.add(tmpVar.toString());
@@ -245,8 +357,15 @@ public class DataCubeCacheManager implements QueryCacheManager {
             }
 
             /* Modify DataNode if query can be answered by cache */
-            if (replaceWithCacheTable)
-                return DataCubeCacheManager.renameExtensionalDataNode(dataNode, coreSingletons, "cache_uc3");
+            if (replaceWithCacheTable) {
+                System.out.println("tED-Replace:");
+                System.out.println("\tRootDBType: " + coreSingletons.getTypeFactory().getDBTypeFactory().getAbstractRootDBType().toString());
+                System.out.println("\tArguments: " + dataNode.getArgumentMap().toString());
+                System.out.println("\tVariables: " + dataNode.getVariables().toString());
+                System.out.println("\tRelationDefinition: " + dataNode.getRelationDefinition().toString());
+                System.out.println("\tAttributes: " + dataNode.getRelationDefinition().getAttributes().toString());
+                return DataCubeCacheManager.renameExtensionalDataNode(dataNode, coreSingletons, tableCache);
+            }
             else
                 return dataNode;
         }
@@ -256,14 +375,15 @@ public class DataCubeCacheManager implements QueryCacheManager {
             /* This type of node contains filters on values. We need to check though if these filter can also be
             present in different kinds of nodes
              */
-            System.out.println("tNCN-1: Filters: " + filters);
+            this.filters.clear();
             if(rootNode instanceof InnerJoinNode) {
                 InnerJoinNode inner = (InnerJoinNode) rootNode;
                 Optional<ImmutableExpression> filterConditions = inner.getOptionalFilterCondition();
                 if (filterConditions.isPresent()) {
                     ImmutableExpression expression = filterConditions.get();
                     filters.add(expression);
-                    System.out.println("tNCN-2: Filters: " + filters);
+                    filterStr = filters.toString();
+                    System.out.println("tNCN-Filters: " + filters);
                 }
             }
             ImmutableList<IQTree> newChildren = children.stream()
@@ -280,7 +400,7 @@ public class DataCubeCacheManager implements QueryCacheManager {
          */
         protected Optional<Map.Entry<NaryIQTree, ImmutableList<Integer>>> extractPushableSiblings(NaryIQTree unionTree,
                                                                                                   ImmutableList<IQTree> children) {
-            System.out.println("ePS-1: Filters: " + filters);
+            System.out.println("ePS-Filters: " + filters);
             ImmutableSet<Variable> unionVariables = unionTree.getVariables();
 
             ImmutableList<Integer> pushableSiblings = IntStream.range(0, children.size())
@@ -299,7 +419,7 @@ public class DataCubeCacheManager implements QueryCacheManager {
         private ImmutableList<IQTree> updateChildren(NaryIQTree unionTree, ImmutableList<Integer> pushableSiblingIndexes,
                                                      ImmutableList<IQTree> children) {
 
-            System.out.println("uC-1: Filters: " + filters);
+            System.out.println("uC-Filters: " + filters);
             ImmutableList<IQTree> pushedSiblings = pushableSiblingIndexes.stream()
                     .map(children::get)
                     .collect(ImmutableCollectors.toList());
@@ -338,18 +458,27 @@ public class DataCubeCacheManager implements QueryCacheManager {
 
         //private final ValuesNode valuesNode;
 
-        private ValuesRelationDefinition(String name, DBTermType rootType, QuotedIDFactory idFactory, ExtensionalDataNode original) {
+        private ValuesRelationDefinition(
+                String name,
+                DBTermType rootType,
+                QuotedIDFactory idFactory,
+                ExtensionalDataNode original
+        ) {
             super(name, extractAttributes(original, rootType, idFactory));
             //this.valuesNode = valuesNode;
         }
 
-        private static RelationDefinition.AttributeListBuilder extractAttributes(ExtensionalDataNode original, DBTermType rootType, QuotedIDFactory idFactory) {
+        private static RelationDefinition.AttributeListBuilder extractAttributes(
+                ExtensionalDataNode original,
+                DBTermType rootType,
+                QuotedIDFactory idFactory
+        ) {
             RelationDefinition.AttributeListBuilder builder = AbstractRelationDefinition.attributeListBuilder();
-            VariableNullability variableNullability = original.getVariableNullability();//valuesNode.getVariableNullability();
+            VariableNullability variableNullability = original.getVariableNullability();
+            //valuesNode.getVariableNullability();
 
             original.getRelationDefinition().getAttributes()//.getVariables()//.getOrderedVariables()
-                    .forEach(v -> builder.addAttribute(v.getID(), v.getTermType(),
-                            v.isNullable()));
+                .forEach(v -> builder.addAttribute(v.getID(), v.getTermType(), v.isNullable()));
             return builder;
         }
 
@@ -370,8 +499,13 @@ public class DataCubeCacheManager implements QueryCacheManager {
     }
 
     private static ExtensionalDataNode renameExtensionalDataNode(ExtensionalDataNode node, CoreSingletons coreSingletons, String name) {
-        return coreSingletons.getIQFactory().createExtensionalDataNode(new DataCubeCacheManager.ValuesRelationDefinition(
-                name, coreSingletons.getTypeFactory().getDBTypeFactory().getAbstractRootDBType(), new SQLStandardQuotedIDFactory(), node
-        ), node.getArgumentMap());
+        return coreSingletons.getIQFactory().createExtensionalDataNode(
+                new DataCubeCacheManager.ValuesRelationDefinition(
+                        name,
+                        coreSingletons.getTypeFactory().getDBTypeFactory().getAbstractRootDBType(),
+                        new SQLStandardQuotedIDFactory(),
+                        node),
+                node.getArgumentMap()
+        );
     }
 }
